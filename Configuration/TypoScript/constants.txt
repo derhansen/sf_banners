@@ -1,0 +1,14 @@
+plugin.tx_sfbanners {
+	view {
+		# cat=plugin.tx_sfbanners/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:sf_banners/Resources/Private/Templates/
+		# cat=plugin.tx_sfbanners/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:sf_banners/Resources/Private/Partials/
+		# cat=plugin.tx_sfbanners/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:sf_banners/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_sfbanners//a; type=string; label=Default storage PID
+		storagePid = 
+	}
+}

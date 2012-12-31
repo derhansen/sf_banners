@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the Banner Management extension in the FRONTEND</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_sfbanners_domain_model_category">Categories</label>
+			<label index="tx_sfbanners_domain_model_category.title">Title</label>
+			<label index="tx_sfbanners_domain_model_category.parent">parent</label>
+			<label index="tx_sfbanners_domain_model_banner">Banners</label>
+			<label index="tx_sfbanners_domain_model_banner.title">Title</label>
+			<label index="tx_sfbanners_domain_model_banner.description">Description</label>
+			<label index="tx_sfbanners_domain_model_banner.type">type</label>
+			<label index="tx_sfbanners_domain_model_banner.category">Category</label>
+		</languageKey>
+	</data>
+</T3locallang>

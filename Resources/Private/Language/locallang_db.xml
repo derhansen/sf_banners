@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <type>database</type>
+        <description>Language labels for database tables/fields belonging to extension 'sf_banners'</description>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+
+            <label index="tx_sfbanners_domain_model_category">Category</label>
+            <label index="tx_sfbanners_domain_model_category.title">Title</label>
+            <label index="tx_sfbanners_domain_model_category.parent">Parent</label>
+
+            <label index="tx_sfbanners_domain_model_banner">Banner</label>
+            <label index="tx_sfbanners_domain_model_banner.title">Title</label>
+            <label index="tx_sfbanners_domain_model_banner.description">Description</label>
+            <label index="tx_sfbanners_domain_model_banner.type">Type</label>
+            <label index="tx_sfbanners_domain_model_banner.type.image">Image</label>
+            <label index="tx_sfbanners_domain_model_banner.type.html">HTML</label>
+            <label index="tx_sfbanners_domain_model_banner.type.flash">Flash</label>
+            <label index="tx_sfbanners_domain_model_banner.category">Category</label>
+            <label index="tx_sfbanners_domain_model_banner.image">Image</label>
+            <label index="tx_sfbanners_domain_model_banner.margin_top">Margin top</label>
+            <label index="tx_sfbanners_domain_model_banner.margin_right">Margin right</label>
+            <label index="tx_sfbanners_domain_model_banner.margin_bottom">Margin bottom</label>
+            <label index="tx_sfbanners_domain_model_banner.margin_left">Margin left</label>
+            <label index="tx_sfbanners_domain_model_banner.alttext">Alternative text</label>
+
+        </languageKey>
+    </data>
+</T3locallang>

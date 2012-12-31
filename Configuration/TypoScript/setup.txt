@@ -1,0 +1,34 @@
+plugin.tx_sfbanners {
+	view {
+		templateRootPath = {$plugin.tx_sfbanners.view.templateRootPath}
+		partialRootPath = {$plugin.tx_sfbanners.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_sfbanners.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_sfbanners.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+}
+
+plugin.tx_sfbanners._CSS_DEFAULT_STYLE (
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-sf-banners table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-sf-banners table th {
+		font-weight:bold;
+	}
+
+	.tx-sf-banners table td {
+		vertical-align:top;
+	}
+)
