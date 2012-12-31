@@ -49,7 +49,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	protected $description;
 
 	/**
-	 * type
+	 * Type
 	 *
 	 * @var integer
 	 * @validate NotEmpty
@@ -62,6 +62,139 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	 * @var string
 	 */
 	protected $category;
+
+	/**
+	 * Image
+	 *
+	 * @var string
+	 */
+	protected $image;
+
+	/**
+	 * Margin top
+	 *
+	 * @var integer
+	 */
+	protected $margin_top;
+
+	/**
+	 * Margin right
+	 *
+	 * @var integer
+	 */
+	protected $margin_right;
+
+	/**
+	 * Margin bottom
+	 *
+	 * @var integer
+	 */
+	protected $margin_bottom;
+
+	/**
+	 * Margin top
+	 *
+	 * @var integer
+	 */
+	protected $margin_left;
+
+	/**
+	 * Alttext
+	 *
+	 * @var string
+	 */
+	protected $alttext;
+
+	/**
+	 * Link
+	 *
+	 * @var string
+	 */
+	protected $link;
+
+	/**
+	 * HTML
+	 *
+	 * @var string
+	 */
+	protected $html;
+
+	/**
+	 * Flash
+	 *
+	 * @var string
+	 */
+	protected $flash;
+
+	/**
+	 * Flash width
+	 *
+	 * @var integer
+	 */
+	protected $flash_width;
+
+	/**
+	 * Flash height
+	 *
+	 * @var integer
+	 */
+	protected $flash_height;
+
+	/**
+	 * Layer width
+	 *
+	 * @var integer
+	 */
+	protected $layer_width;
+
+	/**
+	 * Layer  height
+	 *
+	 * @var integer
+	 */
+	protected $layer_height;
+
+	/**
+	 * Max impressions
+	 *
+	 * @var integer
+	 */
+	protected $impressions_max;
+
+	/**
+	 * Max clicks
+	 *
+	 * @var integer
+	 */
+	protected $clicks_max;
+
+	/**
+	 * Totel impressions
+	 *
+	 * @var integer
+	 */
+	protected $impressions;
+
+	/**
+	 * Total clicks
+	 *
+	 * @var integer
+	 */
+	protected $clicks;
+
+	/**
+	 * Display on pages
+	 *
+	 * @var string
+	 */
+	protected $pages;
+
+	/**
+	 * Do not display on pages
+	 *
+	 * @var string
+	 */
+	protected $excludepages;
 
 	/**
 	 * Returns the title
@@ -138,6 +271,273 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	public function setCategory($category) {
 		$this->category = $category;
 	}
+
+	/**
+	 * @param string $alttext
+	 */
+	public function setAlttext ($alttext) {
+		$this->alttext = $alttext;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getAlttext () {
+		return $this->alttext;
+	}
+
+	/**
+	 * @param int $clicks
+	 */
+	public function setClicks ($clicks) {
+		$this->clicks = $clicks;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getClicks () {
+		return $this->clicks;
+	}
+
+	/**
+	 * @param int $clicks_max
+	 */
+	public function setClicksMax ($clicks_max) {
+		$this->clicks_max = $clicks_max;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getClicksMax () {
+		return $this->clicks_max;
+	}
+
+	/**
+	 * @param string $excludepages
+	 */
+	public function setExcludepages ($excludepages) {
+		$this->excludepages = $excludepages;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getExcludepages () {
+		return $this->excludepages;
+	}
+
+	/**
+	 * @param string $flash
+	 */
+	public function setFlash ($flash) {
+		$this->flash = $flash;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getFlash () {
+		return $this->flash;
+	}
+
+	/**
+	 * @param int $flash_height
+	 */
+	public function setFlashHeight ($flash_height) {
+		$this->flash_height = $flash_height;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getFlashHeight () {
+		return $this->flash_height;
+	}
+
+	/**
+	 * @param int $flash_width
+	 */
+	public function setFlashWidth ($flash_width) {
+		$this->flash_width = $flash_width;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getFlashWidth () {
+		return $this->flash_width;
+	}
+
+	/**
+	 * @param string $html
+	 */
+	public function setHtml ($html) {
+		$this->html = $html;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getHtml () {
+		return $this->html;
+	}
+
+	/**
+	 * @param string $image
+	 */
+	public function setImage ($image) {
+		$this->image = $image;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getImage () {
+		return $this->image;
+	}
+
+	/**
+	 * @param int $impressions
+	 */
+	public function setImpressions ($impressions) {
+		$this->impressions = $impressions;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getImpressions () {
+		return $this->impressions;
+	}
+
+	/**
+	 * @param int $impressions_max
+	 */
+	public function setImpressionsMax ($impressions_max) {
+		$this->impressions_max = $impressions_max;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getImpressionsMax () {
+		return $this->impressions_max;
+	}
+
+	/**
+	 * @param int $layer_height
+	 */
+	public function setLayerHeight ($layer_height) {
+		$this->layer_height = $layer_height;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getLayerHeight () {
+		return $this->layer_height;
+	}
+
+	/**
+	 * @param int $layer_width
+	 */
+	public function setLayerWidth ($layer_width) {
+		$this->layer_width = $layer_width;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getLayerWidth () {
+		return $this->layer_width;
+	}
+
+	/**
+	 * @param string $link
+	 */
+	public function setLink ($link) {
+		$this->link = $link;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getLink () {
+		return $this->link;
+	}
+
+	/**
+	 * @param int $margin_bottom
+	 */
+	public function setMarginBottom ($margin_bottom) {
+		$this->margin_bottom = $margin_bottom;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getMarginBottom () {
+		return $this->margin_bottom;
+	}
+
+	/**
+	 * @param int $margin_left
+	 */
+	public function setMarginLeft ($margin_left) {
+		$this->margin_left = $margin_left;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getMarginLeft () {
+		return $this->margin_left;
+	}
+
+	/**
+	 * @param int $margin_right
+	 */
+	public function setMarginRight ($margin_right) {
+		$this->margin_right = $margin_right;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getMarginRight () {
+		return $this->margin_right;
+	}
+
+	/**
+	 * @param int $margin_top
+	 */
+	public function setMarginTop ($margin_top) {
+		$this->margin_top = $margin_top;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getMarginTop () {
+		return $this->margin_top;
+	}
+
+	/**
+	 * @param string $pages
+	 */
+	public function setPages ($pages) {
+		$this->pages = $pages;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getPages () {
+		return $this->pages;
+	}
+
 
 }
 ?>
