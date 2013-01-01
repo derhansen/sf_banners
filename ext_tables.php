@@ -49,6 +49,7 @@ $TCA['tx_sfbanners_domain_model_banner'] = array(
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
+		'type'=> 'type',
 		'dividers2tabs' => TRUE,
 		'sortby' => 'sorting',
 		'versioningWS' => 2,

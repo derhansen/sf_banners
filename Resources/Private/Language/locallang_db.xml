@@ -39,6 +39,17 @@
             <label index="tx_sfbanners_domain_model_banner.pages">Pages</label>
             <label index="tx_sfbanners_domain_model_banner.excludepages">Exclude pages</label>
 
+            <label index="tx_sfbanners_domain_model_banner.tabs.image">Image</label>
+            <label index="tx_sfbanners_domain_model_banner.tabs.flash">Flash</label>
+            <label index="tx_sfbanners_domain_model_banner.tabs.html">HTML</label>
+            <label index="tx_sfbanners_domain_model_banner.tabs.display">Display</label>
+            <label index="tx_sfbanners_domain_model_banner.tabs.limitations">Limitations</label>
+            <label index="tx_sfbanners_domain_model_banner.tabs.statistics">Statistics</label>
+            <label index="tx_sfbanners_domain_model_banner.tabs.visibility">Visibility</label>
+
+            <label index="tx_sfbanners_domain_model_banner.labels.margins">Margins</label>
+
+
         </languageKey>
     </data>
 </T3locallang>
