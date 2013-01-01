@@ -141,20 +141,6 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	protected $flash_height;
 
 	/**
-	 * Layer width
-	 *
-	 * @var integer
-	 */
-	protected $layer_width;
-
-	/**
-	 * Layer  height
-	 *
-	 * @var integer
-	 */
-	protected $layer_height;
-
-	/**
 	 * Max impressions
 	 *
 	 * @var integer
@@ -424,34 +410,6 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	 */
 	public function getImpressionsMax () {
 		return $this->impressions_max;
-	}
-
-	/**
-	 * @param int $layer_height
-	 */
-	public function setLayerHeight ($layer_height) {
-		$this->layer_height = $layer_height;
-	}
-
-	/**
-	 * @return int
-	 */
-	public function getLayerHeight () {
-		return $this->layer_height;
-	}
-
-	/**
-	 * @param int $layer_width
-	 */
-	public function setLayerWidth ($layer_width) {
-		$this->layer_width = $layer_width;
-	}
-
-	/**
-	 * @return int
-	 */
-	public function getLayerWidth () {
-		return $this->layer_width;
 	}
 
 	/**

@@ -6,7 +6,7 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_sfbanners_domain_model_banner'] = array(
 	'ctrl' => $TCA['tx_sfbanners_domain_model_banner']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, type, category, image, margin_top, margin_right, margin_bottom, margin_left, alttext, link, html, flash, flash_width, flash_height, layer_width, layer_height, impressions_max, clicks_max, impressions, clicks, pages, excludepages',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, type, category, image, margin_top, margin_right, margin_bottom, margin_left, alttext, link, html, flash, flash_width, flash_height, impressions_max, clicks_max, impressions, clicks, pages, excludepages',
 	),
 	'columns' => array(
 		'sys_language_uid' => array(
