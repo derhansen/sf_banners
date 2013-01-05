@@ -5,17 +5,15 @@ if (!defined('TYPO3_MODE')) {
 
 Tx_Extbase_Utility_Extension::configurePlugin(
 	$_EXTKEY,
-	'Banners',
+	'Pi1',
 	array(
-		'Category' => '',
 		'Banner' => 'list',
-		
+		'Category' => '',
 	),
 	// non-cacheable actions
 	array(
-		'Category' => '',
 		'Banner' => '',
-		
+		'Category' => '',
 	)
 );
 

@@ -6,6 +6,8 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
+            <label index="plugin_title">Show banner</label>
+
 			<label index="tx_sfbanners_domain_model_category">Categories</label>
 			<label index="tx_sfbanners_domain_model_category.title">Title</label>
 			<label index="tx_sfbanners_domain_model_category.parent">parent</label>

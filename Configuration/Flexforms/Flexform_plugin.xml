@@ -1,0 +1,83 @@
+<T3DataStructure>
+    <meta type="array">
+        <langDisable>1</langDisable>
+    </meta>
+    <ROOT>
+        <type>array</type>
+        <el>
+            <settings.displayMode>
+                <TCEforms>
+                    <label>LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.displayMode</label>
+                    <config>
+                        <type>select</type>
+                        <items>
+                            <numIndex index="0" type="array">
+                                <numIndex index="0">LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.displayMode.all</numIndex>
+                                <numIndex index="1"></numIndex>
+                            </numIndex>
+                            <numIndex index="1">
+                                <numIndex index="0">LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.displayMode.allRandom</numIndex>
+                                <numIndex index="1">or</numIndex>
+                            </numIndex>
+                            <numIndex index="2">
+                                <numIndex index="0">LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.displayMode.random</numIndex>
+                                <numIndex index="1">and</numIndex>
+                            </numIndex>
+                        </items>
+                    </config>
+                </TCEforms>
+            </settings.displayMode>
+            <settings.category>
+                <TCEforms>
+                    <label>LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.category</label>
+                    <config>
+                        <type>select</type>
+                        <renderMode>tree</renderMode>
+                        <treeConfig>
+                            <parentField>parent</parentField>
+                            <appearance>
+                                <expandAll>TRUE</expandAll>
+                                <showHeader>TRUE</showHeader>
+                            </appearance>
+                        </treeConfig>
+                        <foreign_table>tx_sfbanners_domain_model_category</foreign_table>
+                        <foreign_table_where> ORDER BY tx_sfbanners_domain_model_category.sorting ASC</foreign_table_where>
+                        <size>10</size>
+                        <autoSizeMax>10</autoSizeMax>
+                        <minitems>0</minitems>
+                        <maxitems>10</maxitems>
+                    </config>
+                </TCEforms>
+            </settings.category>
+            <settings.fancybox>
+                <TCEforms>
+                    <label>LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.fancybox</label>
+                    <onChange>reload</onChange>
+                    <config>
+                        <type>check</type>
+                    </config>
+                </TCEforms>
+            </settings.fancybox>
+            <settings.fancybox.width>
+                <TCEforms>
+                    <label>LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.fancybox.width</label>
+                    <displayCond>FIELD:settings.fancybox:=:1</displayCond>
+                    <config>
+                        <type>input</type>
+                        <size>5</size>
+                    </config>
+                </TCEforms>
+            </settings.fancybox.width>
+            <settings.fancybox.height>
+                <TCEforms>
+                    <label>LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.fancybox.height</label>
+                    <displayCond>FIELD:settings.fancybox:=:1</displayCond>
+                    <config>
+                        <type>input</type>
+                        <size>5</size>
+                    </config>
+                </TCEforms>
+            </settings.fancybox.height>
+        </el>
+    </ROOT>
+</T3DataStructure>
