@@ -59,7 +59,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	/**
 	 * Category
 	 *
-	 * @var string
+	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_SfBanners_Domain_Model_Category>
 	 */
 	protected $category;
 
@@ -242,7 +242,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	/**
 	 * Returns the category
 	 *
-	 * @return string $category
+	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_SfBanners_Domain_Model_Category> $category
 	 */
 	public function getCategory() {
 		return $this->category;
@@ -251,7 +251,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	/**
 	 * Sets the category
 	 *
-	 * @param string $category
+	 * @param Tx_Extbase_Persistence_ObjectStorage $category
 	 * @return void
 	 */
 	public function setCategory($category) {

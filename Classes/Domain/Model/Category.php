@@ -44,7 +44,7 @@ class Tx_SfBanners_Domain_Model_Category extends Tx_Extbase_DomainObject_Abstrac
 	/**
 	 * parent
 	 *
-	 * @var string
+	 * @var Tx_SfBanners_Domain_Model_Category
 	 */
 	protected $parent;
 
@@ -70,7 +70,7 @@ class Tx_SfBanners_Domain_Model_Category extends Tx_Extbase_DomainObject_Abstrac
 	/**
 	 * Returns the parent
 	 *
-	 * @return string $parent
+	 * @return Tx_SfBanners_Domain_Model_Category $parent
 	 */
 	public function getParent() {
 		return $this->parent;
@@ -79,10 +79,10 @@ class Tx_SfBanners_Domain_Model_Category extends Tx_Extbase_DomainObject_Abstrac
 	/**
 	 * Sets the parent
 	 *
-	 * @param string $parent
+	 * @param Tx_SfBanners_Domain_Model_Category $parent
 	 * @return void
 	 */
-	public function setParent($parent) {
+	public function setParent(Tx_SfBanners_Domain_Model_Category $parent) {
 		$this->parent = $parent;
 	}
 
