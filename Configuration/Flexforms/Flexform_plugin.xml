@@ -58,7 +58,7 @@
                     </config>
                 </TCEforms>
             </settings.fancybox>
-            <settings.fancybox.width>
+            <settings.fancyboxWidth>
                 <TCEforms>
                     <label>LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.fancybox.width</label>
                     <displayCond>FIELD:settings.fancybox:=:1</displayCond>
@@ -67,8 +67,8 @@
                         <size>5</size>
                     </config>
                 </TCEforms>
-            </settings.fancybox.width>
-            <settings.fancybox.height>
+            </settings.fancyboxWidth>
+            <settings.fancyboxHeight>
                 <TCEforms>
                     <label>LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.fancybox.height</label>
                     <displayCond>FIELD:settings.fancybox:=:1</displayCond>
@@ -77,7 +77,7 @@
                         <size>5</size>
                     </config>
                 </TCEforms>
-            </settings.fancybox.height>
+            </settings.fancyboxHeight>
         </el>
     </ROOT>
 </T3DataStructure>
