@@ -66,23 +66,5 @@ class Tx_SfBanners_Domain_Model_CategoryTest extends Tx_Extbase_Tests_Unit_BaseT
 			$this->fixture->getTitle()
 		);
 	}
-	
-	/**
-	 * @test
-	 */
-	public function getParentReturnsInitialValueForString() { }
-
-	/**
-	 * @test
-	 */
-	public function setParentForStringSetsParent() { 
-		$this->fixture->setParent('Conceived at T3CON10');
-
-		$this->assertSame(
-			'Conceived at T3CON10',
-			$this->fixture->getParent()
-		);
-	}
-	
 }
 ?>

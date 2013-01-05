@@ -116,6 +116,9 @@ CREATE TABLE tx_sfbanners_domain_model_banner_category_mm (
 	uid_foreign int(11) DEFAULT '0' NOT NULL,
 	tablenames varchar(30) DEFAULT '' NOT NULL,
 	sorting int(11) DEFAULT '0' NOT NULL,
+
+	is_dummy_record tinyint(1) unsigned DEFAULT '0' NOT NULL,
+
 	KEY uid_local (uid_local),
 	KEY uid_foreign (uid_foreign)
 );

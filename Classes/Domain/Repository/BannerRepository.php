@@ -33,5 +33,33 @@
  */
 class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persistence_Repository {
 
+	/**
+	 * Disable the use of storage records, because the StoragePage can be set in the plugin
+	 */
+	public function initializeObject() {
+		$this->defaultQuerySettings = $this->objectManager->create('Tx_Extbase_Persistence_Typo3QuerySettings');
+		$this->defaultQuerySettings->setRespectStoragePage(FALSE);
+     }
+
+	/**
+	 * Returns banners matching the given demand
+	 *
+	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand
+	 *
+	 * @return array|Tx_Extbase_Persistence_QueryResultInterface
+	 */
+	public function findDemanded(Tx_SfBanners_Domain_Model_BannerDemand $demand) {
+		$query = $this->createQuery();
+
+		$constraints = array();
+
+		if ($demand->getStoragePage() != 0) {
+			$pidList = t3lib_div::intExplode(',', $demand->getStoragePage(), TRUE);
+			$constraints[]  = $query->in('pid', $pidList);
+		}
+
+		$query->matching($query->logicalAnd($constraints));
+		return $query->execute();
+	}
 }
 ?>

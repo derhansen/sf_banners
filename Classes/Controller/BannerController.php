@@ -56,7 +56,14 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 	 * @return void
 	 */
 	public function listAction() {
-		$banners = $this->bannerRepository->findAll();
+		//$banners = $this->bannerRepository->findAll();
+
+		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
+		$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
+		$demand->setStoragePage(8);
+
+		$banners = $this->bannerRepository->findDemanded($demand);
+
 		$this->view->assign('banners', $banners);
 	}
 
