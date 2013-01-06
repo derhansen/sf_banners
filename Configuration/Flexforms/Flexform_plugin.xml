@@ -13,15 +13,15 @@
                         <items>
                             <numIndex index="0" type="array">
                                 <numIndex index="0">LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.displayMode.all</numIndex>
-                                <numIndex index="1"></numIndex>
+                                <numIndex index="1">0</numIndex>
                             </numIndex>
                             <numIndex index="1">
                                 <numIndex index="0">LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.displayMode.allRandom</numIndex>
-                                <numIndex index="1">or</numIndex>
+                                <numIndex index="1">1</numIndex>
                             </numIndex>
                             <numIndex index="2">
                                 <numIndex index="0">LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.displayMode.random</numIndex>
-                                <numIndex index="1">and</numIndex>
+                                <numIndex index="1">2</numIndex>
                             </numIndex>
                         </items>
                     </config>
