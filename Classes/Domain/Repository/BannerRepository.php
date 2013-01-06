@@ -45,6 +45,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	 * Returns banners matching the given demand
 	 *
 	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand
+	 * @todo: include demands for banner (max impressions, max clicks, pages)
 	 *
 	 * @return array|Tx_Extbase_Persistence_QueryResultInterface
 	 */
@@ -58,8 +59,57 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 			$constraints[]  = $query->in('pid', $pidList);
 		}
 
+		if ($demand->getCategories() != 0) {
+			$categoryConstraints = array();
+			$categories = t3lib_div::intExplode(',', $demand->getCategories(), TRUE);
+			foreach ($categories as $category) {
+				$categoryConstraints[]  = $query->contains('category', $category);
+			}
+			if (count($categoryConstraints) > 0) {
+				$constraints[] = $query->logicalOr($categoryConstraints);
+			}
+		}
+
 		$query->matching($query->logicalAnd($constraints));
-		return $query->execute();
+		$result = $this->getResult($query, $demand);
+		return $result;
 	}
+
+	/**
+	 * Returns the result of the query based on the given displaymode set in demand
+	 *
+	 * @param Tx_Extbase_Persistence_QueryInterface $query
+	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand
+	 *
+	 * @return array|Tx_Extbase_Persistence_QueryResultInterface
+	 */
+	private function getResult(Tx_Extbase_Persistence_QueryInterface $query, Tx_SfBanners_Domain_Model_BannerDemand $demand) {
+		$result = array();
+		switch ($demand->getDisplayMode()) {
+			case 0:
+				$result = $query->execute();
+				break;
+			case 1:
+				$backend = t3lib_div::makeInstance('Tx_Extbase_Persistence_Storage_Typo3DbBackend');
+				$parameters = array();
+				$statementParts = $backend->parseQuery($query, $parameters);
+				$statementParts['orderings'][] = 'RAND()';
+				$statement = $backend->buildQuery($statementParts, $parameters);
+				$query->statement($statement, $parameters);
+				$result = $query->execute();
+				break;
+			case 2:
+				$rows = $query->execute()->count();
+				$row_number = mt_rand(0, max(0, ($rows - 1)));
+				$result = $query->setOffset($row_number)->setLimit(1)->execute();
+				break;
+		}
+		return $result;
+	}
+
+	/** @todo: create method to update counter of banner */
+
+	/** @todo: create method to update counter of clicks */
+
 }
 ?>

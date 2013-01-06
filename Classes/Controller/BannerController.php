@@ -60,7 +60,8 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 
 		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
 		$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
-		$demand->setStoragePage(8);
+		$demand->setDisplayMode(0);
+		$demand->setStoragePage('7,8,9');
 
 		$banners = $this->bannerRepository->findDemanded($demand);
 

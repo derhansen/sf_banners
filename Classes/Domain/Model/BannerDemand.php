@@ -48,11 +48,11 @@ class Tx_SfBanners_Domain_Model_BannerDemand extends Tx_Extbase_DomainObject_Abs
 	protected $storagePage;
 
 	/**
-	 * Display Mode
+	 * Display Mode - default is to display all banners
 	 *
 	 * @var integer
 	 */
-	protected $displayMode;
+	protected $displayMode = 0;
 
 	/**
 	 * The current page uid
