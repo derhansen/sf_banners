@@ -39,6 +39,7 @@ CREATE TABLE tx_sfbanners_domain_model_category (
 	KEY parent (pid),
 	KEY t3ver_oid (t3ver_oid,t3ver_wsid),
 	KEY language (l10n_parent,sys_language_uid)
+	KEY phpunit_dummy (is_dummy_record)
 
 );
 
@@ -104,6 +105,7 @@ CREATE TABLE tx_sfbanners_domain_model_banner (
 	KEY parent (pid),
 	KEY t3ver_oid (t3ver_oid,t3ver_wsid),
 	KEY language (l10n_parent,sys_language_uid)
+	KEY phpunit_dummy (is_dummy_record)
 
 );
 
@@ -121,4 +123,5 @@ CREATE TABLE tx_sfbanners_domain_model_banner_category_mm (
 
 	KEY uid_local (uid_local),
 	KEY uid_foreign (uid_foreign)
+	KEY phpunit_dummy (is_dummy_record)
 );
