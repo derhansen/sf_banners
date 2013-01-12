@@ -13,22 +13,7 @@ plugin.tx_sfbanners {
 	}
 }
 
-plugin.tx_sfbanners._CSS_DEFAULT_STYLE (
-	input.f3-form-error {
-		background-color:#FF9F9F;
-		border: 1px #FF0000 solid;
-	}
-
-	.tx-sf-banners table {
-		border-collapse:separate;
-		border-spacing:10px;
-	}
-
-	.tx-sf-banners table th {
-		font-weight:bold;
-	}
-
-	.tx-sf-banners table td {
-		vertical-align:top;
-	}
-)
+config.tx_extbase.persistence.classes.Tx_SfBanners_Domain_Model_Page {
+mapping {
+	tableName = pages
+}
