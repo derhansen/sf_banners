@@ -169,13 +169,6 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	protected $clicks;
 
 	/**
-	 * Display on pages
-	 *
-	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_SfBanners_Domain_Model_Page>
-	 */
-	protected $pages;
-
-	/**
 	 * Do not display on pages
 	 *
 	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_SfBanners_Domain_Model_Page>
@@ -481,21 +474,6 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	public function getMarginTop () {
 		return $this->margin_top;
 	}
-
-	/**
-	 * @param Tx_Extbase_Persistence_ObjectStorage $pages
-	 */
-	public function setPages ($pages) {
-		$this->pages = $pages;
-	}
-
-	/**
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_SfBanners_Domain_Model_Page>
-	 */
-	public function getPages () {
-		return $this->pages;
-	}
-
 
 }
 ?>
