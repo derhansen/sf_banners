@@ -344,6 +344,8 @@ $TCA['tx_sfbanners_domain_model_banner'] = array(
 				'size' => 4,
 				'minitems' => 0,
 				'maxitems' => 100,
+				'MM' => 'tx_sfbanners_domain_model_banner_pages_mm',
+				'foreign_table' => 'pages',
 			)
 		),
 		'excludepages' => Array (
@@ -356,6 +358,8 @@ $TCA['tx_sfbanners_domain_model_banner'] = array(
 				'size' => 4,
 				'minitems' => 0,
 				'maxitems' => 100,
+				'MM' => 'tx_sfbanners_domain_model_banner_excludepages_mm',
+				'foreign_table' => 'pages',
 			)
 		),
 	),

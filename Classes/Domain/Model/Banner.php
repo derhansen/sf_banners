@@ -171,14 +171,14 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	/**
 	 * Display on pages
 	 *
-	 * @var string
+	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_SfBanners_Domain_Model_Page>
 	 */
 	protected $pages;
 
 	/**
 	 * Do not display on pages
 	 *
-	 * @var string
+	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_SfBanners_Domain_Model_Page>
 	 */
 	protected $excludepages;
 
@@ -301,14 +301,14 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	}
 
 	/**
-	 * @param string $excludepages
+	 * @param Tx_Extbase_Persistence_ObjectStorage $excludepages
 	 */
 	public function setExcludepages ($excludepages) {
 		$this->excludepages = $excludepages;
 	}
 
 	/**
-	 * @return string
+	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_SfBanners_Domain_Model_Page>
 	 */
 	public function getExcludepages () {
 		return $this->excludepages;
@@ -483,14 +483,14 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	}
 
 	/**
-	 * @param string $pages
+	 * @param Tx_Extbase_Persistence_ObjectStorage $pages
 	 */
 	public function setPages ($pages) {
 		$this->pages = $pages;
 	}
 
 	/**
-	 * @return string
+	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_SfBanners_Domain_Model_Page>
 	 */
 	public function getPages () {
 		return $this->pages;
