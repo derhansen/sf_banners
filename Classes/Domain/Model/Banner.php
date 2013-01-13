@@ -75,28 +75,28 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	 *
 	 * @var integer
 	 */
-	protected $margin_top;
+	protected $marginTop;
 
 	/**
 	 * Margin right
 	 *
 	 * @var integer
 	 */
-	protected $margin_right;
+	protected $marginRight;
 
 	/**
 	 * Margin bottom
 	 *
 	 * @var integer
 	 */
-	protected $margin_bottom;
+	protected $marginBottom;
 
 	/**
 	 * Margin top
 	 *
 	 * @var integer
 	 */
-	protected $margin_left;
+	protected $marginLeft;
 
 	/**
 	 * Alttext
@@ -131,28 +131,28 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	 *
 	 * @var integer
 	 */
-	protected $flash_width;
+	protected $flashWidth;
 
 	/**
 	 * Flash height
 	 *
 	 * @var integer
 	 */
-	protected $flash_height;
+	protected $flashHeight;
 
 	/**
 	 * Max impressions
 	 *
 	 * @var integer
 	 */
-	protected $impressions_max;
+	protected $impressionsMax;
 
 	/**
 	 * Max clicks
 	 *
 	 * @var integer
 	 */
-	protected $clicks_max;
+	protected $clicksMax;
 
 	/**
 	 * Totel impressions
@@ -280,17 +280,17 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	}
 
 	/**
-	 * @param int $clicks_max
+	 * @param int $clicksMax
 	 */
-	public function setClicksMax ($clicks_max) {
-		$this->clicks_max = $clicks_max;
+	public function setClicksMax ($clicksMax) {
+		$this->clicksMax = $clicksMax;
 	}
 
 	/**
 	 * @return int
 	 */
 	public function getClicksMax () {
-		return $this->clicks_max;
+		return $this->clicksMax;
 	}
 
 	/**
@@ -322,31 +322,31 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	}
 
 	/**
-	 * @param int $flash_height
+	 * @param int $flashHeight
 	 */
-	public function setFlashHeight ($flash_height) {
-		$this->flash_height = $flash_height;
+	public function setFlashHeight ($flashHeight) {
+		$this->flashHeight = $flashHeight;
 	}
 
 	/**
 	 * @return int
 	 */
 	public function getFlashHeight () {
-		return $this->flash_height;
+		return $this->flashHeight;
 	}
 
 	/**
-	 * @param int $flash_width
+	 * @param int $flashWidth
 	 */
-	public function setFlashWidth ($flash_width) {
-		$this->flash_width = $flash_width;
+	public function setFlashWidth ($flashWidth) {
+		$this->flashWidth = $flashWidth;
 	}
 
 	/**
 	 * @return int
 	 */
 	public function getFlashWidth () {
-		return $this->flash_width;
+		return $this->flashWidth;
 	}
 
 	/**
@@ -392,17 +392,17 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	}
 
 	/**
-	 * @param int $impressions_max
+	 * @param int $impressionsMax
 	 */
-	public function setImpressionsMax ($impressions_max) {
-		$this->impressions_max = $impressions_max;
+	public function setImpressionsMax ($impressionsMax) {
+		$this->impressionsMax = $impressionsMax;
 	}
 
 	/**
 	 * @return int
 	 */
 	public function getImpressionsMax () {
-		return $this->impressions_max;
+		return $this->impressionsMax;
 	}
 
 	/**
@@ -420,59 +420,59 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	}
 
 	/**
-	 * @param int $margin_bottom
+	 * @param int $marginBottom
 	 */
-	public function setMarginBottom ($margin_bottom) {
-		$this->margin_bottom = $margin_bottom;
+	public function setMarginBottom ($marginBottom) {
+		$this->marginBottom = $marginBottom;
 	}
 
 	/**
 	 * @return int
 	 */
 	public function getMarginBottom () {
-		return $this->margin_bottom;
+		return $this->marginBottom;
 	}
 
 	/**
-	 * @param int $margin_left
+	 * @param int $marginLeft
 	 */
-	public function setMarginLeft ($margin_left) {
-		$this->margin_left = $margin_left;
+	public function setMarginLeft ($marginLeft) {
+		$this->marginLeft = $marginLeft;
 	}
 
 	/**
 	 * @return int
 	 */
 	public function getMarginLeft () {
-		return $this->margin_left;
+		return $this->marginLeft;
 	}
 
 	/**
-	 * @param int $margin_right
+	 * @param int $marginRight
 	 */
-	public function setMarginRight ($margin_right) {
-		$this->margin_right = $margin_right;
+	public function setMarginRight ($marginRight) {
+		$this->marginRight = $marginRight;
 	}
 
 	/**
 	 * @return int
 	 */
 	public function getMarginRight () {
-		return $this->margin_right;
+		return $this->marginRight;
 	}
 
 	/**
-	 * @param int $margin_top
+	 * @param int $marginTop
 	 */
-	public function setMarginTop ($margin_top) {
-		$this->margin_top = $margin_top;
+	public function setMarginTop ($marginTop) {
+		$this->marginTop = $marginTop;
 	}
 
 	/**
 	 * @return int
 	 */
 	public function getMarginTop () {
-		return $this->margin_top;
+		return $this->marginTop;
 	}
 
 }
