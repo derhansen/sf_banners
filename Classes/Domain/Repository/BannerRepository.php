@@ -34,6 +34,18 @@
 class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persistence_Repository {
 
 	/**
+	 * @var Tx_Extbase_Persistence_Storage_Typo3DbBackend
+	 */
+	protected $typo3DbBackend;
+
+	/**
+	 * @param Tx_Extbase_Persistence_Storage_Typo3DbBackend $typo3DbBackend
+	 */
+	public function injectTypo3DbBackend(Tx_Extbase_Persistence_Storage_Typo3DbBackend $typo3DbBackend) {
+		$this->typo3DbBackend = $typo3DbBackend;
+	}
+
+	/**
 	 * Disable the use of storage records, because the StoragePage can be set in the plugin
 	 */
 	public function initializeObject() {
@@ -45,7 +57,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	 * Returns banners matching the given demand
 	 *
 	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand
-	 * @todo: include demands for banner (max impressions, max clicks, pages)
+	 * @todo: include demands for banner (max impressions, max clicks)
 	 *
 	 * @return array|Tx_Extbase_Persistence_QueryResultInterface
 	 */
@@ -57,6 +69,11 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 		if ($demand->getStoragePage() != 0) {
 			$pidList = t3lib_div::intExplode(',', $demand->getStoragePage(), TRUE);
 			$constraints[]  = $query->in('pid', $pidList);
+		}
+
+		if ($demand->getCurrentPageUid()) {
+			$excludeConstraints = $query->logicalNot($query->contains('excludepages', $demand->getCurrentPageUid()));
+			$constraints[]  = $excludeConstraints;
 		}
 
 		if ($demand->getCategories() != 0) {
@@ -71,9 +88,15 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 		}
 
 		$query->matching($query->logicalAnd($constraints));
-		$result = $this->getResult($query, $demand);
+
+		/* Get banners without respect to limitations */
+		$unfilteredResult = $query->execute();
+		$finalQuery = $this->getQueryWithLimitation($unfilteredResult, $demand);
+
+		$result = $this->getResult($finalQuery, $demand);
 		return $result;
 	}
+
 
 	/**
 	 * Returns the result of the query based on the given displaymode set in demand
@@ -90,11 +113,10 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 				$result = $query->execute();
 				break;
 			case 1:
-				$backend = t3lib_div::makeInstance('Tx_Extbase_Persistence_Storage_Typo3DbBackend');
 				$parameters = array();
-				$statementParts = $backend->parseQuery($query, $parameters);
+				$statementParts = $this->typo3DbBackend->parseQuery($query, $parameters);
 				$statementParts['orderings'][] = 'RAND()';
-				$statement = $backend->buildQuery($statementParts, $parameters);
+				$statement = $this->typo3DbBackend->buildQuery($statementParts, $parameters);
 				$query->statement($statement, $parameters);
 				$result = $query->execute();
 				break;
@@ -105,6 +127,44 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 				break;
 		}
 		return $result;
+	}
+
+	/**
+	 * Returns a query for banner-uids with respect to max clicks and max impressions
+	 *
+	 * @param Tx_Extbase_Persistence_QueryResultInterface $result
+	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand
+	 *
+	 * @return Tx_Extbase_Persistence_QueryInterface
+	 */
+	private function getQueryWithLimitation(Tx_Extbase_Persistence_QueryResultInterface $result,
+	                                        Tx_SfBanners_Domain_Model_BannerDemand $demand) {
+		$bannerUids = array();
+		echo('Count: ' . $result->count());
+		foreach ($result as $banner) {
+			/** @var Tx_SfBanners_Domain_Model_Banner $banner */
+			if ($banner->getImpressionsMax() > 0 || $banner->getClicksMax() > 0) {
+				if ((($banner->getImpressions() < $banner->getImpressionsMax() && $banner->getImpressionsMax() > 0) &&
+						!($banner->getClicks() < $banner->getClicksMax() && $banner->getClicksMax() > 0)) ||
+					($banner->getClicks() < $banner->getClicksMax() && $banner->getClicksMax() > 0) &&
+						!($banner->getImpressions() < $banner->getImpressionsMax() && $banner->getImpressionsMax() > 0)
+				) {
+					echo(' imp1:' . $banner->getImpressions());
+					echo(' imp1 max:' . $banner->getImpressionsMax());
+					$bannerUids[] = $banner->getUid();
+				} else {
+					echo(' wer bin ich: ' . $banner->getImpressionsMax());
+				}
+			} else {
+				echo(' imp2:' . $banner->getImpressions());
+				echo(' imp2 max:' . $banner->getImpressionsMax());
+				$bannerUids[] = $banner->getUid();
+			}
+		}
+
+		$query = $this->createQuery();
+		$query->matching($query->logicalOr($query->in('uid', $bannerUids)));
+		return $query;
 	}
 
 	/** @todo: create method to update counter of banner */

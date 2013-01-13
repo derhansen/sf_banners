@@ -36,7 +36,7 @@
  *
  * @author Torben Hansen <derhansen@gmail.com>
  */
-class Tx_SfBanners_Domain_Resopitory_BannerRepositoryTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
+class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
 
 	/**
 	 * @var Tx_Phpunit_Framework
@@ -52,7 +52,7 @@ class Tx_SfBanners_Domain_Resopitory_BannerRepositoryTest extends Tx_Extbase_Tes
 	 * Setup
 	 */
 	public function setUp() {
-		$this->testingFramework = new Tx_Phpunit_Framework('tx_sfbanners');
+		$this->testingFramework = new Tx_Phpunit_Framework('tx_sfbanners', array('tx_phpunit'));
 		$this->fixture = $this->objectManager->get('Tx_SfBanners_Domain_Repository_BannerRepository');
 	}
 
@@ -73,8 +73,7 @@ class Tx_SfBanners_Domain_Resopitory_BannerRepositoryTest extends Tx_Extbase_Tes
 
 		$pidList = array(55,55,56,57,58,59);
 		foreach ($pidList as $pid) {
-			$this->testingFramework->createRecord(
-				'tx_sfbanners_domain_model_banner', array('pid' => $pid));
+			$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid));
 		}
 
 		// Simple starting point
@@ -96,28 +95,37 @@ class Tx_SfBanners_Domain_Resopitory_BannerRepositoryTest extends Tx_Extbase_Tes
 	public function findRecordsByCategoryTest() {
 		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
 		$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
+		$pid = 0;
 
-		$category1 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_category', array('pid' => 0));
-		$category2 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_category', array('pid' => 0));
-		$category3 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_category', array('pid' => 0));
+		$category1 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_category', array('pid' => $pid));
+		$category2 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_category', array('pid' => $pid));
+		$category3 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_category', array('pid' => $pid));
 
-		$banner1  = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => 0));
-		$banner2  = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => 0));
-		$banner3  = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => 0));
-		$banner4  = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => 0));
+		$banner1  = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid));
+		$banner2  = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid));
+		$banner3  = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid));
+		$banner4  = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid));
 
 		/* Create relations */
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner', $banner1, $category1, 'category');
+		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
+			$banner1, $category1, 'category');
 
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner', $banner2, $category1, 'category');
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner', $banner2, $category2, 'category');
+		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
+			$banner2, $category1, 'category');
+		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
+			$banner2, $category2, 'category');
 
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner', $banner3, $category1, 'category');
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner', $banner3, $category3, 'category');
+		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
+			$banner3, $category1, 'category');
+		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
+			$banner3, $category3, 'category');
 
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner', $banner4, $category1, 'category');
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner', $banner4, $category2, 'category');
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner', $banner4, $category3, 'category');
+		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
+			$banner4, $category1, 'category');
+		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
+			$banner4, $category2, 'category');
+		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
+			$banner4, $category3, 'category');
 
 		// Simple category test
 		$demand->setCategories($category1);
@@ -138,21 +146,23 @@ class Tx_SfBanners_Domain_Resopitory_BannerRepositoryTest extends Tx_Extbase_Tes
 
 	/**
 	 * @test
+	 * @todo add test for all banners in random mode if possible
 	 */
-	public function displayModeTest() {
+	public function findRecordsWithDisplayModeTest() {
 		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
 		$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
+		$pid = 80;
 
 		$uids = array();
 
 		for ($i=1; $i<=5; $i++) {
 			$uid = $this->testingFramework->createRecord(
-				'tx_sfbanners_domain_model_banner', array('pid' => 80, 'sorting' => $i));
+				'tx_sfbanners_domain_model_banner', array('pid' => $pid, 'sorting' => $i));
 			$uids[$i] = $uid;
 		}
 
 		// Set starting point
-		$demand->setStoragePage(80);
+		$demand->setStoragePage($pid);
 
 		// All banners with default sorting respected
 		$demand->setDisplayMode(0);
@@ -169,8 +179,117 @@ class Tx_SfBanners_Domain_Resopitory_BannerRepositoryTest extends Tx_Extbase_Tes
 		// Random one banner
 		$demand->setDisplayMode(2);
 		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());
-
-		// @todo - add test for all banners in random mode
 	}
+
+	/**
+	 * @test
+	 */
+	public function findRecordsForSpecialExcludePageUidTest() {
+		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
+		$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
+		$pid = 95;
+
+		/* Create some pages */
+		$pid1 = $this->testingFramework->createFrontEndPage(0,array('title' => 'Testpage4'));
+		$pid2 = $this->testingFramework->createFrontEndPage(0,array('title' => 'Testpage5'));
+		$pid3 = $this->testingFramework->createFrontEndPage(0,array('title' => 'Testpage6'));
+
+		/* Create some banners */
+		$banner1 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid));
+		$banner2 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid));
+		$banner3 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid));
+
+		/* Create relations */
+		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
+			$banner1, $pid1, 'excludepages');
+		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
+			$banner1, $pid2, 'excludepages');
+
+		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
+			$banner2, $pid1, 'excludepages');
+
+		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
+			$banner3, $pid2, 'excludepages');
+		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
+			$banner3, $pid3, 'excludepages');
+
+		// Set starting point
+		$demand->setStoragePage($pid);
+
+		// All banners, which not should be shown on the page with $pid1
+		$demand->setCurrentPageUid($pid1);
+		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());
+
+		// All banners, which not should be shown on page with $pid2
+		$demand->setCurrentPageUid($pid2);
+		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());
+
+		// All banners, which not should be shown on page with $pid3
+		$demand->setCurrentPageUid($pid3);
+		$this->assertEquals(2, (int)$this->fixture->findDemanded($demand)->count());
+
+		// All banners, which not should be shown on page with a non existing pid
+		$demand->setCurrentPageUid(999);
+		$this->assertEquals(3, (int)$this->fixture->findDemanded($demand)->count());
+	}
+
+	/**
+	 * @test
+	 */
+	public function findRecordsWithMaxImpressionsTest() {
+		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
+		$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
+		$pid = 100;
+
+		/* Create some banners */
+		$banner1 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+			'impressions_max' => 0, 'impressions' => 10));
+		$banner2 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+			'impressions_max' => 1000, 'impressions' => 999));
+		$banner3 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+			'impressions_max' => 1000, 'impressions' => 1000));
+
+		/* Set starting point */
+		$demand->setStoragePage($pid);
+
+		/* Verify, that 2 records are returned */
+		$this->assertEquals(2, (int)$this->fixture->findDemanded($demand)->count());
+
+		/* Increase impressions for one banner and verify, that it is not returned */
+		$banner = $this->fixture->findByUid($banner2);
+		$banner->setImpressions(1000);
+		$this->fixture->update($banner);
+		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());
+	}
+
+	/**
+	 * @test
+	 */
+	public function findRecordsWithMaxClicksTest() {
+		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
+		$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
+		$pid = 100;
+
+		/* Create some banners */
+		$banner1 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+			'clicks_max' => 0, 'clicks' => 10));
+		$banner2 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+			'clicks_max' => 10, 'clicks' => 9));
+		$banner3 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+			'clicks_max' => 20, 'clicks' => 20));
+
+		/* Set starting point */
+		$demand->setStoragePage($pid);
+
+		/* Verify, that 2 records are returned */
+		$this->assertEquals(2, (int)$this->fixture->findDemanded($demand)->count());
+
+		/* Increase clicks for one banner and verify, that it is not returned */
+		$banner = $this->fixture->findByUid($banner2);
+		$banner->setClicks(10);
+		$this->fixture->update($banner);
+		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());
+	}
+
 }
 ?>
