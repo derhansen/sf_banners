@@ -50,6 +50,7 @@
             <label index="tx_sfbanners_domain_model_banner.labels.margins">Margins</label>
 
             <label index="plugin.settings.category">Category</label>
+            <label index="plugin.settings.startingPoint">Startingpoint</label>
             <label index="plugin.settings.displayMode">Displaymode</label>
             <label index="plugin.settings.displayMode.all">All banners</label>
             <label index="plugin.settings.displayMode.allRandom">All banners randomized</label>
