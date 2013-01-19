@@ -3,7 +3,7 @@
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2012 Torben Hansen <derhansen@gmail.com>, Skyfillers GmbH
+ *  (c) 2013 Torben Hansen <derhansen@gmail.com>, Skyfillers GmbH
  *  
  *  All rights reserved
  *
@@ -51,13 +51,21 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 	}
 
 	/**
-	 * action list
+	 * Click Action for a banner
+	 *
+	 * @param Tx_SfBanners_Domain_Model_Banner $banner
+	 * @return void
+	 */
+	public function clickAction(Tx_SfBanners_Domain_Model_Banner $banner) {
+
+	}
+
+	/**
+	 * Show action
 	 *
 	 * @return void
 	 */
-	public function listAction() {
-		//$banners = $this->bannerRepository->findAll();
-
+	public function showAction() {
 		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
 		$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
 		$demand->setCurrentPageUid(0);

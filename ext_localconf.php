@@ -7,11 +7,11 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	$_EXTKEY,
 	'Pi1',
 	array(
-		'Banner' => 'list',
+		'Banner' => 'show,click',
 	),
 	// non-cacheable actions
 	array(
-		'Banner' => '',
+		'Banner' => 'show,click',
 	)
 );
 
