@@ -254,12 +254,6 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 
 		/* Verify, that 2 records are returned */
 		$this->assertEquals(2, (int)$this->fixture->findDemanded($demand)->count());
-
-		/* Increase impressions for one banner and verify, that it is not returned */
-		$banner = $this->fixture->findByUid($banner2);
-		$banner->setImpressions(1000);
-		$this->fixture->update($banner);
-		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());
 	}
 
 	/**
@@ -283,12 +277,6 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 
 		/* Verify, that 2 records are returned */
 		$this->assertEquals(2, (int)$this->fixture->findDemanded($demand)->count());
-
-		/* Increase clicks for one banner and verify, that it is not returned */
-		$banner = $this->fixture->findByUid($banner2);
-		$banner->setClicks(10);
-		$this->fixture->update($banner);
-		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());
 	}
 
 }
