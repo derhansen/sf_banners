@@ -71,7 +71,7 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 		$demand->setCurrentPageUid($GLOBALS['TSFE']->id);
 		$demand->setCategories($this->settings['category']);
 		$demand->setDisplayMode($this->settings['displayMode']);
-		$demand->setStoragePage($this->settings['storagePage']);
+		$demand->setStartingPoint($this->settings['startingPoint']);
 
 		$banners = $this->bannerRepository->findDemanded($demand);
 		$this->bannerRepository->updateImpressions($banners);

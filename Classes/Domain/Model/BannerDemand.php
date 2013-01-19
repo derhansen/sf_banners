@@ -41,11 +41,11 @@ class Tx_SfBanners_Domain_Model_BannerDemand extends Tx_Extbase_DomainObject_Abs
 	protected $categories;
 
 	/**
-	 * Storage page(s)
+	 * Startingpoint(s)
 	 *
 	 * @var string
 	 */
-	protected $storagePage;
+	protected $startingPoint;
 
 	/**
 	 * Display Mode - default is to display all banners
@@ -104,17 +104,17 @@ class Tx_SfBanners_Domain_Model_BannerDemand extends Tx_Extbase_DomainObject_Abs
 	}
 
 	/**
-	 * @param string $storagePage
+	 * @param string $startingPoint
 	 */
-	public function setStoragePage ($storagePage) {
-		$this->storagePage = $storagePage;
+	public function setStartingPoint ($startingPoint) {
+		$this->startingPoint = $startingPoint;
 	}
 
 	/**
 	 * @return string
 	 */
-	public function getStoragePage () {
-		return $this->storagePage;
+	public function getStartingPoint () {
+		return $this->startingPoint;
 	}
 
 }

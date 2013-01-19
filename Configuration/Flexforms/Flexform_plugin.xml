@@ -27,7 +27,7 @@
                     </config>
                 </TCEforms>
             </settings.displayMode>
-            <settings.startingpoint>
+            <settings.startingPoint>
                 <TCEforms>
                     <exclude>1</exclude>
                     <label>LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.startingPoint</label>
@@ -46,7 +46,7 @@
                         </wizards>
                     </config>
                 </TCEforms>
-            </settings.startingpoint>
+            </settings.startingPoint>
             <settings.category>
                 <TCEforms>
                     <label>LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.category</label>

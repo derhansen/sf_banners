@@ -77,15 +77,15 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 		}
 
 		/* Simple starting point */
-		$demand->setStoragePage(55);
+		$demand->setStartingPoint(55);
 		$this->assertEquals(2, (int)$this->fixture->findDemanded($demand)->count());
 
 		/* Multiple starting points */
-		$demand->setStoragePage('56,57,58');
+		$demand->setStartingPoint('56,57,58');
 		$this->assertEquals(3, (int)$this->fixture->findDemanded($demand)->count());
 
 		/* Multiple starting points, including invalid value */
-		$demand->setStoragePage('57,58,?,59');
+		$demand->setStartingPoint('57,58,?,59');
 		$this->assertEquals(3, (int)$this->fixture->findDemanded($demand)->count());
 	}
 
@@ -161,7 +161,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 		}
 
 		/* Set starting point */
-		$demand->setStoragePage($pid);
+		$demand->setStartingPoint($pid);
 
 		/* All banners with default sorting respected */
 		$demand->setDisplayMode(0);
@@ -213,7 +213,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 			$banner3, $pid3, 'excludepages');
 
 		/* Set starting point */
-		$demand->setStoragePage($pid);
+		$demand->setStartingPoint($pid);
 
 		/* All banners, which not should be shown on the page with $pid1 */
 		$demand->setCurrentPageUid($pid1);
@@ -249,7 +249,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 			'impressions_max' => 1000, 'impressions' => 1000));
 
 		/* Set starting point */
-		$demand->setStoragePage($pid);
+		$demand->setStartingPoint($pid);
 
 		/* Verify, that 2 records are returned */
 		$this->assertEquals(2, (int)$this->fixture->findDemanded($demand)->count());
@@ -272,7 +272,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 			'clicks_max' => 20, 'clicks' => 20));
 
 		/* Set starting point */
-		$demand->setStoragePage($pid);
+		$demand->setStartingPoint($pid);
 
 		/* Verify, that 2 records are returned */
 		$this->assertEquals(2, (int)$this->fixture->findDemanded($demand)->count());
@@ -300,7 +300,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 			'impressions_max' => 10, 'impressions' => 10, 'clicks' => 10, 'clicks_max' => 10));
 
 		/* Set starting point */
-		$demand->setStoragePage($pid);
+		$demand->setStartingPoint($pid);
 
 		/* Verify, that 2 records are returned */
 		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());

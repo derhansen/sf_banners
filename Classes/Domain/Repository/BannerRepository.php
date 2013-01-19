@@ -65,8 +65,8 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 
 		$constraints = array();
 
-		if ($demand->getStoragePage() != 0) {
-			$pidList = t3lib_div::intExplode(',', $demand->getStoragePage(), TRUE);
+		if ($demand->getStartingPoint() != 0) {
+			$pidList = t3lib_div::intExplode(',', $demand->getStartingPoint(), TRUE);
 			$constraints[]  = $query->in('pid', $pidList);
 		}
 
