@@ -64,6 +64,7 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 		$demand->setStoragePage(8);
 
 		$banners = $this->bannerRepository->findDemanded($demand);
+		$this->bannerRepository->updateImpressions($banners);
 
 		$this->view->assign('banners', $banners);
 	}

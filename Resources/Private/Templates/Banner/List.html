@@ -21,8 +21,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 		<th><f:translate key="tx_sfbanners_domain_model_banner.title" /></th>
 		<th><f:translate key="tx_sfbanners_domain_model_banner.description" /></th>
 		<th><f:translate key="tx_sfbanners_domain_model_banner.type" /></th>
-		<th> </th>
-		<th> </th>
+        <th><f:translate key="tx_sfbanners_domain_model_banner.impressions" /></th>
 	</tr>
 
 	<f:for each="{banners}" as="banner">
@@ -30,8 +29,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 			<td><f:link.action action="show" arguments="{banner : banner}"> {banner.title}</f:link.action></td>
 			<td><f:link.action action="show" arguments="{banner : banner}"> {banner.description}</f:link.action></td>
 			<td><f:link.action action="show" arguments="{banner : banner}"> {banner.type}</f:link.action></td>
-			<td><f:link.action action="edit" arguments="{banner : banner}">Edit</f:link.action></td>
-			<td><f:link.action action="delete" arguments="{banner : banner}">Delete</f:link.action></td>
+            <td><f:link.action action="show" arguments="{banner : banner}"> {banner.impressions}</f:link.action></td>
 		</tr>
 	</f:for>
 </table>

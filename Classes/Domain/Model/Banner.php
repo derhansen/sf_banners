@@ -475,5 +475,19 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 		return $this->marginTop;
 	}
 
+	/**
+	 * Updates the Impressions by 1
+	 */
+	public function increaseImpressions() {
+		$this->impressions += 1;
+	}
+
+	/**
+	 * Updates the Impressions by 1
+	 */
+	public function increaseClicks() {
+		$this->clicks += 1;
+	}
+
 }
 ?>

@@ -162,5 +162,19 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 		$query->matching($query->logicalOr($query->in('uid', $bannerUids)));
 		return $query;
 	}
+
+	/**
+	 * Updates the impressions counter for each banner
+	 *
+	 * @param Tx_Extbase_Persistence_QueryResultInterface $banners
+	 * @return void
+	 */
+	public function updateImpressions(Tx_Extbase_Persistence_QueryResultInterface $banners) {
+		foreach ($banners as $banner) {
+			/** @var Tx_SfBanners_Domain_Model_Banner $banner */
+			$banner->increaseImpressions();
+			$this->update($banner);
+		}
+	}
 }
 ?>
