@@ -76,15 +76,15 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 			$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid));
 		}
 
-		// Simple starting point
+		/* Simple starting point */
 		$demand->setStoragePage(55);
 		$this->assertEquals(2, (int)$this->fixture->findDemanded($demand)->count());
 
-		// Multiple starting points
+		/* Multiple starting points */
 		$demand->setStoragePage('56,57,58');
 		$this->assertEquals(3, (int)$this->fixture->findDemanded($demand)->count());
 
-		// Multiple starting points, including invalid value
+		/* Multiple starting points, including invalid value */
 		$demand->setStoragePage('57,58,?,59');
 		$this->assertEquals(3, (int)$this->fixture->findDemanded($demand)->count());
 	}
@@ -127,26 +127,25 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
 			$banner4, $category3, 'category');
 
-		// Simple category test
+		/* Simple category test */
 		$demand->setCategories($category1);
 		$this->assertEquals(4, (int)$this->fixture->findDemanded($demand)->count());
 
-		// Multiple category test
+		/* Multiple category test */
 		$demand->setCategories($category1 . ',' . $category2);
 		$this->assertEquals(4, (int)$this->fixture->findDemanded($demand)->count());
 
-		// Multiple category test, including invalid value
+		/* Multiple category test, including invalid value */
 		$demand->setCategories($category2 . ',?,' . $category3);
 		$this->assertEquals(3, (int)$this->fixture->findDemanded($demand)->count());
 
-		// Non existing category test
+		/* Non existing category test */
 		$demand->setCategories('9999');
 		$this->assertEquals(0, (int)$this->fixture->findDemanded($demand)->count());
 	}
 
 	/**
 	 * @test
-	 * @todo add test for all banners in random mode if possible
 	 */
 	public function findRecordsWithDisplayModeTest() {
 		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
@@ -161,10 +160,10 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 			$uids[$i] = $uid;
 		}
 
-		// Set starting point
+		/* Set starting point */
 		$demand->setStoragePage($pid);
 
-		// All banners with default sorting respected
+		/* All banners with default sorting respected */
 		$demand->setDisplayMode(0);
 		$this->assertEquals(5, (int)$this->fixture->findDemanded($demand)->count());
 		$returnedBanners = $this->fixture->findDemanded($demand);
@@ -176,7 +175,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 		}
 		$this->assertSame($uids, $returnedUids);
 
-		// Random one banner
+		/* Random one banner */
 		$demand->setDisplayMode(2);
 		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());
 	}
@@ -213,22 +212,22 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
 			$banner3, $pid3, 'excludepages');
 
-		// Set starting point
+		/* Set starting point */
 		$demand->setStoragePage($pid);
 
-		// All banners, which not should be shown on the page with $pid1
+		/* All banners, which not should be shown on the page with $pid1 */
 		$demand->setCurrentPageUid($pid1);
 		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());
 
-		// All banners, which not should be shown on page with $pid2
+		/* All banners, which not should be shown on page with $pid2 */
 		$demand->setCurrentPageUid($pid2);
 		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());
 
-		// All banners, which not should be shown on page with $pid3
+		/* All banners, which not should be shown on page with $pid3 */
 		$demand->setCurrentPageUid($pid3);
 		$this->assertEquals(2, (int)$this->fixture->findDemanded($demand)->count());
 
-		// All banners, which not should be shown on page with a non existing pid
+		/* All banners, which not should be shown on page with a non existing pid */
 		$demand->setCurrentPageUid(999);
 		$this->assertEquals(3, (int)$this->fixture->findDemanded($demand)->count());
 	}
@@ -242,11 +241,11 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 		$pid = 100;
 
 		/* Create some banners */
-		$banner1 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
 			'impressions_max' => 0, 'impressions' => 10));
-		$banner2 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
 			'impressions_max' => 1000, 'impressions' => 999));
-		$banner3 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
 			'impressions_max' => 1000, 'impressions' => 1000));
 
 		/* Set starting point */
@@ -265,11 +264,11 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 		$pid = 100;
 
 		/* Create some banners */
-		$banner1 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
 			'clicks_max' => 0, 'clicks' => 10));
-		$banner2 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
 			'clicks_max' => 10, 'clicks' => 9));
-		$banner3 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
 			'clicks_max' => 20, 'clicks' => 20));
 
 		/* Set starting point */
@@ -279,5 +278,32 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 		$this->assertEquals(2, (int)$this->fixture->findDemanded($demand)->count());
 	}
 
+	/**
+	 * @test
+	 */
+	public function findRecordsWithMaxImpressionsAndMaxClicksTest() {
+		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
+		$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
+		$pid = 101;
+
+		/* Create some banners */
+		$banner1 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+			'impressions_max' => 0, 'impressions' => 10, 'clicks' => 0, 'clicks_max' => 10));
+
+		$banner2 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+			'impressions_max' => 10, 'impressions' => 10, 'clicks' => 0, 'clicks_max' => 10));
+
+		$banner3 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+			'impressions_max' => 0, 'impressions' => 10, 'clicks' => 10, 'clicks_max' => 10));
+
+		$banner4 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+			'impressions_max' => 10, 'impressions' => 10, 'clicks' => 10, 'clicks_max' => 10));
+
+		/* Set starting point */
+		$demand->setStoragePage($pid);
+
+		/* Verify, that 2 records are returned */
+		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());
+	}
 }
 ?>

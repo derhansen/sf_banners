@@ -57,7 +57,6 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	 * Returns banners matching the given demand
 	 *
 	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand
-	 * @todo: include demands for banner (max impressions, max clicks)
 	 *
 	 * @return array|Tx_Extbase_Persistence_QueryResultInterface
 	 */
@@ -130,7 +129,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	}
 
 	/**
-	 * Returns a query for banner-uids with respect to max clicks and max impressions
+	 * Returns a query of banner-uids with respect to max_impressions and max_clicks
 	 *
 	 * @param Tx_Extbase_Persistence_QueryResultInterface $result
 	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand
@@ -140,24 +139,21 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	private function getQueryWithLimitation(Tx_Extbase_Persistence_QueryResultInterface $result,
 	                                        Tx_SfBanners_Domain_Model_BannerDemand $demand) {
 		$bannerUids = array();
-		echo('Count: ' . $result->count());
 		foreach ($result as $banner) {
 			/** @var Tx_SfBanners_Domain_Model_Banner $banner */
 			if ($banner->getImpressionsMax() > 0 || $banner->getClicksMax() > 0) {
-				if ((($banner->getImpressions() < $banner->getImpressionsMax() && $banner->getImpressionsMax() > 0) &&
-						!($banner->getClicks() < $banner->getClicksMax() && $banner->getClicksMax() > 0)) ||
-					($banner->getClicks() < $banner->getClicksMax() && $banner->getClicksMax() > 0) &&
-						!($banner->getImpressions() < $banner->getImpressionsMax() && $banner->getImpressionsMax() > 0)
-				) {
-					echo(' imp1:' . $banner->getImpressions());
-					echo(' imp1 max:' . $banner->getImpressionsMax());
+				if (($banner->getImpressionsMax() > 0 && $banner->getClicksMax() > 0)) {
+					if ($banner->getImpressions() < $banner->getImpressionsMax() && $banner->getClicks() <
+						$banner->getClicksMax()) {
+						$bannerUids[] = $banner->getUid();
+					}
+				} elseif ($banner->getImpressionsMax() > 0 && ($banner->getImpressions() <
+					$banner->getImpressionsMax())) {
 					$bannerUids[] = $banner->getUid();
-				} else {
-					echo(' wer bin ich: ' . $banner->getImpressionsMax());
+				} elseif ($banner->getClicksMax() > 0 && ($banner->getClicks() < $banner->getClicksMax())) {
+					$bannerUids[] = $banner->getUid();
 				}
 			} else {
-				echo(' imp2:' . $banner->getImpressions());
-				echo(' imp2 max:' . $banner->getImpressionsMax());
 				$bannerUids[] = $banner->getUid();
 			}
 		}
@@ -166,10 +162,5 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 		$query->matching($query->logicalOr($query->in('uid', $bannerUids)));
 		return $query;
 	}
-
-	/** @todo: create method to update counter of banner */
-
-	/** @todo: create method to update counter of clicks */
-
 }
 ?>
