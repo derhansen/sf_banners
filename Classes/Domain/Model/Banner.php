@@ -489,5 +489,14 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 		$this->clicks += 1;
 	}
 
+	/**
+	 * Returns the uri of the link
+	 *
+	 * @return mixed
+	 */
+	public function getLinkUrl() {
+		$cObj = t3lib_div::makeInstance('tslib_cObj');
+		return $cObj->getTypoLink_URL($this->link);
+	}
 }
 ?>
