@@ -1,10 +1,10 @@
+{namespace s=Tx_SfBanners_ViewHelpers}
 <f:if condition="{banner.flash}">
     <div class="banner banner-{banner.uid}">
-
         <object id="flash-banner-{banner.uid}" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="{banner.flashWidth}" height="{banner.flashHeight}">
             <f:if condition="{banner.link}">
                 <f:then>
-                    <param name="movie" value="uploads/tx_sfbanners/{banner.flash}?clickTag={banner.linkUrl}">
+                    <param name="movie" value="uploads/tx_sfbanners/{banner.flash}?clickTag={f:uri.action(action: 'click', absolute: 'true', arguments: {banner: banner})}">
                 </f:then>
                 <f:else>
                     <param name="movie" value="uploads/tx_sfbanners/{banner.flash}">
@@ -15,7 +15,7 @@
             <param name="wmode" value="{banner.flashParamWmode}">
             <f:if condition="{banner.link}">
                 <f:then>
-                    <embed src="uploads/tx_sfbanners/{banner.flash}?clickTag={banner.linkUrl}"
+                    <embed src="uploads/tx_sfbanners/{banner.flash}?clickTag={s:format.urlencode(value: '{f:uri.action(action: \'click\', absolute: \'true\', arguments: {banner: banner})}')}"
                            width="{banner.flashWidth}" height="{banner.flashHeight}" wmode="{banner.flashParamWmode}" swliveconnect="true" quality="autohigh"
                            type="application/x-shockwave-flash" allowscriptaccess="{banner.flashParamAllowScriptAccess}">
                 </f:then>
