@@ -1,0 +1,31 @@
+<f:if condition="{banner.flash}">
+    <div class="banner banner-{banner.uid}">
+
+        <object id="flash-banner-{banner.uid}" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="{banner.flashWidth}" height="{banner.flashHeight}">
+            <f:if condition="{banner.link}">
+                <f:then>
+                    <param name="movie" value="uploads/tx_sfbanners/{banner.flash}?clickTag={banner.linkUrl}">
+                </f:then>
+                <f:else>
+                    <param name="movie" value="uploads/tx_sfbanners/{banner.flash}">
+                </f:else>
+            </f:if>
+            <param name="quality" value="high">
+            <param name="allowScriptAccess" value="{banner.flashParamAllowScriptAccess}">
+            <param name="wmode" value="{banner.flashParamWmode}">
+            <f:if condition="{banner.link}">
+                <f:then>
+                    <embed src="uploads/tx_sfbanners/{banner.flash}?clickTag={banner.linkUrl}"
+                           width="{banner.flashWidth}" height="{banner.flashHeight}" wmode="{banner.flashParamWmode}" swliveconnect="true" quality="autohigh"
+                           type="application/x-shockwave-flash" allowscriptaccess="{banner.flashParamAllowScriptAccess}">
+                </f:then>
+                <f:else>
+                    <embed src="uploads/tx_sfbanners/{banner.flash}"
+                           width="{banner.flashWidth}" height="{banner.flashHeight}" wmode="{banner.flashParamWmode}" swliveconnect="true" quality="autohigh"
+                           type="application/x-shockwave-flash" allowscriptaccess="{banner.flashParamAllowScriptAccess}">
+                </f:else>
+            </f:if>
+        </object>
+
+    </div>
+</f:if>

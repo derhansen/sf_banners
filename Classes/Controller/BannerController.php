@@ -59,7 +59,7 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 	public function clickAction(Tx_SfBanners_Domain_Model_Banner $banner) {
 		$banner->increaseClicks();
 		$this->bannerRepository->update($banner);
-		$this->redirectToURI($banner->getLink());
+		$this->redirectToURI($banner->getLinkUrl());
 	}
 
 	/**

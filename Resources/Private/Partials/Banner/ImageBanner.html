@@ -1,0 +1,14 @@
+<f:if condition="{banner.image}">
+    <div class="banner banner-{banner.uid}">
+        <f:if condition="{banner.link}">
+            <f:then>
+                <f:link.action action="click" arguments="{banner: banner}" target="{banner.linkTarget}">
+                    <f:image src="uploads/tx_sfbanners/{banner.image}" title="{banner.alttext}" alt="{banner.alttext}"/>
+                </f:link.action>
+            </f:then>
+            <f:else>
+                <f:image src="uploads/tx_sfbanners/{banner.image}" title="{banner.alttext}" alt="{banner.alttext}"/>
+            </f:else>
+        </f:if>
+    </div>
+</f:if>

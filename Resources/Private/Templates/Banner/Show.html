@@ -2,7 +2,14 @@
 
 <f:section name="main">
     <f:for each="{banners}" as="banner">
-        Title: {banner.title} - Desc.: {banner.description} - Type: {banner.type} - Impressions: {banner.impressions} - Clicks: {banner.clicks}<br/>
-        <!-- Render as parials -->
+        <f:if condition="{banner.type} == 0">
+            <f:render partial="Banner/ImageBanner" arguments="{banner: banner}" />
+        </f:if>
+        <f:if condition="{banner.type} == 1">
+            <f:render partial="Banner/HtmlBanner" arguments="{banner: banner}" />
+        </f:if>
+        <f:if condition="{banner.type} == 2">
+            <f:render partial="Banner/FlashBanner" arguments="{banner: banner}" />
+        </f:if>
     </f:for>
 </f:section>
