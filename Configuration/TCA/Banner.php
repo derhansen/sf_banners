@@ -368,7 +368,7 @@ $TCA['tx_sfbanners_domain_model_banner'] = array(
 		'),
 		'2' => array(
 			'showitem' => 'l10n_parent,l10n_diffsource,title;;paletteCore;;1-1-1, description,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.flash,flash;;paletteMargins;;1-1-1,flash_width,flash_height,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.flash,flash;;paletteMargins;;1-1-1,flash_width,flash_height, link,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.display, category, excludepages,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.visibility, hidden;;paletteVisibility;;1-1-1,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.limitations, impressions_max, clicks_max,
