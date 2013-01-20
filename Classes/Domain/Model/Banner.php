@@ -498,5 +498,19 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 		$cObj = t3lib_div::makeInstance('tslib_cObj');
 		return $cObj->getTypoLink_URL($this->link);
 	}
+
+	/**
+	 * Returns the target of the link
+	 *
+	 * @return string
+	 */
+	public function getLinkTarget() {
+		$linkArray = t3lib_div::trimExplode(' ', $this->link);
+		$ret = '';
+		if (count($linkArray) > 1) {
+			$ret = $linkArray[1];
+		}
+		return $ret;
+	}
 }
 ?>
