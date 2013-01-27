@@ -11,4 +11,10 @@ plugin.tx_sfbanners {
 		# cat=plugin.tx_sfbanners//a; type=string; label=Default storage PID
 		storagePid = 
 	}
+	settings {
+	  defaultFlashVars {
+	    wmode = opaque
+	    allowScriptAccess = sameDomain
+	  }
+	}
 }
