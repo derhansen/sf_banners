@@ -155,7 +155,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	protected $clicksMax;
 
 	/**
-	 * Totel impressions
+	 * Total impressions
 	 *
 	 * @var integer
 	 */
@@ -174,6 +174,56 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_SfBanners_Domain_Model_Page>
 	 */
 	protected $excludepages;
+
+	/**
+	 * Wmode for flash banners
+	 *
+	 * @var string
+	 */
+	protected $flashWmode;
+
+	/**
+	 * Sets allowScriptAccess
+	 *
+	 * @param string $flashAllowScriptAccess
+	 */
+	public function setFlashAllowScriptAccess ($flashAllowScriptAccess) {
+		$this->flashAllowScriptAccess = $flashAllowScriptAccess;
+	}
+
+	/**
+	 * Getter for allowScriptAccess
+	 *
+	 * @return string
+	 */
+	public function getFlashAllowScriptAccess () {
+		return $this->flashAllowScriptAccess;
+	}
+
+	/**
+	 * Sets Wmode
+	 *
+	 * @param string $flashWmode
+	 */
+	public function setFlashWmode ($flashWmode) {
+		$this->flashWmode = $flashWmode;
+	}
+
+	/**
+	 * Getter for Wmode
+	 *
+	 * @return string
+	 */
+	public function getFlashWmode () {
+		return $this->flashWmode;
+	}
+
+	/**
+	 * AllowScriptAccess for flash banners
+	 *
+	 * @var string
+	 */
+	protected $flashAllowScriptAccess;
 
 	/**
 	 * Returns the title

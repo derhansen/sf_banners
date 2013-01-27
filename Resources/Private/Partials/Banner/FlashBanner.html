@@ -11,8 +11,8 @@
                 </f:else>
             </f:if>
             <param name="quality" value="high">
-            <param name="allowScriptAccess" value="{banner.flashParamAllowScriptAccess}">
-            <param name="wmode" value="{banner.flashParamWmode}">
+            <param name="allowScriptAccess" value="<s:flash.params banner='{banner}' flashSetting='allowScriptAccess'/>">
+            <param name="wmode" value="<s:flash.params banner='{banner}' flashSetting='wmode'/>">
             <f:if condition="{banner.link}">
                 <f:then>
                     <embed src="uploads/tx_sfbanners/{banner.flash}?clickTag={s:format.urlencode(value: '{f:uri.action(action: \'click\', absolute: \'true\', arguments: {banner: banner})}')}"
@@ -26,6 +26,7 @@
                 </f:else>
             </f:if>
         </object>
-
+        @todo
+        {s:flash.params(banner: {banner}, flashSetting: 'wmode')}
     </div>
 </f:if>

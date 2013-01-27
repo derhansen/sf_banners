@@ -11,9 +11,16 @@ plugin.tx_sfbanners {
 		# uncomment the following line to enable the new Property Mapper.
 		# rewrittenPropertyMapper = 1
 	}
+	settings {
+	  defaultFlashVars {
+	    wmode = {$plugin.tx_sfbanners.settings.defaultFlashVars.wmode}
+	    allowScriptAccess = {$plugin.tx_sfbanners.settings.defaultFlashVars.allowScriptAccess}
+	  }
+	}
 }
 
 config.tx_extbase.persistence.classes.Tx_SfBanners_Domain_Model_Page {
-mapping {
-	tableName = pages
+    mapping {
+        tableName = pages
+    }
 }

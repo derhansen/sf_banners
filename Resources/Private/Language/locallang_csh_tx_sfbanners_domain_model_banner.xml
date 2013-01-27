@@ -12,6 +12,8 @@
 			<label index="description.description">Description</label>
 			<label index="type.description">type</label>
 			<label index="category.description">Category</label>
+            <label index="flash.wmode.description">Flash banner - wmode. Leave empty, if default value from TS should be used</label>
+            <label index="flash.allowScriptAccess.description">Flash banner - allowScriptAccess. Leave empty, if default value from TS should be used</label>
 		</languageKey>
 	</data>
 </T3locallang>
