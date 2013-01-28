@@ -10,7 +10,7 @@ $TCA['tx_sfbanners_domain_model_banner'] = array(
 	),
 	'columns' => array(
 		'sys_language_uid' => array(
-			'exclude' => 1,
+			'exclude' => 0,
 			'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.language',
 			'config' => array(
 				'type' => 'select',
@@ -24,7 +24,7 @@ $TCA['tx_sfbanners_domain_model_banner'] = array(
 		),
 		'l10n_parent' => array(
 			'displayCond' => 'FIELD:sys_language_uid:>:0',
-			'exclude' => 1,
+			'exclude' => 0,
 			'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.l18n_parent',
 			'config' => array(
 				'type' => 'select',
@@ -56,7 +56,7 @@ $TCA['tx_sfbanners_domain_model_banner'] = array(
 			),
 		),
 		'starttime' => array(
-			'exclude' => 1,
+			'exclude' => 0,
 			'l10n_mode' => 'mergeIfNotBlank',
 			'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.starttime',
 			'config' => array(
@@ -72,7 +72,7 @@ $TCA['tx_sfbanners_domain_model_banner'] = array(
 			),
 		),
 		'endtime' => array(
-			'exclude' => 1,
+			'exclude' => 0,
 			'l10n_mode' => 'mergeIfNotBlank',
 			'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.endtime',
 			'config' => array(
@@ -395,15 +395,15 @@ $TCA['tx_sfbanners_domain_model_banner'] = array(
 		'1' => array('showitem' => ''),
 		'paletteCore' => array(
 			'showitem' => 'type, sys_language_uid',
-			'canNotCollapse' => FALSE
+			'canNotCollapse' => TRUE,
 		),
 		'paletteMargins' => array(
 			'showitem' => 'margin_top, margin_right, margin_bottom, margin_left',
-			'canNotCollapse' => FALSE
+			'canNotCollapse' => TRUE,
 		),
 		'paletteVisibility' => array(
 			'showitem' => 'starttime, endtime',
-			'canNotCollapse' => FALSE
+			'canNotCollapse' => TRUE,
 		),
 	),
 
