@@ -11,22 +11,20 @@
                 </f:else>
             </f:if>
             <param name="quality" value="high">
-            <param name="allowScriptAccess" value="<s:flash.params banner='{banner}' flashSetting='allowScriptAccess'/>">
-            <param name="wmode" value="<s:flash.params banner='{banner}' flashSetting='wmode'/>">
+            <param name="allowScriptAccess" value="{s:flash.params(banner: '{banner}', flashSetting: 'allowScriptAccess')}">
+            <param name="wmode" value="{s:flash.params(banner: '{banner}', flashSetting: 'wmode')}">
             <f:if condition="{banner.link}">
                 <f:then>
                     <embed src="uploads/tx_sfbanners/{banner.flash}?clickTag={s:format.urlencode(value: '{f:uri.action(action: \'click\', absolute: \'true\', arguments: {banner: banner})}')}"
-                           width="{banner.flashWidth}" height="{banner.flashHeight}" wmode="{banner.flashParamWmode}" swliveconnect="true" quality="autohigh"
-                           type="application/x-shockwave-flash" allowscriptaccess="{banner.flashParamAllowScriptAccess}">
+                           width="{banner.flashWidth}" height="{banner.flashHeight}" wmode="{s:flash.params(banner: '{banner}', flashSetting: 'wmode')}" swliveconnect="true" quality="autohigh"
+                           type="application/x-shockwave-flash" allowscriptaccess="{s:flash.params(banner: '{banner}', flashSetting: 'allowScriptAccess')}">
                 </f:then>
                 <f:else>
                     <embed src="uploads/tx_sfbanners/{banner.flash}"
-                           width="{banner.flashWidth}" height="{banner.flashHeight}" wmode="{banner.flashParamWmode}" swliveconnect="true" quality="autohigh"
-                           type="application/x-shockwave-flash" allowscriptaccess="{banner.flashParamAllowScriptAccess}">
+                           width="{banner.flashWidth}" height="{banner.flashHeight}" wmode="{s:flash.params(banner: '{banner}', flashSetting: 'wmode')}" swliveconnect="true" quality="autohigh"
+                           type="application/x-shockwave-flash" allowscriptaccess="{s:flash.params(banner: '{banner}', flashSetting: 'allowScriptAccess')}">
                 </f:else>
             </f:if>
         </object>
-        @todo
-        {s:flash.params(banner: {banner}, flashSetting: 'wmode')}
     </div>
 </f:if>
