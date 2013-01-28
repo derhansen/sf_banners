@@ -45,8 +45,15 @@ class Tx_SfBanners_ViewHelpers_Flash_ParamsViewHelperTest extends Tx_Extbase_Tes
 
 		$settings = array();
 		$settings['settings'] = '';
-		$variableContainer = new Tx_Fluid_Core_ViewHelper_TemplateVariableContainer($settings);
-		$viewHelper->setTemplateVariableContainer($variableContainer);
+
+		$templateVariableContainer = new Tx_Fluid_Core_ViewHelper_TemplateVariableContainer($settings);
+		if (method_exists($viewHelper, 'setTemplateVariableContainer')) {
+			$viewHelper->setTemplateVariableContainer($templateVariableContainer);
+		} else {
+			$renderingContext = new Tx_Fluid_Core_Rendering_RenderingContext();
+			$renderingContext->injectTemplateVariableContainer($templateVariableContainer);
+			$viewHelper->setRenderingContext($renderingContext);
+		}
 
 		$actualResult = $viewHelper->render(NULL, NULL);
 		$this->assertEquals('', $actualResult);
@@ -60,8 +67,15 @@ class Tx_SfBanners_ViewHelpers_Flash_ParamsViewHelperTest extends Tx_Extbase_Tes
 
 		$settings = array();
 		$settings['settings']['defaultFlashVars']['wmode'] = 'opaque';
-		$variableContainer = new Tx_Fluid_Core_ViewHelper_TemplateVariableContainer($settings);
-		$viewHelper->setTemplateVariableContainer($variableContainer);
+
+		$templateVariableContainer = new Tx_Fluid_Core_ViewHelper_TemplateVariableContainer($settings);
+		if (method_exists($viewHelper, 'setTemplateVariableContainer')) {
+			$viewHelper->setTemplateVariableContainer($templateVariableContainer);
+		} else {
+			$renderingContext = new Tx_Fluid_Core_Rendering_RenderingContext();
+			$renderingContext->injectTemplateVariableContainer($templateVariableContainer);
+			$viewHelper->setRenderingContext($renderingContext);
+		}
 
 		$banner = new Tx_SfBanners_Domain_Model_Banner();
 
@@ -77,8 +91,15 @@ class Tx_SfBanners_ViewHelpers_Flash_ParamsViewHelperTest extends Tx_Extbase_Tes
 
 		$settings = array();
 		$settings['settings']['defaultFlashVars']['allowScriptAccess'] = 'sameDomain';
-		$variableContainer = new Tx_Fluid_Core_ViewHelper_TemplateVariableContainer($settings);
-		$viewHelper->setTemplateVariableContainer($variableContainer);
+
+		$templateVariableContainer = new Tx_Fluid_Core_ViewHelper_TemplateVariableContainer($settings);
+		if (method_exists($viewHelper, 'setTemplateVariableContainer')) {
+			$viewHelper->setTemplateVariableContainer($templateVariableContainer);
+		} else {
+			$renderingContext = new Tx_Fluid_Core_Rendering_RenderingContext();
+			$renderingContext->injectTemplateVariableContainer($templateVariableContainer);
+			$viewHelper->setRenderingContext($renderingContext);
+		}
 
 		$banner = new Tx_SfBanners_Domain_Model_Banner();
 
@@ -94,8 +115,15 @@ class Tx_SfBanners_ViewHelpers_Flash_ParamsViewHelperTest extends Tx_Extbase_Tes
 
 		$settings = array();
 		$settings['settings']['defaultFlashVars']['wmode'] = 'opaque';
-		$variableContainer = new Tx_Fluid_Core_ViewHelper_TemplateVariableContainer($settings);
-		$viewHelper->setTemplateVariableContainer($variableContainer);
+
+		$templateVariableContainer = new Tx_Fluid_Core_ViewHelper_TemplateVariableContainer($settings);
+		if (method_exists($viewHelper, 'setTemplateVariableContainer')) {
+			$viewHelper->setTemplateVariableContainer($templateVariableContainer);
+		} else {
+			$renderingContext = new Tx_Fluid_Core_Rendering_RenderingContext();
+			$renderingContext->injectTemplateVariableContainer($templateVariableContainer);
+			$viewHelper->setRenderingContext($renderingContext);
+		}
 
 		$banner = new Tx_SfBanners_Domain_Model_Banner();
 		$banner->setFlashWmode('someValue');
@@ -112,8 +140,15 @@ class Tx_SfBanners_ViewHelpers_Flash_ParamsViewHelperTest extends Tx_Extbase_Tes
 
 		$settings = array();
 		$settings['settings']['defaultFlashVars']['allowScriptAccess'] = 'sameDomain';
-		$variableContainer = new Tx_Fluid_Core_ViewHelper_TemplateVariableContainer($settings);
-		$viewHelper->setTemplateVariableContainer($variableContainer);
+
+		$templateVariableContainer = new Tx_Fluid_Core_ViewHelper_TemplateVariableContainer($settings);
+		if (method_exists($viewHelper, 'setTemplateVariableContainer')) {
+			$viewHelper->setTemplateVariableContainer($templateVariableContainer);
+		} else {
+			$renderingContext = new Tx_Fluid_Core_Rendering_RenderingContext();
+			$renderingContext->injectTemplateVariableContainer($templateVariableContainer);
+			$viewHelper->setRenderingContext($renderingContext);
+		}
 
 		$banner = new Tx_SfBanners_Domain_Model_Banner();
 		$banner->setFlashAllowScriptAccess('someValue');
