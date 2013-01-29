@@ -4,7 +4,7 @@
  *  Copyright notice
  *
  *  (c) 2012 Torben Hansen <derhansen@gmail.com>, Skyfillers GmbH
- *  			
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -25,7 +25,7 @@
  ***************************************************************/
 
 /**
- * Test case for class Tx_SfBanners_Domain_Model_Category.
+ * Test case for class Tx_SfBanners_Domain_Model_BannerDemand.
  *
  * @version $Id$
  * @copyright Copyright belongs to the respective authors
@@ -36,9 +36,9 @@
  *
  * @author Torben Hansen <derhansen@gmail.com>
  */
-class Tx_SfBanners_Domain_Model_CategoryTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
+class Tx_SfBanners_Domain_Model_BannerDemandTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
 	/**
-	 * @var Tx_SfBanners_Domain_Model_Category
+	 * @var Tx_SfBanners_Domain_Model_BannerDemand
 	 */
 	protected $fixture;
 
@@ -48,7 +48,7 @@ class Tx_SfBanners_Domain_Model_CategoryTest extends Tx_Extbase_Tests_Unit_BaseT
 	 * @return void
 	 */
 	public function setUp() {
-		$this->fixture = new Tx_SfBanners_Domain_Model_Category();
+		$this->fixture = new Tx_SfBanners_Domain_Model_BannerDemand();
 	}
 
 	/**
@@ -64,20 +64,48 @@ class Tx_SfBanners_Domain_Model_CategoryTest extends Tx_Extbase_Tests_Unit_BaseT
 	 * @test
 	 * @return void
 	 */
-	public function titleCanBeSetTest() {
-		$title = 'a title';
-		$this->fixture->setTitle($title);
-		$this->assertEquals($title, $this->fixture->getTitle());
+	public function categoriesCanBeSetTest() {
+		$categories = '1,2,3,4';
+		$this->fixture->setCategories($categories);
+		$this->assertEquals($categories, $this->fixture->getCategories());
 	}
 
 	/**
 	 * @test
 	 * @return void
 	 */
-	public function parentCanBeSetTest() {
-		$parent = new Tx_SfBanners_Domain_Model_Category();
-		$this->fixture->setParent($parent);
-		$this->assertEquals($parent, $this->fixture->getParent());
+	public function startingPointCanBeSetTest() {
+		$startingPoint = 1;
+		$this->fixture->setStartingPoint($startingPoint);
+		$this->assertEquals($startingPoint, $this->fixture->getStartingPoint());
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function displayModeReturnsInitialValueForDisplayModeTest() {
+		$this->assertEquals(0, $this->fixture->getDisplayMode());
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function displayModeCanBeSetTest() {
+		$displayMode = 1;
+		$this->fixture->setDisplayMode($displayMode);
+		$this->assertEquals($displayMode, $this->fixture->getDisplayMode());
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function currentPageUidCanBeSetTest() {
+		$currentPageUid = 99;
+		$this->fixture->setCurrentPageUid($currentPageUid);
+		$this->assertEquals($currentPageUid, $this->fixture->getCurrentPageUid());
 	}
 }
 ?>

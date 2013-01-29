@@ -42,80 +42,224 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	 */
 	protected $fixture;
 
+	/**
+	 * Set up
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		$this->fixture = new Tx_SfBanners_Domain_Model_Banner();
 	}
 
+	/**
+	 * Tear down
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		unset($this->fixture);
 	}
 
 	/**
 	 * @test
+	 * @return void
 	 */
-	public function getTitleReturnsInitialValueForString() { }
-
-	/**
-	 * @test
-	 */
-	public function setTitleForStringSetsTitle() { 
-		$this->fixture->setTitle('Conceived at T3CON10');
-
-		$this->assertSame(
-			'Conceived at T3CON10',
-			$this->fixture->getTitle()
-		);
+	public function titleCanBeSetTest() {
+		$title = 'a title';
+		$this->fixture->setTitle($title);
+		$this->assertEquals($title, $this->fixture->getTitle());
 	}
-	
-	/**
-	 * @test
-	 */
-	public function getDescriptionReturnsInitialValueForString() { }
+
 
 	/**
 	 * @test
+	 * @return void
 	 */
-	public function setDescriptionForStringSetsDescription() { 
-		$this->fixture->setDescription('Conceived at T3CON10');
-
-		$this->assertSame(
-			'Conceived at T3CON10',
-			$this->fixture->getDescription()
-		);
+	public function descriptionCanBeSetTest() {
+		$description = 'a description';
+		$this->fixture->setDescription($description);
+		$this->assertEquals($description, $this->fixture->getDescription());
 	}
-	
-	/**
-	 * @test
-	 * @todo: fixme
-	 */
-/*	public function getTypeReturnsInitialValueForInteger() {
-		$this->assertSame(
-			0,
-			$this->fixture->getType()
-		);
-	}*/
 
 	/**
 	 * @test
+	 * @return void
 	 */
-	public function setTypeForIntegerSetsType() { 
-		$this->fixture->setType(12);
-
-		$this->assertSame(
-			12,
-			$this->fixture->getType()
-		);
+	public function typeCanBeSetTest() {
+		$type = 0;
+		$this->fixture->setType($type);
+		$this->assertEquals($type, $this->fixture->getType());
 	}
-	
-	/**
-	 * @test
-	 */
-	public function getCategoryReturnsInitialValueForTx_SfBanners_Domain_Model_Category() { }
 
 	/**
 	 * @test
+	 * @return void
 	 */
-	public function setCategoryForTx_SfBanners_Domain_Model_CategorySetsCategory() { }
-	
+	public function imageCanBeSetTest() {
+		$image = 'image.jpg';
+		$this->fixture->setImage($image);
+		$this->assertEquals($image, $this->fixture->getImage());
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function marginTopCanBeSetTest() {
+		$margin = 100;
+		$this->fixture->setMarginTop($margin);
+		$this->assertEquals($margin, $this->fixture->getMarginTop());
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function marginRightCanBeSetTest() {
+		$margin = 100;
+		$this->fixture->setMarginRight($margin);
+		$this->assertEquals($margin, $this->fixture->getMarginRight());
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function marginBottomCanBeSetTest() {
+		$margin = 100;
+		$this->fixture->setMarginBottom($margin);
+		$this->assertEquals($margin, $this->fixture->getMarginBottom());
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function marginLeftCanBeSetTest() {
+		$margin = 100;
+		$this->fixture->setMarginLeft($margin);
+		$this->assertEquals($margin, $this->fixture->getMarginLeft());
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function altTextCanBeSetTest() {
+		$altText = 'some text';
+		$this->fixture->setAlttext($altText);
+		$this->assertEquals($altText, $this->fixture->getAlttext());
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function linkCanBeSetTest() {
+		$link = 'www.domain.tld';
+		$this->fixture->setLink($link);
+		$this->assertEquals($link, $this->fixture->getLink());
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function htmlCanBeSetTest() {
+		$html = '<p>test</p>';
+		$this->fixture->setHtml($html);
+		$this->assertEquals($html, $this->fixture->getHtml());
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function flashCanBeSetTest() {
+		$flash = 'flash.swf';
+		$this->fixture->setFlash($flash);
+		$this->assertEquals($flash, $this->fixture->getFlash());
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function flashWidthCanBeSetTest() {
+		$width = 100;
+		$this->fixture->setFlashWidth($width);
+		$this->assertEquals($width, $this->fixture->getFlashWidth());
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function flashHeighCanBeSetTest() {
+		$height = 100;
+		$this->fixture->setFlashHeight($height);
+		$this->assertEquals($height, $this->fixture->getFlashHeight());
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function impressionsMaxCanBeSetTest() {
+		$impressionsMax = 100;
+		$this->fixture->setImpressionsMax($impressionsMax);
+		$this->assertEquals($impressionsMax, $this->fixture->getImpressionsMax());
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function clicksMaxCanBeSetTest() {
+		$clicksMax = 100;
+		$this->fixture->setClicksMax($clicksMax);
+		$this->assertEquals($clicksMax, $this->fixture->getClicksMax());
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function impressionsCanBeSetTest() {
+		$impressions = 100;
+		$this->fixture->setImpressions($impressions);
+		$this->assertEquals($impressions, $this->fixture->getImpressions());
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function clicksCanBeSetTest() {
+		$clicks = 100;
+		$this->fixture->setClicks($clicks);
+		$this->assertEquals($clicks, $this->fixture->getClicks());
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function flashAllowScriptAccessCanBeSetTest() {
+		$flashAllowScriptAccess = 'sameDomain';
+		$this->fixture->setflashAllowScriptAccess($flashAllowScriptAccess);
+		$this->assertEquals($flashAllowScriptAccess, $this->fixture->getflashAllowScriptAccess());
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function flashWModeCanBeSetTest() {
+		$flashWMode = 'opaque';
+		$this->fixture->setFlashWmode($flashWMode);
+		$this->assertEquals($flashWMode, $this->fixture->getFlashWmode());
+	}
+
 }
 ?>

@@ -176,6 +176,13 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	protected $excludepages;
 
 	/**
+	 * AllowScriptAccess for flash banners
+	 *
+	 * @var string
+	 */
+	protected $flashAllowScriptAccess;
+
+	/**
 	 * Wmode for flash banners
 	 *
 	 * @var string
@@ -217,13 +224,6 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	public function getFlashWmode () {
 		return $this->flashWmode;
 	}
-
-	/**
-	 * AllowScriptAccess for flash banners
-	 *
-	 * @var string
-	 */
-	protected $flashAllowScriptAccess;
 
 	/**
 	 * Returns the title
