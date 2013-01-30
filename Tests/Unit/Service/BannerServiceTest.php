@@ -152,9 +152,9 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 	public function getAdditionalCssReturnsCssForMultipleBannersTest() {
 		$pid = 111;
 		$bannerUid1 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
-			'margin_left' => 10, 'margin_right' => 10));
+			'margin_left' => 10, 'margin_right' => 10, 'sorting' => 1));
 		$bannerUid2 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
-			'margin_top' => 10, 'margin_bottom' => 10));
+			'margin_top' => 10, 'margin_bottom' => 10, 'sorting' => 2));
 
 		/* Get banner from Repository */
 		$banners = $this->bannerRepository->findByPid($pid);
