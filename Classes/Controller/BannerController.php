@@ -34,6 +34,13 @@
 class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller_ActionController {
 
 	/**
+	 * Banner Service
+	 *
+	 * @var Tx_SfBanners_Service_BannerService
+	 */
+	protected $bannerService;
+
+	/**
 	 * bannerRepository
 	 *
 	 * @var Tx_SfBanners_Domain_Repository_BannerRepository
@@ -48,6 +55,16 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 	 */
 	public function injectBannerRepository(Tx_SfBanners_Domain_Repository_BannerRepository $bannerRepository) {
 		$this->bannerRepository = $bannerRepository;
+	}
+
+	/**
+	 * injectBannerService
+	 *
+	 * @param Tx_SfBanners_Service_BannerService $bannerService
+	 * @return void
+	 */
+	public function injectBannerService(Tx_SfBanners_Service_BannerService $bannerService) {
+		$this->bannerService = $bannerService;
 	}
 
 	/**
@@ -75,7 +92,13 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 		$demand->setDisplayMode($this->settings['displayMode']);
 		$demand->setStartingPoint($this->settings['startingPoint']);
 
+		/* Get banners */
 		$banners = $this->bannerRepository->findDemanded($demand);
+
+		/* Add additional CSS */
+		$this->response->addAdditionalHeaderData($this->bannerService->getAdditionalCssLink($banners));
+
+		/* Update Impressions */
 		$this->bannerRepository->updateImpressions($banners);
 
 		$this->view->assign('banners', $banners);
