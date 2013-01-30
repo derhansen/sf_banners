@@ -47,7 +47,7 @@ class Tx_SfBanners_Service_BannerService  {
 				$banner->getMarginBottom() > 0 || $banner->getMarginLeft() > 0) {
 				$bannerCss = '.banner-' . $banner->getUid() . ' { margin: ' . $banner->getMarginTop() .
 					'px ' . $banner->getMarginRight() . 'px ' . $banner->getMarginBottom() . 'px ' .
-					$banner->getMarginLeft() . 'px; }' . chr(13);
+					$banner->getMarginLeft() . 'px; }' . chr(10) . chr(13);
 				$ret .= $bannerCss;
 			}
 		}

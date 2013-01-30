@@ -93,7 +93,7 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 		/* Get banner from Repository */
 		$banners = $this->bannerRepository->findByPid($pid);
 
-		$expected = '.banner-' . $bannerUid . ' { margin: 10px 0px 0px 0px; }' . chr(13);
+		$expected = '.banner-' . $bannerUid . ' { margin: 10px 0px 0px 0px; }' . chr(10) . chr(13);
 		$result = $this->bannerService->getAdditionalCss($banners);
 		$this->assertEquals($expected, $result);
 	}
@@ -109,7 +109,7 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 		/* Get banner from Repository */
 		$banners = $this->bannerRepository->findByPid($pid);
 
-		$expected = '.banner-' . $bannerUid . ' { margin: 0px 10px 0px 0px; }' . chr(13);
+		$expected = '.banner-' . $bannerUid . ' { margin: 0px 10px 0px 0px; }' . chr(10) . chr(13);
 		$result = $this->bannerService->getAdditionalCss($banners);
 		$this->assertEquals($expected, $result);
 	}
@@ -125,7 +125,7 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 		/* Get banner from Repository */
 		$banners = $this->bannerRepository->findByPid($pid);
 
-		$expected = '.banner-' . $bannerUid . ' { margin: 0px 0px 10px 0px; }' . chr(13);
+		$expected = '.banner-' . $bannerUid . ' { margin: 0px 0px 10px 0px; }' . chr(10) . chr(13);
 		$result = $this->bannerService->getAdditionalCss($banners);
 		$this->assertEquals($expected, $result);
 	}
@@ -141,7 +141,7 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 		/* Get banner from Repository */
 		$banners = $this->bannerRepository->findByPid($pid);
 
-		$expected = '.banner-' . $bannerUid . ' { margin: 0px 0px 0px 10px; }' . chr(13);
+		$expected = '.banner-' . $bannerUid . ' { margin: 0px 0px 0px 10px; }' . chr(10) . chr(13);
 		$result = $this->bannerService->getAdditionalCss($banners);
 		$this->assertEquals($expected, $result);
 	}
@@ -159,8 +159,8 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 		/* Get banner from Repository */
 		$banners = $this->bannerRepository->findByPid($pid);
 
-		$expected = '.banner-' . $bannerUid1 . ' { margin: 0px 10px 0px 10px; }' . chr(13);
-		$expected .= '.banner-' . $bannerUid2 . ' { margin: 10px 0px 10px 0px; }' . chr(13);
+		$expected = '.banner-' . $bannerUid1 . ' { margin: 0px 10px 0px 10px; }' . chr(10) . chr(13);
+		$expected .= '.banner-' . $bannerUid2 . ' { margin: 10px 0px 10px 0px; }' . chr(10) . chr(13);
 		$result = $this->bannerService->getAdditionalCss($banners);
 		$this->assertEquals($expected, $result);
 	}
