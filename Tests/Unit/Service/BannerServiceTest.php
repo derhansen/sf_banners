@@ -76,6 +76,7 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 
 	/**
 	 * @test
+	 * @return void
 	 */
 	public function getAdditionalCssReturnsEmptyStringIfBannerHasNoMarginsTest() {
 		$result = $this->bannerService->getAdditionalCss(array());
@@ -84,6 +85,7 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 
 	/**
 	 * @test
+	 * @return void
 	 */
 	public function getAdditionalCssReturnsMarginTopIfBannerHasMarginTopTest() {
 		$pid = 110;
@@ -100,6 +102,7 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 
 	/**
 	 * @test
+	 * @return void
 	 */
 	public function getAdditionalCssReturnsMarginRightIfBannerHasMarginRightTest() {
 		$pid = 110;
@@ -116,6 +119,7 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 
 	/**
 	 * @test
+	 * @return void
 	 */
 	public function getAdditionalCssReturnsMarginBottomIfBannerHasMarginBottomTest() {
 		$pid = 110;
@@ -132,6 +136,7 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 
 	/**
 	 * @test
+	 * @return void
 	 */
 	public function getAdditionalCssReturnsMarginLeftIfBannerHasMarginLeftTest() {
 		$pid = 110;
@@ -148,6 +153,7 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 
 	/**
 	 * @test
+	 * @return void
 	 */
 	public function getAdditionalCssReturnsCssForMultipleBannersTest() {
 		$pid = 111;
