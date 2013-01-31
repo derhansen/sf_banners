@@ -96,7 +96,10 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 		$banners = $this->bannerRepository->findDemanded($demand);
 
 		/* Add additional CSS */
-		$this->response->addAdditionalHeaderData($this->bannerService->getAdditionalCssLink($banners));
+		$additionalCss = $this->bannerService->getAdditionalCssLink($banners);
+		if ($additionalCss != '') {
+			$this->response->addAdditionalHeaderData($additionalCss);
+		}
 
 		/* Update Impressions */
 		$this->bannerRepository->updateImpressions($banners);

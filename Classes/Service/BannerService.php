@@ -31,7 +31,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_SfBanners_Service_BannerService  {
+class Tx_SfBanners_Service_BannerService {
 
 	/**
 	 * Returns a string with additional CSS for the given banners
@@ -62,8 +62,11 @@ class Tx_SfBanners_Service_BannerService  {
 	 */
 	public function getAdditionalCssLink($banners) {
 		$css = $this->getAdditionalCss($banners);
-		$tmpFile = TSpagegen::inline2TempFile($css, 'css');
-		$cssLink = '<link rel="stylesheet" type="text/css" href="' . $tmpFile . '" media="all" />';
+		$cssLink = '';
+		if ($css != '') {
+			$tmpFile = TSpagegen::inline2TempFile($css, 'css');
+			$cssLink = '<link rel="stylesheet" type="text/css" href="' . $tmpFile . '" media="all" />';
+		}
 		return $cssLink;
 	}
 }
