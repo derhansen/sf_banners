@@ -57,11 +57,6 @@
             <label index="plugin.settings.displayMode.all">All banners</label>
             <label index="plugin.settings.displayMode.allRandom">All banners randomized</label>
             <label index="plugin.settings.displayMode.random">Randomly one banner</label>
-            <label index="plugin.settings.fancybox">Show banner in fancybox</label>
-            <label index="plugin.settings.fancybox.width">Fancybox width</label>
-            <label index="plugin.settings.fancybox.height">Fancybox height</label>
-
-
         </languageKey>
     </data>
 </T3locallang>

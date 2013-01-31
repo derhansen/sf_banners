@@ -69,35 +69,6 @@
                     </config>
                 </TCEforms>
             </settings.category>
-            <settings.fancybox>
-                <TCEforms>
-                    <label>LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.fancybox</label>
-                    <onChange>reload</onChange>
-                    <config>
-                        <type>check</type>
-                    </config>
-                </TCEforms>
-            </settings.fancybox>
-            <settings.fancyboxWidth>
-                <TCEforms>
-                    <label>LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.fancybox.width</label>
-                    <displayCond>FIELD:settings.fancybox:=:1</displayCond>
-                    <config>
-                        <type>input</type>
-                        <size>5</size>
-                    </config>
-                </TCEforms>
-            </settings.fancyboxWidth>
-            <settings.fancyboxHeight>
-                <TCEforms>
-                    <label>LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.fancybox.height</label>
-                    <displayCond>FIELD:settings.fancybox:=:1</displayCond>
-                    <config>
-                        <type>input</type>
-                        <size>5</size>
-                    </config>
-                </TCEforms>
-            </settings.fancyboxHeight>
         </el>
     </ROOT>
 </T3DataStructure>
