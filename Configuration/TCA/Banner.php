@@ -334,20 +334,16 @@ $TCA['tx_sfbanners_domain_model_banner'] = array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.impressions',
 			'config' => Array (
-				'type' => 'input',
-				'readOnly' => 1,
+				'type' => 'none',
 				'size' => '10',
-				'eval' => 'int,nospace',
 			)
 		),
 		'clicks' => Array (
 			'exclude' => 0,
 			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.clicks',
 			'config' => Array (
-				'type' => 'input',
-				'readOnly' => 1,
+				'type' => 'none',
 				'size' => '10',
-				'eval' => 'int,nospace',
 			)
 		),
 		'excludepages' => Array (
