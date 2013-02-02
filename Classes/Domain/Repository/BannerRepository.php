@@ -32,14 +32,6 @@
  *
  */
 class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persistence_Repository {
-
-	/**
-	 * Configure default sorting
-	 *
-	 * @var array
-	 */
-	protected $defaultOrderings = array ('sorting' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING);
-
 	/**
 	 * @var Tx_Extbase_Persistence_Storage_Typo3DbBackend
 	 */
@@ -114,11 +106,13 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	 */
 	private function getResult(Tx_Extbase_Persistence_QueryInterface $query, Tx_SfBanners_Domain_Model_BannerDemand $demand) {
 		$result = array();
+		t3lib_utility_Debug::debug($demand->getDisplayMode());
 		switch ($demand->getDisplayMode()) {
-			case 0:
+			case 'all':
+				$query->setOrderings(array ('sorting' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING));
 				$result = $query->execute();
 				break;
-			case 1:
+			case 'allRandom':
 				$parameters = array();
 				$statementParts = $this->typo3DbBackend->parseQuery($query, $parameters);
 				$statementParts['orderings'][] = 'RAND()';
@@ -126,7 +120,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 				$query->statement($statement, $parameters);
 				$result = $query->execute();
 				break;
-			case 2:
+			case 'random':
 				$rows = $query->execute()->count();
 				$row_number = mt_rand(0, max(0, ($rows - 1)));
 				$result = $query->setOffset($row_number)->setLimit(1)->execute();
