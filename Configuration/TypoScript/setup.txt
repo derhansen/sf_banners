@@ -17,19 +17,6 @@ plugin.tx_sfbanners {
 	    allowScriptAccess = {$plugin.tx_sfbanners.settings.defaultFlashVars.allowScriptAccess}
 	  }
 	}
-	widgets {
-	    bannerWidget = USER
-	    bannerWidget {
-          userFunc = tx_extbase_core_bootstrap->run
-          extensionName = SfBanners
-          pluginName = Pi1
-          switchableControllerActions {
-            Banner {
-              1 = show
-            }
-          }
-	    }
-	}
 }
 
 config.tx_extbase.persistence.classes.Tx_SfBanners_Domain_Model_Page {
