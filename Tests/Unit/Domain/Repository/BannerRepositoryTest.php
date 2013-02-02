@@ -164,7 +164,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 		$demand->setStartingPoint($pid);
 
 		/* All banners with default sorting respected */
-		$demand->setDisplayMode(0);
+		$demand->setDisplayMode('all');
 		$this->assertEquals(5, (int)$this->fixture->findDemanded($demand)->count());
 		$returnedBanners = $this->fixture->findDemanded($demand);
 		$returnedUids = array();
@@ -176,7 +176,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 		$this->assertSame($uids, $returnedUids);
 
 		/* Random one banner */
-		$demand->setDisplayMode(2);
+		$demand->setDisplayMode('random');
 		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());
 	}
 

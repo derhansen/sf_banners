@@ -85,7 +85,7 @@ class Tx_SfBanners_Domain_Model_BannerDemandTest extends Tx_Extbase_Tests_Unit_B
 	 * @return void
 	 */
 	public function displayModeReturnsInitialValueForDisplayModeTest() {
-		$this->assertEquals(0, $this->fixture->getDisplayMode());
+		$this->assertEquals('all', $this->fixture->getDisplayMode());
 	}
 
 	/**
@@ -93,7 +93,7 @@ class Tx_SfBanners_Domain_Model_BannerDemandTest extends Tx_Extbase_Tests_Unit_B
 	 * @return void
 	 */
 	public function displayModeCanBeSetTest() {
-		$displayMode = 1;
+		$displayMode = 'allRandom';
 		$this->fixture->setDisplayMode($displayMode);
 		$this->assertEquals($displayMode, $this->fixture->getDisplayMode());
 	}

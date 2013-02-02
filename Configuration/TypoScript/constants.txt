@@ -12,6 +12,7 @@ plugin.tx_sfbanners {
 		storagePid = 
 	}
 	settings {
+	  displayMode = all
 	  defaultFlashVars {
 	    wmode = opaque
 	    allowScriptAccess = sameDomain

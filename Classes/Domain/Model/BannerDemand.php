@@ -50,9 +50,9 @@ class Tx_SfBanners_Domain_Model_BannerDemand extends Tx_Extbase_DomainObject_Abs
 	/**
 	 * Display Mode - default is to display all banners
 	 *
-	 * @var integer
+	 * @var string
 	 */
-	protected $displayMode = 0;
+	protected $displayMode = 'all';
 
 	/**
 	 * The current page uid
@@ -90,14 +90,14 @@ class Tx_SfBanners_Domain_Model_BannerDemand extends Tx_Extbase_DomainObject_Abs
 	}
 
 	/**
-	 * @param int $displayMode
+	 * @param string $displayMode
 	 */
 	public function setDisplayMode ($displayMode) {
 		$this->displayMode = $displayMode;
 	}
 
 	/**
-	 * @return int
+	 * @return string
 	 */
 	public function getDisplayMode () {
 		return $this->displayMode;
