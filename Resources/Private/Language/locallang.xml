@@ -7,6 +7,7 @@
 	<data type="array">
 		<languageKey index="default" type="array">
             <label index="plugin_title">Show banner</label>
+            <label index="plugin_description">Banner management for image, html and flash banners</label>
 
 			<label index="tx_sfbanners_domain_model_category">Categories</label>
 			<label index="tx_sfbanners_domain_model_category.title">Title</label>

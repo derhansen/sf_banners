@@ -22,6 +22,12 @@ $TCA['tt_content']['types']['list']['subtypes_excludelist'][$pluginSignature]='l
 /* Add default Typoscript */
 t3lib_extMgm::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Banner Management');
 
+/* Add Plugin to wizzard */
+if (TYPO3_MODE == 'BE') {
+	$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses'][$pluginSignature . '_wizicon'] =
+		t3lib_extMgm::extPath($_EXTKEY) . 'Resources/Private/Php/class.' . $_EXTKEY . '_wizicon.php';
+}
+
 t3lib_extMgm::addLLrefForTCAdescr('tx_sfbanners_domain_model_category', 'EXT:sf_banners/Resources/Private/Language/locallang_csh_tx_sfbanners_domain_model_category.xml');
 t3lib_extMgm::allowTableOnStandardPages('tx_sfbanners_domain_model_category');
 $TCA['tx_sfbanners_domain_model_category'] = array(
