@@ -106,7 +106,6 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	 */
 	private function getResult(Tx_Extbase_Persistence_QueryInterface $query, Tx_SfBanners_Domain_Model_BannerDemand $demand) {
 		$result = array();
-		t3lib_utility_Debug::debug($demand->getDisplayMode());
 		switch ($demand->getDisplayMode()) {
 			case 'all':
 				$query->setOrderings(array ('sorting' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING));
