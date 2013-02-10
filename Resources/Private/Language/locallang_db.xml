@@ -32,8 +32,6 @@
             <label index="tx_sfbanners_domain_model_banner.flash.height">Height</label>
             <label index="tx_sfbanners_domain_model_banner.flash.wmode">Wmode</label>
             <label index="tx_sfbanners_domain_model_banner.flash.allowScriptAccess">AllowScriptAccess</label>
-            <label index="tx_sfbanners_domain_model_banner.layer.width">Width</label>
-            <label index="tx_sfbanners_domain_model_banner.layer.height">Height</label>
             <label index="tx_sfbanners_domain_model_banner.impressions_max">Max. impressions</label>
             <label index="tx_sfbanners_domain_model_banner.clicks_max">Max. clicks</label>
             <label index="tx_sfbanners_domain_model_banner.impressions">Impressions</label>

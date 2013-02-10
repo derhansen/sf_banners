@@ -68,8 +68,6 @@ CREATE TABLE tx_sfbanners_domain_model_banner (
 	flash_height int(11) DEFAULT '0' NOT NULL,
 	flash_wmode varchar(255) DEFAULT '' NOT NULL,
 	flash_allow_script_access varchar(255) DEFAULT '' NOT NULL,
-	layer_width int(11) DEFAULT '0' NOT NULL,
-	layer_height int(11) DEFAULT '0' NOT NULL,
 	impressions_max int(11) DEFAULT '0' NOT NULL,
 	clicks_max int(11) DEFAULT '0' NOT NULL,
 	impressions int(11) DEFAULT '0' NOT NULL,

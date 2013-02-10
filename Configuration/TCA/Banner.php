@@ -292,26 +292,6 @@ $TCA['tx_sfbanners_domain_model_banner'] = array(
 				'size' => 30,
 			),
 		),
-		'layer_width' => Array (
-			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.layer.width',
-			'config' => Array (
-				'type' => 'input',
-				'size' => '5',
-				'max' => '4',
-				'eval' => 'int,nospace',
-			)
-		),
-		'layer_height' => Array (
-			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.layer.height',
-			'config' => Array (
-				'type' => 'input',
-				'size' => '5',
-				'max' => '4',
-				'eval' => 'int,nospace',
-			)
-		),
 		'impressions_max' => Array (
 			'exclude' => 0,
 			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.impressions_max',
