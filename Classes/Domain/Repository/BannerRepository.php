@@ -33,6 +33,13 @@
  */
 class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persistence_Repository {
 	/**
+	 * Set default sorting
+	 *
+	 * @var array
+	 */
+	protected $defaultOrderings = array ('sorting' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING);
+
+	/**
 	 * @var Tx_Extbase_Persistence_Storage_Typo3DbBackend
 	 */
 	protected $typo3DbBackend;
@@ -60,6 +67,11 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	 * @return array|Tx_Extbase_Persistence_QueryResultInterface
 	 */
 	public function findDemanded(Tx_SfBanners_Domain_Model_BannerDemand $demand) {
+		/* Override the default sorting for random mode. Must be called before createQuery() */
+		if ($demand->getDisplayMode() == 'allRandom') {
+			$this->defaultOrderings = array();
+		}
+
 		$query = $this->createQuery();
 
 		$constraints = array();
@@ -108,7 +120,6 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 		$result = array();
 		switch ($demand->getDisplayMode()) {
 			case 'all':
-				$query->setOrderings(array ('sorting' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING));
 				$result = $query->execute();
 				break;
 			case 'allRandom':
