@@ -52,6 +52,11 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 	protected $bannerService;
 
 	/**
+	 * @var Tx_SfBanners_Domain_Model_BannerDemand
+	 */
+	protected $demand;
+
+	/**
 	 * Set up
 	 *
 	 * @return void
@@ -60,7 +65,8 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 		$this->bannerService = new Tx_SfBanners_Service_BannerService();
 		$this->testingFramework = new Tx_Phpunit_Framework('tx_sfbanners', array('tx_phpunit'));
 		$this->bannerRepository = $this->objectManager->get('Tx_SfBanners_Domain_Repository_BannerRepository');
-
+		$this->demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
+		$this->demand->setDisplayMode('all');
 	}
 
 	/**
@@ -93,7 +99,8 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 			'margin_top' => 10));
 
 		/* Get banner from Repository */
-		$banners = $this->bannerRepository->findByPid($pid);
+		$this->demand->setStartingPoint($pid);
+		$banners = $this->bannerRepository->findDemanded($this->demand);
 
 		$expected = '.banner-' . $bannerUid . ' { margin: 10px 0px 0px 0px; }' . chr(10) . chr(13);
 		$result = $this->bannerService->getAdditionalCss($banners);
@@ -110,7 +117,8 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 			'margin_right' => 10));
 
 		/* Get banner from Repository */
-		$banners = $this->bannerRepository->findByPid($pid);
+		$this->demand->setStartingPoint($pid);
+		$banners = $this->bannerRepository->findDemanded($this->demand);
 
 		$expected = '.banner-' . $bannerUid . ' { margin: 0px 10px 0px 0px; }' . chr(10) . chr(13);
 		$result = $this->bannerService->getAdditionalCss($banners);
@@ -127,7 +135,8 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 			'margin_bottom' => 10));
 
 		/* Get banner from Repository */
-		$banners = $this->bannerRepository->findByPid($pid);
+		$this->demand->setStartingPoint($pid);
+		$banners = $this->bannerRepository->findDemanded($this->demand);
 
 		$expected = '.banner-' . $bannerUid . ' { margin: 0px 0px 10px 0px; }' . chr(10) . chr(13);
 		$result = $this->bannerService->getAdditionalCss($banners);
@@ -144,7 +153,8 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 			'margin_left' => 10));
 
 		/* Get banner from Repository */
-		$banners = $this->bannerRepository->findByPid($pid);
+		$this->demand->setStartingPoint($pid);
+		$banners = $this->bannerRepository->findDemanded($this->demand);
 
 		$expected = '.banner-' . $bannerUid . ' { margin: 0px 0px 0px 10px; }' . chr(10) . chr(13);
 		$result = $this->bannerService->getAdditionalCss($banners);
@@ -163,7 +173,8 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 			'margin_top' => 10, 'margin_bottom' => 10, 'sorting' => 2));
 
 		/* Get banner from Repository */
-		$banners = $this->bannerRepository->findByPid($pid);
+		$this->demand->setStartingPoint($pid);
+		$banners = $this->bannerRepository->findDemanded($this->demand);
 
 		$expected = '.banner-' . $bannerUid1 . ' { margin: 0px 10px 0px 10px; }' . chr(10) . chr(13);
 		$expected .= '.banner-' . $bannerUid2 . ' { margin: 10px 0px 10px 0px; }' . chr(10) . chr(13);

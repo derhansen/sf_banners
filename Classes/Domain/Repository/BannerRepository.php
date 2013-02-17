@@ -37,7 +37,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	 *
 	 * @var array
 	 */
-	//protected $defaultOrderings = array ('sorting' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING);
+	protected $defaultOrderings = array ('sorting' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING);
 
 	/**
 	 * @var Tx_Extbase_Persistence_Storage_Typo3DbBackend
