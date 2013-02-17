@@ -18,5 +18,18 @@
 			<label index="tx_sfbanners_domain_model_banner.type">Type</label>
 			<label index="tx_sfbanners_domain_model_banner.category">Category</label>
 		</languageKey>
+        <languageKey index="de" type="array">
+            <label index="plugin_title">Banner anzeigen</label>
+            <label index="plugin_description">Banner-Verwaltung für Bild-, HTML- Und Flash-banners</label>
+
+            <label index="tx_sfbanners_domain_model_category">Kategorien</label>
+            <label index="tx_sfbanners_domain_model_category.title">Titel</label>
+            <label index="tx_sfbanners_domain_model_category.parent">Übergeordnet</label>
+            <label index="tx_sfbanners_domain_model_banner">Banner</label>
+            <label index="tx_sfbanners_domain_model_banner.title">Titel</label>
+            <label index="tx_sfbanners_domain_model_banner.description">Beschreibung</label>
+            <label index="tx_sfbanners_domain_model_banner.type">Typ</label>
+            <label index="tx_sfbanners_domain_model_banner.category">Kategorie</label>
+        </languageKey>
 	</data>
 </T3locallang>

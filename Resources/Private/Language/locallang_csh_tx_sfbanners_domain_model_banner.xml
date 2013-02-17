@@ -6,9 +6,13 @@
 		<csh_table>tx_sfbanners_domain_model_banner</csh_table>
 	</meta>
 	<data type="array">
-	<languageKey index="default" type="array">
+        <languageKey index="default" type="array">
             <label index="flash_wmode.description">Wmode for Flash banner. Leave empty, if default value from TS should be used</label>
             <label index="flash_allow_script_access.description">allowScriptAccess for Flash banner. Leave empty, if default value from TS should be used</label>
-		</languageKey>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="flash_wmode.description">Wmode für Flash-Banner. Wenn dieses Feld leer ist, wird der Standardwert auf dem TS benutzt</label>
+            <label index="flash_allow_script_access.description">allowScriptAccess für Flash-Banner. Wenn dieses Feld leer ist, wird der Standardwert auf dem TS benutzt</label>
+        </languageKey>
 	</data>
 </T3locallang>

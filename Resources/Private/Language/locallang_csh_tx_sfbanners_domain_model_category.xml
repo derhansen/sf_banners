@@ -6,10 +6,13 @@
 		<csh_table>tx_sfbanners_domain_model_category</csh_table>
 	</meta>
 	<data type="array">
-	<languageKey index="default" type="array">
-	   
-			<label index="title.description">Title</label>
-			<label index="parent.description">parent</label>
-		</languageKey>
+        <languageKey index="default" type="array">
+            <label index="title.description">Title</label>
+            <label index="parent.description">parent</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="title.description">Titel</label>
+            <label index="parent.description">Übergeordnet</label>
+        </languageKey>
 	</data>
 </T3locallang>

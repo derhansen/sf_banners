@@ -56,5 +56,56 @@
             <label index="plugin.settings.displayMode.allRandom">All banners randomized</label>
             <label index="plugin.settings.displayMode.random">Randomly one banner</label>
         </languageKey>
+        <languageKey index="de" type="array">
+
+            <label index="tx_sfbanners_domain_model_category">Kategorie</label>
+            <label index="tx_sfbanners_domain_model_category.title">Titel</label>
+            <label index="tx_sfbanners_domain_model_category.parent">Übergeordnet</label>
+
+            <label index="tx_sfbanners_domain_model_banner">Banner</label>
+            <label index="tx_sfbanners_domain_model_banner.title">Titel</label>
+            <label index="tx_sfbanners_domain_model_banner.description">Beschreibung</label>
+            <label index="tx_sfbanners_domain_model_banner.type">Typ</label>
+            <label index="tx_sfbanners_domain_model_banner.type.image">Bild</label>
+            <label index="tx_sfbanners_domain_model_banner.type.html">HTML</label>
+            <label index="tx_sfbanners_domain_model_banner.type.flash">Flash</label>
+            <label index="tx_sfbanners_domain_model_banner.category">Kategorie</label>
+            <label index="tx_sfbanners_domain_model_banner.image">Bild</label>
+            <label index="tx_sfbanners_domain_model_banner.margin_top">Abstand oben</label>
+            <label index="tx_sfbanners_domain_model_banner.margin_right">Abstand rechts</label>
+            <label index="tx_sfbanners_domain_model_banner.margin_bottom">Abstand unten</label>
+            <label index="tx_sfbanners_domain_model_banner.margin_left">Abstand links</label>
+            <label index="tx_sfbanners_domain_model_banner.alttext">Alternativtext</label>
+            <label index="tx_sfbanners_domain_model_banner.link">Link</label>
+            <label index="tx_sfbanners_domain_model_banner.html">HTML</label>
+            <label index="tx_sfbanners_domain_model_banner.flash">Flash</label>
+            <label index="tx_sfbanners_domain_model_banner.flash.width">Breite</label>
+            <label index="tx_sfbanners_domain_model_banner.flash.height">Höhe</label>
+            <label index="tx_sfbanners_domain_model_banner.flash.wmode">Wmode</label>
+            <label index="tx_sfbanners_domain_model_banner.flash.allowScriptAccess">AllowScriptAccess</label>
+            <label index="tx_sfbanners_domain_model_banner.impressions_max">Max. Impressionen</label>
+            <label index="tx_sfbanners_domain_model_banner.clicks_max">Max. Klicks</label>
+            <label index="tx_sfbanners_domain_model_banner.impressions">Impressionen</label>
+            <label index="tx_sfbanners_domain_model_banner.clicks">Klicks</label>
+            <label index="tx_sfbanners_domain_model_banner.pages">Seiten</label>
+            <label index="tx_sfbanners_domain_model_banner.excludepages">Ausschließende Seiten</label>
+
+            <label index="tx_sfbanners_domain_model_banner.tabs.image">Bild</label>
+            <label index="tx_sfbanners_domain_model_banner.tabs.flash">Flash</label>
+            <label index="tx_sfbanners_domain_model_banner.tabs.html">HTML</label>
+            <label index="tx_sfbanners_domain_model_banner.tabs.display">Anzeige</label>
+            <label index="tx_sfbanners_domain_model_banner.tabs.limitations">Einschränkungen</label>
+            <label index="tx_sfbanners_domain_model_banner.tabs.statistics">Statistik</label>
+            <label index="tx_sfbanners_domain_model_banner.tabs.visibility">Sichtbarkeit</label>
+
+            <label index="tx_sfbanners_domain_model_banner.labels.margins">Abstände</label>
+
+            <label index="plugin.settings.category">Kategorie</label>
+            <label index="plugin.settings.startingPoint">Ausgangspunkt</label>
+            <label index="plugin.settings.displayMode">Anzeigemodus</label>
+            <label index="plugin.settings.displayMode.all">Alle Banner</label>
+            <label index="plugin.settings.displayMode.allRandom">Alle Banner zufällig</label>
+            <label index="plugin.settings.displayMode.random">Ein Banner zufällig</label>
+        </languageKey>
     </data>
 </T3locallang>
