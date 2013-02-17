@@ -178,6 +178,25 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 		/* Random one banner */
 		$demand->setDisplayMode('random');
 		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());
+
+		/* All banners with random diplay mode */
+		$demand->setDisplayMode('allRandom');
+		$this->assertEquals(5, (int)$this->fixture->findDemanded($demand)->count());
+
+		$matchCount = 0;
+		for ($j=1; $j<=100; $j++) {
+			$returnedBanners = $this->fixture->findDemanded($demand);
+			$returnedUids = array();
+			$count = 1;
+			foreach ($returnedBanners as $returnedBanner) {
+				$returnedUids[$count] = $returnedBanner->getUid();
+				$count ++;
+			}
+			if ($uids === $returnedUids) {
+				$matchCount += 1;
+			}
+		}
+		$this->assertLessThan(100, $matchCount);
 	}
 
 	/**
