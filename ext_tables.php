@@ -17,7 +17,7 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignat
 t3lib_extMgm::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/Flexforms/Flexform_plugin.xml');
 
 /* Remove unused fields */
-$TCA['tt_content']['types']['list']['subtypes_excludelist'][$pluginSignature]='layout,recursive,select_key';
+$TCA['tt_content']['types']['list']['subtypes_excludelist'][$pluginSignature] ='layout,recursive,select_key';
 
 /* Add default Typoscript */
 t3lib_extMgm::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Banner Management');
@@ -66,7 +66,7 @@ $TCA['tx_sfbanners_domain_model_banner'] = array(
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
-		'type'=> 'type',
+		'type' => 'type',
 		'dividers2tabs' => TRUE,
 		'sortby' => 'sorting',
 		'versioningWS' => 2,
