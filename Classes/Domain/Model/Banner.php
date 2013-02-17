@@ -193,6 +193,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	 * Sets allowScriptAccess
 	 *
 	 * @param string $flashAllowScriptAccess
+	 * @return void
 	 */
 	public function setFlashAllowScriptAccess ($flashAllowScriptAccess) {
 		$this->flashAllowScriptAccess = $flashAllowScriptAccess;
@@ -202,6 +203,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	 * Getter for allowScriptAccess
 	 *
 	 * @return string
+	 * @return void
 	 */
 	public function getFlashAllowScriptAccess () {
 		return $this->flashAllowScriptAccess;
@@ -211,6 +213,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	 * Sets Wmode
 	 *
 	 * @param string $flashWmode
+	 * @return void
 	 */
 	public function setFlashWmode ($flashWmode) {
 		$this->flashWmode = $flashWmode;
@@ -302,7 +305,10 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	}
 
 	/**
+	 * Setter for alttext
+	 *
 	 * @param string $alttext
+	 * @return void
 	 */
 	public function setAlttext ($alttext) {
 		$this->alttext = $alttext;
@@ -310,6 +316,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 
 	/**
 	 * @return string
+	 * @return void
 	 */
 	public function getAlttext () {
 		return $this->alttext;
@@ -317,6 +324,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 
 	/**
 	 * @param int $clicks
+	 * @return void
 	 */
 	public function setClicks ($clicks) {
 		$this->clicks = $clicks;
@@ -331,6 +339,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 
 	/**
 	 * @param int $clicksMax
+	 * @return void
 	 */
 	public function setClicksMax ($clicksMax) {
 		$this->clicksMax = $clicksMax;
@@ -345,6 +354,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 
 	/**
 	 * @param Tx_Extbase_Persistence_ObjectStorage $excludepages
+	 * @return void
 	 */
 	public function setExcludepages ($excludepages) {
 		$this->excludepages = $excludepages;
@@ -359,6 +369,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 
 	/**
 	 * @param string $flash
+	 * @return void
 	 */
 	public function setFlash ($flash) {
 		$this->flash = $flash;
@@ -373,6 +384,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 
 	/**
 	 * @param int $flashHeight
+	 * @return void
 	 */
 	public function setFlashHeight ($flashHeight) {
 		$this->flashHeight = $flashHeight;
@@ -387,6 +399,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 
 	/**
 	 * @param int $flashWidth
+	 * @return void
 	 */
 	public function setFlashWidth ($flashWidth) {
 		$this->flashWidth = $flashWidth;
@@ -401,6 +414,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 
 	/**
 	 * @param string $html
+	 * @return void
 	 */
 	public function setHtml ($html) {
 		$this->html = $html;
@@ -415,6 +429,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 
 	/**
 	 * @param string $image
+	 * @return void
 	 */
 	public function setImage ($image) {
 		$this->image = $image;
@@ -429,6 +444,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 
 	/**
 	 * @param int $impressions
+	 * @return void
 	 */
 	public function setImpressions ($impressions) {
 		$this->impressions = $impressions;
@@ -443,6 +459,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 
 	/**
 	 * @param int $impressionsMax
+	 * @return void
 	 */
 	public function setImpressionsMax ($impressionsMax) {
 		$this->impressionsMax = $impressionsMax;
@@ -457,6 +474,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 
 	/**
 	 * @param string $link
+	 * @return void
 	 */
 	public function setLink ($link) {
 		$this->link = $link;
@@ -471,6 +489,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 
 	/**
 	 * @param int $marginBottom
+	 * @return void
 	 */
 	public function setMarginBottom ($marginBottom) {
 		$this->marginBottom = $marginBottom;
@@ -485,6 +504,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 
 	/**
 	 * @param int $marginLeft
+	 * @return void
 	 */
 	public function setMarginLeft ($marginLeft) {
 		$this->marginLeft = $marginLeft;
@@ -499,6 +519,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 
 	/**
 	 * @param int $marginRight
+	 * @return void
 	 */
 	public function setMarginRight ($marginRight) {
 		$this->marginRight = $marginRight;
@@ -513,6 +534,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 
 	/**
 	 * @param int $marginTop
+	 * @return void
 	 */
 	public function setMarginTop ($marginTop) {
 		$this->marginTop = $marginTop;
@@ -527,6 +549,8 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 
 	/**
 	 * Updates the Impressions by 1
+	 *
+	 * @return void
 	 */
 	public function increaseImpressions() {
 		$this->impressions += 1;
@@ -534,6 +558,8 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 
 	/**
 	 * Updates the Impressions by 1
+	 *
+	 * @return void
 	 */
 	public function increaseClicks() {
 		$this->clicks += 1;
