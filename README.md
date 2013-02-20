@@ -20,5 +20,5 @@ to an amount of maximum impressions and/or clicks. The clicks of Flash-banners a
 
 ## Support and updates
 
-The extension is hosted on Github. Please report feedback, bugs and changerequest directly on Github.
+The extension is hosted on Github. Please report feedback, bugs and changerequest directly at https://github.com/derhansen/sf_banners
 
