@@ -11,8 +11,8 @@
 ########################################################################
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'Banner Management',
-	'description' => 'Bannermanagement Extension based on Extbase and Fluid',
+	'title' => 'Banner-Management',
+	'description' => 'Banner-Management Extension based on Extbase and Fluid',
 	'category' => 'plugin',
 	'author' => 'Torben Hansen',
 	'author_email' => 'derhansen@gmail.com',
@@ -20,19 +20,19 @@ $EM_CONF[$_EXTKEY] = array(
 	'shy' => '',
 	'priority' => '',
 	'module' => '',
-	'state' => 'alpha',
+	'state' => 'beta',
 	'internal' => '',
 	'uploadfolder' => 1,
 	'createDirs' => '',
 	'modify_tables' => '',
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
-	'version' => '0.0.1',
+	'version' => '0.3.0',
 	'constraints' => array(
 		'depends' => array(
 			'extbase' => '1.3',
 			'fluid' => '1.3',
-			'typo3' => '4.5',
+			'typo3' => '4.5.0-6.0.99',
 		),
 		'conflicts' => array(
 		),

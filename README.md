@@ -1,14 +1,14 @@
-TYPO3 extension sf_banner: Bannermanagement
+TYPO3 extension sf_banner: Banner-Management
 ===========================================
 
 ## What is it?
 
-**Bannermanagement** is a banner management extension for TYPO3. It is based of Extbase and Fluid and supports TYPO3
+**Banner-Management** is a banner management extension for TYPO3. It is based of Extbase and Fluid and supports TYPO3
 Version 4.5.x to 6.0.x
 
 ## What does it do?
 
-**Bannermanagement** allows you to manage banners on your TYPO3 website. The following banner types are supported
+**Banner-Management** allows you to manage banners on your TYPO3 website. The following banner types are supported
 
 * Image
 * HTML
