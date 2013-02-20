@@ -4,9 +4,6 @@ plugin.tx_sfbanners {
 		partialRootPath = {$plugin.tx_sfbanners.view.partialRootPath}
 		layoutRootPath = {$plugin.tx_sfbanners.view.layoutRootPath}
 	}
-	persistence {
-		storagePid = {$plugin.tx_sfbanners.persistence.storagePid}
-	}
 	features {
 		# uncomment the following line to enable the new Property Mapper.
 		# rewrittenPropertyMapper = 1
