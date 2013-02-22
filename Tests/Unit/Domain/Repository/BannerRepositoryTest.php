@@ -41,6 +41,8 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 
 	/**
 	 * Setup
+	 *
+	 * @return void
 	 */
 	public function setUp() {
 		$this->testingFramework = new Tx_Phpunit_Framework('tx_sfbanners', array('tx_phpunit'));
@@ -49,6 +51,8 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 
 	/**
 	 * TearDown
+	 *
+	 * @return void
 	 */
 	public function tearDown() {
 		$this->testingFramework->cleanUp();
@@ -154,7 +158,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 
 		$uids = array();
 
-		for ($i=1; $i<=5; $i++) {
+		for ($i = 1; $i <= 5; $i++) {
 			$uid = $this->testingFramework->createRecord(
 				'tx_sfbanners_domain_model_banner', array('pid' => $pid, 'sorting' => $i));
 			$uids[$i] = $uid;
@@ -184,7 +188,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 		$this->assertEquals(5, (int)$this->fixture->findDemanded($demand)->count());
 
 		$matchCount = 0;
-		for ($j=1; $j<=100; $j++) {
+		for ($j = 1; $j <= 100; $j++) {
 			$returnedBanners = $this->fixture->findDemanded($demand);
 			$returnedUids = array();
 			$count = 1;
