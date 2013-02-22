@@ -164,7 +164,7 @@ $TCA['tx_sfbanners_domain_model_banner'] = array(
 				'type' => 'input',
 				'size' => '5',
 				'max' => '4',
-				'range' => Array ('lower'=>0,'upper'=>1000),
+				'range' => Array ('lower' => 0,'upper' => 1000),
 				'eval' => 'int,nospace',
 			)
 		),
@@ -175,7 +175,7 @@ $TCA['tx_sfbanners_domain_model_banner'] = array(
 				'type' => 'input',
 				'size' => '5',
 				'max' => '4',
-				'range' => Array ('lower'=>0,'upper'=>1000),
+				'range' => Array ('lower' => 0,'upper' => 1000),
 				'eval' => 'int,nospace',
 			)
 		),
@@ -186,7 +186,7 @@ $TCA['tx_sfbanners_domain_model_banner'] = array(
 				'type' => 'input',
 				'size' => '5',
 				'max' => '4',
-				'range' => Array ('lower'=>0,'upper'=>1000),
+				'range' => Array ('lower' => 0,'upper' => 1000),
 				'eval' => 'int,nospace',
 			)
 		),
@@ -197,7 +197,7 @@ $TCA['tx_sfbanners_domain_model_banner'] = array(
 				'type' => 'input',
 				'size' => '5',
 				'max' => '4',
-				'range' => Array ('lower'=>0,'upper'=>1000),
+				'range' => Array ('lower' => 0,'upper' => 1000),
 				'eval' => 'int,nospace',
 			)
 		),

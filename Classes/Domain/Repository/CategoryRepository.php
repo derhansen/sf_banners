@@ -25,11 +25,9 @@
  ***************************************************************/
 
 /**
- *
+ * Category repository
  *
  * @package sf_banners
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
  */
 class Tx_SfBanners_Domain_Repository_CategoryRepository extends Tx_Extbase_Persistence_Repository {
 

@@ -26,15 +26,6 @@
 
 /**
  * Test case for class Tx_SfBanners_Domain_Model_Banner.
- *
- * @version $Id$
- * @copyright Copyright belongs to the respective authors
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
- * @package TYPO3
- * @subpackage Banner Management
- *
- * @author Torben Hansen <derhansen@gmail.com>
  */
 class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
 
@@ -65,7 +56,10 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 	}
 
 	/**
+	 * Test if records are returned correctly with given startingpoints
+	 *
 	 * @test
+	 * @return void
 	 */
 	public function findRecordsByStartingPointTest() {
 		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
@@ -90,7 +84,10 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 	}
 
 	/**
+	 * Test if records are found by their catagory
+	 *
 	 * @test
+	 * @return void
 	 */
 	public function findRecordsByCategoryTest() {
 		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
@@ -145,7 +142,10 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 	}
 
 	/**
+	 * Test is records are found by their displaymode
+	 *
 	 * @test
+	 * @return void
 	 */
 	public function findRecordsWithDisplayModeTest() {
 		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
@@ -200,7 +200,10 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 	}
 
 	/**
+	 * Test if records are not returned on pages where they not should be shown
+	 *
 	 * @test
+	 * @return void
 	 */
 	public function findRecordsForSpecialExcludePageUidTest() {
 		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
@@ -252,7 +255,10 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 	}
 
 	/**
+	 * Test if records are not returned, if max impressions reached
+	 *
 	 * @test
+	 * @return void
 	 */
 	public function findRecordsWithMaxImpressionsTest() {
 		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
@@ -275,7 +281,10 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 	}
 
 	/**
+	 * Test if records are not returned, if max clicks reached
+	 *
 	 * @test
+	 * @return void
 	 */
 	public function findRecordsWithMaxClicksTest() {
 		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
@@ -298,7 +307,10 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 	}
 
 	/**
+	 * Test if records are not returned, if max clicks and/or max impressions reached
+	 *
 	 * @test
+	 * @return void
 	 */
 	public function findRecordsWithMaxImpressionsAndMaxClicksTest() {
 		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */

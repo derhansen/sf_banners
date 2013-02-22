@@ -25,11 +25,9 @@
  ***************************************************************/
 
 /**
- *
+ * Category
  *
  * @package sf_banners
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
  */
 class Tx_SfBanners_Domain_Model_Category extends Tx_Extbase_DomainObject_AbstractEntity {
 

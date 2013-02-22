@@ -25,20 +25,15 @@
  ***************************************************************/
 
 /**
- *
- * @version $Id$
- * @copyright Copyright belongs to the respective authors
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
- * @package TYPO3
- * @subpackage Banner Management
- *
- * @author Torben Hansen <derhansen@gmail.com>
+ * Test cases for the flash params viewhelper
  */
 class Tx_SfBanners_ViewHelpers_Flash_ParamsViewHelperTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
 
 	/**
+	 * Test if viewhelper returns empty string, if wmode not set
+	 *
 	 * @test
+	 * @return void
 	 */
 	public function viewHelperReturnsEmptyStringIfBannerAndWmodeNotSet() {
 		$viewHelper = new Tx_SfBanners_ViewHelpers_Flash_ParamsViewHelper();
@@ -60,7 +55,10 @@ class Tx_SfBanners_ViewHelpers_Flash_ParamsViewHelperTest extends Tx_Extbase_Tes
 	}
 
 	/**
+	 * Test if default wmode is returned if not set in banner
+	 *
 	 * @test
+	 * @return void
 	 */
 	public function viewHelperReturnsDefaultValueForWmodeIfNotSetInBanner() {
 		$viewHelper = new Tx_SfBanners_ViewHelpers_Flash_ParamsViewHelper();
@@ -84,7 +82,10 @@ class Tx_SfBanners_ViewHelpers_Flash_ParamsViewHelperTest extends Tx_Extbase_Tes
 	}
 
 	/**
+	 * Test if default allowscriptaccess is returned if not set in banner
+	 *
 	 * @test
+	 * @return void
 	 */
 	public function viewHelperReturnsDefaultValueForAllowScriptAccessIfNotSetInBanner() {
 		$viewHelper = new Tx_SfBanners_ViewHelpers_Flash_ParamsViewHelper();
@@ -108,7 +109,10 @@ class Tx_SfBanners_ViewHelpers_Flash_ParamsViewHelperTest extends Tx_Extbase_Tes
 	}
 
 	/**
+	 * Test if wmode is returned if set in banner
+	 *
 	 * @test
+	 * @return void
 	 */
 	public function viewHelperReturnsValueForWmodeFromBanner() {
 		$viewHelper = new Tx_SfBanners_ViewHelpers_Flash_ParamsViewHelper();
@@ -133,7 +137,10 @@ class Tx_SfBanners_ViewHelpers_Flash_ParamsViewHelperTest extends Tx_Extbase_Tes
 	}
 
 	/**
+	 * Test if allowscriptaccess is returned if set in banner
+	 *
 	 * @test
+	 * @return void
 	 */
 	public function viewHelperReturnsValueForAllowScriptAccessFromBanner() {
 		$viewHelper = new Tx_SfBanners_ViewHelpers_Flash_ParamsViewHelper();

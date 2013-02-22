@@ -25,15 +25,7 @@
  ***************************************************************/
 
 /**
- *
- * @version $Id$
- * @copyright Copyright belongs to the respective authors
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
- * @package TYPO3
- * @subpackage Banner Management
- *
- * @author Torben Hansen <derhansen@gmail.com>
+ * Test cases for the banner service
  */
 class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
 	/**
@@ -81,6 +73,8 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 	}
 
 	/**
+	 * Test if additional css returns an empty string if banner has no margin
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -90,6 +84,8 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 	}
 
 	/**
+	 * Test if additional css returns correct top margin
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -108,6 +104,8 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 	}
 
 	/**
+	 * Test if additional css returns correct right margin
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -126,6 +124,8 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 	}
 
 	/**
+	 * Test if additional css returns correct bottom margin
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -144,6 +144,8 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 	}
 
 	/**
+	 * Test if additional css returns correct left margin
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -162,6 +164,8 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 	}
 
 	/**
+	 * Test if additional css returns correct margins for multiple banners
+	 *
 	 * @test
 	 * @return void
 	 */

@@ -26,15 +26,6 @@
 
 /**
  * Test case for class Tx_SfBanners_Domain_Model_Banner.
- *
- * @version $Id$
- * @copyright Copyright belongs to the respective authors
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
- * @package TYPO3
- * @subpackage Banner Management
- *
- * @author Torben Hansen <derhansen@gmail.com>
  */
 class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
 	/**
@@ -61,6 +52,8 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	}
 
 	/**
+	 * Test if title can be set
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -72,6 +65,8 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 
 
 	/**
+	 * Test if description can be set
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -82,6 +77,8 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	}
 
 	/**
+	 * Test if type can be set
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -92,6 +89,8 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	}
 
 	/**
+	 * Test if image can be set
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -102,6 +101,8 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	}
 
 	/**
+	 * Test if margin can be set
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -112,6 +113,8 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	}
 
 	/**
+	 * Test if margin can be set
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -122,6 +125,8 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	}
 
 	/**
+	 * Test if margin can be set
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -132,6 +137,8 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	}
 
 	/**
+	 * Test if margin can be set
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -142,6 +149,8 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	}
 
 	/**
+	 * Test if alttext can be set
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -152,6 +161,8 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	}
 
 	/**
+	 * Test if link can be set
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -162,6 +173,8 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	}
 
 	/**
+	 * Test if html can be set
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -172,6 +185,8 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	}
 
 	/**
+	 * Test if flash can be set
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -182,6 +197,8 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	}
 
 	/**
+	 * Test if flashwidth can be set
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -192,6 +209,8 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	}
 
 	/**
+	 * Test if flshheight can be set
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -202,6 +221,8 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	}
 
 	/**
+	 * Test if impressionsmax can be set
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -212,6 +233,8 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	}
 
 	/**
+	 * Test if clicksmax can be set
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -222,6 +245,8 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	}
 
 	/**
+	 * Test if impressions can be set
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -232,6 +257,8 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	}
 
 	/**
+	 * Test if clicks can be set
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -242,6 +269,8 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	}
 
 	/**
+	 * Test if allowscriptaccess can be set
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -252,6 +281,8 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	}
 
 	/**
+	 * Test if wmode can be set
+	 *
 	 * @test
 	 * @return void
 	 */

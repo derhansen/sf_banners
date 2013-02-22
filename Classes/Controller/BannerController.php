@@ -28,8 +28,6 @@
  * Banner Controller
  *
  * @package sf_banners
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
  */
 class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller_ActionController {
 
