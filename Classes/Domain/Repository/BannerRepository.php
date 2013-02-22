@@ -43,7 +43,10 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	protected $typo3DbBackend;
 
 	/**
+	 * Inject the typo3dbbackend
+	 *
 	 * @param Tx_Extbase_Persistence_Storage_Typo3DbBackend $typo3DbBackend
+	 * @return void
 	 */
 	public function injectTypo3DbBackend(Tx_Extbase_Persistence_Storage_Typo3DbBackend $typo3DbBackend) {
 		$this->typo3DbBackend = $typo3DbBackend;
@@ -51,6 +54,8 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 
 	/**
 	 * Disable the use of storage records, because the StoragePage can be set in the plugin
+	 *
+	 * @return void
 	 */
 	public function initializeObject() {
 		$this->defaultQuerySettings = $this->objectManager->create('Tx_Extbase_Persistence_Typo3QuerySettings');
@@ -60,8 +65,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	/**
 	 * Returns banners matching the given demand
 	 *
-	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand
-	 *
+	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand The demand
 	 * @return array|Tx_Extbase_Persistence_QueryResultInterface
 	 */
 	public function findDemanded(Tx_SfBanners_Domain_Model_BannerDemand $demand) {
@@ -109,9 +113,8 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	/**
 	 * Returns the result of the query based on the given displaymode set in demand
 	 *
-	 * @param Tx_Extbase_Persistence_QueryInterface $query
-	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand
-	 *
+	 * @param Tx_Extbase_Persistence_QueryInterface $query The query
+	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand The demand
 	 * @return array|Tx_Extbase_Persistence_QueryResultInterface
 	 */
 	private function getResult(Tx_Extbase_Persistence_QueryInterface $query, Tx_SfBanners_Domain_Model_BannerDemand $demand) {
@@ -133,6 +136,8 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 				$row_number = mt_rand(0, max(0, ($rows - 1)));
 				$result = $query->setOffset($row_number)->setLimit(1)->execute();
 				break;
+			default:
+				break;
 		}
 		return $result;
 	}
@@ -140,9 +145,8 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	/**
 	 * Returns a query of banner-uids with respect to max_impressions and max_clicks
 	 *
-	 * @param Tx_Extbase_Persistence_QueryResultInterface $result
-	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand
-	 *
+	 * @param Tx_Extbase_Persistence_QueryResultInterface $result The result
+	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand The demnd
 	 * @return Tx_Extbase_Persistence_QueryInterface
 	 */
 	private function getQueryWithLimitation(Tx_Extbase_Persistence_QueryResultInterface $result,
@@ -175,7 +179,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	/**
 	 * Updates the impressions counter for each banner
 	 *
-	 * @param Tx_Extbase_Persistence_QueryResultInterface $banners
+	 * @param Tx_Extbase_Persistence_QueryResultInterface $banners Banners
 	 * @return void
 	 */
 	public function updateImpressions(Tx_Extbase_Persistence_QueryResultInterface $banners) {

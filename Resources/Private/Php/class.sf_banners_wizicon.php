@@ -26,11 +26,9 @@
  ***************************************************************/
 
 /**
- *
+ * Wizzard icon
  *
  * @package sf_banners
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
  */
 class sfbanners_pi1_wizicon {
 
@@ -53,7 +51,6 @@ class sfbanners_pi1_wizicon {
 		return $wizardItems;
 	}
 }
-
 
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/sf_banners/Resources/Private/Php/class.sf_banners_wizicon.php']) {
 	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/sf_banners/Resources/Private/Php/class.sf_banners_wizicon.php']);
