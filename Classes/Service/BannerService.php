@@ -34,7 +34,7 @@ class Tx_SfBanners_Service_BannerService {
 	/**
 	 * Returns a string with additional CSS for the given banners
 	 *
-	 * @param array $banners
+	 * @param array $banners Banners
 	 * @return string
 	 */
 	public function getAdditionalCss($banners) {
@@ -55,7 +55,7 @@ class Tx_SfBanners_Service_BannerService {
 	/**
 	 * Returns a <LINK> Tag with additional CSS for the banners
 	 *
-	 * @param $banners
+	 * @param array $banners Banners
 	 * @return string
 	 */
 	public function getAdditionalCssLink($banners) {

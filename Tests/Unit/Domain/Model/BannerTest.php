@@ -286,10 +286,10 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	 * @test
 	 * @return void
 	 */
-	public function flashWModeCanBeSetTest() {
-		$flashWMode = 'opaque';
-		$this->fixture->setFlashWmode($flashWMode);
-		$this->assertEquals($flashWMode, $this->fixture->getFlashWmode());
+	public function flashWmodeCanBeSetTest() {
+		$flashWmode = 'opaque';
+		$this->fixture->setFlashWmode($flashWmode);
+		$this->assertEquals($flashWmode, $this->fixture->getFlashWmode());
 	}
 
 }

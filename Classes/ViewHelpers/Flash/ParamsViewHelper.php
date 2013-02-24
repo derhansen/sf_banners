@@ -32,12 +32,12 @@
 class Tx_SfBanners_ViewHelpers_Flash_ParamsViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
 
 	/**
-	 * Returns the requested flash variable depending on the setting in the banner. If no value is
-	 * set in the banner object, the default value from TS setting is returned
+	 * Returns the requested flash variable depending on the setting in the banner.
+	 * If no value is set in the banner object, the default value from TS setting
+	 * is returned
 	 *
 	 * @param Tx_SfBanners_Domain_Model_Banner $banner The banner
 	 * @param string $flashSetting Flash settings
-	 *
 	 * @return string
 	 */
 	public function render($banner = NULL, $flashSetting = '') {

@@ -53,14 +53,15 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	}
 
 	/**
-	 * Disable the use of storage records, because the StoragePage can be set in the plugin
+	 * Disable the use of storage records, because the StoragePage can be set
+	 * in the plugin
 	 *
 	 * @return void
 	 */
 	public function initializeObject() {
 		$this->defaultQuerySettings = $this->objectManager->create('Tx_Extbase_Persistence_Typo3QuerySettings');
 		$this->defaultQuerySettings->setRespectStoragePage(FALSE);
-     }
+	}
 
 	/**
 	 * Returns banners matching the given demand
@@ -69,7 +70,8 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	 * @return array|Tx_Extbase_Persistence_QueryResultInterface
 	 */
 	public function findDemanded(Tx_SfBanners_Domain_Model_BannerDemand $demand) {
-		/* Override the default sorting for random mode. Must be called before createQuery() */
+		/* Override the default sorting for random mode. Must be called before
+			createQuery() */
 		if ($demand->getDisplayMode() == 'allRandom') {
 			$this->defaultOrderings = array();
 		}
@@ -133,8 +135,8 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 				break;
 			case 'random':
 				$rows = $query->execute()->count();
-				$row_number = mt_rand(0, max(0, ($rows - 1)));
-				$result = $query->setOffset($row_number)->setLimit(1)->execute();
+				$rowNumber = mt_rand(0, max(0, ($rows - 1)));
+				$result = $query->setOffset($rowNumber)->setLimit(1)->execute();
 				break;
 			default:
 				break;
@@ -150,7 +152,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	 * @return Tx_Extbase_Persistence_QueryInterface
 	 */
 	private function getQueryWithLimitation(Tx_Extbase_Persistence_QueryResultInterface $result,
-	                                        Tx_SfBanners_Domain_Model_BannerDemand $demand) {
+											Tx_SfBanners_Domain_Model_BannerDemand $demand) {
 		$bannerUids = array();
 		foreach ($result as $banner) {
 			/** @var Tx_SfBanners_Domain_Model_Banner $banner */

@@ -201,7 +201,6 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	 * Getter for allowScriptAccess
 	 *
 	 * @return string
-	 * @return void
 	 */
 	public function getFlashAllowScriptAccess () {
 		return $this->flashAllowScriptAccess;
@@ -316,7 +315,6 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	 * Getter for alttext
 	 *
 	 * @return string
-	 * @return void
 	 */
 	public function getAlttext () {
 		return $this->alttext;
