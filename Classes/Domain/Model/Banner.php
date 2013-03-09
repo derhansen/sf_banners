@@ -57,6 +57,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	/**
 	 * Category
 	 *
+	 * @lazy
 	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_SfBanners_Domain_Model_Category>
 	 */
 	protected $category;
@@ -168,7 +169,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 
 	/**
 	 * Do not display on pages
-	 *
+	 * @lazy
 	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_SfBanners_Domain_Model_Page>
 	 */
 	protected $excludepages;
