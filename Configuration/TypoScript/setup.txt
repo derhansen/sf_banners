@@ -42,6 +42,7 @@ config.tx_extbase.persistence.classes.Tx_SfBanners_Domain_Model_Page {
     }
 }
 
+# Include JQuery if configured
 [globalVar = LIT:1 = {$plugin.tx_sfbanners.settings.includeJquery}]
 page.includeJS {
   bannerJQuery = ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
