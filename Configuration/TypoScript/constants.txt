@@ -13,5 +13,6 @@ plugin.tx_sfbanners {
 	    wmode = opaque
 	    allowScriptAccess = sameDomain
 	  }
+	  includeJquery = 1
 	}
 }
