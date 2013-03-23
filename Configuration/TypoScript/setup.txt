@@ -50,9 +50,9 @@ page.includeJS {
 }
 [end]
 
-# Page object for JSON data
-jsonPage = PAGE
-jsonPage {
+# Page object for AJAX data
+ajaxPage = PAGE
+ajaxPage {
     typeNum = 9001
     config {
         disableAllHeaderCode = 1
