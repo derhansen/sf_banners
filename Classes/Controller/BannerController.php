@@ -90,19 +90,10 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 		$demand->setDisplayMode($this->settings['displayMode']);
 		$demand->setStartingPoint($this->settings['startingPoint']);
 
-		/* Get banners */
-		$banners = $this->bannerRepository->findDemanded($demand);
+		$uniqueid = strtolower(substr(base64_encode(sha1(microtime())),0,9));
 
-		/* Add additional CSS */
-		$additionalCss = $this->bannerService->getAdditionalCssLink($banners);
-		if ($additionalCss != '') {
-			$this->response->addAdditionalHeaderData($additionalCss);
-		}
-
-		/* Update Impressions */
-		$this->bannerRepository->updateImpressions($banners);
-
-		$this->view->assign('banners', $banners);
+		$this->view->assign('uniqueid', $uniqueid);
+		$this->view->assign('demand', $demand);
 	}
 
 	/**
