@@ -105,5 +105,33 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 		$this->view->assign('banners', $banners);
 	}
 
+	/**
+	 * Returns banners for the given parameters
+	 *
+	 * @param string $categories
+	 * @param string $startingPoint
+	 * @param string $displayMode
+	 * @param int $currentPageUid
+	 *
+	 * @return string
+	 */
+	public function getBannersAction($categories = '', $startingPoint = '', $displayMode = 'all', $currentPageUid = 0) {
+		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
+		$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
+		$demand->setCategories($categories);
+		$demand->setStartingPoint($startingPoint);
+		$demand->setDisplayMode($displayMode);
+		$demand->setCurrentPageUid($currentPageUid);
+
+		/* Get banners */
+		$banners = $this->bannerRepository->findDemanded($demand);
+
+		/* Update Impressions */
+		$this->bannerRepository->updateImpressions($banners);
+
+		$this->view->assign('banners', $banners);
+		return $this->view->render();
+	}
+
 }
 ?>

@@ -1,0 +1,15 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+    <f:for each="{banners}" as="banner">
+        <f:if condition="{banner.type} == 0">
+            <f:render partial="Banner/ImageBanner" arguments="{banner: banner}" />
+        </f:if>
+        <f:if condition="{banner.type} == 1">
+            <f:render partial="Banner/HtmlBanner" arguments="{banner: banner}" />
+        </f:if>
+        <f:if condition="{banner.type} == 2">
+            <f:render partial="Banner/FlashBanner" arguments="{banner: banner}" />
+        </f:if>
+    </f:for>
+</f:section>

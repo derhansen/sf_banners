@@ -49,3 +49,17 @@ page.includeJS {
   bannerJQuery.external = 1
 }
 [end]
+
+# Page object for JSON data
+jsonPage = PAGE
+jsonPage {
+    typeNum = 9001
+    config {
+        disableAllHeaderCode = 1
+        additionalHeaders = Content-type:text/html
+        xhtml_cleaning = 0
+        admPanel = 0
+    }
+
+    10 < tt_content.list.20.sfbanners_pi1
+}
