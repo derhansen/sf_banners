@@ -83,17 +83,13 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 	 * @return void
 	 */
 	public function showAction() {
-		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
-		$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
-		$demand->setCurrentPageUid($GLOBALS['TSFE']->id);
-		$demand->setCategories($this->settings['category']);
-		$demand->setDisplayMode($this->settings['displayMode']);
-		$demand->setStartingPoint($this->settings['startingPoint']);
-
 		$uniqueid = strtolower(substr(base64_encode(sha1(microtime())),0,9));
 
+		$this->view->assign('pid', $GLOBALS['TSFE']->id);
+		$this->view->assign('categories', $this->settings['category']);
+		$this->view->assign('startingPoint', $this->settings['startingPoint']);
+		$this->view->assign('displayMode', $this->settings['displayMode']);
 		$this->view->assign('uniqueid', $uniqueid);
-		$this->view->assign('demand', $demand);
 	}
 
 	/**
