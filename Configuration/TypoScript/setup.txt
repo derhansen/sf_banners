@@ -50,6 +50,11 @@ page.includeJS {
 }
 [end]
 
+# Include banner JS
+page.includeJS {
+  bannerJS = EXT:sf_banners/Resources/Public/Js/SfBanners.js
+}
+
 # Page object for AJAX data
 ajaxPage = PAGE
 ajaxPage {
