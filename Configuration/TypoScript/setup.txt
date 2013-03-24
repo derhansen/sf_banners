@@ -14,6 +14,7 @@ plugin.tx_sfbanners {
 	    wmode = {$plugin.tx_sfbanners.settings.defaultFlashVars.wmode}
 	    allowScriptAccess = {$plugin.tx_sfbanners.settings.defaultFlashVars.allowScriptAccess}
 	  }
+	  ajaxPageTypeNum = {$plugin.tx_sfbanners.settings.ajaxPageTypeNum}
 	}
 	widgets {
 	    bannerWidget = USER
@@ -58,7 +59,7 @@ page.includeJS {
 # Page object for AJAX data
 ajaxPage = PAGE
 ajaxPage {
-    typeNum = 9001
+    typeNum = {$plugin.tx_sfbanners.settings.ajaxPageTypeNum}
     config {
         disableAllHeaderCode = 1
         additionalHeaders = Content-type:text/html

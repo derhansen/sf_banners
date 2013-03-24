@@ -14,5 +14,6 @@ plugin.tx_sfbanners {
 	    allowScriptAccess = sameDomain
 	  }
 	  includeJquery = 1
+	  ajaxPageTypeNum = 9001
 	}
 }

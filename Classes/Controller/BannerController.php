@@ -89,6 +89,7 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 		$this->view->assign('categories', $this->settings['category']);
 		$this->view->assign('startingPoint', $this->settings['startingPoint']);
 		$this->view->assign('displayMode', $this->settings['displayMode']);
+		$this->view->assign('typeNum', $this->settings['ajaxPageTypeNum']);
 		$this->view->assign('uniqueid', $uniqueid);
 	}
 
