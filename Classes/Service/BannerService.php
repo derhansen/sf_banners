@@ -59,13 +59,27 @@ class Tx_SfBanners_Service_BannerService {
 	 * @return string
 	 */
 	public function getAdditionalCssLink($banners) {
-		$css = $this->getAdditionalCss($banners);
+		$filename = $this->getAdditionalCssFile($banners);
 		$cssLink = '';
-		if ($css != '') {
-			$tmpFile = TSpagegen::inline2TempFile($css, 'css');
-			$cssLink = '<link rel="stylesheet" type="text/css" href="' . $tmpFile . '" media="all" />';
+		if ($filename != '') {
+			$cssLink = '<link rel="stylesheet" type="text/css" href="' . $filename . '" media="all" />';
 		}
 		return $cssLink;
+	}
+
+	/**
+	 * Returns the filename of the additional CSS for the banners
+	 *
+	 * @param array $banners Banners
+	 * @return string
+	 */
+	public function getAdditionalCssFile($banners) {
+		$css = $this->getAdditionalCss($banners);
+		$filename = '';
+		if ($css != '') {
+			$filename = TSpagegen::inline2TempFile($css, 'css');
+		}
+		return $filename;
 	}
 }
 ?>

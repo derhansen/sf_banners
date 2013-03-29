@@ -185,5 +185,83 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 		$result = $this->bannerService->getAdditionalCss($banners);
 		$this->assertEquals($expected, $result);
 	}
+
+	/**
+	 * Test if no CSS file is returned if no banners given
+	 *
+	 * @test
+	 * @return void
+	 */
+	public function getAdditionalCssFileReturnsEmptyStringIfNoBannersFoundTest() {
+		$pid = 112;
+
+		/* Get banner from Repository */
+		$this->demand->setStartingPoint($pid);
+		$banners = $this->bannerRepository->findDemanded($this->demand);
+
+		$result = $this->bannerService->getAdditionalCssFile($banners);
+		$this->assertEmpty($result);
+	}
+
+	/**
+	 * Test if CSS file is returned
+	 *
+	 * @test
+	 * @return void
+	 */
+	public function getAdditionalCssFileReturnsAFilenameTest() {
+		$pid = 113;
+		$bannerUid1 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+			'margin_left' => 10, 'margin_right' => 10, 'sorting' => 1));
+		$bannerUid2 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+			'margin_top' => 10, 'margin_bottom' => 10, 'sorting' => 2));
+
+		/* Get banner from Repository */
+		$this->demand->setStartingPoint($pid);
+		$banners = $this->bannerRepository->findDemanded($this->demand);
+
+		$expected = '/typo3temp\/stylesheet_.*?\.css/';
+		$result = $this->bannerService->getAdditionalCssFile($banners);
+		$this->assertRegExp($expected, $result);
+	}
+
+	/**
+	 * Test if no CSS link is returned if no banners given
+	 *
+	 * @test
+	 * @return void
+	 */
+	public function getAdditionalCssLinkReturnsEmptyStringIfNoBannersFoundTest() {
+		$pid = 114;
+
+		/* Get banner from Repository */
+		$this->demand->setStartingPoint($pid);
+		$banners = $this->bannerRepository->findDemanded($this->demand);
+
+		$result = $this->bannerService->getAdditionalCssLink($banners);
+		$this->assertEmpty($result);
+	}
+
+	/**
+	 * Test if no CSS link is returned if no banners given
+	 *
+	 * @test
+	 * @return void
+	 */
+	public function getAdditionalCssLinkReturnsLinkTest() {
+		$pid = 115;
+		$bannerUid1 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+			'margin_left' => 10, 'margin_right' => 10, 'sorting' => 1));
+
+		/* Get banner from Repository */
+		$this->demand->setStartingPoint($pid);
+		$banners = $this->bannerRepository->findDemanded($this->demand);
+
+		$result = $this->bannerService->getAdditionalCssLink($banners);
+		$this->assertContains('<link rel="stylesheet" type="text/css" href=', $result);
+		$this->assertContains('typo3temp/stylesheet_', $result);
+		$this->assertContains('.css', $result);
+		$this->assertContains('media="all" />', $result);
+	}
 }
 ?>

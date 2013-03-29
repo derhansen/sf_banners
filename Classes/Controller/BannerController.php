@@ -91,6 +91,12 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 		$this->view->assign('displayMode', $this->settings['displayMode']);
 		$this->view->assign('typeNum', $this->settings['ajaxPageTypeNum']);
 		$this->view->assign('uniqueid', $uniqueid);
+
+		/* Find all banners and add additional CSS */
+		$banners = $this->bannerRepository->findAll();
+		$cssFile = $this->bannerService->getAdditionalCssFile($banners);
+
+		$GLOBALS['TSFE']->getPageRenderer()->addCssFile($cssFile, 'stylesheet', 'all', '', TRUE);
 	}
 
 	/**
