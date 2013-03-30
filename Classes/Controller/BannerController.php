@@ -130,11 +130,10 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 	 * @param string $displayMode
 	 * @param int $currentPageUid
 	 * @param string $hmac
-	 *
 	 * @return string
 	 */
 	public function getBannersAction($categories = '', $startingPoint = '', $displayMode = 'all', $currentPageUid = 0,
-	                                 $hmac = '') {
+									$hmac = '') {
 		$compareString = $currentPageUid . $categories . $startingPoint . $displayMode;
 
 		if ($this->hashService->validateHmac($compareString, $hmac)) {
@@ -152,10 +151,11 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 			$this->bannerRepository->updateImpressions($banners);
 
 			$this->view->assign('banners', $banners);
-			return $this->view->render();
+			$ret = $this->view->render();
 		} else {
-			return Tx_Extbase_Utility_Localization::translate('wrong_hmac', 'SfBanners');
+			$ret = Tx_Extbase_Utility_Localization::translate('wrong_hmac', 'SfBanners');
 		}
+		return $ret;
 	}
 
 }

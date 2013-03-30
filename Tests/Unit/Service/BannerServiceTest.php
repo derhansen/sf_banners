@@ -209,7 +209,7 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 	 * @test
 	 * @return void
 	 */
-	public function getAdditionalCssFileReturnsAFilenameTest() {
+	public function getAdditionalCssFileReturnsFilenameTest() {
 		$pid = 113;
 		$bannerUid1 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
 			'margin_left' => 10, 'margin_right' => 10, 'sorting' => 1));
