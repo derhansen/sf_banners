@@ -117,7 +117,9 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 		$banners = $this->bannerRepository->findAll();
 		$cssFile = $this->bannerService->getAdditionalCssFile($banners);
 
-		$GLOBALS['TSFE']->getPageRenderer()->addCssFile($cssFile, 'stylesheet', 'all', '', TRUE);
+		if ($cssFile != '') {
+			$GLOBALS['TSFE']->getPageRenderer()->addCssFile($cssFile, 'stylesheet', 'all', '', TRUE);
+		}
 	}
 
 	/**
