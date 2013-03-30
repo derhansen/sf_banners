@@ -7,12 +7,15 @@
  * @param {string} categories
  * @param {string} displayMode
  * @param {string} position
+ * @param {string} hmac
  * @constructor
  */
-var BannerPlacement = function (uid, typeNum, startingPoint, categories, displayMode, position) {
+var BannerPlacement = function (uid, typeNum, startingPoint, categories, displayMode, position, hmac) {
     var url = 'index.php?id=' + uid;
     url += '&type=' + typeNum;
     url += '&tx_sfbanners_pi1[action]=getBanners';
+    url += '&tx_sfbanners_pi1[currentPageUid]=' + uid;
+    url += '&tx_sfbanners_pi1[hmac]=' + hmac;
 
     if (typeof startingPoint !== 'undefined' && startingPoint !== '') {
         url += '&tx_sfbanners_pi1[startingPoint]=' + startingPoint;

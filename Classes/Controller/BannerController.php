@@ -46,6 +46,13 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 	protected $bannerRepository;
 
 	/**
+	 * Hash Service
+	 *
+	 * @var Tx_SfBanners_Service_HashServiceHelper
+	 */
+	protected $hashService;
+
+	/**
 	 * injectBannerRepository
 	 *
 	 * @param Tx_SfBanners_Domain_Repository_BannerRepository $bannerRepository
@@ -63,6 +70,16 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 	 */
 	public function injectBannerService(Tx_SfBanners_Service_BannerService $bannerService) {
 		$this->bannerService = $bannerService;
+	}
+
+	/**
+	 * injectHashService
+	 *
+	 * @param Tx_SfBanners_Service_HashServiceHelper $hashService
+	 * @return void
+	 */
+	public function injectHashService(Tx_SfBanners_Service_HashServiceHelper $hashService) {
+		$this->hashService = $hashService;
 	}
 
 	/**
@@ -84,6 +101,9 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 	 */
 	public function showAction() {
 		$uniqueid = strtolower(substr(base64_encode(sha1(microtime())),0,9));
+		$stringToHash = $GLOBALS['TSFE']->id . $this->settings['category'] . $this->settings['startingPoint'] .
+			$this->settings['displayMode'];
+		$hash = $this->hashService->generateHmac($stringToHash);
 
 		$this->view->assign('pid', $GLOBALS['TSFE']->id);
 		$this->view->assign('categories', $this->settings['category']);
@@ -91,6 +111,7 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 		$this->view->assign('displayMode', $this->settings['displayMode']);
 		$this->view->assign('typeNum', $this->settings['ajaxPageTypeNum']);
 		$this->view->assign('uniqueid', $uniqueid);
+		$this->view->assign('hash', $hash);
 
 		/* Find all banners and add additional CSS */
 		$banners = $this->bannerRepository->findAll();
@@ -100,31 +121,39 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 	}
 
 	/**
-	 * Returns banners for the given parameters
+	 * Returns banners for the given parameters if given Hmac validation succeeds
 	 *
 	 * @param string $categories
 	 * @param string $startingPoint
 	 * @param string $displayMode
 	 * @param int $currentPageUid
+	 * @param string $hmac
 	 *
 	 * @return string
 	 */
-	public function getBannersAction($categories = '', $startingPoint = '', $displayMode = 'all', $currentPageUid = 0) {
-		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
-		$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
-		$demand->setCategories($categories);
-		$demand->setStartingPoint($startingPoint);
-		$demand->setDisplayMode($displayMode);
-		$demand->setCurrentPageUid($currentPageUid);
+	public function getBannersAction($categories = '', $startingPoint = '', $displayMode = 'all', $currentPageUid = 0,
+	                                 $hmac = '') {
+		$compareString = $currentPageUid . $categories . $startingPoint . $displayMode;
 
-		/* Get banners */
-		$banners = $this->bannerRepository->findDemanded($demand);
+		if ($this->hashService->validateHmac($compareString, $hmac)) {
+			/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
+			$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
+			$demand->setCategories($categories);
+			$demand->setStartingPoint($startingPoint);
+			$demand->setDisplayMode($displayMode);
+			$demand->setCurrentPageUid($currentPageUid);
 
-		/* Update Impressions */
-		$this->bannerRepository->updateImpressions($banners);
+			/* Get banners */
+			$banners = $this->bannerRepository->findDemanded($demand);
 
-		$this->view->assign('banners', $banners);
-		return $this->view->render();
+			/* Update Impressions */
+			$this->bannerRepository->updateImpressions($banners);
+
+			$this->view->assign('banners', $banners);
+			return $this->view->render();
+		} else {
+			return Tx_Extbase_Utility_Localization::translate('wrong_hmac', 'SfBanners');
+		}
 	}
 
 }
