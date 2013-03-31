@@ -103,7 +103,7 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 		$uniqueid = strtolower(substr(base64_encode(sha1(microtime())),0,9));
 		$stringToHash = $GLOBALS['TSFE']->id . $this->settings['category'] . $this->settings['startingPoint'] .
 			$this->settings['displayMode'];
-		$hash = $this->hashService->generateHmac($stringToHash);
+		$hmac = $this->hashService->generateHmac($stringToHash);
 
 		$this->view->assign('pid', $GLOBALS['TSFE']->id);
 		$this->view->assign('categories', $this->settings['category']);
@@ -111,7 +111,7 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 		$this->view->assign('displayMode', $this->settings['displayMode']);
 		$this->view->assign('typeNum', $this->settings['ajaxPageTypeNum']);
 		$this->view->assign('uniqueid', $uniqueid);
-		$this->view->assign('hash', $hash);
+		$this->view->assign('hmac', $hmac);
 
 		/* Find all banners and add additional CSS */
 		$banners = $this->bannerRepository->findAll();
