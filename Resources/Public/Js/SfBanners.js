@@ -1,5 +1,5 @@
 /**
- * AJAY Banner placement
+ * AJAX Banner placement
  *
  * @param {int} uid
  * @param {int} typeNum
