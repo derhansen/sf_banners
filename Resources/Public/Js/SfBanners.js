@@ -30,6 +30,6 @@ var BannerPlacement = function (uid, typeNum, startingPoint, categories, display
     }
 
     $.get(url, function(data) {
-        $('#' + position).html(data);
+        postscribe('#' + position, data);
     });
 }

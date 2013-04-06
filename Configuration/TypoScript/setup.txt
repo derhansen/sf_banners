@@ -53,6 +53,8 @@ page.includeJS {
 
 # Include banner JS
 page.includeJS {
+  htmlparser = EXT:sf_banners/Resources/Public/Js/HtmlParser.js
+  postscribe = EXT:sf_banners/Resources/Public/Js/Postscribe.js
   bannerJS = EXT:sf_banners/Resources/Public/Js/SfBanners.js
 }
 
