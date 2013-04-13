@@ -12,7 +12,7 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'Banner-Management',
-	'description' => 'Banner-Management Extension based on Extbase and Fluid',
+	'description' => 'Banner-Management Extension based on Extbase and Fluid. Loads banners asynchronously by JQuery.',
 	'category' => 'plugin',
 	'author' => 'Torben Hansen',
 	'author_email' => 'derhansen@gmail.com',
