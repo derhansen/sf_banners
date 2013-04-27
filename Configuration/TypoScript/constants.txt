@@ -13,7 +13,9 @@ plugin.tx_sfbanners {
 	    wmode = opaque
 	    allowScriptAccess = sameDomain
 	  }
+	  # cat=plugin.tx_sfbanners/basic/10; type=boolean; label=Include JQuery (CDN Version)
 	  includeJquery = 1
+	  # cat=plugin.tx_sfbanners/basic/20; type=int; label=Page typeNum, where banners are fetched via AJAX
 	  ajaxPageTypeNum = 9001
 	}
 }
