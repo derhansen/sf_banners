@@ -138,7 +138,7 @@ $TCA['tx_sfbanners_domain_model_banner'] = array(
 				'foreign_table' => 'tx_sfbanners_domain_model_category',
 				'foreign_table_where' => ' AND (tx_sfbanners_domain_model_category.sys_language_uid = 0 OR tx_sfbanners_domain_model_category.l10n_parent = 0) ORDER BY tx_sfbanners_domain_model_category.sorting ASC',
 				'minitems' => 0,
-				'maxitems' => 5,
+				'maxitems' => 30,
 			),
 		),
 		'image' => array(
