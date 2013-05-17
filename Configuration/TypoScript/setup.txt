@@ -15,6 +15,7 @@ plugin.tx_sfbanners {
 	    allowScriptAccess = {$plugin.tx_sfbanners.settings.defaultFlashVars.allowScriptAccess}
 	  }
 	  ajaxPageTypeNum = {$plugin.tx_sfbanners.settings.ajaxPageTypeNum}
+	  clickPageTypeNum = {$plugin.tx_sfbanners.settings.clickPageTypeNum}
 	}
 	widgets {
 	    bannerWidget = USER
@@ -64,6 +65,20 @@ ajaxPage {
     typeNum = {$plugin.tx_sfbanners.settings.ajaxPageTypeNum}
     config {
         disableAllHeaderCode = 1
+        additionalHeaders = Content-type:text/html
+        xhtml_cleaning = 0
+        admPanel = 0
+    }
+
+    10 < tt_content.list.20.sfbanners_pi1
+}
+
+# Page object for Click-Action
+clickPage = PAGE
+clickPage {
+    typeNum = {$plugin.tx_sfbanners.settings.clickPageTypeNum}
+    config {
+        disableAllHeaderCode = 0
         additionalHeaders = Content-type:text/html
         xhtml_cleaning = 0
         admPanel = 0

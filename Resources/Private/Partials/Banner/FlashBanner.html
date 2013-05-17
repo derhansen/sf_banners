@@ -4,7 +4,7 @@
         <object id="flash-banner-{banner.uid}" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="{banner.flashWidth}" height="{banner.flashHeight}">
             <f:if condition="{banner.link}">
                 <f:then>
-                    <param name="movie" value="uploads/tx_sfbanners/{banner.flash}?clickTag={f:uri.action(action: 'click', absolute: 'true', arguments: {banner: banner})}">
+                    <param name="movie" value="uploads/tx_sfbanners/{banner.flash}?clickTag={f:uri.action(action: 'click', pageType: settings.clickPageTypeNum, absolute: 'true', arguments: {banner: banner})}">
                 </f:then>
                 <f:else>
                     <param name="movie" value="uploads/tx_sfbanners/{banner.flash}">
@@ -15,7 +15,7 @@
             <param name="wmode" value="{s:flash.params(banner: '{banner}', flashSetting: 'wmode')}">
             <f:if condition="{banner.link}">
                 <f:then>
-                    <embed src="uploads/tx_sfbanners/{banner.flash}?clickTag={s:format.urlencode(value: '{f:uri.action(action: \'click\', absolute: \'true\', arguments: {banner: banner})}')}"
+                    <embed src="uploads/tx_sfbanners/{banner.flash}?clickTag={s:format.urlencode(value: '{f:uri.action(action: \'click\', absolute: \'true\', pageType: settings.clickPageTypeNum, arguments: {banner: banner})}')}"
                            width="{banner.flashWidth}" height="{banner.flashHeight}" wmode="{s:flash.params(banner: '{banner}', flashSetting: 'wmode')}" swliveconnect="true" quality="autohigh"
                            type="application/x-shockwave-flash" allowscriptaccess="{s:flash.params(banner: '{banner}', flashSetting: 'allowScriptAccess')}">
                 </f:then>

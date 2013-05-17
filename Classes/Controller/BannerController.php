@@ -151,6 +151,7 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 			$this->bannerRepository->updateImpressions($banners);
 
 			$this->view->assign('banners', $banners);
+			$this->view->assign('settings', $this->settings);
 			$ret = $this->view->render();
 		} else {
 			$ret = Tx_Extbase_Utility_Localization::translate('wrong_hmac', 'SfBanners');

@@ -2,7 +2,7 @@
     <div class="banner banner-{banner.uid}">
         <f:if condition="{banner.link}">
             <f:then>
-                <f:link.action action="click" arguments="{banner: banner}" target="{banner.linkTarget}">
+                <f:link.action action="click" arguments="{banner: banner}" target="{banner.linkTarget}" pageType="{settings.clickPageTypeNum}">
                     <f:image src="uploads/tx_sfbanners/{banner.image}" title="{banner.alttext}" alt="{banner.alttext}"/>
                 </f:link.action>
             </f:then>
