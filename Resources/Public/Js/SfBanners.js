@@ -25,7 +25,7 @@ var BannerPlacement = function (uid, typeNum, startingPoint, categories, display
         url += '&tx_sfbanners_pi1[categories]=' + categories;
     }
 
-    if (typeof categories !== 'undefined' && displayMode !== '') {
+    if (typeof displayMode !== 'undefined' && displayMode !== '') {
         url += '&tx_sfbanners_pi1[displayMode]=' + displayMode;
     }
 
