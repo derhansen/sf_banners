@@ -143,9 +143,9 @@ CREATE TABLE tx_sfbanners_domain_model_banner_excludepages_mm (
 );
 
 #
-# TABLE STRUCTURE FOR TABLE 'tx_sfbanners_cache'
+# TABLE STRUCTURE FOR TABLE 'cf_sfbanners_cache'
 #
-CREATE TABLE tx_sfbanners_cache (
+CREATE TABLE cf_sfbanners_cache (
     id int(11) unsigned NOT NULL auto_increment,
     identifier varchar(250) DEFAULT '' NOT NULL,
     expires int(11) unsigned DEFAULT '0' NOT NULL,
@@ -157,9 +157,9 @@ CREATE TABLE tx_sfbanners_cache (
 ) ENGINE=InnoDB;
 
 #
-# TABLE STRUCTURE FOR TABLE 'tx_sfbanners_cache_tags'
+# TABLE STRUCTURE FOR TABLE 'cf_sfbanners_cache_tags'
 #
-CREATE TABLE tx_sfbanners_cache_tags (
+CREATE TABLE cf_sfbanners_cache_tags (
     id int(11) unsigned NOT NULL auto_increment,
     identifier varchar(250) DEFAULT '' NOT NULL,
     tag varchar(250) DEFAULT '' NOT NULL,

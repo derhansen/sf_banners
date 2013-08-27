@@ -34,10 +34,10 @@ if (t3lib_utility_VersionNumber::convertVersionNumberToInteger(TYPO3_version) < 
 		$TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['options'] = array();
 	}
 	if (!isset($TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['options']['cacheTable'])) {
-		$TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['options']['cacheTable'] = 'tx_sfbanners_cache';
+		$TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['options']['cacheTable'] = 'cf_sfbanners_cache';
 	}
 	if (!isset($TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['options']['tagsTable'])) {
-		$TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['options']['tagsTable'] = 'tx_sfbanners_cache_tags';
+		$TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['options']['tagsTable'] = 'cf_sfbanners_cache_tags';
 	}
 }
 

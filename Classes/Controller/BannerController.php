@@ -189,7 +189,8 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 				$ident .= $banner->getUid();
 			}
 
-			if (FALSE === ($ret = $GLOBALS['typo3CacheManager']->getCache('sfbanners_cache')->get(sha1($ident)))) {
+			$ret = $GLOBALS['typo3CacheManager']->getCache('sfbanners_cache')->get(sha1($ident));
+			if ($ret === FALSE || $ret === NULL) {
 				$this->view->assign('banners', $banners);
 				$this->view->assign('settings', $this->settings);
 				$ret = $this->view->render();
