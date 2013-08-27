@@ -83,6 +83,39 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 	}
 
 	/**
+	 * Instance of Caching Framework
+	 *
+	 * @var t3lib_cache_frontend_AbstractFrontend
+	 */
+	protected $cacheInstance;
+
+	/**
+	 * Constructor
+	 */
+	public function __construct() {
+		$this->initializeCache();
+	}
+
+	/**
+	 * Initialize cache instance to be ready to use
+	 *
+	 * @return void
+	 */
+	protected function initializeCache() {
+		t3lib_cache::initializeCachingFramework();
+		try {
+			$this->cacheInstance = $GLOBALS['typo3CacheManager']->getCache('sfbanners_cache');
+		} catch (t3lib_cache_exception_NoSuchCache $e) {
+			$this->cacheInstance = $GLOBALS['typo3CacheFactory']->create(
+				'sfbanners_cache',
+				$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['frontend'],
+				$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['backend'],
+				$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['options']
+			);
+		}
+	}
+
+	/**
 	 * Click Action for a banner
 	 *
 	 * @param Tx_SfBanners_Domain_Model_Banner $banner
@@ -150,9 +183,21 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 			/* Update Impressions */
 			$this->bannerRepository->updateImpressions($banners);
 
-			$this->view->assign('banners', $banners);
-			$this->view->assign('settings', $this->settings);
-			$ret = $this->view->render();
+			/* Collect identifier based on uids for all banners */
+			$ident = $GLOBALS['TSFE']->id;
+			foreach ($banners as $banner) {
+				$ident .= $banner->getUid();
+			}
+
+			if (FALSE === ($ret = $GLOBALS['typo3CacheManager']->getCache('sfbanners_cache')->get(sha1($ident)))) {
+				$this->view->assign('banners', $banners);
+				$this->view->assign('settings', $this->settings);
+				$ret = $this->view->render();
+
+				// Save value in cache
+				$GLOBALS['typo3CacheManager']->getCache('sfbanners_cache')->set(sha1($ident), $ret, array('sf_banners'),
+					$this->settings['cacheLifetime']);
+			}
 		} else {
 			$ret = Tx_Extbase_Utility_Localization::translate('wrong_hmac', 'SfBanners');
 		}

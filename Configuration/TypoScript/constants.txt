@@ -19,5 +19,7 @@ plugin.tx_sfbanners {
 	  ajaxPageTypeNum = 9001
 	  # cat=plugin.tx_sfbanners/basic/20; type=int; label=Page typeNum for click Action
 	  clickPageTypeNum = 9002
+	  # cat=plugin.tx_sfbanners/basic/20; type=int; label=Cache lifetime
+	  cacheLifetime = 3600
 	}
 }

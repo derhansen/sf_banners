@@ -16,6 +16,7 @@ plugin.tx_sfbanners {
 	  }
 	  ajaxPageTypeNum = {$plugin.tx_sfbanners.settings.ajaxPageTypeNum}
 	  clickPageTypeNum = {$plugin.tx_sfbanners.settings.clickPageTypeNum}
+	  cacheLifetime = {$plugin.tx_sfbanners.settings.cacheLifetime}
 	}
 	widgets {
 	    bannerWidget = USER
