@@ -28,13 +28,15 @@ if (TYPO3_MODE == 'BE') {
 		t3lib_extMgm::extPath($_EXTKEY) . 'Resources/Private/Php/class.' . $_EXTKEY . '_wizicon.php';
 
 	/* register the cache in BE so it will be cleared with "clear all caches" */
-	t3lib_cache::initializeCachingFramework();
-	$GLOBALS['typo3CacheFactory']->create(
-		'sfbanners_cache',
-		$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['frontend'],
-		$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['backend'],
-		$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['options']
-	);
+	if (t3lib_utility_VersionNumber::convertVersionNumberToInteger(TYPO3_version) < '4006000') {
+		t3lib_cache::initializeCachingFramework();
+		$GLOBALS['typo3CacheFactory']->create(
+			'sfbanners_cache',
+			$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['frontend'],
+			$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['backend'],
+			$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['options']
+		);
+	}
 }
 
 t3lib_extMgm::addLLrefForTCAdescr('tx_sfbanners_domain_model_category', 'EXT:sf_banners/Resources/Private/Language/locallang_csh_tx_sfbanners_domain_model_category.xml');
