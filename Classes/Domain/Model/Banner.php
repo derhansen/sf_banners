@@ -175,6 +175,12 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	protected $excludepages;
 
 	/**
+	 * Recursively use excludepages
+	 * @var bool
+	 */
+	protected $recursive;
+
+	/**
 	 * AllowScriptAccess for flash banners
 	 *
 	 * @var string
@@ -604,6 +610,25 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	 */
 	public function getMarginTop () {
 		return $this->marginTop;
+	}
+
+	/**
+	 * Sets the recursive flag
+	 *
+	 * @param boolean $recursive
+	 * @return void
+	 */
+	public function setRecursive ($recursive) {
+		$this->recursive = $recursive;
+	}
+
+	/**
+	 * Returns the recursive flag
+	 *
+	 * @return boolean
+	 */
+	public function getRecursive () {
+		return $this->recursive;
 	}
 
 	/**

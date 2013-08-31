@@ -85,10 +85,11 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 			$constraints[]  = $query->in('pid', $pidList);
 		}
 
+		/* Delete me
 		if ($demand->getCurrentPageUid()) {
 			$excludeConstraints = $query->logicalNot($query->contains('excludepages', $demand->getCurrentPageUid()));
 			$constraints[]  = $excludeConstraints;
-		}
+		} */
 
 		if ($demand->getCategories() != 0) {
 			$categoryConstraints = array();
@@ -148,13 +149,14 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	 * Returns a query of banner-uids with respect to max_impressions and max_clicks
 	 *
 	 * @param Tx_Extbase_Persistence_QueryResultInterface $result The result
-	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand The demnd
+	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand The demand
 	 * @return Tx_Extbase_Persistence_QueryInterface
 	 */
 	private function getQueryWithLimitation(Tx_Extbase_Persistence_QueryResultInterface $result,
 											Tx_SfBanners_Domain_Model_BannerDemand $demand) {
+		$banners = $this->getExcludePageBanners($result, $demand);
 		$bannerUids = array();
-		foreach ($result as $banner) {
+		foreach ($banners as $banner) {
 			/** @var Tx_SfBanners_Domain_Model_Banner $banner */
 			if ($banner->getImpressionsMax() > 0 || $banner->getClicksMax() > 0) {
 				if (($banner->getImpressionsMax() > 0 && $banner->getClicksMax() > 0)) {
@@ -176,6 +178,37 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 		$query = $this->createQuery();
 		$query->matching($query->logicalOr($query->in('uid', $bannerUids)));
 		return $query;
+	}
+
+	/**
+	 * Returns all banners in respect to excludepages (recursively if set in banner)
+	 *
+	 * @param Tx_Extbase_Persistence_QueryResultInterface $result The result
+	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand The demand
+	 * @return array
+	 */
+	private function getExcludePageBanners(Tx_Extbase_Persistence_QueryResultInterface $result,
+											Tx_SfBanners_Domain_Model_BannerDemand $demand) {
+		/** @var t3lib_queryGenerator $queryGenerator */
+		$queryGenerator = $this->objectManager->get('t3lib_queryGenerator');
+
+		$banners = array();
+		/** @var Tx_SfBanners_Domain_Model_Banner $banner */
+		foreach ($result as $banner) {
+			$excludePages = array();
+			foreach ($banner->getExcludepages() as $excludePage) {
+				if ($banner->getRecursive()) {
+					$pidList = $queryGenerator->getTreeList($excludePage->getUid(), 255, 0, 1);
+					$excludePages = array_merge($excludePages, explode(',', $pidList));
+				} else {
+					$excludePages[] = $excludePage->getUid();
+				}
+			}
+			if (!in_array($demand->getCurrentPageUid(), $excludePages)) {
+				$banners[] = $banner;
+			}
+		}
+		return $banners;
 	}
 
 	/**

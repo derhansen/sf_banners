@@ -292,5 +292,16 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 		$this->assertEquals($flashWmode, $this->fixture->getFlashWmode());
 	}
 
+	/**
+	 * Test if recursive flag can be set
+	 *
+	 * @test
+	 * @return void
+	 */
+	public function recursiveCanBeSet() {
+		$this->fixture->setRecursive(TRUE);
+		$this->assertTrue($this->fixture->getRecursive());
+	}
+
 }
 ?>

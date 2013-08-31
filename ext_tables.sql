@@ -73,6 +73,7 @@ CREATE TABLE tx_sfbanners_domain_model_banner (
 	impressions int(11) DEFAULT '0' NOT NULL,
 	clicks int(11) DEFAULT '0' NOT NULL,
 	excludepages int(11) DEFAULT '0' NOT NULL,
+	recursive tinyint(4) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

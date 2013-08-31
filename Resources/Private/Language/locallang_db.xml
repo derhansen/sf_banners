@@ -38,6 +38,7 @@
             <label index="tx_sfbanners_domain_model_banner.clicks">Clicks</label>
             <label index="tx_sfbanners_domain_model_banner.pages">Pages</label>
             <label index="tx_sfbanners_domain_model_banner.excludepages">Exclude pages</label>
+            <label index="tx_sfbanners_domain_model_banner.excludepages">Expand exclude pages recursive</label>
 
             <label index="tx_sfbanners_domain_model_banner.tabs.image">Image</label>
             <label index="tx_sfbanners_domain_model_banner.tabs.flash">Flash</label>
@@ -89,6 +90,7 @@
             <label index="tx_sfbanners_domain_model_banner.clicks">Klicks</label>
             <label index="tx_sfbanners_domain_model_banner.pages">Seiten</label>
             <label index="tx_sfbanners_domain_model_banner.excludepages">Ausschließende Seiten</label>
+            <label index="tx_sfbanners_domain_model_banner.recursive">Ausschließende Seiten rekursiv auflösen</label>
 
             <label index="tx_sfbanners_domain_model_banner.tabs.image">Bild</label>
             <label index="tx_sfbanners_domain_model_banner.tabs.flash">Flash</label>

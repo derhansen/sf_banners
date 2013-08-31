@@ -259,6 +259,63 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 	}
 
 	/**
+	 * Test if records are not returned on pages recursively where they not should be shown
+	 *
+	 * @test
+	 * @return void
+	 */
+	public function findRecordsForSpecialExcludeRecursivePageUidTest() {
+		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
+		$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
+		$pid = 96;
+
+		/* Create some pages */
+		$pid1 = $this->testingFramework->createFrontEndPage(0, array('title' => 'Testpage7'));
+		$pid2 = $this->testingFramework->createFrontEndPage($pid1 ,array('title' => 'Testpage8'));
+		$pid3 = $this->testingFramework->createFrontEndPage($pid2 ,array('title' => 'Testpage9'));
+		$pid4 = $this->testingFramework->createFrontEndPage(0 ,array('title' => 'Testpage10'));
+
+		/* Create some banners with recursive option */
+		$banner1 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner',
+			array('pid' => $pid, 'recursive' => 1));
+		$banner2 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner',
+			array('pid' => $pid, 'recursive' => 1));
+		$banner3 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner',
+			array('pid' => $pid, 'recursive' => 1));
+
+		/* Create relations */
+		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
+			$banner1, $pid1, 'excludepages');
+		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
+			$banner1, $pid4, 'excludepages');
+
+		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
+			$banner2, $pid2, 'excludepages');
+
+		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
+			$banner3, $pid3, 'excludepages');
+
+		/* Set starting point */
+		$demand->setStartingPoint($pid);
+
+		/* All banners, which not should be shown on the page with $pid1 */
+		$demand->setCurrentPageUid($pid1);
+		$this->assertEquals(2, (int)$this->fixture->findDemanded($demand)->count());
+
+		/* All banners, which not should be shown on page with $pid2 */
+		$demand->setCurrentPageUid($pid2);
+		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());
+
+		/* All banners, which not should be shown on page with $pid3 */
+		$demand->setCurrentPageUid($pid3);
+		$this->assertEquals(0, (int)$this->fixture->findDemanded($demand)->count());
+
+		/* All banners, which not should be shown on page with $pid4 */
+		$demand->setCurrentPageUid($pid4);
+		$this->assertEquals(2, (int)$this->fixture->findDemanded($demand)->count());
+	}
+
+	/**
 	 * Test if records are not returned, if max impressions reached
 	 *
 	 * @test

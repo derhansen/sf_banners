@@ -6,7 +6,7 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_sfbanners_domain_model_banner'] = array(
 	'ctrl' => $TCA['tx_sfbanners_domain_model_banner']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, type, category, image, margin_top, margin_right, margin_bottom, margin_left, alttext, link, html, flash, flash_width, flash_height, flash_wmode, flash_allow_script_access, impressions_max, clicks_max, impressions, clicks, excludepages',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, type, category, image, margin_top, margin_right, margin_bottom, margin_left, alttext, link, html, flash, flash_width, flash_height, flash_wmode, flash_allow_script_access, impressions_max, clicks_max, impressions, clicks, excludepages, recursive',
 	),
 	'columns' => array(
 		'sys_language_uid' => array(
@@ -340,12 +340,19 @@ $TCA['tx_sfbanners_domain_model_banner'] = array(
 				'foreign_table' => 'pages',
 			)
 		),
+		'recursive' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.recursive',
+			'config' => array(
+				'type' => 'check',
+			),
+		),
 	),
 	'types' => array(
 		'0' => array(
 			'showitem' => 'l10n_parent,l10n_diffsource,title;;paletteCore;;1-1-1, description,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.image,image;;paletteMargins;;1-1-1,alttext,link,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.display, category, excludepages,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.display, category, excludepages, recursive,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.visibility, hidden;;paletteVisibility;;1-1-1,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.limitations, impressions_max, clicks_max,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.statistics, impressions, clicks,
@@ -353,7 +360,7 @@ $TCA['tx_sfbanners_domain_model_banner'] = array(
 		'1' => array(
 			'showitem' => 'l10n_parent,l10n_diffsource,title;;paletteCore;;1-1-1, description,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.html,html;;paletteMargins;;1-1-1,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.display, category, excludepages,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.display, category, excludepages, recursive,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.visibility, hidden;;paletteVisibility;;1-1-1,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.limitations, impressions_max, clicks_max,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.statistics, impressions, clicks,
@@ -361,7 +368,7 @@ $TCA['tx_sfbanners_domain_model_banner'] = array(
 		'2' => array(
 			'showitem' => 'l10n_parent,l10n_diffsource,title;;paletteCore;;1-1-1, description,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.flash,flash;;paletteMargins;;1-1-1,flash_width,flash_height, flash_wmode, flash_allow_script_access, link,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.display, category, excludepages,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.display, category, excludepages, recursive,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.visibility, hidden;;paletteVisibility;;1-1-1,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.limitations, impressions_max, clicks_max,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.statistics, impressions, clicks,
