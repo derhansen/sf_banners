@@ -85,12 +85,6 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 			$constraints[]  = $query->in('pid', $pidList);
 		}
 
-		/* Delete me
-		if ($demand->getCurrentPageUid()) {
-			$excludeConstraints = $query->logicalNot($query->contains('excludepages', $demand->getCurrentPageUid()));
-			$constraints[]  = $excludeConstraints;
-		} */
-
 		if ($demand->getCategories() != 0) {
 			$categoryConstraints = array();
 			$categories = t3lib_div::intExplode(',', $demand->getCategories(), TRUE);
