@@ -43,5 +43,8 @@ before_script:
   - if [[ "$DB" == "mysql" && -f  build-environment/dbimport/cli_users.sql ]]; then mysql -uroot typo3_test < build-environment/dbimport/cli_users.sql; fi
   - if [[ "$DB" == "mysql" && -f  build-environment/dbimport/sf_banners.sql ]]; then mysql -uroot typo3_test < build-environment/dbimport/sf_banners.sql; fi
 
+# Import tables for phpunit testing framework
+  - if [[ "$DB" == "mysql" && -f  typo3conf/ext/phpunit/ext_tables.sql ]]; then mysql -uroot typo3_test < typo3conf/ext/phpunit/ext_tables.sql; fi
+
 script:
   - php $PWD/typo3/cli_dispatch.phpsh phpunit -c typo3conf/ext/sf_banners/Tests/Build/phpunit.xml
