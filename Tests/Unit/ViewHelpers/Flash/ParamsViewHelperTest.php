@@ -161,7 +161,7 @@ class Tx_SfBanners_ViewHelpers_Flash_ParamsViewHelperTest extends Tx_Extbase_Tes
 		$banner->setFlashAllowScriptAccess('someValue');
 
 		$actualResult = $viewHelper->render($banner, 'allowScriptAccess');
-		$this->assertEquals('someValue1', $actualResult);
+		$this->assertEquals('someValue', $actualResult);
 	}
 }
 ?>
