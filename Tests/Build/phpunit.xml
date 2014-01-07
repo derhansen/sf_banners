@@ -13,8 +13,8 @@
          verbose="false">
 
     <testsuites>
-        <testsuite name="EXT:sf_banners">
-            <directory>typo3conf/ext/sf_banners/Tests</directory>
+        <testsuite name="EXT:sf_banners tests">
+            <directory>../Unit/</directory>
         </testsuite>
     </testsuites>
 </phpunit>
