@@ -35,3 +35,4 @@ The automatic inclusion of JQuery can be disabled in TypoScript
 
 The extension is hosted on Github. Please report feedback, bugs and changerequest directly at https://github.com/derhansen/sf_banners
 
+[![Build Status](https://travis-ci.org/derhansen/sf_banners.png)](https://travis-ci.org/derhansen/sf_banners)
