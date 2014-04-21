@@ -95,14 +95,16 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 				$constraints[] = $query->logicalOr($categoryConstraints);
 			}
 		}
-
 		$query->matching($query->logicalAnd($constraints));
 
 		/* Get banners without respect to limitations */
 		$unfilteredResult = $query->execute();
-		$finalQuery = $this->getQueryWithLimitation($unfilteredResult, $demand);
-
-		$result = $this->getResult($finalQuery, $demand);
+		if ($unfilteredResult->count() > 0) {
+			$finalQuery = $this->getQueryWithLimitation($unfilteredResult, $demand);
+			$result = $this->getResult($finalQuery, $demand);
+		} else {
+			$result = $unfilteredResult;
+		}
 		return $result;
 	}
 
@@ -110,23 +112,20 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	/**
 	 * Returns the result of the query based on the given displaymode set in demand
 	 *
-	 * @param Tx_Extbase_Persistence_QueryInterface $query The query
+	 * @param \TYPO3\CMS\Extbase\Persistence\QueryInterface $query The query
 	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand The demand
 	 * @return array|Tx_Extbase_Persistence_QueryResultInterface
 	 */
-	private function getResult(Tx_Extbase_Persistence_QueryInterface $query, Tx_SfBanners_Domain_Model_BannerDemand $demand) {
+	private function getResult(\TYPO3\CMS\Extbase\Persistence\QueryInterface $query, Tx_SfBanners_Domain_Model_BannerDemand $demand) {
 		$result = array();
+
 		switch ($demand->getDisplayMode()) {
 			case 'all':
 				$result = $query->execute();
 				break;
 			case 'allRandom':
-				$parameters = array();
-				$statementParts = $this->typo3DbBackend->parseQuery($query, $parameters);
-				$statementParts['orderings'][] = 'RAND()';
-				$statement = $this->typo3DbBackend->buildQuery($statementParts, $parameters);
-				$query->statement($statement, $parameters);
-				$result = $query->execute();
+				$result = $this->objectManager->get('Tx_SfBanners_Persistence_RandomQueryResult', $query);
+
 				break;
 			case 'random':
 				$rows = $query->execute()->count();
@@ -170,7 +169,12 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 		}
 
 		$query = $this->createQuery();
-		$query->matching($query->logicalOr($query->in('uid', $bannerUids)));
+		if (count($bannerUids) > 0) {
+			$query->matching($query->logicalOr($query->in('uid', $bannerUids)));
+		} else {
+			/* Query should not match any record */
+			$query->matching($query->equals('uid', 0));
+		}
 		return $query;
 	}
 

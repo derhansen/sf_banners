@@ -34,6 +34,11 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 	protected $testingFramework;
 
 	/**
+	 * @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface The object manager
+	 */
+	protected $objectManager;
+
+	/**
 	 * @var Tx_SfBanners_Domain_Repository_BannerRepository
 	 */
 	protected $bannerRepository;
@@ -54,6 +59,8 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 	 * @return void
 	 */
 	public function setUp() {
+		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+		$this->objectManager = clone $objectManager;
 		$this->bannerService = new Tx_SfBanners_Service_BannerService();
 		$this->testingFramework = new Tx_Phpunit_Framework('tx_sfbanners', array('tx_phpunit'));
 		$this->bannerRepository = $this->objectManager->get('Tx_SfBanners_Domain_Repository_BannerRepository');

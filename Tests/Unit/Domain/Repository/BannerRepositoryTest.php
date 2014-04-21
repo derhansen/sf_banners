@@ -35,6 +35,11 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 	protected $testingFramework;
 
 	/**
+	 * @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface The object manager
+	 */
+	protected $objectManager;
+
+	/**
 	 * @var Tx_SfBanners_Domain_Repository_BannerRepository
 	 */
 	protected $fixture;
@@ -45,6 +50,8 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 	 * @return void
 	 */
 	public function setUp() {
+		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+		$this->objectManager = clone $objectManager;
 		$this->testingFramework = new Tx_Phpunit_Framework('tx_sfbanners', array('tx_phpunit'));
 		$this->fixture = $this->objectManager->get('Tx_SfBanners_Domain_Repository_BannerRepository');
 	}
@@ -96,7 +103,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 	public function findRecordsByCategoryTest() {
 		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
 		$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
-		$pid = 0;
+		$pid = 10;
 
 		$category1 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_category', array('pid' => $pid));
 		$category2 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_category', array('pid' => $pid));
@@ -127,6 +134,9 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 			$banner4, $category2, 'category');
 		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
 			$banner4, $category3, 'category');
+
+		/* Set starting point */
+		$demand->setStartingPoint($pid);
 
 		/* Simple category test */
 		$demand->setCategories($category1);
@@ -179,6 +189,9 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 		}
 		$this->assertSame($uids, $returnedUids);
 
+		/* Set starting point */
+		$demand->setStartingPoint($pid);
+
 		/* Random one banner */
 		$demand->setDisplayMode('random');
 		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());
@@ -187,6 +200,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 		$demand->setDisplayMode('allRandom');
 		$this->assertEquals(5, (int)$this->fixture->findDemanded($demand)->count());
 
+		/* Find 100 times with demand, if returned UIDs are always the same, then they are not returned randomly */
 		$matchCount = 0;
 		for ($j = 1; $j <= 100; $j++) {
 			$returnedBanners = $this->fixture->findDemanded($demand);
