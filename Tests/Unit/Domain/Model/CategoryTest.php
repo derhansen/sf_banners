@@ -75,4 +75,3 @@ class Tx_SfBanners_Domain_Model_CategoryTest extends Tx_Extbase_Tests_Unit_BaseT
 		$this->assertEquals($parent, $this->fixture->getParent());
 	}
 }
-?>

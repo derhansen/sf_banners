@@ -97,5 +97,3 @@ $TCA['tx_sfbanners_domain_model_banner'] = array(
 		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_sfbanners_domain_model_banner.gif'
 	),
 );
-
-?>

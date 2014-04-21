@@ -32,4 +32,3 @@
 class Tx_SfBanners_Domain_Model_Page extends Tx_Extbase_DomainObject_AbstractEntity {
 
 }
-?>

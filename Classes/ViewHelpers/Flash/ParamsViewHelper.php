@@ -64,4 +64,3 @@ class Tx_SfBanners_ViewHelpers_Flash_ParamsViewHelper extends Tx_Fluid_Core_View
 		return $retVal;
 	}
 }
-?>

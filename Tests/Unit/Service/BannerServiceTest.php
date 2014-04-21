@@ -271,4 +271,3 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 		$this->assertContains('media="all" />', $result);
 	}
 }
-?>

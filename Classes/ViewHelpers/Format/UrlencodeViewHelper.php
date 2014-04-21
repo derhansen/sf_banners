@@ -77,4 +77,3 @@ class Tx_SfBanners_ViewHelpers_Format_UrlencodeViewHelper extends Tx_Fluid_Core_
 	}
 
 }
-?>

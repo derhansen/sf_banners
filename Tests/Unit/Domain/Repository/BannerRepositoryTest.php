@@ -412,4 +412,3 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());
 	}
 }
-?>

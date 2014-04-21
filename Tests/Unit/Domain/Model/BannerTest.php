@@ -304,4 +304,3 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	}
 
 }
-?>

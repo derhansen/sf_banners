@@ -80,4 +80,3 @@ class Tx_SfBanners_Service_HashServiceHelper {
 	}
 
 }
-?>

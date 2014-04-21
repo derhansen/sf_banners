@@ -136,4 +136,3 @@ class Tx_SfBanners_Domain_Model_BannerDemand extends Tx_Extbase_DomainObject_Abs
 	}
 
 }
-?>

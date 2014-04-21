@@ -206,4 +206,3 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 	}
 
 }
-?>

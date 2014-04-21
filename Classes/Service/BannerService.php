@@ -82,4 +82,3 @@ class Tx_SfBanners_Service_BannerService {
 		return $filename;
 	}
 }
-?>

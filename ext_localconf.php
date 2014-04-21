@@ -40,5 +40,3 @@ if (t3lib_utility_VersionNumber::convertVersionNumberToInteger(TYPO3_version) < 
 		$TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['options']['tagsTable'] = 'cf_sfbanners_cache_tags';
 	}
 }
-
-?>

@@ -164,4 +164,3 @@ class Tx_SfBanners_ViewHelpers_Flash_ParamsViewHelperTest extends Tx_Extbase_Tes
 		$this->assertEquals('someValue', $actualResult);
 	}
 }
-?>

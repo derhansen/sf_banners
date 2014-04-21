@@ -47,4 +47,3 @@ class Tx_SfBanners_Persistence_RandomQueryResult extends QueryResult {
 	}
 }
 
-?>

@@ -109,4 +109,3 @@ class Tx_SfBanners_Domain_Model_BannerDemandTest extends Tx_Extbase_Tests_Unit_B
 		$this->assertEquals($currentPageUid, $this->fixture->getCurrentPageUid());
 	}
 }
-?>

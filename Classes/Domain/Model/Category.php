@@ -85,4 +85,3 @@ class Tx_SfBanners_Domain_Model_Category extends Tx_Extbase_DomainObject_Abstrac
 	}
 
 }
-?>

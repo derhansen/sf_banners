@@ -223,4 +223,3 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 		}
 	}
 }
-?>

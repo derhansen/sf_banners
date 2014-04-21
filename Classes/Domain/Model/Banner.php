@@ -673,4 +673,3 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 		return $ret;
 	}
 }
-?>
