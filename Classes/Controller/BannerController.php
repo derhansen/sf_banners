@@ -54,6 +54,7 @@ class BannerController extends ActionController {
 	 * Hash Service
 	 *
 	 * @var \TYPO3\CMS\Extbase\Security\Cryptography\HashService
+	 * @inject
 	 */
 	protected $hashService;
 
