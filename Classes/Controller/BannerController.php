@@ -53,7 +53,7 @@ class BannerController extends ActionController {
 	/**
 	 * Hash Service
 	 *
-	 * @var \DERHANSEN\SfBanners\Service\HashServiceHelper
+	 * @var \TYPO3\CMS\Extbase\Security\Cryptography\HashService
 	 */
 	protected $hashService;
 
@@ -77,17 +77,6 @@ class BannerController extends ActionController {
 	 */
 	public function injectBannerService(\DERHANSEN\SfBanners\Service\BannerService $bannerService) {
 		$this->bannerService = $bannerService;
-	}
-
-	/**
-	 * injectHashService
-	 *
-	 * @param \DERHANSEN\SfBanners\Service\HashServiceHelper $hashService
-	 * @todo Remove and use inject
-	 * @return void
-	 */
-	public function injectHashService(\DERHANSEN\SfBanners\Service\HashServiceHelper $hashService) {
-		$this->hashService = $hashService;
 	}
 
 	/**
