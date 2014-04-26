@@ -15,7 +15,7 @@
             <param name="wmode" value="{s:flash.params(banner: '{banner}', flashSetting: 'wmode')}">
             <f:if condition="{banner.link}">
                 <f:then>
-                    <embed src="uploads/tx_sfbanners/{banner.flash}?clickTag={s:format.urlencode(value: '{f:uri.action(action: \'click\', absolute: \'true\', pageType: settings.clickPageTypeNum, arguments: {banner: banner})}')}"
+                    <embed src="uploads/tx_sfbanners/{banner.flash}?clickTag={f:format.urlencode(value: '{f:uri.action(action: \'click\', absolute: \'true\', pageType: settings.clickPageTypeNum, arguments: {banner: banner})}')}"
                            width="{banner.flashWidth}" height="{banner.flashHeight}" wmode="{s:flash.params(banner: '{banner}', flashSetting: 'wmode')}" swliveconnect="true" quality="autohigh"
                            type="application/x-shockwave-flash" allowscriptaccess="{s:flash.params(banner: '{banner}', flashSetting: 'allowScriptAccess')}">
                 </f:then>
