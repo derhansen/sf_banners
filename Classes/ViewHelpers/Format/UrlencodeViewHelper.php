@@ -1,5 +1,5 @@
 <?php
-
+namespace DERHANSEN\SfBanners\ViewHelpers\Format;
 /*                                                                        *
  * This script belongs to the FLOW3 package "Fluid".                      *
  *                                                                        *
@@ -46,7 +46,7 @@
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  * @api
  */
-class Tx_SfBanners_ViewHelpers_Format_UrlencodeViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class UrlencodeViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 * Disable the escaping interceptor because otherwise the child nodes would be escaped before this view helper

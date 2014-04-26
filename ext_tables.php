@@ -3,7 +3,7 @@ if (!defined('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-Tx_Extbase_Utility_Extension::registerPlugin(
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Pi1',
 	'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xml:plugin_title'
@@ -14,22 +14,22 @@ $extensionName = t3lib_div::underscoredToUpperCamelCase($_EXTKEY);
 $pluginSignature = strtolower($extensionName) . '_pi1';
 
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
-t3lib_extMgm::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/Flexforms/Flexform_plugin.xml');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/Flexforms/Flexform_plugin.xml');
 
 /* Remove unused fields */
 $TCA['tt_content']['types']['list']['subtypes_excludelist'][$pluginSignature] ='layout,recursive,select_key';
 
 /* Add default Typoscript */
-t3lib_extMgm::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Banner Management');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Banner Management');
 
 if (TYPO3_MODE == 'BE') {
 	/* Add Plugin to wizzard */
 	$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses'][$pluginSignature . '_wizicon'] =
-		t3lib_extMgm::extPath($_EXTKEY) . 'Resources/Private/Php/class.' . $_EXTKEY . '_wizicon.php';
+		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Resources/Private/Php/class.' . $_EXTKEY . '_wizicon.php';
 
 	/* register the cache in BE so it will be cleared with "clear all caches" */
-	if (t3lib_utility_VersionNumber::convertVersionNumberToInteger(TYPO3_version) < '4006000') {
-		t3lib_cache::initializeCachingFramework();
+	if (\TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < '4006000') {
+		\TYPO3\CMS\Core\Cache\Cache::initializeCachingFramework();
 		$GLOBALS['typo3CacheFactory']->create(
 			'sfbanners_cache',
 			$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['frontend'],
@@ -39,8 +39,8 @@ if (TYPO3_MODE == 'BE') {
 	}
 }
 
-t3lib_extMgm::addLLrefForTCAdescr('tx_sfbanners_domain_model_category', 'EXT:sf_banners/Resources/Private/Language/locallang_csh_tx_sfbanners_domain_model_category.xml');
-t3lib_extMgm::allowTableOnStandardPages('tx_sfbanners_domain_model_category');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_sfbanners_domain_model_category', 'EXT:sf_banners/Resources/Private/Language/locallang_csh_tx_sfbanners_domain_model_category.xml');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_sfbanners_domain_model_category');
 $TCA['tx_sfbanners_domain_model_category'] = array(
 	'ctrl' => array(
 		'title'	=> 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_category',
@@ -63,13 +63,13 @@ $TCA['tx_sfbanners_domain_model_category'] = array(
 			'endtime' => 'endtime',
 		),
 		'searchFields' => 'title,parent,',
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/Category.php',
-		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_sfbanners_domain_model_category.gif'
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Category.php',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_sfbanners_domain_model_category.gif'
 	),
 );
 
-t3lib_extMgm::addLLrefForTCAdescr('tx_sfbanners_domain_model_banner', 'EXT:sf_banners/Resources/Private/Language/locallang_csh_tx_sfbanners_domain_model_banner.xml');
-t3lib_extMgm::allowTableOnStandardPages('tx_sfbanners_domain_model_banner');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_sfbanners_domain_model_banner', 'EXT:sf_banners/Resources/Private/Language/locallang_csh_tx_sfbanners_domain_model_banner.xml');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_sfbanners_domain_model_banner');
 $TCA['tx_sfbanners_domain_model_banner'] = array(
 	'ctrl' => array(
 		'title'	=> 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner',
@@ -93,7 +93,7 @@ $TCA['tx_sfbanners_domain_model_banner'] = array(
 			'endtime' => 'endtime',
 		),
 		'searchFields' => 'title,description,type,category,',
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/Banner.php',
-		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_sfbanners_domain_model_banner.gif'
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Banner.php',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_sfbanners_domain_model_banner.gif'
 	),
 );

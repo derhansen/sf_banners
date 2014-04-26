@@ -1,5 +1,5 @@
 <?php
-
+namespace DERHANSEN\SfBanners\Domain\Model;
 /***************************************************************
  *  Copyright notice
  *
@@ -24,12 +24,14 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+
 /**
  * Banner demand
  *
  * @package sf_banners
  */
-class Tx_SfBanners_Domain_Model_BannerDemand extends Tx_Extbase_DomainObject_AbstractEntity {
+class BannerDemand extends AbstractEntity {
 
 	/**
 	 * Categories

@@ -1,5 +1,5 @@
 <?php
-
+namespace DERHANSEN\SfBanners\Test\Unit\Service;
 /***************************************************************
  *  Copyright notice
  *
@@ -24,12 +24,16 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Tests\UnitTestCase;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use DERHANSEN\SfBanners\Service\BannerService;
+
 /**
  * Test cases for the banner service
  */
-class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
+class BannerServiceTest extends UnitTestCase {
 	/**
-	 * @var Tx_Phpunit_Framework
+	 * @var \Tx_Phpunit_Framework
 	 */
 	protected $testingFramework;
 
@@ -39,17 +43,17 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 	protected $objectManager;
 
 	/**
-	 * @var Tx_SfBanners_Domain_Repository_BannerRepository
+	 * @var \DERHANSEN\SfBanners\Domain\Repository\BannerRepository
 	 */
 	protected $bannerRepository;
 
 	/**
-	 * @var Tx_SfBanners_Service_BannerService
+	 * @var \DERHANSEN\SfBanners\Service\BannerService
 	 */
 	protected $bannerService;
 
 	/**
-	 * @var Tx_SfBanners_Domain_Model_BannerDemand
+	 * @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand
 	 */
 	protected $demand;
 
@@ -59,12 +63,12 @@ class Tx_SfBanners_Service_BannerServiceTest extends Tx_Extbase_Tests_Unit_BaseT
 	 * @return void
 	 */
 	public function setUp() {
-		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+		$objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
 		$this->objectManager = clone $objectManager;
-		$this->bannerService = new Tx_SfBanners_Service_BannerService();
-		$this->testingFramework = new Tx_Phpunit_Framework('tx_sfbanners', array('tx_phpunit'));
-		$this->bannerRepository = $this->objectManager->get('Tx_SfBanners_Domain_Repository_BannerRepository');
-		$this->demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
+		$this->bannerService = new BannerService();
+		$this->testingFramework = new \Tx_Phpunit_Framework('tx_sfbanners', array('tx_phpunit'));
+		$this->bannerRepository = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Repository\\BannerRepository');
+		$this->demand = $this->objectManager->get('DERHANSEN\\SfBanners\Domain\Model\BannerDemand');
 		$this->demand->setDisplayMode('all');
 	}
 

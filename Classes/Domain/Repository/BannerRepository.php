@@ -1,5 +1,5 @@
 <?php
-
+namespace DERHANSEN\SfBanners\Domain\Repository;
 /***************************************************************
  *  Copyright notice
  *
@@ -24,33 +24,24 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Repository;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
+use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
+
 /**
  * Banner repository
  *
  * @package sf_banners
  */
-class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persistence_Repository {
+class BannerRepository extends Repository {
 	/**
 	 * Set default sorting
 	 *
 	 * @var array
 	 */
-	protected $defaultOrderings = array ('sorting' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING);
-
-	/**
-	 * @var Tx_Extbase_Persistence_Storage_Typo3DbBackend
-	 */
-	protected $typo3DbBackend;
-
-	/**
-	 * Inject the typo3dbbackend
-	 *
-	 * @param Tx_Extbase_Persistence_Storage_Typo3DbBackend $typo3DbBackend
-	 * @return void
-	 */
-	public function injectTypo3DbBackend(Tx_Extbase_Persistence_Storage_Typo3DbBackend $typo3DbBackend) {
-		$this->typo3DbBackend = $typo3DbBackend;
-	}
+	protected $defaultOrderings = array ('sorting' => QueryInterface::ORDER_ASCENDING);
 
 	/**
 	 * Disable the use of storage records, because the StoragePage can be set
@@ -59,17 +50,17 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	 * @return void
 	 */
 	public function initializeObject() {
-		$this->defaultQuerySettings = $this->objectManager->create('Tx_Extbase_Persistence_Typo3QuerySettings');
+		$this->defaultQuerySettings = $this->objectManager->get('Tx_Extbase_Persistence_Typo3QuerySettings');
 		$this->defaultQuerySettings->setRespectStoragePage(FALSE);
 	}
 
 	/**
 	 * Returns banners matching the given demand
 	 *
-	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand The demand
-	 * @return array|Tx_Extbase_Persistence_QueryResultInterface
+	 * @param \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand The demand
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
-	public function findDemanded(Tx_SfBanners_Domain_Model_BannerDemand $demand) {
+	public function findDemanded(BannerDemand $demand) {
 		/* Override the default sorting for random mode. Must be called before
 			createQuery() */
 		if ($demand->getDisplayMode() == 'allRandom') {
@@ -81,13 +72,13 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 		$constraints = array();
 
 		if ($demand->getStartingPoint() != 0) {
-			$pidList = t3lib_div::intExplode(',', $demand->getStartingPoint(), TRUE);
+			$pidList = GeneralUtility::intExplode(',', $demand->getStartingPoint(), TRUE);
 			$constraints[]  = $query->in('pid', $pidList);
 		}
 
 		if ($demand->getCategories() != 0) {
 			$categoryConstraints = array();
-			$categories = t3lib_div::intExplode(',', $demand->getCategories(), TRUE);
+			$categories = GeneralUtility::intExplode(',', $demand->getCategories(), TRUE);
 			foreach ($categories as $category) {
 				$categoryConstraints[]  = $query->contains('category', $category);
 			}
@@ -113,10 +104,10 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	 * Returns the result of the query based on the given displaymode set in demand
 	 *
 	 * @param \TYPO3\CMS\Extbase\Persistence\QueryInterface $query The query
-	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand The demand
-	 * @return array|Tx_Extbase_Persistence_QueryResultInterface
+	 * @param \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand The demand
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
-	private function getResult(\TYPO3\CMS\Extbase\Persistence\QueryInterface $query, Tx_SfBanners_Domain_Model_BannerDemand $demand) {
+	private function getResult(QueryInterface $query, BannerDemand $demand) {
 		$result = array();
 
 		switch ($demand->getDisplayMode()) {
@@ -124,7 +115,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 				$result = $query->execute();
 				break;
 			case 'allRandom':
-				$result = $this->objectManager->get('Tx_SfBanners_Persistence_RandomQueryResult', $query);
+				$result = $this->objectManager->get('DERHANSEN\\SfBanners\\Persistence\\RandomQueryResult', $query);
 
 				break;
 			case 'random':
@@ -141,16 +132,15 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	/**
 	 * Returns a query of banner-uids with respect to max_impressions and max_clicks
 	 *
-	 * @param Tx_Extbase_Persistence_QueryResultInterface $result The result
-	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand The demand
-	 * @return Tx_Extbase_Persistence_QueryInterface
+	 * @param \TYPO3\CMS\Extbase\Persistence\QueryResultInterface $result The result
+	 * @param \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand The demand
+	 * @return \TYPO3\CMS\Extbase\Persistence\QueryInterface
 	 */
-	private function getQueryWithLimitation(Tx_Extbase_Persistence_QueryResultInterface $result,
-											Tx_SfBanners_Domain_Model_BannerDemand $demand) {
+	private function getQueryWithLimitation(QueryResultInterface $result, BannerDemand $demand) {
 		$banners = $this->getExcludePageBanners($result, $demand);
 		$bannerUids = array();
 		foreach ($banners as $banner) {
-			/** @var Tx_SfBanners_Domain_Model_Banner $banner */
+			/** @var \DERHANSEN\SfBanners\Domain\Model\Banner $banner */
 			if ($banner->getImpressionsMax() > 0 || $banner->getClicksMax() > 0) {
 				if (($banner->getImpressionsMax() > 0 && $banner->getClicksMax() > 0)) {
 					if ($banner->getImpressions() < $banner->getImpressionsMax() && $banner->getClicks() <
@@ -181,17 +171,16 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	/**
 	 * Returns all banners in respect to excludepages (recursively if set in banner)
 	 *
-	 * @param Tx_Extbase_Persistence_QueryResultInterface $result The result
-	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand The demand
+	 * @param \TYPO3\CMS\Extbase\Persistence\QueryResultInterface $result The result
+	 * @param \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand The demand
 	 * @return array
 	 */
-	private function getExcludePageBanners(Tx_Extbase_Persistence_QueryResultInterface $result,
-											Tx_SfBanners_Domain_Model_BannerDemand $demand) {
-		/** @var t3lib_queryGenerator $queryGenerator */
-		$queryGenerator = $this->objectManager->get('t3lib_queryGenerator');
+	private function getExcludePageBanners(QueryResultInterface $result, BannerDemand $demand) {
+		/** @var \TYPO3\CMS\Core\Database\QueryGenerator $queryGenerator */
+		$queryGenerator = $this->objectManager->get('\\TYPO3\\CMS\\Core\\Database\\QueryGenerator');
 
 		$banners = array();
-		/** @var Tx_SfBanners_Domain_Model_Banner $banner */
+		/** @var \DERHANSEN\SfBanners\Domain\Model\Banner $banner */
 		foreach ($result as $banner) {
 			$excludePages = array();
 			foreach ($banner->getExcludepages() as $excludePage) {
@@ -212,14 +201,15 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	/**
 	 * Updates the impressions counter for each banner
 	 *
-	 * @param Tx_Extbase_Persistence_QueryResultInterface $banners Banners
+	 * @param \TYPO3\CMS\Extbase\Persistence\QueryResultInterface $banners Banners
 	 * @return void
 	 */
-	public function updateImpressions(Tx_Extbase_Persistence_QueryResultInterface $banners) {
+	public function updateImpressions(QueryResultInterface $banners) {
 		foreach ($banners as $banner) {
-			/** @var Tx_SfBanners_Domain_Model_Banner $banner */
+			/** @var \DERHANSEN\SfBanners\Domain\Model\Banner $banner */
 			$banner->increaseImpressions();
 			$this->update($banner);
 		}
 	}
 }
+

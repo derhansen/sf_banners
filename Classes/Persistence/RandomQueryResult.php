@@ -1,5 +1,5 @@
 <?php
-
+namespace DERHANSEN\SfBanners\Persistence;
 /***************************************************************
  *  Copyright notice
  *
@@ -26,7 +26,7 @@
 
 use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
 
-class Tx_SfBanners_Persistence_RandomQueryResult extends QueryResult {
+class RandomQueryResult extends QueryResult {
 
 	/**
 	 * Keeps track of, if records have been shuffled

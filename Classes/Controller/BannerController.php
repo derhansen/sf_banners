@@ -1,5 +1,5 @@
 <?php
-
+namespace DERHANSEN\SfBanners\Controller;
 /***************************************************************
  *  Copyright notice
  *
@@ -24,68 +24,76 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use TYPO3\CMS\Core\Cache\Cache;
+use TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException;
+
 /**
  * Banner Controller
  *
  * @package sf_banners
  */
-class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller_ActionController {
+class BannerController extends ActionController {
 
 	/**
 	 * Banner Service
 	 *
-	 * @var Tx_SfBanners_Service_BannerService
+	 * @var \DERHANSEN\SfBanners\Service\BannerService
 	 */
 	protected $bannerService;
 
 	/**
 	 * bannerRepository
 	 *
-	 * @var Tx_SfBanners_Domain_Repository_BannerRepository
+	 * @var \DERHANSEN\SfBanners\Domain\Repository\BannerRepository
 	 */
 	protected $bannerRepository;
 
 	/**
 	 * Hash Service
 	 *
-	 * @var Tx_SfBanners_Service_HashServiceHelper
+	 * @var \DERHANSEN\SfBanners\Service\HashServiceHelper
 	 */
 	protected $hashService;
 
 	/**
 	 * injectBannerRepository
 	 *
-	 * @param Tx_SfBanners_Domain_Repository_BannerRepository $bannerRepository
+	 * @param \DERHANSEN\SfBanners\Domain\Repository\BannerRepository $bannerRepository
+	 * @todo Remove and use inject
 	 * @return void
 	 */
-	public function injectBannerRepository(Tx_SfBanners_Domain_Repository_BannerRepository $bannerRepository) {
+	public function injectBannerRepository(\DERHANSEN\SfBanners\Domain\Repository\BannerRepository $bannerRepository) {
 		$this->bannerRepository = $bannerRepository;
 	}
 
 	/**
 	 * injectBannerService
 	 *
-	 * @param Tx_SfBanners_Service_BannerService $bannerService
+	 * @param \DERHANSEN\SfBanners\Service\BannerService $bannerService
+	 * @todo Remove and use inject
 	 * @return void
 	 */
-	public function injectBannerService(Tx_SfBanners_Service_BannerService $bannerService) {
+	public function injectBannerService(\DERHANSEN\SfBanners\Service\BannerService $bannerService) {
 		$this->bannerService = $bannerService;
 	}
 
 	/**
 	 * injectHashService
 	 *
-	 * @param Tx_SfBanners_Service_HashServiceHelper $hashService
+	 * @param \DERHANSEN\SfBanners\Service\HashServiceHelper $hashService
+	 * @todo Remove and use inject
 	 * @return void
 	 */
-	public function injectHashService(Tx_SfBanners_Service_HashServiceHelper $hashService) {
+	public function injectHashService(\DERHANSEN\SfBanners\Service\HashServiceHelper $hashService) {
 		$this->hashService = $hashService;
 	}
 
 	/**
 	 * Instance of Caching Framework
 	 *
-	 * @var t3lib_cache_frontend_AbstractFrontend
+	 * @var \TYPO3\CMS\Core\Cache\Frontend\AbstractFrontend
 	 */
 	protected $cacheInstance;
 
@@ -102,10 +110,10 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 	 * @return void
 	 */
 	protected function initializeCache() {
-		t3lib_cache::initializeCachingFramework();
+		Cache::initializeCachingFramework();
 		try {
 			$this->cacheInstance = $GLOBALS['typo3CacheManager']->getCache('sfbanners_cache');
-		} catch (t3lib_cache_exception_NoSuchCache $e) {
+		} catch (NoSuchCacheException $e) {
 			$this->cacheInstance = $GLOBALS['typo3CacheFactory']->create(
 				'sfbanners_cache',
 				$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['frontend'],
@@ -118,10 +126,10 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 	/**
 	 * Click Action for a banner
 	 *
-	 * @param Tx_SfBanners_Domain_Model_Banner $banner
+	 * @param \DERHANSEN\SfBanners\Domain\Model\Banner $banner
 	 * @return void
 	 */
-	public function clickAction(Tx_SfBanners_Domain_Model_Banner $banner) {
+	public function clickAction(\DERHANSEN\SfBanners\Domain\Model\Banner $banner) {
 		$banner->increaseClicks();
 		$this->bannerRepository->update($banner);
 		$this->redirectToURI($banner->getLinkUrl());
@@ -170,8 +178,8 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 		$compareString = $currentPageUid . $categories . $startingPoint . $displayMode;
 
 		if ($this->hashService->validateHmac($compareString, $hmac)) {
-			/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
-			$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
+			/** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand  */
+			$demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
 			$demand->setCategories($categories);
 			$demand->setStartingPoint($startingPoint);
 			$demand->setDisplayMode($displayMode);
@@ -200,7 +208,7 @@ class Tx_SfBanners_Controller_BannerController extends Tx_Extbase_MVC_Controller
 					$this->settings['cacheLifetime']);
 			}
 		} else {
-			$ret = Tx_Extbase_Utility_Localization::translate('wrong_hmac', 'SfBanners');
+			$ret = LocalizationUtility::translate('wrong_hmac', 'SfBanners');
 		}
 		return $ret;
 	}

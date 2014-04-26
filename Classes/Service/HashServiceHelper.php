@@ -1,5 +1,5 @@
 <?php
-
+namespace DERHANSEN\SfBanners\Service;
 /***************************************************************
  *  Copyright notice
  *
@@ -24,26 +24,28 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
+
 /**
  * HashService helper with compatibility layer for TYPO3 4.5 to 6.x.
  * Uses ExtBase Cryptography HashService to generate and validate a Hmac.
  *
  * @package sf_banners
  */
-class Tx_SfBanners_Service_HashServiceHelper {
+class HashServiceHelper {
 
 	/**
-	 * @var Tx_Extbase_Security_Cryptography_HashService
+	 * @var \TYPO3\CMS\Extbase\Security\Cryptography\HashService
 	 */
 	protected $hashService;
 
 	/**
 	 * Inject the hashService
 	 *
-	 * @param Tx_Extbase_Security_Cryptography_HashService $hashService
+	 * @param \TYPO3\CMS\Extbase\Security\Cryptography\HashService $hashService
 	 * @return void
 	 */
-	public function injectHashService (Tx_Extbase_Security_Cryptography_HashService $hashService) {
+	public function injectHashService (HashService $hashService) {
 		$this->hashService = $hashService;
 	}
 
