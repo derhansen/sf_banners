@@ -40,6 +40,7 @@ class BannerController extends ActionController {
 	 * Banner Service
 	 *
 	 * @var \DERHANSEN\SfBanners\Service\BannerService
+	 * @inject
 	 */
 	protected $bannerService;
 
@@ -47,6 +48,7 @@ class BannerController extends ActionController {
 	 * bannerRepository
 	 *
 	 * @var \DERHANSEN\SfBanners\Domain\Repository\BannerRepository
+	 * @inject
 	 */
 	protected $bannerRepository;
 
@@ -57,28 +59,6 @@ class BannerController extends ActionController {
 	 * @inject
 	 */
 	protected $hashService;
-
-	/**
-	 * injectBannerRepository
-	 *
-	 * @param \DERHANSEN\SfBanners\Domain\Repository\BannerRepository $bannerRepository
-	 * @todo Remove and use inject
-	 * @return void
-	 */
-	public function injectBannerRepository(\DERHANSEN\SfBanners\Domain\Repository\BannerRepository $bannerRepository) {
-		$this->bannerRepository = $bannerRepository;
-	}
-
-	/**
-	 * injectBannerService
-	 *
-	 * @param \DERHANSEN\SfBanners\Service\BannerService $bannerService
-	 * @todo Remove and use inject
-	 * @return void
-	 */
-	public function injectBannerService(\DERHANSEN\SfBanners\Service\BannerService $bannerService) {
-		$this->bannerService = $bannerService;
-	}
 
 	/**
 	 * Instance of Caching Framework
