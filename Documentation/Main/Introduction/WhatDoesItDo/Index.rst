@@ -34,6 +34,6 @@ counted by using a clicktag.
 
 The extension can be used as a plugin or by TypoScript.
 
-The extension is developed with Extbase and Fluid and works with all
-TYPO3 version from 4.5.x to 6.1.x
+The extension is developed with Extbase and Fluid and the current version
+support TYPO3 6.2 LTS. A version for TYPO3 4.5 - 6.1 is available on TER.
 

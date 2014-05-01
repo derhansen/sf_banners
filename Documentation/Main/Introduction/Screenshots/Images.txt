@@ -1,4 +1,4 @@
-﻿.. |img-3|      image:: ../../../Images/manual_html_56fed7f2.png
+﻿.. |img-3|      image:: ../../Images/manual_html_56fed7f2.png
    :height: 458
    :width: 352
 .. :align: left

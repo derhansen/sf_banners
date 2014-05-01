@@ -1,6 +1,4 @@
-﻿.. include:: Images.txt
-
-.. ==================================================
+﻿.. ==================================================
 .. FOR YOUR INFORMATION
 .. --------------------------------------------------
 .. -*- coding: utf-8 -*- with BOM.
@@ -14,20 +12,17 @@
    :class:  typoscript
 .. role::   php(code)
 
-
-|img-1| |img-2| Banner-Management
-=================================
+==============================
+Asynchronous Banner-Management
+==============================
 
 Extension Key: sf\_banners
 
 Language: en
 
-Version: 0.5.6
+Description: Asynchronous Banner-Management, Flash Banner, HTML Banner, Image Banner
 
-Keywords: Asynchronous Banner-Management, Flash Banner, HTML Banner,
-Image Banner
-
-Copyright 2013, Torben Hansen, <derhansen@gmail.com>
+Copyright 2013-2014, Torben Hansen, <derhansen@gmail.com>
 
 This document is published under the Open Content License
 

@@ -18,7 +18,7 @@
 Performance considerations
 --------------------------
 
-The extension fetches bannersasynchronously from the webserver where
+The extension fetches banners asynchronously from the webserver where
 the TYPO3 installation resides. Since the plugin has to count the
 impressions for each banner on every page-impression, the plugin runs
 uncached. I've implemented the TYPO3 Caching Framework to face this
