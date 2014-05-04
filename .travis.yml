@@ -2,10 +2,14 @@ language: php
 php:
   - 5.3
   - 5.4
-  - 5.5
 
 env:
-  - DB=mysql TYPO3=master INTEGRATION=master
+  - DB=mysql TYPO3=master INTEGRATION=master COVERAGE=0
+
+matrix:
+  include:
+    - php: 5.5
+      env: DB=mysql TYPO3=master INTEGRATION=master COVERAGE=1
 
 notifications:
   email:
@@ -41,5 +45,8 @@ before_script:
   - if [[ "$DB" == "mysql" && -f  build-environment/dbimport/phpunit.sql ]]; then mysql -uroot typo3_test < build-environment/dbimport/phpunit.sql; fi
 
 script:
-  - php $PWD/typo3/cli_dispatch.phpsh phpunit -c typo3conf/ext/sf_banners/Tests/Build/phpunit.xml
-
+  - if [[ "$COVERAGE" == "0" ]]; then php $PWD/typo3/cli_dispatch.phpsh phpunit -c typo3conf/ext/sf_banners/Tests/Build/phpunit.xml; fi
+  - if [[ "$COVERAGE" == "1" ]]; then php $PWD/typo3/cli_dispatch.phpsh phpunit --coverage-clover=coverage.clover -c typo3conf/ext/sf_banners/Tests/Build/phpunit.xml; fi
+  - if [[ "$COVERAGE" == "1" ]]; then wget https://scrutinizer-ci.com/ocular.phar; fi
+  - if [[ "$COVERAGE" == "1" ]]; then cp -R typo3conf/ext/sf_banners/.git .; fi
+  - if [[ "$COVERAGE" == "1" ]]; then php ocular.phar code-coverage:upload --format=php-clover coverage.clover; fi
