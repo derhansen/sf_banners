@@ -42,7 +42,4 @@ before_script:
 
 script:
   - php $PWD/typo3/cli_dispatch.phpsh phpunit -c typo3conf/ext/sf_banners/Tests/Build/phpunit.xml
-  - php $PWD/typo3/cli_dispatch.phpsh phpunit --coverage-clover=coverage.clover -c typo3conf/ext/sf_banners/Tests/Build/phpunit.xml
-  - wget https://scrutinizer-ci.com/ocular.phar
-  - cp -R typo3conf/ext/sf_banners/.git .
-  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+
