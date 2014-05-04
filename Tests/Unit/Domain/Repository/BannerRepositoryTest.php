@@ -396,16 +396,16 @@ class BannerRepositoryTest extends UnitTestCase {
 		$pid = 101;
 
 		/* Create some banners */
-		$banner1 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
 			'impressions_max' => 0, 'impressions' => 10, 'clicks' => 0, 'clicks_max' => 10));
 
-		$banner2 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
 			'impressions_max' => 10, 'impressions' => 10, 'clicks' => 0, 'clicks_max' => 10));
 
-		$banner3 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
 			'impressions_max' => 0, 'impressions' => 10, 'clicks' => 10, 'clicks_max' => 10));
 
-		$banner4 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
 			'impressions_max' => 10, 'impressions' => 10, 'clicks' => 10, 'clicks_max' => 10));
 
 		/* Set starting point */

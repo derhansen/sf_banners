@@ -201,7 +201,7 @@ class BannerRepository extends Repository {
 	/**
 	 * Updates the impressions counter for each banner
 	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\QueryResultInterface $banners Banners
+	 * @param \TYPO3\CMS\Extbase\Persistence\QueryResultInterface|array $banners Banners
 	 * @return void
 	 */
 	public function updateImpressions(QueryResultInterface $banners) {

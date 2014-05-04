@@ -222,9 +222,9 @@ class BannerServiceTest extends UnitTestCase {
 	 */
 	public function getAdditionalCssFileReturnsFilenameTest() {
 		$pid = 113;
-		$bannerUid1 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
 			'margin_left' => 10, 'margin_right' => 10, 'sorting' => 1));
-		$bannerUid2 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
 			'margin_top' => 10, 'margin_bottom' => 10, 'sorting' => 2));
 
 		/* Get banner from Repository */
@@ -261,7 +261,7 @@ class BannerServiceTest extends UnitTestCase {
 	 */
 	public function getAdditionalCssLinkReturnsLinkTest() {
 		$pid = 115;
-		$bannerUid1 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
 			'margin_left' => 10, 'margin_right' => 10, 'sorting' => 1));
 
 		/* Get banner from Repository */
