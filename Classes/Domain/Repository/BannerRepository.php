@@ -114,7 +114,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand The demand
 	 * @return array|Tx_Extbase_Persistence_QueryResultInterface
 	 */
-	private function getResult(Tx_Extbase_Persistence_QueryInterface $query, Tx_SfBanners_Domain_Model_BannerDemand $demand) {
+	protected function getResult(Tx_Extbase_Persistence_QueryInterface $query, Tx_SfBanners_Domain_Model_BannerDemand $demand) {
 		$result = array();
 		switch ($demand->getDisplayMode()) {
 			case 'all':
@@ -146,7 +146,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand The demand
 	 * @return Tx_Extbase_Persistence_QueryInterface
 	 */
-	private function getQueryWithLimitation(Tx_Extbase_Persistence_QueryResultInterface $result,
+	protected function getQueryWithLimitation(Tx_Extbase_Persistence_QueryResultInterface $result,
 											Tx_SfBanners_Domain_Model_BannerDemand $demand) {
 		$banners = $this->getExcludePageBanners($result, $demand);
 		$bannerUids = array();
@@ -181,7 +181,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepository extends Tx_Extbase_Persist
 	 * @param Tx_SfBanners_Domain_Model_BannerDemand $demand The demand
 	 * @return array
 	 */
-	private function getExcludePageBanners(Tx_Extbase_Persistence_QueryResultInterface $result,
+	protected function getExcludePageBanners(Tx_Extbase_Persistence_QueryResultInterface $result,
 											Tx_SfBanners_Domain_Model_BannerDemand $demand) {
 		/** @var t3lib_queryGenerator $queryGenerator */
 		$queryGenerator = $this->objectManager->get('t3lib_queryGenerator');
