@@ -1,5 +1,5 @@
 <?php
-
+namespace DERHANSEN\SfBanners\Service;
 /***************************************************************
  *  Copyright notice
  *
@@ -24,12 +24,14 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Frontend\Page\PageGenerator;
+
 /**
  * Banner Service
  *
  * @package sf_banners
  */
-class Tx_SfBanners_Service_BannerService {
+class BannerService {
 
 	/**
 	 * Returns a string with additional CSS for the given banners
@@ -40,7 +42,7 @@ class Tx_SfBanners_Service_BannerService {
 	public function getAdditionalCss($banners) {
 		$ret = '';
 		foreach ($banners as $banner) {
-			/** @var Tx_SfBanners_Domain_Model_Banner $banner */
+			/** @var \DERHANSEN\SfBanners\Domain\Model\Banner $banner */
 			if ($banner->getMarginTop() > 0 || $banner->getMarginRight() > 0 ||
 				$banner->getMarginBottom() > 0 || $banner->getMarginLeft() > 0) {
 				$bannerCss = '.banner-' . $banner->getUid() . ' { margin: ' . $banner->getMarginTop() .
@@ -77,9 +79,8 @@ class Tx_SfBanners_Service_BannerService {
 		$css = $this->getAdditionalCss($banners);
 		$filename = '';
 		if ($css != '') {
-			$filename = TSpagegen::inline2TempFile($css, 'css');
+			$filename = PageGenerator::inline2TempFile($css, 'css');
 		}
 		return $filename;
 	}
 }
-?>

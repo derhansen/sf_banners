@@ -1,5 +1,5 @@
 <?php
-
+namespace DERHANSEN\SfBanners\ViewHelpers\Flash;
 /***************************************************************
  *  Copyright notice
  *
@@ -24,19 +24,21 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+
 /**
  * Flash params viewhelper
  *
  * @package sf_banners
  */
-class Tx_SfBanners_ViewHelpers_Flash_ParamsViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class ParamsViewHelper extends AbstractViewHelper {
 
 	/**
 	 * Returns the requested flash variable depending on the setting in the banner.
 	 * If no value is set in the banner object, the default value from TS setting
 	 * is returned
 	 *
-	 * @param Tx_SfBanners_Domain_Model_Banner $banner The banner
+	 * @param \DERHANSEN\SfBanners\Domain\Model\Banner $banner The banner
 	 * @param string $flashSetting Flash settings
 	 * @return string
 	 */
@@ -64,4 +66,3 @@ class Tx_SfBanners_ViewHelpers_Flash_ParamsViewHelper extends Tx_Fluid_Core_View
 		return $retVal;
 	}
 }
-?>

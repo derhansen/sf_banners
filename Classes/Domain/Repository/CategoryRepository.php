@@ -1,5 +1,5 @@
 <?php
-
+namespace DERHANSEN\SfBanners\Domain\Repository;
 /***************************************************************
  *  Copyright notice
  *
@@ -24,12 +24,13 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Extbase\Persistence\Repository;
+
 /**
  * Category repository
  *
  * @package sf_banners
  */
-class Tx_SfBanners_Domain_Repository_CategoryRepository extends Tx_Extbase_Persistence_Repository {
+class CategoryRepository extends Repository {
 
 }
-?>

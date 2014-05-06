@@ -1,5 +1,5 @@
 <?php
-
+namespace DERHANSEN\SfBanners\Test\Unit\Domain\Model;
 /***************************************************************
  *  Copyright notice
  *
@@ -24,12 +24,15 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Tests\UnitTestCase;
+use DERHANSEN\SfBanners\Domain\Model\Category;
+
 /**
- * Test case for class Tx_SfBanners_Domain_Model_Category.
+ * Test case for class \DERHANSEN\SfBanners\Domain\Model\Category
  */
-class Tx_SfBanners_Domain_Model_CategoryTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
+class CategoryTest extends UnitTestCase {
 	/**
-	 * @var Tx_SfBanners_Domain_Model_Category
+	 * @var \DERHANSEN\SfBanners\Domain\Model\Category
 	 */
 	protected $fixture;
 
@@ -39,7 +42,7 @@ class Tx_SfBanners_Domain_Model_CategoryTest extends Tx_Extbase_Tests_Unit_BaseT
 	 * @return void
 	 */
 	public function setUp() {
-		$this->fixture = new Tx_SfBanners_Domain_Model_Category();
+		$this->fixture = new Category();
 	}
 
 	/**
@@ -70,9 +73,8 @@ class Tx_SfBanners_Domain_Model_CategoryTest extends Tx_Extbase_Tests_Unit_BaseT
 	 * @return void
 	 */
 	public function parentCanBeSetTest() {
-		$parent = new Tx_SfBanners_Domain_Model_Category();
+		$parent = new \DERHANSEN\SfBanners\Domain\Model\Category();
 		$this->fixture->setParent($parent);
 		$this->assertEquals($parent, $this->fixture->getParent());
 	}
 }
-?>

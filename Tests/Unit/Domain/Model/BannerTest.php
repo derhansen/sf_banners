@@ -1,5 +1,5 @@
 <?php
-
+namespace DERHANSEN\SfBanners\Test\Unit\Domain\Model;
 /***************************************************************
  *  Copyright notice
  *
@@ -24,12 +24,15 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Tests\UnitTestCase;
+use DERHANSEN\SfBanners\Domain\Model\Banner;
+
 /**
- * Test case for class Tx_SfBanners_Domain_Model_Banner.
+ * Test case for class \DERHANSEN\SfBanners\Domain\Model\Banner.
  */
-class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
+class BannerTest extends UnitTestCase {
 	/**
-	 * @var Tx_SfBanners_Domain_Model_Banner
+	 * @var \DERHANSEN\SfBanners\Domain\Model\Banner
 	 */
 	protected $fixture;
 
@@ -39,7 +42,7 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	 * @return void
 	 */
 	public function setUp() {
-		$this->fixture = new Tx_SfBanners_Domain_Model_Banner();
+		$this->fixture = new Banner();
 	}
 
 	/**
@@ -304,4 +307,3 @@ class Tx_SfBanners_Domain_Model_BannerTest extends Tx_Extbase_Tests_Unit_BaseTes
 	}
 
 }
-?>

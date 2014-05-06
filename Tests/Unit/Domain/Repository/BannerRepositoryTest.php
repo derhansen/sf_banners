@@ -1,5 +1,5 @@
 <?php
-
+namespace DERHANSEN\SfBanners\Test\Unit\Domain\Repository;
 /***************************************************************
  *  Copyright notice
  *
@@ -24,18 +24,26 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Tests\UnitTestCase;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
- * Test case for class Tx_SfBanners_Domain_Model_Banner.
+ * Test case for class \DERHANSEN\SfBanners\Domain\Model\Banner.
  */
-class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
+class BannerRepositoryTest extends UnitTestCase {
 
 	/**
-	 * @var Tx_Phpunit_Framework
+	 * @var \Tx_Phpunit_Framework
 	 */
 	protected $testingFramework;
 
 	/**
-	 * @var Tx_SfBanners_Domain_Repository_BannerRepository
+	 * @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface The object manager
+	 */
+	protected $objectManager;
+
+	/**
+	 * @var \DERHANSEN\SfBanners\Domain\Repository\BannerRepository
 	 */
 	protected $fixture;
 
@@ -45,8 +53,10 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 	 * @return void
 	 */
 	public function setUp() {
-		$this->testingFramework = new Tx_Phpunit_Framework('tx_sfbanners', array('tx_phpunit'));
-		$this->fixture = $this->objectManager->get('Tx_SfBanners_Domain_Repository_BannerRepository');
+		$objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+		$this->objectManager = clone $objectManager;
+		$this->testingFramework = new \Tx_Phpunit_Framework('tx_sfbanners', array('tx_phpunit'));
+		$this->fixture = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Repository\\BannerRepository');
 	}
 
 	/**
@@ -66,8 +76,8 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 	 * @return void
 	 */
 	public function findRecordsByStartingPointTest() {
-		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
-		$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
+		/** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand  */
+		$demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
 
 		$pidList = array(55,55,56,57,58,59);
 		foreach ($pidList as $pid) {
@@ -94,9 +104,9 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 	 * @return void
 	 */
 	public function findRecordsByCategoryTest() {
-		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
-		$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
-		$pid = 0;
+		/** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand  */
+		$demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
+		$pid = 10;
 
 		$category1 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_category', array('pid' => $pid));
 		$category2 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_category', array('pid' => $pid));
@@ -128,6 +138,9 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
 			$banner4, $category3, 'category');
 
+		/* Set starting point */
+		$demand->setStartingPoint($pid);
+
 		/* Simple category test */
 		$demand->setCategories($category1);
 		$this->assertEquals(4, (int)$this->fixture->findDemanded($demand)->count());
@@ -152,8 +165,8 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 	 * @return void
 	 */
 	public function findRecordsWithDisplayModeTest() {
-		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
-		$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
+		/** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand  */
+		$demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
 		$pid = 80;
 
 		$uids = array();
@@ -179,6 +192,9 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 		}
 		$this->assertSame($uids, $returnedUids);
 
+		/* Set starting point */
+		$demand->setStartingPoint($pid);
+
 		/* Random one banner */
 		$demand->setDisplayMode('random');
 		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());
@@ -187,6 +203,7 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 		$demand->setDisplayMode('allRandom');
 		$this->assertEquals(5, (int)$this->fixture->findDemanded($demand)->count());
 
+		/* Find 100 times with demand, if returned UIDs are always the same, then they are not returned randomly */
 		$matchCount = 0;
 		for ($j = 1; $j <= 100; $j++) {
 			$returnedBanners = $this->fixture->findDemanded($demand);
@@ -210,8 +227,8 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 	 * @return void
 	 */
 	public function findRecordsForSpecialExcludePageUidTest() {
-		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
-		$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
+		/** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand  */
+		$demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
 		$pid = 95;
 
 		/* Create some pages */
@@ -265,8 +282,8 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 	 * @return void
 	 */
 	public function findRecordsForSpecialExcludeRecursivePageUidTest() {
-		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
-		$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
+		/** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand  */
+		$demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
 		$pid = 96;
 
 		/* Create some pages */
@@ -322,8 +339,8 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 	 * @return void
 	 */
 	public function findRecordsWithMaxImpressionsTest() {
-		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
-		$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
+		/** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand  */
+		$demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
 		$pid = 100;
 
 		/* Create some banners */
@@ -348,8 +365,8 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 	 * @return void
 	 */
 	public function findRecordsWithMaxClicksTest() {
-		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
-		$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
+		/** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand  */
+		$demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
 		$pid = 100;
 
 		/* Create some banners */
@@ -374,21 +391,21 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 	 * @return void
 	 */
 	public function findRecordsWithMaxImpressionsAndMaxClicksTest() {
-		/** @var Tx_SfBanners_Domain_Model_BannerDemand $demand  */
-		$demand = $this->objectManager->get('Tx_SfBanners_Domain_Model_BannerDemand');
+		/** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand  */
+		$demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
 		$pid = 101;
 
 		/* Create some banners */
-		$banner1 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
 			'impressions_max' => 0, 'impressions' => 10, 'clicks' => 0, 'clicks_max' => 10));
 
-		$banner2 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
 			'impressions_max' => 10, 'impressions' => 10, 'clicks' => 0, 'clicks_max' => 10));
 
-		$banner3 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
 			'impressions_max' => 0, 'impressions' => 10, 'clicks' => 10, 'clicks_max' => 10));
 
-		$banner4 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
+		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
 			'impressions_max' => 10, 'impressions' => 10, 'clicks' => 10, 'clicks_max' => 10));
 
 		/* Set starting point */
@@ -398,4 +415,3 @@ class Tx_SfBanners_Domain_Repository_BannerRepositoryTest extends Tx_Extbase_Tes
 		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());
 	}
 }
-?>

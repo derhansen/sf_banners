@@ -1,5 +1,5 @@
 <?php
-
+namespace DERHANSEN\SfBanners\Domain\Model;
 /***************************************************************
  *  Copyright notice
  *
@@ -24,12 +24,14 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+
 /**
  * Category
  *
  * @package sf_banners
  */
-class Tx_SfBanners_Domain_Model_Category extends Tx_Extbase_DomainObject_AbstractEntity {
+class Category extends AbstractEntity {
 
 	/**
 	 * Title
@@ -42,7 +44,7 @@ class Tx_SfBanners_Domain_Model_Category extends Tx_Extbase_DomainObject_Abstrac
 	/**
 	 * parent
 	 *
-	 * @var Tx_SfBanners_Domain_Model_Category
+	 * @var \DERHANSEN\SfBanners\Domain\Model\Category
 	 */
 	protected $parent;
 
@@ -68,7 +70,7 @@ class Tx_SfBanners_Domain_Model_Category extends Tx_Extbase_DomainObject_Abstrac
 	/**
 	 * Returns the parent
 	 *
-	 * @return Tx_SfBanners_Domain_Model_Category $parent
+	 * @return \DERHANSEN\SfBanners\Domain\Model\Category $parent
 	 */
 	public function getParent() {
 		return $this->parent;
@@ -77,12 +79,11 @@ class Tx_SfBanners_Domain_Model_Category extends Tx_Extbase_DomainObject_Abstrac
 	/**
 	 * Sets the parent
 	 *
-	 * @param Tx_SfBanners_Domain_Model_Category $parent
+	 * @param \DERHANSEN\SfBanners\Domain\Model\Category $parent
 	 * @return void
 	 */
-	public function setParent(Tx_SfBanners_Domain_Model_Category $parent) {
+	public function setParent(Category $parent) {
 		$this->parent = $parent;
 	}
 
 }
-?>

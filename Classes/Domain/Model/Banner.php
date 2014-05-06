@@ -1,5 +1,5 @@
 <?php
-
+namespace DERHANSEN\SfBanners\Domain\Model;
 /***************************************************************
  *  Copyright notice
  *
@@ -24,12 +24,15 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+
 /**
  * Banner domain model
  *
  * @package sf_banners
  */
-class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractEntity {
+class Banner extends AbstractEntity {
 
 	/**
 	 * Title
@@ -58,7 +61,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	 * Category
 	 *
 	 * @lazy
-	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_SfBanners_Domain_Model_Category>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<DERHANSEN\SfBanners\Domain\Model\Category>
 	 */
 	protected $category;
 
@@ -170,7 +173,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	/**
 	 * Do not display on pages
 	 * @lazy
-	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_SfBanners_Domain_Model_Page>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\DERHANSEN\SfBanners\Domain\Model\Page>
 	 */
 	protected $excludepages;
 
@@ -291,8 +294,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 
 	/**
 	 * Returns the category
-	 *
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_SfBanners_Domain_Model_Category> $category
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\DERHANSEN\SfBanners\Domain\Model\Category> $category
 	 */
 	public function getCategory() {
 		return $this->category;
@@ -301,7 +303,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	/**
 	 * Sets the category
 	 *
-	 * @param Tx_Extbase_Persistence_ObjectStorage $category One or multiple categories
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $category One or multiple categories
 	 * @return void
 	 */
 	public function setCategory($category) {
@@ -368,7 +370,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	/**
 	 * Setter for excludepages
 	 *
-	 * @param Tx_Extbase_Persistence_ObjectStorage $excludepages Excludepages
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $excludepages Excludepages
 	 * @return void
 	 */
 	public function setExcludepages ($excludepages) {
@@ -378,7 +380,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	/**
 	 * Getter for excludepages
 	 *
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_SfBanners_Domain_Model_Page>
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\DERHANSEN\SfBanners\Domain\Model\Page>
 	 */
 	public function getExcludepages () {
 		return $this->excludepages;
@@ -655,7 +657,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	 * @return mixed
 	 */
 	public function getLinkUrl() {
-		$cObj = t3lib_div::makeInstance('tslib_cObj');
+		$cObj = GeneralUtility::makeInstance('tslib_cObj');
 		return $cObj->getTypoLink_URL($this->link);
 	}
 
@@ -665,7 +667,7 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 	 * @return string
 	 */
 	public function getLinkTarget() {
-		$linkArray = t3lib_div::trimExplode(' ', $this->link);
+		$linkArray = GeneralUtility::trimExplode(' ', $this->link);
 		$ret = '';
 		if (count($linkArray) > 1) {
 			$ret = $linkArray[1];
@@ -673,4 +675,3 @@ class Tx_SfBanners_Domain_Model_Banner extends Tx_Extbase_DomainObject_AbstractE
 		return $ret;
 	}
 }
-?>

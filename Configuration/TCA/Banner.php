@@ -391,5 +391,3 @@ $TCA['tx_sfbanners_domain_model_banner'] = array(
 	),
 
 );
-
-?>

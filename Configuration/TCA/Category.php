@@ -123,5 +123,3 @@ $TCA['tx_sfbanners_domain_model_category'] = array(
 		),
 	),
 );
-
-?>
