@@ -21,9 +21,10 @@ plugin.tx_sfbanners {
 	widgets {
 	    bannerWidget = USER
 	    bannerWidget {
-          userFunc = tx_extbase_core_bootstrap->run
+          userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
           extensionName = SfBanners
           pluginName = Pi1
+          vendorName = DERHANSEN
           switchableControllerActions {
             Banner {
               1 = show
@@ -32,9 +33,9 @@ plugin.tx_sfbanners {
               2 = click
             }
           }
-          settings =< plugin.tx_sfbanners.settings
-          persistence =< plugin.tx_sfbanners.persistence
-          view =< plugin.tx_sfbanners.view
+          settings < plugin.tx_sfbanners.settings
+          persistence < plugin.tx_sfbanners.persistence
+          view < plugin.tx_sfbanners.view
 	    }
 	}
 }
