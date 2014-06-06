@@ -107,7 +107,7 @@ class BannerRepository extends Repository {
 	 * @param \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand The demand
 	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
-	private function getResult(QueryInterface $query, BannerDemand $demand) {
+	protected function getResult(QueryInterface $query, BannerDemand $demand) {
 		$result = array();
 
 		switch ($demand->getDisplayMode()) {
@@ -136,7 +136,7 @@ class BannerRepository extends Repository {
 	 * @param \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand The demand
 	 * @return \TYPO3\CMS\Extbase\Persistence\QueryInterface
 	 */
-	private function getQueryWithLimitation(QueryResultInterface $result, BannerDemand $demand) {
+	protected function getQueryWithLimitation(QueryResultInterface $result, BannerDemand $demand) {
 		$banners = $this->getExcludePageBanners($result, $demand);
 		$bannerUids = array();
 		foreach ($banners as $banner) {
@@ -175,7 +175,7 @@ class BannerRepository extends Repository {
 	 * @param \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand The demand
 	 * @return array
 	 */
-	private function getExcludePageBanners(QueryResultInterface $result, BannerDemand $demand) {
+	protected function getExcludePageBanners(QueryResultInterface $result, BannerDemand $demand) {
 		/** @var \TYPO3\CMS\Core\Database\QueryGenerator $queryGenerator */
 		$queryGenerator = $this->objectManager->get('\\TYPO3\\CMS\\Core\\Database\\QueryGenerator');
 
