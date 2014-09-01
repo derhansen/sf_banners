@@ -117,6 +117,7 @@ class BannerController extends ActionController {
 		$hmac = $this->hashService->generateHmac($stringToHash);
 
 		$this->view->assign('pid', $GLOBALS['TSFE']->id);
+		$this->view->assign('lang', $GLOBALS['TSFE']->sys_language_uid);
 		$this->view->assign('categories', $this->settings['category']);
 		$this->view->assign('startingPoint', $this->settings['startingPoint']);
 		$this->view->assign('displayMode', $this->settings['displayMode']);
@@ -162,7 +163,7 @@ class BannerController extends ActionController {
 			$this->bannerRepository->updateImpressions($banners);
 
 			/* Collect identifier based on uids for all banners */
-			$ident = $GLOBALS['TSFE']->id;
+			$ident = $GLOBALS['TSFE']->id . $GLOBALS['TSFE']->sys_language_uid;
 			foreach ($banners as $banner) {
 				$ident .= $banner->getUid();
 			}
