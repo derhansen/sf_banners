@@ -2,6 +2,7 @@
  * AJAX Banner placement
  *
  * @param {int} uid
+ * @param {int} lang
  * @param {int} typeNum
  * @param {string} startingPoint
  * @param {string} categories
@@ -10,8 +11,9 @@
  * @param {string} hmac
  * @constructor
  */
-var BannerPlacement = function (uid, typeNum, startingPoint, categories, displayMode, position, hmac) {
+var BannerPlacement = function (uid, lang, typeNum, startingPoint, categories, displayMode, position, hmac) {
     var url = 'index.php?id=' + uid;
+    url += '&L=' + lang;
     url += '&type=' + typeNum;
     url += '&tx_sfbanners_pi1[action]=getBanners';
     url += '&tx_sfbanners_pi1[currentPageUid]=' + uid;

@@ -110,6 +110,9 @@ class BannerRepository extends Repository {
 	protected function getResult(QueryInterface $query, BannerDemand $demand) {
 		$result = array();
 
+		// Do not respect syslanguage since we search for uids - @see forge #47192
+		$query->getQuerySettings()->setRespectSysLanguage(false);
+
 		switch ($demand->getDisplayMode()) {
 			case 'all':
 				$result = $query->execute();
