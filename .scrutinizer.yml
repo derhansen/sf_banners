@@ -8,7 +8,7 @@ tools:
 
     external_code_coverage:
         timeout: 1200
-        runs: 4
+        runs: 1
 
     php_cpd:
         enabled: true
