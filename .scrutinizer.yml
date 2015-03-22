@@ -1,16 +1,22 @@
 filter:
-    excluded_paths: ['Resources/Public/Js/HtmlParser.js', 'Resources/Public/Js/Postscribe.js']
-
+    excluded_paths:
+        - 'Documentation/*'
+        - 'Tests/*'
+    paths:
+        - 'Classes/*'
 tools:
 
     external_code_coverage:
-        timeout: 700
+        timeout: 1200
+        runs: 4
 
     php_cpd:
         enabled: true
 
     php_code_sniffer:
         enabled: true
+        config:
+            standard: TYPO3CMS
 
     php_cs_fixer:
         enabled: true
