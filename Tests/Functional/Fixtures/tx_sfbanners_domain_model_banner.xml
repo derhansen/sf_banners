@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+    <!-- findRecordsByStartingPointTest -->
+    <tx_sfbanners_domain_model_banner>
+        <uid>1</uid>
+        <pid>55</pid>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>2</uid>
+        <pid>55</pid>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>3</uid>
+        <pid>56</pid>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>4</uid>
+        <pid>57</pid>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>5</uid>
+        <pid>58</pid>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>6</uid>
+        <pid>59</pid>
+    </tx_sfbanners_domain_model_banner>
+
+    <!-- findRecordsByCategoryTest -->
+    <tx_sfbanners_domain_model_banner>
+        <uid>10</uid>
+        <pid>10</pid>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>11</uid>
+        <pid>10</pid>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>12</uid>
+        <pid>10</pid>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>13</uid>
+        <pid>10</pid>
+    </tx_sfbanners_domain_model_banner>
+
+    <!-- findRecordsWithDisplayModeTest -->
+    <tx_sfbanners_domain_model_banner>
+        <uid>20</uid>
+        <pid>80</pid>
+        <sorting>1</sorting>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>21</uid>
+        <pid>80</pid>
+        <sorting>2</sorting>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>22</uid>
+        <pid>80</pid>
+        <sorting>3</sorting>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>23</uid>
+        <pid>80</pid>
+        <sorting>4</sorting>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>24</uid>
+        <pid>80</pid>
+        <sorting>5</sorting>
+    </tx_sfbanners_domain_model_banner>
+
+    <!-- findRecordsForSpecialExcludePageUidTest -->
+    <tx_sfbanners_domain_model_banner>
+        <uid>30</uid>
+        <pid>95</pid>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>31</uid>
+        <pid>95</pid>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>32</uid>
+        <pid>95</pid>
+    </tx_sfbanners_domain_model_banner>
+
+    <!-- findRecordsForSpecialExcludeRecursivePageUidTest -->
+    <tx_sfbanners_domain_model_banner>
+        <uid>40</uid>
+        <pid>96</pid>
+        <recursive>1</recursive>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>41</uid>
+        <pid>96</pid>
+        <recursive>1</recursive>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>42</uid>
+        <pid>96</pid>
+        <recursive>1</recursive>
+    </tx_sfbanners_domain_model_banner>
+
+    <!-- findRecordsWithMaxImpressionsTest -->
+    <tx_sfbanners_domain_model_banner>
+        <uid>50</uid>
+        <pid>100</pid>
+        <impressions_max>0</impressions_max>
+        <impressions>10</impressions>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>51</uid>
+        <pid>100</pid>
+        <impressions_max>1000</impressions_max>
+        <impressions>999</impressions>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>52</uid>
+        <pid>100</pid>
+        <impressions_max>1000</impressions_max>
+        <impressions>1000</impressions>
+    </tx_sfbanners_domain_model_banner>
+
+    <!-- findRecordsWithMaxClicksTest -->
+    <tx_sfbanners_domain_model_banner>
+        <uid>60</uid>
+        <pid>101</pid>
+        <clicks_max>0</clicks_max>
+        <clicks>10</clicks>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>61</uid>
+        <pid>101</pid>
+        <clicks_max>10</clicks_max>
+        <clicks>9</clicks>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>62</uid>
+        <pid>101</pid>
+        <clicks_max>20</clicks_max>
+        <clicks>20</clicks>
+    </tx_sfbanners_domain_model_banner>
+
+    <!-- findRecordsWithMaxImpressionsAndMaxClicksTest -->
+    <tx_sfbanners_domain_model_banner>
+        <uid>70</uid>
+        <pid>102</pid>
+        <impressions_max>0</impressions_max>
+        <impressions>10</impressions>
+        <clicks>0</clicks>
+        <clicks_max>10</clicks_max>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>71</uid>
+        <pid>102</pid>
+        <impressions_max>10</impressions_max>
+        <impressions>10</impressions>
+        <clicks>0</clicks>
+        <clicks_max>10</clicks_max>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>72</uid>
+        <pid>102</pid>
+        <impressions_max>0</impressions_max>
+        <impressions>10</impressions>
+        <clicks>10</clicks>
+        <clicks_max>10</clicks_max>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>73</uid>
+        <pid>102</pid>
+        <impressions_max>10</impressions_max>
+        <impressions>10</impressions>
+        <clicks>10</clicks>
+        <clicks_max>10</clicks_max>
+    </tx_sfbanners_domain_model_banner>
+
+</dataset>

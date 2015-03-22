@@ -31,27 +31,29 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class BannerRepositoryTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
 
-	/**
-	 * @var \DERHANSEN\SfBanners\Domain\Repository\BannerRepository
-	 */
-	protected $fixture;
+	/** @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface The object manager */
+	protected $objectManager;
+
+	/** @var \DERHANSEN\SfBanners\Domain\Repository\BannerRepository */
+	protected $bannerRepository;
+
+	/** @var array  */
+	protected $testExtensionsToLoad = array('typo3conf/ext/sf_banners');
 
 	/**
 	 * Setup
 	 *
-	 * @return void<
-	 */
-	public function setUp() {
-
-	}
-
-	/**
-	 * TearDown
-	 *
+	 * @throws \TYPO3\CMS\Core\Tests\Exception
 	 * @return void
 	 */
-	public function tearDown() {
-		unset($this->fixture);
+	public function setUp() {
+		parent::setUp();
+		$this->objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+		$this->bannerRepository = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Repository\\BannerRepository');
+
+		$this->importDataSet(__DIR__ . '/../Fixtures/tx_sfbanners_domain_model_banner.xml');
+		$this->importDataSet(__DIR__ . '/../Fixtures/tx_sfbanners_domain_model_category.xml');
+		$this->importDataSet(__DIR__ . '/../Fixtures/pages.xml');
 	}
 
 	/**
@@ -61,26 +63,20 @@ class BannerRepositoryTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
 	 * @return void
 	 */
 	public function findRecordsByStartingPointTest() {
-		$this->markTestSkipped();
 		/** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand  */
 		$demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
 
-		$pidList = array(55,55,56,57,58,59);
-		foreach ($pidList as $pid) {
-			$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid));
-		}
-
 		/* Simple starting point */
 		$demand->setStartingPoint(55);
-		$this->assertEquals(2, (int)$this->fixture->findDemanded($demand)->count());
+		$this->assertEquals(2, (int)$this->bannerRepository->findDemanded($demand)->count());
 
 		/* Multiple starting points */
 		$demand->setStartingPoint('56,57,58');
-		$this->assertEquals(3, (int)$this->fixture->findDemanded($demand)->count());
+		$this->assertEquals(3, (int)$this->bannerRepository->findDemanded($demand)->count());
 
 		/* Multiple starting points, including invalid value */
 		$demand->setStartingPoint('57,58,?,59');
-		$this->assertEquals(3, (int)$this->fixture->findDemanded($demand)->count());
+		$this->assertEquals(3, (int)$this->bannerRepository->findDemanded($demand)->count());
 	}
 
 	/**
@@ -90,59 +86,27 @@ class BannerRepositoryTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
 	 * @return void
 	 */
 	public function findRecordsByCategoryTest() {
-		$this->markTestSkipped();
 		/** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand  */
 		$demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
-		$pid = 10;
-
-		$category1 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_category', array('pid' => $pid));
-		$category2 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_category', array('pid' => $pid));
-		$category3 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_category', array('pid' => $pid));
-
-		$banner1  = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid));
-		$banner2  = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid));
-		$banner3  = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid));
-		$banner4  = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid));
-
-		/* Create relations */
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
-			$banner1, $category1, 'category');
-
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
-			$banner2, $category1, 'category');
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
-			$banner2, $category2, 'category');
-
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
-			$banner3, $category1, 'category');
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
-			$banner3, $category3, 'category');
-
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
-			$banner4, $category1, 'category');
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
-			$banner4, $category2, 'category');
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
-			$banner4, $category3, 'category');
 
 		/* Set starting point */
-		$demand->setStartingPoint($pid);
+		$demand->setStartingPoint(10);
 
 		/* Simple category test */
-		$demand->setCategories($category1);
-		$this->assertEquals(4, (int)$this->fixture->findDemanded($demand)->count());
+		$demand->setCategories('10');
+		$this->assertEquals(4, (int)$this->bannerRepository->findDemanded($demand)->count());
 
 		/* Multiple category test */
-		$demand->setCategories($category1 . ',' . $category2);
-		$this->assertEquals(4, (int)$this->fixture->findDemanded($demand)->count());
+		$demand->setCategories('10,11');
+		$this->assertEquals(4, (int)$this->bannerRepository->findDemanded($demand)->count());
 
 		/* Multiple category test, including invalid value */
-		$demand->setCategories($category2 . ',?,' . $category3);
-		$this->assertEquals(3, (int)$this->fixture->findDemanded($demand)->count());
+		$demand->setCategories('11,?,12');
+		$this->assertEquals(3, (int)$this->bannerRepository->findDemanded($demand)->count());
 
 		/* Non existing category test */
 		$demand->setCategories('9999');
-		$this->assertEquals(0, (int)$this->fixture->findDemanded($demand)->count());
+		$this->assertEquals(0, (int)$this->bannerRepository->findDemanded($demand)->count());
 	}
 
 	/**
@@ -152,26 +116,24 @@ class BannerRepositoryTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
 	 * @return void
 	 */
 	public function findRecordsWithDisplayModeTest() {
-		$this->markTestSkipped();
 		/** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand  */
 		$demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
 		$pid = 80;
-
-		$uids = array();
-
-		for ($i = 1; $i <= 5; $i++) {
-			$uid = $this->testingFramework->createRecord(
-				'tx_sfbanners_domain_model_banner', array('pid' => $pid, 'sorting' => $i));
-			$uids[$i] = $uid;
-		}
+		$uids = array(
+			1 => 20,
+			2 => 21,
+			3 => 22,
+			4 => 23,
+			5 => 24
+		);
 
 		/* Set starting point */
 		$demand->setStartingPoint($pid);
 
 		/* All banners with default sorting respected */
 		$demand->setDisplayMode('all');
-		$this->assertEquals(5, (int)$this->fixture->findDemanded($demand)->count());
-		$returnedBanners = $this->fixture->findDemanded($demand);
+		$this->assertEquals(5, (int)$this->bannerRepository->findDemanded($demand)->count());
+		$returnedBanners = $this->bannerRepository->findDemanded($demand);
 		$returnedUids = array();
 		$count = 1;
 		foreach ($returnedBanners as $returnedBanner) {
@@ -185,16 +147,16 @@ class BannerRepositoryTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
 
 		/* Random one banner */
 		$demand->setDisplayMode('random');
-		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());
+		$this->assertEquals(1, (int)$this->bannerRepository->findDemanded($demand)->count());
 
 		/* All banners with random diplay mode */
 		$demand->setDisplayMode('allRandom');
-		$this->assertEquals(5, (int)$this->fixture->findDemanded($demand)->count());
+		$this->assertEquals(5, (int)$this->bannerRepository->findDemanded($demand)->count());
 
 		/* Find 100 times with demand, if returned UIDs are always the same, then they are not returned randomly */
 		$matchCount = 0;
 		for ($j = 1; $j <= 100; $j++) {
-			$returnedBanners = $this->fixture->findDemanded($demand);
+			$returnedBanners = $this->bannerRepository->findDemanded($demand);
 			$returnedUids = array();
 			$count = 1;
 			foreach ($returnedBanners as $returnedBanner) {
@@ -215,53 +177,33 @@ class BannerRepositoryTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
 	 * @return void
 	 */
 	public function findRecordsForSpecialExcludePageUidTest() {
-		$this->markTestSkipped();
 		/** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand  */
 		$demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
 		$pid = 95;
 
-		/* Create some pages */
-		$pid1 = $this->testingFramework->createFrontEndPage(0,array('title' => 'Testpage4'));
-		$pid2 = $this->testingFramework->createFrontEndPage(0,array('title' => 'Testpage5'));
-		$pid3 = $this->testingFramework->createFrontEndPage(0,array('title' => 'Testpage6'));
-
-		/* Create some banners */
-		$banner1 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid));
-		$banner2 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid));
-		$banner3 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid));
-
-		/* Create relations */
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
-			$banner1, $pid1, 'excludepages');
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
-			$banner1, $pid2, 'excludepages');
-
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
-			$banner2, $pid1, 'excludepages');
-
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
-			$banner3, $pid2, 'excludepages');
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
-			$banner3, $pid3, 'excludepages');
+		/* Define PIDs */
+		$pid1 = 4;
+		$pid2 = 5;
+		$pid3 = 6;
 
 		/* Set starting point */
 		$demand->setStartingPoint($pid);
 
 		/* All banners, which not should be shown on the page with $pid1 */
 		$demand->setCurrentPageUid($pid1);
-		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());
+		$this->assertEquals(1, (int)$this->bannerRepository->findDemanded($demand)->count());
 
 		/* All banners, which not should be shown on page with $pid2 */
 		$demand->setCurrentPageUid($pid2);
-		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());
+		$this->assertEquals(1, (int)$this->bannerRepository->findDemanded($demand)->count());
 
 		/* All banners, which not should be shown on page with $pid3 */
 		$demand->setCurrentPageUid($pid3);
-		$this->assertEquals(2, (int)$this->fixture->findDemanded($demand)->count());
+		$this->assertEquals(2, (int)$this->bannerRepository->findDemanded($demand)->count());
 
 		/* All banners, which not should be shown on page with a non existing pid */
 		$demand->setCurrentPageUid(999);
-		$this->assertEquals(3, (int)$this->fixture->findDemanded($demand)->count());
+		$this->assertEquals(3, (int)$this->bannerRepository->findDemanded($demand)->count());
 	}
 
 	/**
@@ -271,55 +213,34 @@ class BannerRepositoryTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
 	 * @return void
 	 */
 	public function findRecordsForSpecialExcludeRecursivePageUidTest() {
-		$this->markTestSkipped();
 		/** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand  */
 		$demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
 		$pid = 96;
 
-		/* Create some pages */
-		$pid1 = $this->testingFramework->createFrontEndPage(0, array('title' => 'Testpage7'));
-		$pid2 = $this->testingFramework->createFrontEndPage($pid1 ,array('title' => 'Testpage8'));
-		$pid3 = $this->testingFramework->createFrontEndPage($pid2 ,array('title' => 'Testpage9'));
-		$pid4 = $this->testingFramework->createFrontEndPage(0 ,array('title' => 'Testpage10'));
-
-		/* Create some banners with recursive option */
-		$banner1 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner',
-			array('pid' => $pid, 'recursive' => 1));
-		$banner2 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner',
-			array('pid' => $pid, 'recursive' => 1));
-		$banner3 = $this->testingFramework->createRecord('tx_sfbanners_domain_model_banner',
-			array('pid' => $pid, 'recursive' => 1));
-
-		/* Create relations */
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
-			$banner1, $pid1, 'excludepages');
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
-			$banner1, $pid4, 'excludepages');
-
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
-			$banner2, $pid2, 'excludepages');
-
-		$this->testingFramework->createRelationAndUpdateCounter('tx_sfbanners_domain_model_banner',
-			$banner3, $pid3, 'excludepages');
+		/* Define PIDs */
+		$pid1 = 7;
+		$pid2 = 8;
+		$pid3 = 9;
+		$pid4 = 10;
 
 		/* Set starting point */
 		$demand->setStartingPoint($pid);
 
 		/* All banners, which not should be shown on the page with $pid1 */
 		$demand->setCurrentPageUid($pid1);
-		$this->assertEquals(2, (int)$this->fixture->findDemanded($demand)->count());
+		$this->assertEquals(2, (int)$this->bannerRepository->findDemanded($demand)->count());
 
 		/* All banners, which not should be shown on page with $pid2 */
 		$demand->setCurrentPageUid($pid2);
-		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());
+		$this->assertEquals(1, (int)$this->bannerRepository->findDemanded($demand)->count());
 
 		/* All banners, which not should be shown on page with $pid3 */
 		$demand->setCurrentPageUid($pid3);
-		$this->assertEquals(0, (int)$this->fixture->findDemanded($demand)->count());
+		$this->assertEquals(0, (int)$this->bannerRepository->findDemanded($demand)->count());
 
 		/* All banners, which not should be shown on page with $pid4 */
 		$demand->setCurrentPageUid($pid4);
-		$this->assertEquals(2, (int)$this->fixture->findDemanded($demand)->count());
+		$this->assertEquals(2, (int)$this->bannerRepository->findDemanded($demand)->count());
 	}
 
 	/**
@@ -329,24 +250,15 @@ class BannerRepositoryTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
 	 * @return void
 	 */
 	public function findRecordsWithMaxImpressionsTest() {
-		$this->markTestSkipped();
 		/** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand  */
 		$demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
 		$pid = 100;
-
-		/* Create some banners */
-		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
-			'impressions_max' => 0, 'impressions' => 10));
-		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
-			'impressions_max' => 1000, 'impressions' => 999));
-		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
-			'impressions_max' => 1000, 'impressions' => 1000));
 
 		/* Set starting point */
 		$demand->setStartingPoint($pid);
 
 		/* Verify, that 2 records are returned */
-		$this->assertEquals(2, (int)$this->fixture->findDemanded($demand)->count());
+		$this->assertEquals(2, (int)$this->bannerRepository->findDemanded($demand)->count());
 	}
 
 	/**
@@ -356,24 +268,15 @@ class BannerRepositoryTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
 	 * @return void
 	 */
 	public function findRecordsWithMaxClicksTest() {
-		$this->markTestSkipped();
 		/** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand  */
 		$demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
-		$pid = 100;
-
-		/* Create some banners */
-		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
-			'clicks_max' => 0, 'clicks' => 10));
-		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
-			'clicks_max' => 10, 'clicks' => 9));
-		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
-			'clicks_max' => 20, 'clicks' => 20));
+		$pid = 101;
 
 		/* Set starting point */
 		$demand->setStartingPoint($pid);
 
 		/* Verify, that 2 records are returned */
-		$this->assertEquals(2, (int)$this->fixture->findDemanded($demand)->count());
+		$this->assertEquals(2, (int)$this->bannerRepository->findDemanded($demand)->count());
 	}
 
 	/**
@@ -383,28 +286,14 @@ class BannerRepositoryTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
 	 * @return void
 	 */
 	public function findRecordsWithMaxImpressionsAndMaxClicksTest() {
-		$this->markTestSkipped();
 		/** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand  */
 		$demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
-		$pid = 101;
-
-		/* Create some banners */
-		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
-			'impressions_max' => 0, 'impressions' => 10, 'clicks' => 0, 'clicks_max' => 10));
-
-		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
-			'impressions_max' => 10, 'impressions' => 10, 'clicks' => 0, 'clicks_max' => 10));
-
-		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
-			'impressions_max' => 0, 'impressions' => 10, 'clicks' => 10, 'clicks_max' => 10));
-
-		$this->testingFramework->createRecord('tx_sfbanners_domain_model_banner', array('pid' => $pid,
-			'impressions_max' => 10, 'impressions' => 10, 'clicks' => 10, 'clicks_max' => 10));
+		$pid = 102;
 
 		/* Set starting point */
 		$demand->setStartingPoint($pid);
 
-		/* Verify, that 2 records are returned */
-		$this->assertEquals(1, (int)$this->fixture->findDemanded($demand)->count());
+		/* Verify, that 1 record are returned */
+		$this->assertEquals(1, (int)$this->bannerRepository->findDemanded($demand)->count());
 	}
 }

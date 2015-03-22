@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+    <!-- findRecordsForSpecialExcludePageUidTest -->
+    <pages>
+        <uid>4</uid>
+        <title>Testpage4</title>
+    </pages>
+    <pages>
+        <uid>5</uid>
+        <title>Testpage5</title>
+    </pages>
+    <pages>
+        <uid>6</uid>
+        <title>Testpage6</title>
+    </pages>
+
+    <!-- banner1 / uid 30 -->
+    <tx_sfbanners_domain_model_banner_excludepages_mm>
+        <uid_local>30</uid_local>
+        <uid_foreign>4</uid_foreign>
+    </tx_sfbanners_domain_model_banner_excludepages_mm>
+    <tx_sfbanners_domain_model_banner_excludepages_mm>
+        <uid_local>30</uid_local>
+        <uid_foreign>5</uid_foreign>
+    </tx_sfbanners_domain_model_banner_excludepages_mm>
+
+    <!-- banner2 / uid 31 -->
+    <tx_sfbanners_domain_model_banner_excludepages_mm>
+        <uid_local>31</uid_local>
+        <uid_foreign>4</uid_foreign>
+    </tx_sfbanners_domain_model_banner_excludepages_mm>
+
+    <!-- banner3 / uid 32 -->
+    <tx_sfbanners_domain_model_banner_excludepages_mm>
+        <uid_local>32</uid_local>
+        <uid_foreign>5</uid_foreign>
+    </tx_sfbanners_domain_model_banner_excludepages_mm>
+    <tx_sfbanners_domain_model_banner_excludepages_mm>
+        <uid_local>32</uid_local>
+        <uid_foreign>6</uid_foreign>
+    </tx_sfbanners_domain_model_banner_excludepages_mm>
+
+    <!-- findRecordsForSpecialExcludeRecursivePageUidTest -->
+    <pages>
+        <uid>7</uid>
+        <title>Testpage7</title>
+    </pages>
+    <pages>
+        <uid>8</uid>
+        <pid>7</pid>
+        <title>Testpage8</title>
+    </pages>
+    <pages>
+        <uid>9</uid>
+        <pid>8</pid>
+        <title>Testpage9</title>
+    </pages>
+    <pages>
+        <uid>10</uid>
+        <title>Testpage10</title>
+    </pages>
+
+    <!-- banner1 / uid 40 -->
+    <tx_sfbanners_domain_model_banner_excludepages_mm>
+        <uid_local>40</uid_local>
+        <uid_foreign>7</uid_foreign>
+    </tx_sfbanners_domain_model_banner_excludepages_mm>
+    <tx_sfbanners_domain_model_banner_excludepages_mm>
+        <uid_local>40</uid_local>
+        <uid_foreign>10</uid_foreign>
+    </tx_sfbanners_domain_model_banner_excludepages_mm>
+
+    <!-- banner2 / uid 41 -->
+    <tx_sfbanners_domain_model_banner_excludepages_mm>
+        <uid_local>41</uid_local>
+        <uid_foreign>8</uid_foreign>
+    </tx_sfbanners_domain_model_banner_excludepages_mm>
+
+    <!-- banner3 / uid 42 -->
+    <tx_sfbanners_domain_model_banner_excludepages_mm>
+        <uid_local>42</uid_local>
+        <uid_foreign>9</uid_foreign>
+    </tx_sfbanners_domain_model_banner_excludepages_mm>
+
+</dataset>
