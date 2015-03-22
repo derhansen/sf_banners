@@ -180,7 +180,7 @@ class BannerRepository extends Repository {
 	 */
 	protected function getExcludePageBanners(QueryResultInterface $result, BannerDemand $demand) {
 		/** @var \TYPO3\CMS\Core\Database\QueryGenerator $queryGenerator */
-		$queryGenerator = $this->objectManager->get('\\TYPO3\\CMS\\Core\\Database\\QueryGenerator');
+		$queryGenerator = $this->objectManager->get('TYPO3\\CMS\\Core\\Database\\QueryGenerator');
 
 		$banners = array();
 		/** @var \DERHANSEN\SfBanners\Domain\Model\Banner $banner */
