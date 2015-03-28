@@ -198,6 +198,27 @@ class Banner extends AbstractEntity {
 	protected $flashWmode;
 
 	/**
+	 * __construct
+	 */
+	public function __construct() {
+		//Do not remove the next line: It would break the functionality
+		$this->initStorageObjects();
+	}
+
+	/**
+	 * Initializes all ObjectStorage properties
+	 * Do not modify this method!
+	 * It will be rewritten on each save in the extension builder
+	 * You may modify the constructor of this class instead
+	 *
+	 * @return void
+	 */
+	protected function initStorageObjects() {
+		$this->category = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->excludepages = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+	}
+
+	/**
 	 * Sets allowScriptAccess
 	 *
 	 * @param string $flashAllowScriptAccess FlashAllowScriptAccess
@@ -293,8 +314,28 @@ class Banner extends AbstractEntity {
 	}
 
 	/**
+	 * Adds a category
+	 *
+	 * @param \DERHANSEN\SfBanners\Domain\Model\Category $category
+	 * @return void
+	 */
+	public function addCategory(\DERHANSEN\SfBanners\Domain\Model\Category $category) {
+		$this->category->attach($category);
+	}
+
+	/**
+	 * Removes a category
+	 *
+	 * @param \DERHANSEN\SfBanners\Domain\Model\Category $categoryToRemove
+	 * @return void
+	 */
+	public function removeCategory(\DERHANSEN\SfBanners\Domain\Model\Category $categoryToRemove) {
+		$this->category->detach($categoryToRemove);
+	}
+
+	/**
 	 * Returns the category
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\DERHANSEN\SfBanners\Domain\Model\Category> $category
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage $category
 	 */
 	public function getCategory() {
 		return $this->category;
@@ -368,6 +409,26 @@ class Banner extends AbstractEntity {
 	}
 
 	/**
+	 * Adds a page
+	 *
+	 * @param \DERHANSEN\SfBanners\Domain\Model\Page $page
+	 * @return void
+	 */
+	public function addExcludepages(\DERHANSEN\SfBanners\Domain\Model\Page $page) {
+		$this->excludepages->attach($page);
+	}
+
+	/**
+	 * Removes a page
+	 *
+	 * @param \DERHANSEN\SfBanners\Domain\Model\page $pageToRemove
+	 * @return void
+	 */
+	public function removeExcludepages(\DERHANSEN\SfBanners\Domain\Model\page $pageToRemove) {
+		$this->excludepages->detach($pageToRemove);
+	}
+
+	/**
 	 * Setter for excludepages
 	 *
 	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $excludepages Excludepages
@@ -380,7 +441,7 @@ class Banner extends AbstractEntity {
 	/**
 	 * Getter for excludepages
 	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\DERHANSEN\SfBanners\Domain\Model\Page>
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
 	 */
 	public function getExcludepages () {
 		return $this->excludepages;

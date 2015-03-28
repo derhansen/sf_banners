@@ -306,4 +306,100 @@ class BannerTest extends UnitTestCase {
 		$this->assertTrue($this->fixture->getRecursive());
 	}
 
+	/**
+	 * @test
+	 */
+	public function getCategoryReturnsInitialValueForCategory() {
+		$newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->assertEquals(
+			$newObjectStorage,
+			$this->fixture->getCategory()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setCategoryForObjectStorageContainingCategorySetsCategory() {
+		$category = new \DERHANSEN\SfBanners\Domain\Model\Category();
+		$objectStorageHoldingExactlyOneCategory = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$objectStorageHoldingExactlyOneCategory->attach($category);
+		$this->fixture->setCategory($objectStorageHoldingExactlyOneCategory);
+		$this->assertAttributeEquals(
+			$objectStorageHoldingExactlyOneCategory,
+			'category',
+			$this->fixture
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function addCategoryToObjectStorageHoldingCategory() {
+		$category = new \DERHANSEN\SfBanners\Domain\Model\Category();
+		$categoryObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('attach'), array(), '', FALSE);
+		$categoryObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($category));
+		$this->inject($this->fixture, 'category', $categoryObjectStorageMock);
+		$this->fixture->addCategory($category);
+	}
+
+	/**
+	 * @test
+	 */
+	public function removeCategoryFromObjectStorageHoldingCategory() {
+		$category = new \DERHANSEN\SfBanners\Domain\Model\Category();
+		$categoryObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('detach'), array(), '', FALSE);
+		$categoryObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($category));
+		$this->inject($this->fixture, 'category', $categoryObjectStorageMock);
+		$this->fixture->removeCategory($category);
+	}
+
+	/**
+	 * @test
+	 */
+	public function getExcludePagesReturnsInitialValueForExcudePages() {
+		$newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->assertEquals(
+			$newObjectStorage,
+			$this->fixture->getExcludepages()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setExcludePagesForObjectStorageContainingExcludePagesSetsExcludePages() {
+		$page = new \DERHANSEN\SfBanners\Domain\Model\Page();
+		$objectStorageHoldingExactlyOnePage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$objectStorageHoldingExactlyOnePage->attach($page);
+		$this->fixture->setExcludepages($objectStorageHoldingExactlyOnePage);
+		$this->assertAttributeEquals(
+			$objectStorageHoldingExactlyOnePage,
+			'excludepages',
+			$this->fixture
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function addExludePagesToObjectStorageHoldingExcludePages() {
+		$page = new \DERHANSEN\SfBanners\Domain\Model\Page();
+		$pageObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('attach'), array(), '', FALSE);
+		$pageObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($page));
+		$this->inject($this->fixture, 'excludepages', $pageObjectStorageMock);
+		$this->fixture->addExcludepages($page);
+	}
+
+	/**
+	 * @test
+	 */
+	public function removeExludePagesFromObjectStorageHoldingExcludePages() {
+		$page = new \DERHANSEN\SfBanners\Domain\Model\Page();
+		$pageObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('detach'), array(), '', FALSE);
+		$pageObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($page));
+		$this->inject($this->fixture, 'excludepages', $pageObjectStorageMock);
+		$this->fixture->removeExcludepages($page);
+	}
+
 }
