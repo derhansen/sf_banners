@@ -18,6 +18,15 @@ matrix:
 
 sudo: false
 
+addons:
+  apt:
+    packages:
+      - parallel
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
 notifications:
   email:
     - derhansen@gmail.com
