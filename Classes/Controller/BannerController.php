@@ -24,10 +24,10 @@ namespace DERHANSEN\SfBanners\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
-use TYPO3\CMS\Core\Cache\Cache;
-use TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Banner Controller
@@ -61,9 +61,9 @@ class BannerController extends ActionController {
 	protected $hashService;
 
 	/**
-	 * Instance of Caching Framework
+	 * The Cache
 	 *
-	 * @var \TYPO3\CMS\Core\Cache\Frontend\AbstractFrontend
+	 * @var \TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
 	 */
 	protected $cacheInstance;
 
@@ -80,17 +80,8 @@ class BannerController extends ActionController {
 	 * @return void
 	 */
 	protected function initializeCache() {
-		Cache::initializeCachingFramework();
-		try {
-			$this->cacheInstance = $GLOBALS['typo3CacheManager']->getCache('sfbanners_cache');
-		} catch (NoSuchCacheException $e) {
-			$this->cacheInstance = $GLOBALS['typo3CacheFactory']->create(
-				'sfbanners_cache',
-				$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['frontend'],
-				$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['backend'],
-				$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['options']
-			);
-		}
+		$cacheManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Cache\\CacheManager');
+		$this->cacheInstance = $cacheManager->getCache('sfbanners_cache');
 	}
 
 	/**
@@ -168,15 +159,14 @@ class BannerController extends ActionController {
 				$ident .= $banner->getUid();
 			}
 
-			$ret = $GLOBALS['typo3CacheManager']->getCache('sfbanners_cache')->get(sha1($ident));
+			$ret = $this->cacheInstance->get(sha1($ident));
 			if ($ret === FALSE || $ret === NULL) {
 				$this->view->assign('banners', $banners);
 				$this->view->assign('settings', $this->settings);
 				$ret = $this->view->render();
 
 				// Save value in cache
-				$GLOBALS['typo3CacheManager']->getCache('sfbanners_cache')->set(sha1($ident), $ret, array('sf_banners'),
-					$this->settings['cacheLifetime']);
+				$this->cacheInstance->set(sha1($ident), $ret, array('sf_banners'), $this->settings['cacheLifetime']);
 			}
 		} else {
 			$ret = LocalizationUtility::translate('wrong_hmac', 'SfBanners');
