@@ -221,7 +221,7 @@ class BannerServiceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	}
 
 	/**
-	 * Test if CSS file is returned
+	 * Test if returned file contains .css as extension
 	 *
 	 * @test
 	 * @return void
@@ -240,7 +240,7 @@ class BannerServiceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$banners = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$banners->attach($banner);
 
-		$expected = '/typo3temp\/stylesheet_.*?\.css/';
+		$expected = '/\.css/';
 		$result = $this->bannerService->getAdditionalCssFile($banners);
 		$this->assertRegExp($expected, $result);
 	}
@@ -279,7 +279,6 @@ class BannerServiceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 
 		$result = $this->bannerService->getAdditionalCssLink($banners);
 		$this->assertContains('<link rel="stylesheet" type="text/css" href=', $result);
-		$this->assertContains('typo3temp/stylesheet_', $result);
 		$this->assertContains('.css', $result);
 		$this->assertContains('media="all" />', $result);
 	}
