@@ -43,7 +43,7 @@ class sfbanners_pi1_wizicon {
 	 */
 	public function proc($wizardItems) {
 		$wizardItems['plugins_tx_' . self::KEY] = array(
-			'icon'			=> t3lib_extMgm::extRelPath(self::KEY) . 'Resources/Public/Icons/ce_wizzard.gif',
+			'icon' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath(self::KEY) . 'Resources/Public/Icons/ce_wizzard.gif',
 			'title'			=> $GLOBALS['LANG']->sL('LLL:EXT:sf_banners/Resources/Private/Language/locallang.xml:plugin_title'),
 			'description'	=> $GLOBALS['LANG']->sL('LLL:EXT:sf_banners/Resources/Private/Language/locallang.xml:plugin_description'),
 			'params'		=> '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=' . self::PLUGIN_SIGNATURE . '_pi1'
