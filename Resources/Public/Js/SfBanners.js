@@ -11,8 +11,8 @@
  * @param {string} hmac
  * @constructor
  */
-var BannerPlacement = function (uid, lang, typeNum, startingPoint, categories, displayMode, position, hmac) {
-    var url = 'index.php?id=' + uid;
+var BannerPlacement = function (uid, lang, typeNum, startingPoint, categories, displayMode, position, hmac, absRefPrefix) {
+    var url = absRefPrefix + 'index.php?id=' + uid;
     url += '&L=' + lang;
     url += '&type=' + typeNum;
     url += '&tx_sfbanners_pi1[action]=getBanners';

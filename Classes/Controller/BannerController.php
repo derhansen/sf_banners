@@ -113,6 +113,7 @@ class BannerController extends ActionController {
 		$this->view->assign('displayMode', $this->settings['displayMode']);
 		$this->view->assign('typeNum', $this->settings['ajaxPageTypeNum']);
 		$this->view->assign('uniqueid', $uniqueid);
+		$this->view->assign('absRefPrefix', $GLOBALS['TSFE']->absRefPrefix);
 		$this->view->assign('hmac', $hmac);
 
 		/* Find all banners and add additional CSS */
