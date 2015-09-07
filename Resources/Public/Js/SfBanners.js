@@ -31,7 +31,7 @@ var BannerPlacement = function (uid, lang, typeNum, startingPoint, categories, d
         url += '&tx_sfbanners_pi1[displayMode]=' + displayMode;
     }
 
-    $.get(url, function(data) {
+    jQuery.get(url, function(data) {
         postscribe('#' + position, data);
     });
 }
