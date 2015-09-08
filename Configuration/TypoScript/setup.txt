@@ -4,10 +4,6 @@ plugin.tx_sfbanners {
 		partialRootPath = {$plugin.tx_sfbanners.view.partialRootPath}
 		layoutRootPath = {$plugin.tx_sfbanners.view.layoutRootPath}
 	}
-	features {
-		# uncomment the following line to enable the new Property Mapper.
-		# rewrittenPropertyMapper = 1
-	}
 	settings {
 	  displayMode = {$plugin.tx_sfbanners.settings.displayMode}
 	  defaultFlashVars {
