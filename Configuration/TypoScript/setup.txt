@@ -36,9 +36,11 @@ plugin.tx_sfbanners {
 	}
 }
 
-config.tx_extbase.persistence.classes.Tx_SfBanners_Domain_Model_Page {
-    mapping {
-        tableName = pages
+config.tx_extbase.persistence.classes {
+    DERHANSEN\SfBanners\Domain\Model\Page {
+        mapping {
+            tableName = pages
+        }
     }
 }
 
