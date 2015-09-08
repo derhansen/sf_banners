@@ -30,59 +30,6 @@ if (TYPO3_MODE == 'BE') {
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_sfbanners_domain_model_category', 'EXT:sf_banners/Resources/Private/Language/locallang_csh_tx_sfbanners_domain_model_category.xml');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_sfbanners_domain_model_category');
-$TCA['tx_sfbanners_domain_model_category'] = array(
-	'ctrl' => array(
-		'title'	=> 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_category',
-		'label' => 'title',
-		'tstamp' => 'tstamp',
-		'crdate' => 'crdate',
-		'cruser_id' => 'cruser_id',
-		'dividers2tabs' => TRUE,
-		'sortby' => 'sorting',
-		'versioningWS' => 2,
-		'versioning_followPages' => TRUE,
-		'origUid' => 't3_origuid',
-		'languageField' => 'sys_language_uid',
-		'transOrigPointerField' => 'l10n_parent',
-		'transOrigDiffSourceField' => 'l10n_diffsource',
-		'delete' => 'deleted',
-		'enablecolumns' => array(
-			'disabled' => 'hidden',
-			'starttime' => 'starttime',
-			'endtime' => 'endtime',
-		),
-		'searchFields' => 'title,parent,',
-		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Category.php',
-		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_sfbanners_domain_model_category.gif'
-	),
-);
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_sfbanners_domain_model_banner', 'EXT:sf_banners/Resources/Private/Language/locallang_csh_tx_sfbanners_domain_model_banner.xml');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_sfbanners_domain_model_banner');
-$TCA['tx_sfbanners_domain_model_banner'] = array(
-	'ctrl' => array(
-		'title'	=> 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner',
-		'label' => 'title',
-		'tstamp' => 'tstamp',
-		'crdate' => 'crdate',
-		'cruser_id' => 'cruser_id',
-		'type' => 'type',
-		'dividers2tabs' => TRUE,
-		'sortby' => 'sorting',
-		'versioningWS' => 2,
-		'versioning_followPages' => TRUE,
-		'origUid' => 't3_origuid',
-		'languageField' => 'sys_language_uid',
-		'transOrigPointerField' => 'l10n_parent',
-		'transOrigDiffSourceField' => 'l10n_diffsource',
-		'delete' => 'deleted',
-		'enablecolumns' => array(
-			'disabled' => 'hidden',
-			'starttime' => 'starttime',
-			'endtime' => 'endtime',
-		),
-		'searchFields' => 'title,description,type,category,',
-		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Banner.php',
-		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_sfbanners_domain_model_banner.gif'
-	),
-);

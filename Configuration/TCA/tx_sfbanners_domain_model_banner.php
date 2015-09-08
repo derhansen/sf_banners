@@ -1,10 +1,30 @@
 <?php
-if (!defined ('TYPO3_MODE')) {
-	die ('Access denied.');
-}
 
-$TCA['tx_sfbanners_domain_model_banner'] = array(
-	'ctrl' => $TCA['tx_sfbanners_domain_model_banner']['ctrl'],
+return array(
+	'ctrl' => array(
+		'title'	=> 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner',
+		'label' => 'title',
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'type' => 'type',
+		'dividers2tabs' => TRUE,
+		'sortby' => 'sorting',
+		'versioningWS' => 2,
+		'versioning_followPages' => TRUE,
+		'origUid' => 't3_origuid',
+		'languageField' => 'sys_language_uid',
+		'transOrigPointerField' => 'l10n_parent',
+		'transOrigDiffSourceField' => 'l10n_diffsource',
+		'delete' => 'deleted',
+		'enablecolumns' => array(
+			'disabled' => 'hidden',
+			'starttime' => 'starttime',
+			'endtime' => 'endtime',
+		),
+		'searchFields' => 'title,description,type,category,',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('sf_banners') . 'Resources/Public/Icons/tx_sfbanners_domain_model_banner.gif'
+	),
 	'interface' => array(
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, type, category, image, margin_top, margin_right, margin_bottom, margin_left, alttext, link, html, flash, flash_width, flash_height, flash_wmode, flash_allow_script_access, impressions_max, clicks_max, impressions, clicks, excludepages, recursive',
 	),
