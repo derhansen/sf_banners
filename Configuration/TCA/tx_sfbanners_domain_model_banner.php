@@ -2,7 +2,7 @@
 
 return array(
 	'ctrl' => array(
-		'title'	=> 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner',
+		'title'	=> 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner',
 		'label' => 'title',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
@@ -31,21 +31,21 @@ return array(
 	'columns' => array(
 		'sys_language_uid' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.language',
+			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
 			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'sys_language',
 				'foreign_table_where' => 'ORDER BY sys_language.title',
 				'items' => array(
-					array('LLL:EXT:lang/locallang_general.xml:LGL.allLanguages', -1),
-					array('LLL:EXT:lang/locallang_general.xml:LGL.default_value', 0)
+					array('LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages', -1),
+					array('LLL:EXT:lang/locallang_general.xlf:LGL.default_value', 0)
 				),
 			),
 		),
 		'l10n_parent' => array(
 			'displayCond' => 'FIELD:sys_language_uid:>:0',
 			'exclude' => 0,
-			'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.l18n_parent',
+			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
 			'config' => array(
 				'type' => 'select',
 				'items' => array(
@@ -61,7 +61,7 @@ return array(
 			),
 		),
 		't3ver_label' => array(
-			'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.versionLabel',
+			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.versionLabel',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
@@ -70,7 +70,7 @@ return array(
 		),
 		'hidden' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
+			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
 			'config' => array(
 				'type' => 'check',
 			),
@@ -78,7 +78,7 @@ return array(
 		'starttime' => array(
 			'exclude' => 0,
 			'l10n_mode' => 'mergeIfNotBlank',
-			'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.starttime',
+			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
 			'config' => array(
 				'type' => 'input',
 				'size' => 13,
@@ -94,7 +94,7 @@ return array(
 		'endtime' => array(
 			'exclude' => 0,
 			'l10n_mode' => 'mergeIfNotBlank',
-			'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.endtime',
+			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
 			'config' => array(
 				'type' => 'input',
 				'size' => 13,
@@ -109,7 +109,7 @@ return array(
 		),
 		'title' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.title',
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.title',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
@@ -118,7 +118,7 @@ return array(
 		),
 		'description' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.description',
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.description',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
@@ -128,13 +128,13 @@ return array(
 		'type' => array(
 			'exclude' => 0,
 			'l10n_mode' => 'mergeIfNotBlank',
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.type',
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.type',
 			'config' => array(
 				'type' => 'select',
 				'items' => array(
-					array('LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.type.image', 0),
-					array('LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.type.html', 1),
-					array('LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.type.flash', 2),
+					array('LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.type.image', 0),
+					array('LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.type.html', 1),
+					array('LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.type.flash', 2),
 				),
 				'size' => 1,
 				'maxitems' => 1,
@@ -143,7 +143,7 @@ return array(
 		),
 		'category' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.category',
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.category',
 			'config' => array(
 				'type' => 'select',
 				'renderMode' => 'tree',
@@ -164,7 +164,7 @@ return array(
 		'image' => array(
 			'exclude' => 0,
 			'l10n_mode' => 'mergeIfNotBlank',
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.image',
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.image',
 			'config' => array(
 				'type' => 'group',
 				'internal_type' => 'file',
@@ -179,7 +179,7 @@ return array(
 		),
 		'margin_top' => Array (
 			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.margin_top',
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.margin_top',
 			'config' => Array (
 				'type' => 'input',
 				'size' => '5',
@@ -190,7 +190,7 @@ return array(
 		),
 		'margin_right' => Array (
 			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.margin_right',
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.margin_right',
 			'config' => Array (
 				'type' => 'input',
 				'size' => '5',
@@ -201,7 +201,7 @@ return array(
 		),
 		'margin_bottom' => Array (
 			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.margin_bottom',
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.margin_bottom',
 			'config' => Array (
 				'type' => 'input',
 				'size' => '5',
@@ -212,7 +212,7 @@ return array(
 		),
 		'margin_left' => Array (
 			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.margin_left',
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.margin_left',
 			'config' => Array (
 				'type' => 'input',
 				'size' => '5',
@@ -223,7 +223,7 @@ return array(
 		),
 		'alttext' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.alttext',
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.alttext',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
@@ -233,7 +233,7 @@ return array(
 		'link' => array(
 			'exclude' => 0,
 			'l10n_mode' => 'mergeIfNotBlank',
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.link',
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.link',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
@@ -259,7 +259,7 @@ return array(
 		'html' => Array (
 			'exclude' => 0,
 			'l10n_mode' => 'mergeIfNotBlank',
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.html',
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.html',
 			'config' => Array (
 				'type' => 'text',
 				'cols' => '60',
@@ -269,7 +269,7 @@ return array(
 		'flash' => array(
 			'exclude' => 0,
 			'l10n_mode' => 'mergeIfNotBlank',
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.flash',
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.flash',
 			'config' => array(
 				'type' => 'group',
 				'internal_type' => 'file',
@@ -284,7 +284,7 @@ return array(
 		),
 		'flash_width' => Array (
 			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.flash.width',
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.flash.width',
 			'config' => Array (
 				'type' => 'input',
 				'size' => '5',
@@ -294,7 +294,7 @@ return array(
 		),
 		'flash_height' => Array (
 			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.flash.height',
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.flash.height',
 			'config' => Array (
 				'type' => 'input',
 				'size' => '5',
@@ -304,7 +304,7 @@ return array(
 		),
 		'flash_wmode' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.flash.wmode',
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.flash.wmode',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
@@ -312,7 +312,7 @@ return array(
 		),
 		'flash_allow_script_access' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.flash.allowScriptAccess',
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.flash.allowScriptAccess',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
@@ -320,7 +320,7 @@ return array(
 		),
 		'impressions_max' => Array (
 			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.impressions_max',
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.impressions_max',
 			'config' => Array (
 				'type' => 'input',
 				'size' => '10',
@@ -329,7 +329,7 @@ return array(
 		),
 		'clicks_max' => Array (
 			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.clicks_max',
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.clicks_max',
 			'config' => Array (
 				'type' => 'input',
 				'size' => '10',
@@ -338,7 +338,7 @@ return array(
 		),
 		'impressions' => Array (
 			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.impressions',
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.impressions',
 			'config' => Array (
 				'type' => 'none',
 				'size' => '10',
@@ -346,7 +346,7 @@ return array(
 		),
 		'clicks' => Array (
 			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.clicks',
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.clicks',
 			'config' => Array (
 				'type' => 'none',
 				'size' => '10',
@@ -354,7 +354,7 @@ return array(
 		),
 		'excludepages' => Array (
 			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.excludepages',
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.excludepages',
 			'config' => Array (
 				'type' => 'group',
 				'internal_type' => 'db',
@@ -368,7 +368,7 @@ return array(
 		),
 		'recursive' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.recursive',
+			'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.recursive',
 			'config' => array(
 				'type' => 'check',
 			),
@@ -377,27 +377,27 @@ return array(
 	'types' => array(
 		'0' => array(
 			'showitem' => 'l10n_parent,l10n_diffsource,title;;paletteCore;;1-1-1, description,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.image,image;;paletteMargins;;1-1-1,alttext,link,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.display, category, excludepages, recursive,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.visibility, hidden;;paletteVisibility;;1-1-1,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.limitations, impressions_max, clicks_max,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.statistics, impressions, clicks,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.image,image;;paletteMargins;;1-1-1,alttext,link,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.display, category, excludepages, recursive,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.visibility, hidden;;paletteVisibility;;1-1-1,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.limitations, impressions_max, clicks_max,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.statistics, impressions, clicks,
 		'),
 		'1' => array(
 			'showitem' => 'l10n_parent,l10n_diffsource,title;;paletteCore;;1-1-1, description,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.html,html;;paletteMargins;;1-1-1,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.display, category, excludepages, recursive,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.visibility, hidden;;paletteVisibility;;1-1-1,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.limitations, impressions_max, clicks_max,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.statistics, impressions, clicks,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.html,html;;paletteMargins;;1-1-1,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.display, category, excludepages, recursive,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.visibility, hidden;;paletteVisibility;;1-1-1,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.limitations, impressions_max, clicks_max,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.statistics, impressions, clicks,
 		'),
 		'2' => array(
 			'showitem' => 'l10n_parent,l10n_diffsource,title;;paletteCore;;1-1-1, description,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.flash,flash;;paletteMargins;;1-1-1,flash_width,flash_height, flash_wmode, flash_allow_script_access, link,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.display, category, excludepages, recursive,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.visibility, hidden;;paletteVisibility;;1-1-1,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.limitations, impressions_max, clicks_max,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:tx_sfbanners_domain_model_banner.tabs.statistics, impressions, clicks,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.flash,flash;;paletteMargins;;1-1-1,flash_width,flash_height, flash_wmode, flash_allow_script_access, link,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.display, category, excludepages, recursive,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.visibility, hidden;;paletteVisibility;;1-1-1,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.limitations, impressions_max, clicks_max,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.statistics, impressions, clicks,
 		'),
 	),
 	'palettes' => array(

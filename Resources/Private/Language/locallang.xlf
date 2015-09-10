@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-09-10T09:27:08Z">
+		<header>
+			<type>module</type>
+			<description>Language labels for the Banner Management extension in the FRONTEND</description>
+			<generator>LFEditor</generator>
+		</header>
+		<body>
+		<trans-unit id="plugin_description">
+			<source>Banner-Management for image, html and flash banners</source>
+		</trans-unit>
+		<trans-unit id="plugin_title">
+			<source>Show banner</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner">
+			<source>Banners</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.category">
+			<source>Category</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.description">
+			<source>Description</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.title">
+			<source>Title</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.type">
+			<source>Type</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_category">
+			<source>Categories</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_category.parent">
+			<source>Parent</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_category.title">
+			<source>Title</source>
+		</trans-unit>
+		<trans-unit id="wrong_hmac">
+			<source>Hmac calculation failed.</source>
+		</trans-unit>
+		</body>
+	</file>
+</xliff>
