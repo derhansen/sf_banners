@@ -15,9 +15,12 @@
 .. role::   php(code)
 
 
-Can I use my own templates?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Breaking changes
+----------------
 
-Yes, this is possible since the extension is made with Extbase and
-Fluid. You can configure template settings by TypoScript
+Version 1.0.0
+~~~~~~~~~~~~~
 
+The inclusion of JavaScript libraries has moved to the page footer by using ``page.includeJSFooter``.
+Due to this change, you may have to update your JavaScript includes in TypoScript. This only applies,
+if you have overwritten the original ``page.includeJS`` inclusions.

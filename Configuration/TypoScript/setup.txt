@@ -47,7 +47,7 @@ config.tx_extbase.persistence.classes {
 # Include JQuery if configured
 [globalVar = LIT:1 = {$plugin.tx_sfbanners.settings.includeJquery}]
 page.includeJSFooter {
-  bannerJQuery = http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
+  bannerJQuery = //ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js
   bannerJQuery.external = 1
   bannerJQuery.forceOnTop = 1
 }
