@@ -1,6 +1,4 @@
-﻿.. include:: Images.txt
-
-.. ==================================================
+﻿.. ==================================================
 .. FOR YOUR INFORMATION
 .. --------------------------------------------------
 .. -*- coding: utf-8 -*- with BOM.
@@ -39,12 +37,17 @@ Asynchronous Banner-Management
 :Language:
       en
 
-|img-2| |img-1| sf_banners: Asynchronous Banner-Management
-
 .. toctree::
    :maxdepth: 5
    :titlesonly:
    :glob:
 
-   Main/Index
-
+   Introduction/Index
+   UsersManual/Index
+   Configuration/Index
+   Faq/Index
+   PerformanceConsiderations/Index
+   KnownProblems/Index
+   To-doList/Index
+   Changelog/Index
+   Breakingchanges/Index

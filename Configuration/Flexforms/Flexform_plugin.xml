@@ -7,20 +7,20 @@
         <el>
             <settings.displayMode>
                 <TCEforms>
-                    <label>LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.displayMode</label>
+                    <label>LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:plugin.settings.displayMode</label>
                     <config>
                         <type>select</type>
                         <items>
                             <numIndex index="0" type="array">
-                                <numIndex index="0">LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.displayMode.all</numIndex>
+                                <numIndex index="0">LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:plugin.settings.displayMode.all</numIndex>
                                 <numIndex index="1">all</numIndex>
                             </numIndex>
                             <numIndex index="1">
-                                <numIndex index="0">LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.displayMode.allRandom</numIndex>
+                                <numIndex index="0">LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:plugin.settings.displayMode.allRandom</numIndex>
                                 <numIndex index="1">allRandom</numIndex>
                             </numIndex>
                             <numIndex index="2">
-                                <numIndex index="0">LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.displayMode.random</numIndex>
+                                <numIndex index="0">LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:plugin.settings.displayMode.random</numIndex>
                                 <numIndex index="1">random</numIndex>
                             </numIndex>
                         </items>
@@ -30,7 +30,7 @@
             <settings.startingPoint>
                 <TCEforms>
                     <exclude>1</exclude>
-                    <label>LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.startingPoint</label>
+                    <label>LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:plugin.settings.startingPoint</label>
                     <config>
                         <type>group</type>
                         <internal_type>db</internal_type>
@@ -49,7 +49,7 @@
             </settings.startingPoint>
             <settings.category>
                 <TCEforms>
-                    <label>LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xml:plugin.settings.category</label>
+                    <label>LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:plugin.settings.category</label>
                     <config>
                         <type>select</type>
                         <renderMode>tree</renderMode>

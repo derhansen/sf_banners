@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-09-10T09:28:33Z">
+		<header>
+			<type>database</type>
+			<description>Language labels for database tables/fields belonging to extension 'sf_banners'</description>
+			<generator>LFEditor</generator>
+		</header>
+		<body>
+		<trans-unit id="plugin.settings.category">
+			<source>Category</source>
+		</trans-unit>
+		<trans-unit id="plugin.settings.displayMode">
+			<source>Displaymode</source>
+		</trans-unit>
+		<trans-unit id="plugin.settings.displayMode.all">
+			<source>All banners</source>
+		</trans-unit>
+		<trans-unit id="plugin.settings.displayMode.allRandom">
+			<source>All banners randomized</source>
+		</trans-unit>
+		<trans-unit id="plugin.settings.displayMode.random">
+			<source>Randomly one banner</source>
+		</trans-unit>
+		<trans-unit id="plugin.settings.startingPoint">
+			<source>Startingpoint</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner">
+			<source>Banner</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.alttext">
+			<source>Alternative text</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.category">
+			<source>Category</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.clicks">
+			<source>Clicks</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.clicks_max">
+			<source>Max. clicks</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.description">
+			<source>Description</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.excludepages">
+			<source>Exclude pages</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.flash">
+			<source>Flash</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.flash.allowScriptAccess">
+			<source>AllowScriptAccess</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.flash.height">
+			<source>Height</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.flash.width">
+			<source>Width</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.flash.wmode">
+			<source>Wmode</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.html">
+			<source>HTML</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.image">
+			<source>Image</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.impressions">
+			<source>Impressions</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.impressions_max">
+			<source>Max. impressions</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.labels.margins">
+			<source>Margins</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.link">
+			<source>Link</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.margin_bottom">
+			<source>Margin bottom</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.margin_left">
+			<source>Margin left</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.margin_right">
+			<source>Margin right</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.margin_top">
+			<source>Margin top</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.pages">
+			<source>Pages</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.recursive">
+			<source>Expand exclude pages recursive</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.tabs.display">
+			<source>Display</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.tabs.flash">
+			<source>Flash</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.tabs.html">
+			<source>HTML</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.tabs.image">
+			<source>Image</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.tabs.limitations">
+			<source>Limitations</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.tabs.statistics">
+			<source>Statistics</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.tabs.visibility">
+			<source>Visibility</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.title">
+			<source>Title</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.type">
+			<source>Type</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.type.flash">
+			<source>Flash</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.type.html">
+			<source>HTML</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.type.image">
+			<source>Image</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_category">
+			<source>Category</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_category.parent">
+			<source>Parent</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_category.title">
+			<source>Title</source>
+		</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -4,10 +4,6 @@ plugin.tx_sfbanners {
 		partialRootPath = {$plugin.tx_sfbanners.view.partialRootPath}
 		layoutRootPath = {$plugin.tx_sfbanners.view.layoutRootPath}
 	}
-	features {
-		# uncomment the following line to enable the new Property Mapper.
-		# rewrittenPropertyMapper = 1
-	}
 	settings {
 	  displayMode = {$plugin.tx_sfbanners.settings.displayMode}
 	  defaultFlashVars {
@@ -40,22 +36,25 @@ plugin.tx_sfbanners {
 	}
 }
 
-config.tx_extbase.persistence.classes.Tx_SfBanners_Domain_Model_Page {
-    mapping {
-        tableName = pages
+config.tx_extbase.persistence.classes {
+    DERHANSEN\SfBanners\Domain\Model\Page {
+        mapping {
+            tableName = pages
+        }
     }
 }
 
 # Include JQuery if configured
 [globalVar = LIT:1 = {$plugin.tx_sfbanners.settings.includeJquery}]
-page.includeJS {
-  bannerJQuery = http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
+page.includeJSFooter {
+  bannerJQuery = //ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js
   bannerJQuery.external = 1
+  bannerJQuery.forceOnTop = 1
 }
 [end]
 
 # Include banner JS
-page.includeJS {
+page.includeJSFooter {
   htmlparser = EXT:sf_banners/Resources/Public/Js/HtmlParser.js
   postscribe = EXT:sf_banners/Resources/Public/Js/Postscribe.js
   bannerJS = EXT:sf_banners/Resources/Public/Js/SfBanners.js

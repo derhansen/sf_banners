@@ -2,7 +2,10 @@
 
 <f:section name="main">
     <script type="text/javascript">
-        var banners = new BannerPlacement({pid}, {lang}, {typeNum}, '{startingPoint}', '{categories}', '{displayMode}', 'banners-{uniqueid}', '{hmac}');
+        if (typeof banners == "undefined")
+            var banners = [];
+
+        banners.push([{pid}, {lang}, {typeNum}, '{startingPoint}', '{categories}', '{displayMode}', 'banners-{uniqueid}', '{hmac}', '{absRefPrefix}'])
     </script>
     <div id="banners-{uniqueid}"></div>
 </f:section>

@@ -1,28 +1,18 @@
 <?php
 namespace DERHANSEN\SfBanners\Domain\Repository;
-/***************************************************************
- *  Copyright notice
+
+/*
+ * This file is part of the TYPO3 CMS project.
  *
- *  (c) 2012 Torben Hansen <derhansen@gmail.com>, Skyfillers GmbH
- *  
- *  All rights reserved
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ * The TYPO3 project - inspiring people to share!
+ */
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Repository;
@@ -33,7 +23,7 @@ use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
 /**
  * Banner repository
  *
- * @package sf_banners
+ * @author Torben Hansen <derhansen@gmail.com>
  */
 class BannerRepository extends Repository {
 	/**
@@ -50,7 +40,7 @@ class BannerRepository extends Repository {
 	 * @return void
 	 */
 	public function initializeObject() {
-		$this->defaultQuerySettings = $this->objectManager->get('Tx_Extbase_Persistence_Typo3QuerySettings');
+		$this->defaultQuerySettings = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\Typo3QuerySettings');
 		$this->defaultQuerySettings->setRespectStoragePage(FALSE);
 	}
 
@@ -180,7 +170,7 @@ class BannerRepository extends Repository {
 	 */
 	protected function getExcludePageBanners(QueryResultInterface $result, BannerDemand $demand) {
 		/** @var \TYPO3\CMS\Core\Database\QueryGenerator $queryGenerator */
-		$queryGenerator = $this->objectManager->get('\\TYPO3\\CMS\\Core\\Database\\QueryGenerator');
+		$queryGenerator = $this->objectManager->get('TYPO3\\CMS\\Core\\Database\\QueryGenerator');
 
 		$banners = array();
 		/** @var \DERHANSEN\SfBanners\Domain\Model\Banner $banner */
