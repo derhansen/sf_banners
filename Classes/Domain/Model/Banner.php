@@ -708,7 +708,7 @@ class Banner extends AbstractEntity {
 	 * @return mixed
 	 */
 	public function getLinkUrl() {
-		$cObj = GeneralUtility::makeInstance('tslib_cObj');
+		$cObj = GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\ContentObject\\ContentObjectRenderer');
 		return $cObj->getTypoLink_URL($this->link);
 	}
 
