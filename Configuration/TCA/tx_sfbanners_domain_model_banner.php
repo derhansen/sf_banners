@@ -404,15 +404,12 @@ return array(
 		'1' => array('showitem' => ''),
 		'paletteCore' => array(
 			'showitem' => 'type, sys_language_uid',
-			'canNotCollapse' => TRUE,
 		),
 		'paletteMargins' => array(
 			'showitem' => 'margin_top, margin_right, margin_bottom, margin_left',
-			'canNotCollapse' => TRUE,
 		),
 		'paletteVisibility' => array(
 			'showitem' => 'starttime, endtime',
-			'canNotCollapse' => TRUE,
 		),
 	),
 
