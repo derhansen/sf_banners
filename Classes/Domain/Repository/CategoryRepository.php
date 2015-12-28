@@ -21,6 +21,7 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  *
  * @author Torben Hansen <derhansen@gmail.com>
  */
-class CategoryRepository extends Repository {
+class CategoryRepository extends Repository
+{
 
 }

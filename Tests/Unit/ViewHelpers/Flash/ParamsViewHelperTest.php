@@ -23,140 +23,146 @@ use DERHANSEN\SfBanners\Domain\Model\Banner;
 /**
  * Test cases for the flash params viewhelper
  */
-class ParamsViewHelperTest extends UnitTestCase {
+class ParamsViewHelperTest extends UnitTestCase
+{
 
-	/**
-	 * Test if viewhelper returns empty string, if wmode not set
-	 *
-	 * @test
-	 * @return void
-	 */
-	public function viewHelperReturnsEmptyStringIfBannerAndWmodeNotSet() {
-		$viewHelper = new ParamsViewHelper();
+    /**
+     * Test if viewhelper returns empty string, if wmode not set
+     *
+     * @test
+     * @return void
+     */
+    public function viewHelperReturnsEmptyStringIfBannerAndWmodeNotSet()
+    {
+        $viewHelper = new ParamsViewHelper();
 
-		$settings = array();
-		$settings['settings'] = '';
+        $settings = array();
+        $settings['settings'] = '';
 
-		$templateVariableContainer = new TemplateVariableContainer($settings);
-		if (method_exists($viewHelper, 'setTemplateVariableContainer')) {
-			$viewHelper->setTemplateVariableContainer($templateVariableContainer);
-		} else {
-			$renderingContext = new RenderingContext();
-			$renderingContext->injectTemplateVariableContainer($templateVariableContainer);
-			$viewHelper->setRenderingContext($renderingContext);
-		}
+        $templateVariableContainer = new TemplateVariableContainer($settings);
+        if (method_exists($viewHelper, 'setTemplateVariableContainer')) {
+            $viewHelper->setTemplateVariableContainer($templateVariableContainer);
+        } else {
+            $renderingContext = new RenderingContext();
+            $renderingContext->injectTemplateVariableContainer($templateVariableContainer);
+            $viewHelper->setRenderingContext($renderingContext);
+        }
 
-		$actualResult = $viewHelper->render(NULL, NULL);
-		$this->assertEquals('', $actualResult);
-	}
+        $actualResult = $viewHelper->render(null, null);
+        $this->assertEquals('', $actualResult);
+    }
 
-	/**
-	 * Test if default wmode is returned if not set in banner
-	 *
-	 * @test
-	 * @return void
-	 */
-	public function viewHelperReturnsDefaultValueForWmodeIfNotSetInBanner() {
-		$viewHelper = new ParamsViewHelper();
+    /**
+     * Test if default wmode is returned if not set in banner
+     *
+     * @test
+     * @return void
+     */
+    public function viewHelperReturnsDefaultValueForWmodeIfNotSetInBanner()
+    {
+        $viewHelper = new ParamsViewHelper();
 
-		$settings = array();
-		$settings['settings']['defaultFlashVars']['wmode'] = 'opaque';
+        $settings = array();
+        $settings['settings']['defaultFlashVars']['wmode'] = 'opaque';
 
-		$templateVariableContainer = new TemplateVariableContainer($settings);
-		if (method_exists($viewHelper, 'setTemplateVariableContainer')) {
-			$viewHelper->setTemplateVariableContainer($templateVariableContainer);
-		} else {
-			$renderingContext = new RenderingContext();
-			$renderingContext->injectTemplateVariableContainer($templateVariableContainer);
-			$viewHelper->setRenderingContext($renderingContext);
-		}
+        $templateVariableContainer = new TemplateVariableContainer($settings);
+        if (method_exists($viewHelper, 'setTemplateVariableContainer')) {
+            $viewHelper->setTemplateVariableContainer($templateVariableContainer);
+        } else {
+            $renderingContext = new RenderingContext();
+            $renderingContext->injectTemplateVariableContainer($templateVariableContainer);
+            $viewHelper->setRenderingContext($renderingContext);
+        }
 
-		$banner = new Banner();
+        $banner = new Banner();
 
-		$actualResult = $viewHelper->render($banner, 'wmode');
-		$this->assertEquals('opaque', $actualResult);
-	}
+        $actualResult = $viewHelper->render($banner, 'wmode');
+        $this->assertEquals('opaque', $actualResult);
+    }
 
-	/**
-	 * Test if default allowscriptaccess is returned if not set in banner
-	 *
-	 * @test
-	 * @return void
-	 */
-	public function viewHelperReturnsDefaultValueForAllowScriptAccessIfNotSetInBanner() {
-		$viewHelper = new ParamsViewHelper();
+    /**
+     * Test if default allowscriptaccess is returned if not set in banner
+     *
+     * @test
+     * @return void
+     */
+    public function viewHelperReturnsDefaultValueForAllowScriptAccessIfNotSetInBanner()
+    {
+        $viewHelper = new ParamsViewHelper();
 
-		$settings = array();
-		$settings['settings']['defaultFlashVars']['allowScriptAccess'] = 'sameDomain';
+        $settings = array();
+        $settings['settings']['defaultFlashVars']['allowScriptAccess'] = 'sameDomain';
 
-		$templateVariableContainer = new TemplateVariableContainer($settings);
-		if (method_exists($viewHelper, 'setTemplateVariableContainer')) {
-			$viewHelper->setTemplateVariableContainer($templateVariableContainer);
-		} else {
-			$renderingContext = new RenderingContext();
-			$renderingContext->injectTemplateVariableContainer($templateVariableContainer);
-			$viewHelper->setRenderingContext($renderingContext);
-		}
+        $templateVariableContainer = new TemplateVariableContainer($settings);
+        if (method_exists($viewHelper, 'setTemplateVariableContainer')) {
+            $viewHelper->setTemplateVariableContainer($templateVariableContainer);
+        } else {
+            $renderingContext = new RenderingContext();
+            $renderingContext->injectTemplateVariableContainer($templateVariableContainer);
+            $viewHelper->setRenderingContext($renderingContext);
+        }
 
-		$banner = new Banner();
+        $banner = new Banner();
 
-		$actualResult = $viewHelper->render($banner, 'allowScriptAccess');
-		$this->assertEquals('sameDomain', $actualResult);
-	}
+        $actualResult = $viewHelper->render($banner, 'allowScriptAccess');
+        $this->assertEquals('sameDomain', $actualResult);
+    }
 
-	/**
-	 * Test if wmode is returned if set in banner
-	 *
-	 * @test
-	 * @return void
-	 */
-	public function viewHelperReturnsValueForWmodeFromBanner() {
-		$viewHelper = new ParamsViewHelper();
+    /**
+     * Test if wmode is returned if set in banner
+     *
+     * @test
+     * @return void
+     */
+    public function viewHelperReturnsValueForWmodeFromBanner()
+    {
+        $viewHelper = new ParamsViewHelper();
 
-		$settings = array();
-		$settings['settings']['defaultFlashVars']['wmode'] = 'opaque';
+        $settings = array();
+        $settings['settings']['defaultFlashVars']['wmode'] = 'opaque';
 
-		$templateVariableContainer = new TemplateVariableContainer($settings);
-		if (method_exists($viewHelper, 'setTemplateVariableContainer')) {
-			$viewHelper->setTemplateVariableContainer($templateVariableContainer);
-		} else {
-			$renderingContext = new RenderingContext();
-			$renderingContext->injectTemplateVariableContainer($templateVariableContainer);
-			$viewHelper->setRenderingContext($renderingContext);
-		}
+        $templateVariableContainer = new TemplateVariableContainer($settings);
+        if (method_exists($viewHelper, 'setTemplateVariableContainer')) {
+            $viewHelper->setTemplateVariableContainer($templateVariableContainer);
+        } else {
+            $renderingContext = new RenderingContext();
+            $renderingContext->injectTemplateVariableContainer($templateVariableContainer);
+            $viewHelper->setRenderingContext($renderingContext);
+        }
 
-		$banner = new Banner();
-		$banner->setFlashWmode('someValue');
+        $banner = new Banner();
+        $banner->setFlashWmode('someValue');
 
-		$actualResult = $viewHelper->render($banner, 'wmode');
-		$this->assertEquals('someValue', $actualResult);
-	}
+        $actualResult = $viewHelper->render($banner, 'wmode');
+        $this->assertEquals('someValue', $actualResult);
+    }
 
-	/**
-	 * Test if allowscriptaccess is returned if set in banner
-	 *
-	 * @test
-	 * @return void
-	 */
-	public function viewHelperReturnsValueForAllowScriptAccessFromBanner() {
-		$viewHelper = new ParamsViewHelper();
+    /**
+     * Test if allowscriptaccess is returned if set in banner
+     *
+     * @test
+     * @return void
+     */
+    public function viewHelperReturnsValueForAllowScriptAccessFromBanner()
+    {
+        $viewHelper = new ParamsViewHelper();
 
-		$settings = array();
-		$settings['settings']['defaultFlashVars']['allowScriptAccess'] = 'sameDomain';
+        $settings = array();
+        $settings['settings']['defaultFlashVars']['allowScriptAccess'] = 'sameDomain';
 
-		$templateVariableContainer = new TemplateVariableContainer($settings);
-		if (method_exists($viewHelper, 'setTemplateVariableContainer')) {
-			$viewHelper->setTemplateVariableContainer($templateVariableContainer);
-		} else {
-			$renderingContext = new RenderingContext();
-			$renderingContext->injectTemplateVariableContainer($templateVariableContainer);
-			$viewHelper->setRenderingContext($renderingContext);
-		}
+        $templateVariableContainer = new TemplateVariableContainer($settings);
+        if (method_exists($viewHelper, 'setTemplateVariableContainer')) {
+            $viewHelper->setTemplateVariableContainer($templateVariableContainer);
+        } else {
+            $renderingContext = new RenderingContext();
+            $renderingContext->injectTemplateVariableContainer($templateVariableContainer);
+            $viewHelper->setRenderingContext($renderingContext);
+        }
 
-		$banner = new Banner();
-		$banner->setFlashAllowScriptAccess('someValue');
+        $banner = new Banner();
+        $banner->setFlashAllowScriptAccess('someValue');
 
-		$actualResult = $viewHelper->render($banner, 'allowScriptAccess');
-		$this->assertEquals('someValue', $actualResult);
-	}
+        $actualResult = $viewHelper->render($banner, 'allowScriptAccess');
+        $this->assertEquals('someValue', $actualResult);
+    }
 }

@@ -16,24 +16,26 @@ namespace DERHANSEN\SfBanners\Persistence;
 
 use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
 
-class RandomQueryResult extends QueryResult {
+class RandomQueryResult extends QueryResult
+{
 
-	/**
-	 * Keeps track of, if records have been shuffled
-	 */
-	protected $shuffled = FALSE;
+    /**
+     * Keeps track of, if records have been shuffled
+     */
+    protected $shuffled = false;
 
-	/**
-	 * Loads the objects this QueryResult is supposed to hold
-	 *
-	 * @return void
-	 */
-	protected function initialize() {
-		parent::initialize();
-		if (!$this->shuffled) {
-			shuffle($this->queryResult);
-			$this->shuffled = TRUE;
-		}
-	}
+    /**
+     * Loads the objects this QueryResult is supposed to hold
+     *
+     * @return void
+     */
+    protected function initialize()
+    {
+        parent::initialize();
+        if (!$this->shuffled) {
+            shuffle($this->queryResult);
+            $this->shuffled = true;
+        }
+    }
 }
 

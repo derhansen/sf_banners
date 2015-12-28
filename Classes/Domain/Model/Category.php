@@ -21,59 +21,64 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  *
  * @author Torben Hansen <derhansen@gmail.com>
  */
-class Category extends AbstractEntity {
+class Category extends AbstractEntity
+{
 
-	/**
-	 * Title
-	 *
-	 * @var string
-	 * @validate NotEmpty
-	 */
-	protected $title;
+    /**
+     * Title
+     *
+     * @var string
+     * @validate NotEmpty
+     */
+    protected $title;
 
-	/**
-	 * parent
-	 *
-	 * @var \DERHANSEN\SfBanners\Domain\Model\Category
-	 */
-	protected $parent;
+    /**
+     * parent
+     *
+     * @var \DERHANSEN\SfBanners\Domain\Model\Category
+     */
+    protected $parent;
 
-	/**
-	 * Returns the title
-	 *
-	 * @return string $title
-	 */
-	public function getTitle() {
-		return $this->title;
-	}
+    /**
+     * Returns the title
+     *
+     * @return string $title
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 
-	/**
-	 * Sets the title
-	 *
-	 * @param string $title
-	 * @return void
-	 */
-	public function setTitle($title) {
-		$this->title = $title;
-	}
+    /**
+     * Sets the title
+     *
+     * @param string $title
+     * @return void
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
 
-	/**
-	 * Returns the parent
-	 *
-	 * @return \DERHANSEN\SfBanners\Domain\Model\Category $parent
-	 */
-	public function getParent() {
-		return $this->parent;
-	}
+    /**
+     * Returns the parent
+     *
+     * @return \DERHANSEN\SfBanners\Domain\Model\Category $parent
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
 
-	/**
-	 * Sets the parent
-	 *
-	 * @param \DERHANSEN\SfBanners\Domain\Model\Category $parent
-	 * @return void
-	 */
-	public function setParent(Category $parent) {
-		$this->parent = $parent;
-	}
+    /**
+     * Sets the parent
+     *
+     * @param \DERHANSEN\SfBanners\Domain\Model\Category $parent
+     * @return void
+     */
+    public function setParent(Category $parent)
+    {
+        $this->parent = $parent;
+    }
 
 }

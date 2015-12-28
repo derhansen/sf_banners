@@ -21,38 +21,40 @@ use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
  *
  * @author Torben Hansen <derhansen@gmail.com>
  */
-class ParamsViewHelper extends AbstractViewHelper {
+class ParamsViewHelper extends AbstractViewHelper
+{
 
-	/**
-	 * Returns the requested flash variable depending on the setting in the banner.
-	 * If no value is set in the banner object, the default value from TS setting
-	 * is returned
-	 *
-	 * @param \DERHANSEN\SfBanners\Domain\Model\Banner $banner The banner
-	 * @param string $flashSetting Flash settings
-	 * @return string
-	 */
-	public function render($banner = NULL, $flashSetting = '') {
-		$settings = $this->templateVariableContainer->get('settings');
-		$retVal = '';
-		switch ($flashSetting) {
-			case 'wmode':
-				if ($banner->getFlashWmode() != '') {
-					$retVal = $banner->getFlashWmode();
-				} else {
-					$retVal = $settings['defaultFlashVars']['wmode'];
-				}
-				break;
-			case 'allowScriptAccess':
-				if ($banner->getFlashAllowScriptAccess() != '') {
-					$retVal = $banner->getFlashAllowScriptAccess();
-				} else {
-					$retVal = $settings['defaultFlashVars']['allowScriptAccess'];
-				}
-				break;
-			default:
+    /**
+     * Returns the requested flash variable depending on the setting in the banner.
+     * If no value is set in the banner object, the default value from TS setting
+     * is returned
+     *
+     * @param \DERHANSEN\SfBanners\Domain\Model\Banner $banner The banner
+     * @param string $flashSetting Flash settings
+     * @return string
+     */
+    public function render($banner = null, $flashSetting = '')
+    {
+        $settings = $this->templateVariableContainer->get('settings');
+        $retVal = '';
+        switch ($flashSetting) {
+            case 'wmode':
+                if ($banner->getFlashWmode() != '') {
+                    $retVal = $banner->getFlashWmode();
+                } else {
+                    $retVal = $settings['defaultFlashVars']['wmode'];
+                }
+                break;
+            case 'allowScriptAccess':
+                if ($banner->getFlashAllowScriptAccess() != '') {
+                    $retVal = $banner->getFlashAllowScriptAccess();
+                } else {
+                    $retVal = $settings['defaultFlashVars']['allowScriptAccess'];
+                }
+                break;
+            default:
 
-		}
-		return $retVal;
-	}
+        }
+        return $retVal;
+    }
 }

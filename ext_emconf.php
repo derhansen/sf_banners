@@ -11,31 +11,29 @@
  ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'Banner-Management',
-	'description' => 'Banner-Management Extension based on Extbase and Fluid. Loads banners asynchronously by JQuery.',
-	'category' => 'plugin',
-	'author' => 'Torben Hansen',
-	'author_email' => 'derhansen@gmail.com',
-	'shy' => '',
-	'priority' => '',
-	'module' => '',
-	'state' => 'stable',
-	'internal' => '',
-	'uploadfolder' => 1,
-	'createDirs' => '',
-	'modify_tables' => '',
-	'clearCacheOnLoad' => 0,
-	'lockType' => '',
-	'version' => '1.0.0-dev',
-	'constraints' => array(
-		'depends' => array(
-			'extbase' => '6.2',
-			'fluid' => '6.2',
-			'typo3' => '6.2.0-7.99.99',
-		),
-		'conflicts' => array(
-		),
-		'suggests' => array(
-		),
-	),
+    'title' => 'Banner-Management',
+    'description' => 'Banner-Management Extension based on Extbase and Fluid. Loads banners asynchronously by JQuery.',
+    'category' => 'plugin',
+    'author' => 'Torben Hansen',
+    'author_email' => 'derhansen@gmail.com',
+    'shy' => '',
+    'priority' => '',
+    'module' => '',
+    'state' => 'stable',
+    'internal' => '',
+    'uploadfolder' => 1,
+    'createDirs' => '',
+    'modify_tables' => '',
+    'clearCacheOnLoad' => 0,
+    'lockType' => '',
+    'version' => '1.0.0-dev',
+    'constraints' => array(
+        'depends' => array(
+            'extbase' => '6.2',
+            'fluid' => '6.2',
+            'typo3' => '6.2.0-7.99.99',
+        ),
+        'conflicts' => array(),
+        'suggests' => array(),
+    ),
 );

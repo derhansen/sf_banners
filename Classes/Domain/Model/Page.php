@@ -21,6 +21,7 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  *
  * @author Torben Hansen <derhansen@gmail.com>
  */
-class Page extends AbstractEntity {
+class Page extends AbstractEntity
+{
 
 }
