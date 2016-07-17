@@ -247,8 +247,7 @@ return array(
 						'module' => array(
 							'name' => 'wizard_element_browser',
 							'urlParameters' => array(
-								'mode' => 'wizard',
-								'act' => 'file'
+								'mode' => 'wizard'
 							)
 						),
 						'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1'
