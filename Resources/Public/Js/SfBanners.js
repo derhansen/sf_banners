@@ -10,9 +10,12 @@
  * @param position
  * @param hmac
  * @param absRefPrefix
+ * @param imgCrop
+ * @param imgWidth
+ * @param imgHeight
  * @constructor
  */
-var BannerPlacement = function (uid, lang, typeNum, startingPoint, categories, displayMode, position, hmac, absRefPrefix) {
+var BannerPlacement = function (uid, lang, typeNum, startingPoint, categories, displayMode, position, hmac, absRefPrefix, imgCrop, imgWidth, imgHeight) {
     var url = absRefPrefix + 'index.php?id=' + uid;
     url += '&L=' + lang;
     url += '&type=' + typeNum;
@@ -30,6 +33,16 @@ var BannerPlacement = function (uid, lang, typeNum, startingPoint, categories, d
 
     if (typeof displayMode !== 'undefined' && displayMode !== '') {
         url += '&tx_sfbanners_pi1[displayMode]=' + displayMode;
+    }
+
+    if (typeof imgCrop !== 'undefined') {
+        // assigning default values
+        if (typeof imgWidth === 'undefined') imgWidth="";
+        if (typeof imgHeight === 'undefined') imgHeight="";
+
+        url += '&tx_sfbanners_pi1[imgCrop]=' + imgCrop;
+        url += '&tx_sfbanners_pi1[imgWidth]=' + imgWidth;
+        url += '&tx_sfbanners_pi1[imgHeight]=' + imgHeight;
     }
 
     jQuery.get(url, function(data) {
@@ -54,7 +67,10 @@ jQuery(document).ready(function() {
             banners[i][5],
             banners[i][6],
             banners[i][7],
-            banners[i][8]
+            banners[i][8],
+            banners[i][9],
+            banners[i][10],
+            banners[i][11]
         );
     }
 });

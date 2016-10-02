@@ -21,5 +21,11 @@ plugin.tx_sfbanners {
 	  clickPageTypeNum = 9002
 	  # cat=plugin.tx_sfbanners/basic/20; type=int; label=Cache lifetime
 	  cacheLifetime = 3600
+	  # cat=plugin.tx_sfbanners/basic/30; type=boolean; label=Image Cropping (For Image Type)
+	  imgCrop = 0
+	  # cat=plugin.tx_sfbanners/basic/40; type=string; label=Image Width (For Image Type)
+	  imgWidth =
+	  # cat=plugin.tx_sfbanners/basic/50; type=string; label=Image Height (For Image Type)
+	  imgHeight =
 	}
 }
