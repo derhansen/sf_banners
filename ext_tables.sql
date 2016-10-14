@@ -73,6 +73,8 @@ CREATE TABLE tx_sfbanners_domain_model_banner (
 	impressions int(11) DEFAULT '0' NOT NULL,
 	clicks int(11) DEFAULT '0' NOT NULL,
 	excludepages int(11) DEFAULT '0' NOT NULL,
+	includepages int(11) DEFAULT '0' NOT NULL,
+	include_recursive tinyint(4) unsigned DEFAULT '0' NOT NULL,
 	recursive tinyint(4) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
@@ -131,6 +133,23 @@ CREATE TABLE tx_sfbanners_domain_model_banner_category_mm (
 #
 #
 CREATE TABLE tx_sfbanners_domain_model_banner_excludepages_mm (
+	uid_local int(11) DEFAULT '0' NOT NULL,
+	uid_foreign int(11) DEFAULT '0' NOT NULL,
+	tablenames varchar(30) DEFAULT '' NOT NULL,
+	sorting int(11) DEFAULT '0' NOT NULL,
+
+	is_dummy_record tinyint(1) unsigned DEFAULT '0' NOT NULL,
+
+	KEY uid_local (uid_local),
+	KEY uid_foreign (uid_foreign),
+	KEY phpunit_dummy (is_dummy_record)
+);
+
+#
+# Table structure for table 'tx_sfbanners_domain_model_banner_includepages_mm'
+#
+#
+CREATE TABLE tx_sfbanners_domain_model_banner_includepages_mm (
 	uid_local int(11) DEFAULT '0' NOT NULL,
 	uid_foreign int(11) DEFAULT '0' NOT NULL,
 	tablenames varchar(30) DEFAULT '' NOT NULL,

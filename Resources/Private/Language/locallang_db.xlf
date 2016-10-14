@@ -46,6 +46,9 @@
 		<trans-unit id="tx_sfbanners_domain_model_banner.excludepages">
 			<source>Exclude pages</source>
 		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.includepages">
+			<source>Include ONLY on these pages</source>
+		</trans-unit>
 		<trans-unit id="tx_sfbanners_domain_model_banner.flash">
 			<source>Flash</source>
 		</trans-unit>
@@ -96,6 +99,9 @@
 		</trans-unit>
 		<trans-unit id="tx_sfbanners_domain_model_banner.recursive">
 			<source>Expand exclude pages recursive</source>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.include_recursive">
+			<source>Include in Subpages</source>
 		</trans-unit>
 		<trans-unit id="tx_sfbanners_domain_model_banner.tabs.display">
 			<source>Display</source>

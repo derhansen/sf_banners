@@ -169,10 +169,23 @@ class Banner extends AbstractEntity
     protected $excludepages;
 
     /**
+     * Do not display on pages
+     * @lazy
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\DERHANSEN\SfBanners\Domain\Model\Page>
+     */
+    protected $includepages;
+
+    /**
      * Recursively use excludepages
      * @var bool
      */
     protected $recursive;
+
+    /**
+     * Recursively use includepages
+     * @var bool
+     */
+    protected $includeRecursive;
 
     /**
      * AllowScriptAccess for flash banners
@@ -209,6 +222,7 @@ class Banner extends AbstractEntity
     {
         $this->category = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->excludepages = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->includepages = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -462,6 +476,50 @@ class Banner extends AbstractEntity
     public function getExcludepages()
     {
         return $this->excludepages;
+    }
+
+
+    /**
+     * Adds a page
+     *
+     * @param \DERHANSEN\SfBanners\Domain\Model\Page $page
+     * @return void
+     */
+    public function addIncludepages(\DERHANSEN\SfBanners\Domain\Model\Page $page)
+    {
+        $this->includepages->attach($page);
+    }
+
+    /**
+     * Removes a page
+     *
+     * @param \DERHANSEN\SfBanners\Domain\Model\page $pageToRemove
+     * @return void
+     */
+    public function removeIncludepages(\DERHANSEN\SfBanners\Domain\Model\page $pageToRemove)
+    {
+        $this->includepages->detach($pageToRemove);
+    }
+
+    /**
+     * Setter for includepages
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $includepages Includepages
+     * @return void
+     */
+    public function setIncludepages($includepages)
+    {
+        $this->includepages = $includepages;
+    }
+
+    /**
+     * Getter for includepages
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+     */
+    public function getIncludepages()
+    {
+        return $this->includepages;
     }
 
     /**
@@ -735,6 +793,27 @@ class Banner extends AbstractEntity
     public function getRecursive()
     {
         return $this->recursive;
+    }
+
+    /**
+     * Sets the include recursive flag
+     *
+     * @param boolean $includeRecursive
+     * @return void
+     */
+    public function setIncludeRecursive($includeRecursive)
+    {
+        $this->includeRecursive = $includeRecursive;
+    }
+
+    /**
+     * Returns the include recursive flag
+     *
+     * @return boolean
+     */
+    public function getIncludeRecursive()
+    {
+        return $this->includeRecursive;
     }
 
     /**
