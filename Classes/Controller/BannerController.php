@@ -111,6 +111,11 @@ class BannerController extends ActionController
         $this->view->assign('absRefPrefix', $GLOBALS['TSFE']->absRefPrefix);
         $this->view->assign('hmac', $hmac);
 
+        // For Image Cropping
+        $this->view->assign('imgCrop', $this->settings['imgCrop']);
+        $this->view->assign('imgWidth', $this->settings['imgWidth']);
+        $this->view->assign('imgHeight', $this->settings['imgHeight']);
+
         /* Find all banners and add additional CSS */
         $banners = $this->bannerRepository->findAll();
         $cssFile = $this->bannerService->getAdditionalCssFile($banners);
@@ -128,6 +133,9 @@ class BannerController extends ActionController
      * @param string $displayMode
      * @param int $currentPageUid
      * @param string $hmac
+     * @param string $imgCrop
+     * @param string $imgWidth
+     * @param string $imgHeight
      * @return string
      */
     public function getBannersAction(
@@ -135,9 +143,19 @@ class BannerController extends ActionController
         $startingPoint = '',
         $displayMode = 'all',
         $currentPageUid = 0,
-        $hmac = ''
+        $hmac = '',
+        $imgCrop = -1,
+        $imgWidth = '',
+        $imgHeight = ''
     ) {
         $compareString = $currentPageUid . $categories . $startingPoint . $displayMode;
+
+        // override crop settings
+        if ($imgCrop != -1) {
+            $this->settings["imgCrop"] = $imgCrop;
+            $this->settings["imgWidth"] = $imgWidth;
+            $this->settings["imgHeight"] = $imgHeight;
+        }
 
         if ($this->hashService->validateHmac($compareString, $hmac)) {
             /** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand */

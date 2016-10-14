@@ -13,6 +13,9 @@ plugin.tx_sfbanners {
 	  ajaxPageTypeNum = {$plugin.tx_sfbanners.settings.ajaxPageTypeNum}
 	  clickPageTypeNum = {$plugin.tx_sfbanners.settings.clickPageTypeNum}
 	  cacheLifetime = {$plugin.tx_sfbanners.settings.cacheLifetime}
+	  imgCrop = {$plugin.tx_sfbanners.settings.imgCrop}
+	  imgWidth = {$plugin.tx_sfbanners.settings.imgWidth}
+	  imgHeight = {$plugin.tx_sfbanners.settings.imgHeight}
 	}
 	widgets {
 	    bannerWidget = USER

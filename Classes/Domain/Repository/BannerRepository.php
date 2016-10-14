@@ -136,6 +136,8 @@ class BannerRepository extends Repository
     protected function getQueryWithLimitation(QueryResultInterface $result, BannerDemand $demand)
     {
         $banners = $this->getExcludePageBanners($result, $demand);
+        $banners = $this->getIncludePageBanners($banners, $demand);
+
         $bannerUids = array();
         foreach ($banners as $banner) {
             /** @var \DERHANSEN\SfBanners\Domain\Model\Banner $banner */
@@ -193,6 +195,42 @@ class BannerRepository extends Repository
                 }
             }
             if (!in_array($demand->getCurrentPageUid(), $excludePages)) {
+                $banners[] = $banner;
+            }
+        }
+        return $banners;
+    }
+
+    /**
+     * Returns all banners in respect to includepages
+     *
+     * @param Array<\DERHANSEN\SfBanners\Domain\Model\Banner> $result Array of banners
+     * @param \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand The demand
+     * @return array
+     */
+    protected function getIncludePageBanners($result, BannerDemand $demand)
+    {
+        /** @var \TYPO3\CMS\Core\Database\QueryGenerator $queryGenerator */
+        $queryGenerator = $this->objectManager->get('TYPO3\\CMS\\Core\\Database\\QueryGenerator');
+
+        $banners = array();
+        /** @var \DERHANSEN\SfBanners\Domain\Model\Banner $banner */
+        foreach ($result as $banner) {
+            $includePages = array();
+            $bannerIncludePages = $banner->getIncludepages();
+            if (count($bannerIncludePages) == 0) {
+                $banners[] = $banner;
+                continue;
+            }
+            foreach ($bannerIncludePages as $includePage) {
+                if ($banner->getIncludeRecursive()) {
+                    $pidList = $queryGenerator->getTreeList($includePage->getUid(), 255, 0, 1);
+                    $includePages = array_merge($includePages, explode(',', $pidList));
+                } else {
+                    $includePages[] = $includePage->getUid();
+                }
+            }
+            if (in_array($demand->getCurrentPageUid(), $includePages)) {
                 $banners[] = $banner;
             }
         }
