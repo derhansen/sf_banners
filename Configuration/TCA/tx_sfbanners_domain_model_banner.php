@@ -288,7 +288,7 @@ return array(
 				'type' => 'input',
 				'size' => '5',
 				'max' => '4',
-				'eval' => 'int,nospace',
+				'eval' => 'int',
 			)
 		),
 		'flash_height' => Array (
@@ -298,7 +298,7 @@ return array(
 				'type' => 'input',
 				'size' => '5',
 				'max' => '4',
-				'eval' => 'int,nospace',
+				'eval' => 'int',
 			)
 		),
 		'flash_wmode' => array(
@@ -323,7 +323,7 @@ return array(
 			'config' => Array (
 				'type' => 'input',
 				'size' => '10',
-				'eval' => 'int,nospace',
+				'eval' => 'int',
 			)
 		),
 		'clicks_max' => Array (
@@ -332,7 +332,7 @@ return array(
 			'config' => Array (
 				'type' => 'input',
 				'size' => '10',
-				'eval' => 'int,nospace',
+				'eval' => 'int',
 			)
 		),
 		'impressions' => Array (
