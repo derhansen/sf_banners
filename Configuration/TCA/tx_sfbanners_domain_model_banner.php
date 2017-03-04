@@ -239,19 +239,15 @@ return array(
 				'size' => 30,
 				'eval' => 'trim',
 				'wizards' => array(
-					'_PADDING' => 2,
 					'link' => array(
-						'type' => 'popup',
-						'title' => 'Link',
-						'icon' => 'link_popup.gif',
-						'module' => array(
-							'name' => 'wizard_element_browser',
-							'urlParameters' => array(
-								'mode' => 'wizard'
-							)
-						),
-						'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1'
-					)
+                        'type' => 'popup',
+                        'title' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_link_formlabel',
+                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_link.gif',
+                        'module' => array(
+                            'name' => 'wizard_link',
+                        ),
+                        'JSopenParams' => 'height=800,width=600,status=0,menubar=0,scrollbars=1'
+                    )
 				)
 			)
 		),
