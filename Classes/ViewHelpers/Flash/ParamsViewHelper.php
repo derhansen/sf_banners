@@ -23,6 +23,26 @@ use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
  */
 class ParamsViewHelper extends AbstractViewHelper
 {
+    /**
+     * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
+     * @inject
+     */
+    protected $configurationManager;
+
+    /**
+     * Returns TypoSript settings for the extension
+     *
+     * @return array
+     */
+    public function getSettings()
+    {
+        $typoScript = $this->configurationManager->getConfiguration(
+            \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
+            'SfBanners',
+            'Pi1'
+        );
+        return $typoScript;
+    }
 
     /**
      * Returns the requested flash variable depending on the setting in the banner.
@@ -35,7 +55,7 @@ class ParamsViewHelper extends AbstractViewHelper
      */
     public function render($banner = null, $flashSetting = '')
     {
-        $settings = $this->templateVariableContainer->get('settings');
+        $settings = $this->getSettings();
         $retVal = '';
         switch ($flashSetting) {
             case 'wmode':

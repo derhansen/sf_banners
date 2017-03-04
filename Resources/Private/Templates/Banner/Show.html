@@ -4,8 +4,7 @@
     <script type="text/javascript">
         if (typeof banners == "undefined")
             var banners = [];
-
-        banners.push([{pid}, {lang}, {typeNum}, '{startingPoint}', '{categories}', '{displayMode}', 'banners-{uniqueid}', '{hmac}', '{absRefPrefix}'])
+        banners.push(['banners-{uniqueid}', '{url -> f:format.raw()}'])
     </script>
     <div id="banners-{uniqueid}"></div>
 </f:section>
