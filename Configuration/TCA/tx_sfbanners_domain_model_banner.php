@@ -341,6 +341,8 @@ return array(
 			'config' => Array (
 				'type' => 'none',
 				'size' => '10',
+                'default' => 0,
+                'setToDefaultOnCopy' => 1
 			)
 		),
 		'clicks' => Array (
@@ -349,6 +351,8 @@ return array(
 			'config' => Array (
 				'type' => 'none',
 				'size' => '10',
+                'default' => 0,
+                'setToDefaultOnCopy' => 1
 			)
 		),
 		'excludepages' => Array (
