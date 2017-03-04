@@ -16,6 +16,7 @@ namespace DERHANSEN\SfBanners\Test\Unit\Domain\Model;
 
 use TYPO3\CMS\Core\Tests\UnitTestCase;
 use DERHANSEN\SfBanners\Domain\Model\Banner;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
  * Test case for class \DERHANSEN\SfBanners\Domain\Model\Banner.
@@ -354,8 +355,7 @@ class BannerTest extends UnitTestCase
     public function addCategoryToObjectStorageHoldingCategory()
     {
         $category = new \DERHANSEN\SfBanners\Domain\Model\Category();
-        $categoryObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('attach'),
-            array(), '', false);
+        $categoryObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->setMethods(['attach'])->getMock();
         $categoryObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($category));
         $this->inject($this->fixture, 'category', $categoryObjectStorageMock);
         $this->fixture->addCategory($category);
@@ -367,8 +367,7 @@ class BannerTest extends UnitTestCase
     public function removeCategoryFromObjectStorageHoldingCategory()
     {
         $category = new \DERHANSEN\SfBanners\Domain\Model\Category();
-        $categoryObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('detach'),
-            array(), '', false);
+        $categoryObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->setMethods(['detach'])->getMock();
         $categoryObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($category));
         $this->inject($this->fixture, 'category', $categoryObjectStorageMock);
         $this->fixture->removeCategory($category);
@@ -408,8 +407,7 @@ class BannerTest extends UnitTestCase
     public function addExludePagesToObjectStorageHoldingExcludePages()
     {
         $page = new \DERHANSEN\SfBanners\Domain\Model\Page();
-        $pageObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('attach'),
-            array(), '', false);
+        $pageObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->setMethods(['attach'])->getMock();
         $pageObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($page));
         $this->inject($this->fixture, 'excludepages', $pageObjectStorageMock);
         $this->fixture->addExcludepages($page);
@@ -421,8 +419,7 @@ class BannerTest extends UnitTestCase
     public function removeExludePagesFromObjectStorageHoldingExcludePages()
     {
         $page = new \DERHANSEN\SfBanners\Domain\Model\Page();
-        $pageObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('detach'),
-            array(), '', false);
+        $pageObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->setMethods(['detach'])->getMock();
         $pageObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($page));
         $this->inject($this->fixture, 'excludepages', $pageObjectStorageMock);
         $this->fixture->removeExcludepages($page);

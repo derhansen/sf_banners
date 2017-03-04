@@ -15,8 +15,7 @@ namespace DERHANSEN\SfBanners\Test\Unit\ViewHelpers\Flash;
  */
 
 use TYPO3\CMS\Core\Tests\UnitTestCase;
-use TYPO3\CMS\Fluid\Core\ViewHelper\TemplateVariableContainer;
-use TYPO3\CMS\Fluid\Core\Rendering\RenderingContext;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use DERHANSEN\SfBanners\ViewHelpers\Flash\ParamsViewHelper;
 use DERHANSEN\SfBanners\Domain\Model\Banner;
 
@@ -39,14 +38,11 @@ class ParamsViewHelperTest extends UnitTestCase
         $settings = array();
         $settings['settings'] = '';
 
-        $templateVariableContainer = new TemplateVariableContainer($settings);
-        if (method_exists($viewHelper, 'setTemplateVariableContainer')) {
-            $viewHelper->setTemplateVariableContainer($templateVariableContainer);
-        } else {
-            $renderingContext = new RenderingContext();
-            $renderingContext->injectTemplateVariableContainer($templateVariableContainer);
-            $viewHelper->setRenderingContext($renderingContext);
-        }
+        $mockConfigurationManager = $this->getMockBuilder(ConfigurationManager::class)->getMock();
+        $mockConfigurationManager->expects($this->once())->method('getConfiguration')->will(
+            $this->returnValue($settings)
+        );
+        $this->inject($viewHelper, 'configurationManager', $mockConfigurationManager);
 
         $actualResult = $viewHelper->render(null, null);
         $this->assertEquals('', $actualResult);
@@ -63,16 +59,13 @@ class ParamsViewHelperTest extends UnitTestCase
         $viewHelper = new ParamsViewHelper();
 
         $settings = array();
-        $settings['settings']['defaultFlashVars']['wmode'] = 'opaque';
+        $settings['defaultFlashVars']['wmode'] = 'opaque';
 
-        $templateVariableContainer = new TemplateVariableContainer($settings);
-        if (method_exists($viewHelper, 'setTemplateVariableContainer')) {
-            $viewHelper->setTemplateVariableContainer($templateVariableContainer);
-        } else {
-            $renderingContext = new RenderingContext();
-            $renderingContext->injectTemplateVariableContainer($templateVariableContainer);
-            $viewHelper->setRenderingContext($renderingContext);
-        }
+        $mockConfigurationManager = $this->getMockBuilder(ConfigurationManager::class)->getMock();
+        $mockConfigurationManager->expects($this->once())->method('getConfiguration')->will(
+            $this->returnValue($settings)
+        );
+        $this->inject($viewHelper, 'configurationManager', $mockConfigurationManager);
 
         $banner = new Banner();
 
@@ -91,16 +84,13 @@ class ParamsViewHelperTest extends UnitTestCase
         $viewHelper = new ParamsViewHelper();
 
         $settings = array();
-        $settings['settings']['defaultFlashVars']['allowScriptAccess'] = 'sameDomain';
+        $settings['defaultFlashVars']['allowScriptAccess'] = 'sameDomain';
 
-        $templateVariableContainer = new TemplateVariableContainer($settings);
-        if (method_exists($viewHelper, 'setTemplateVariableContainer')) {
-            $viewHelper->setTemplateVariableContainer($templateVariableContainer);
-        } else {
-            $renderingContext = new RenderingContext();
-            $renderingContext->injectTemplateVariableContainer($templateVariableContainer);
-            $viewHelper->setRenderingContext($renderingContext);
-        }
+        $mockConfigurationManager = $this->getMockBuilder(ConfigurationManager::class)->getMock();
+        $mockConfigurationManager->expects($this->once())->method('getConfiguration')->will(
+            $this->returnValue($settings)
+        );
+        $this->inject($viewHelper, 'configurationManager', $mockConfigurationManager);
 
         $banner = new Banner();
 
@@ -119,16 +109,13 @@ class ParamsViewHelperTest extends UnitTestCase
         $viewHelper = new ParamsViewHelper();
 
         $settings = array();
-        $settings['settings']['defaultFlashVars']['wmode'] = 'opaque';
+        $settings['defaultFlashVars']['wmode'] = 'opaque';
 
-        $templateVariableContainer = new TemplateVariableContainer($settings);
-        if (method_exists($viewHelper, 'setTemplateVariableContainer')) {
-            $viewHelper->setTemplateVariableContainer($templateVariableContainer);
-        } else {
-            $renderingContext = new RenderingContext();
-            $renderingContext->injectTemplateVariableContainer($templateVariableContainer);
-            $viewHelper->setRenderingContext($renderingContext);
-        }
+        $mockConfigurationManager = $this->getMockBuilder(ConfigurationManager::class)->getMock();
+        $mockConfigurationManager->expects($this->once())->method('getConfiguration')->will(
+            $this->returnValue($settings)
+        );
+        $this->inject($viewHelper, 'configurationManager', $mockConfigurationManager);
 
         $banner = new Banner();
         $banner->setFlashWmode('someValue');
@@ -148,16 +135,13 @@ class ParamsViewHelperTest extends UnitTestCase
         $viewHelper = new ParamsViewHelper();
 
         $settings = array();
-        $settings['settings']['defaultFlashVars']['allowScriptAccess'] = 'sameDomain';
+        $settings['defaultFlashVars']['allowScriptAccess'] = 'sameDomain';
 
-        $templateVariableContainer = new TemplateVariableContainer($settings);
-        if (method_exists($viewHelper, 'setTemplateVariableContainer')) {
-            $viewHelper->setTemplateVariableContainer($templateVariableContainer);
-        } else {
-            $renderingContext = new RenderingContext();
-            $renderingContext->injectTemplateVariableContainer($templateVariableContainer);
-            $viewHelper->setRenderingContext($renderingContext);
-        }
+        $mockConfigurationManager = $this->getMockBuilder(ConfigurationManager::class)->getMock();
+        $mockConfigurationManager->expects($this->once())->method('getConfiguration')->will(
+            $this->returnValue($settings)
+        );
+        $this->inject($viewHelper, 'configurationManager', $mockConfigurationManager);
 
         $banner = new Banner();
         $banner->setFlashAllowScriptAccess('someValue');

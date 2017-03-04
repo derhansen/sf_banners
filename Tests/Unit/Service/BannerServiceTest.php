@@ -14,6 +14,7 @@ namespace DERHANSEN\SfBanners\Test\Unit\Service;
  * The TYPO3 project - inspiring people to share!
  */
 
+use DERHANSEN\SfBanners\Domain\Model\Banner;
 use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
 use DERHANSEN\SfBanners\Service\BannerService;
 
@@ -76,8 +77,7 @@ class BannerServiceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     public function getAdditionalCssReturnsMarginTopIfBannerHasMarginTopTest()
     {
         $bannerUid = 100;
-        $banner = $this->getMock('DERHANSEN\\SfBanners\\Domain\\Model\\Banner',
-            array(), array(), '', false);
+        $banner = $this->getMockBuilder(Banner::class)->getMock();
         $banner->expects($this->any())->method('getMarginTop')->will($this->returnValue(10));
         $banner->expects($this->any())->method('getMarginRight')->will($this->returnValue(0));
         $banner->expects($this->any())->method('getMarginBottom')->will($this->returnValue(0));
@@ -102,8 +102,7 @@ class BannerServiceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     public function getAdditionalCssReturnsMarginRightIfBannerHasMarginRightTest()
     {
         $bannerUid = 100;
-        $banner = $this->getMock('DERHANSEN\\SfBanners\\Domain\\Model\\Banner',
-            array(), array(), '', false);
+        $banner = $this->getMockBuilder(Banner::class)->getMock();
         $banner->expects($this->any())->method('getMarginTop')->will($this->returnValue(0));
         $banner->expects($this->any())->method('getMarginRight')->will($this->returnValue(10));
         $banner->expects($this->any())->method('getMarginBottom')->will($this->returnValue(0));
@@ -128,8 +127,7 @@ class BannerServiceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     public function getAdditionalCssReturnsMarginBottomIfBannerHasMarginBottomTest()
     {
         $bannerUid = 100;
-        $banner = $this->getMock('DERHANSEN\\SfBanners\\Domain\\Model\\Banner',
-            array(), array(), '', false);
+        $banner = $this->getMockBuilder(Banner::class)->getMock();
         $banner->expects($this->any())->method('getMarginTop')->will($this->returnValue(0));
         $banner->expects($this->any())->method('getMarginRight')->will($this->returnValue(0));
         $banner->expects($this->any())->method('getMarginBottom')->will($this->returnValue(10));
@@ -154,8 +152,7 @@ class BannerServiceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     public function getAdditionalCssReturnsMarginLeftIfBannerHasMarginLeftTest()
     {
         $bannerUid = 100;
-        $banner = $this->getMock('DERHANSEN\\SfBanners\\Domain\\Model\\Banner',
-            array(), array(), '', false);
+        $banner = $this->getMockBuilder(Banner::class)->getMock();
         $banner->expects($this->any())->method('getMarginTop')->will($this->returnValue(0));
         $banner->expects($this->any())->method('getMarginRight')->will($this->returnValue(0));
         $banner->expects($this->any())->method('getMarginBottom')->will($this->returnValue(0));
@@ -181,15 +178,13 @@ class BannerServiceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     {
         $bannerUid1 = 100;
         $bannerUid2 = 200;
-        $banner1 = $this->getMock('DERHANSEN\\SfBanners\\Domain\\Model\\Banner',
-            array(), array(), '', false);
+        $banner1 = $this->getMockBuilder(Banner::class)->getMock();
         $banner1->expects($this->any())->method('getMarginTop')->will($this->returnValue(0));
         $banner1->expects($this->any())->method('getMarginRight')->will($this->returnValue(10));
         $banner1->expects($this->any())->method('getMarginBottom')->will($this->returnValue(0));
         $banner1->expects($this->any())->method('getMarginLeft')->will($this->returnValue(10));
         $banner1->expects($this->once())->method('getUid')->will($this->returnValue($bannerUid1));
-        $banner2 = $this->getMock('DERHANSEN\\SfBanners\\Domain\\Model\\Banner',
-            array(), array(), '', false);
+        $banner2 = $this->getMockBuilder(Banner::class)->getMock();
         $banner2->expects($this->any())->method('getMarginTop')->will($this->returnValue(10));
         $banner2->expects($this->any())->method('getMarginRight')->will($this->returnValue(0));
         $banner2->expects($this->any())->method('getMarginBottom')->will($this->returnValue(10));
@@ -229,8 +224,7 @@ class BannerServiceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     public function getAdditionalCssFileReturnsFilenameTest()
     {
         $bannerUid = 100;
-        $banner = $this->getMock('DERHANSEN\\SfBanners\\Domain\\Model\\Banner',
-            array(), array(), '', false);
+        $banner = $this->getMockBuilder(Banner::class)->getMock();
         $banner->expects($this->any())->method('getMarginTop')->will($this->returnValue(0));
         $banner->expects($this->any())->method('getMarginRight')->will($this->returnValue(0));
         $banner->expects($this->any())->method('getMarginBottom')->will($this->returnValue(0));
@@ -268,8 +262,7 @@ class BannerServiceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     public function getAdditionalCssLinkReturnsLinkTest()
     {
         $bannerUid = 100;
-        $banner = $this->getMock('DERHANSEN\\SfBanners\\Domain\\Model\\Banner',
-            array(), array(), '', false);
+        $banner = $this->getMockBuilder(Banner::class)->getMock();
         $banner->expects($this->any())->method('getMarginTop')->will($this->returnValue(0));
         $banner->expects($this->any())->method('getMarginRight')->will($this->returnValue(0));
         $banner->expects($this->any())->method('getMarginBottom')->will($this->returnValue(0));
