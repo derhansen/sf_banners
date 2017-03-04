@@ -185,7 +185,7 @@ return array(
 				'size' => '5',
 				'max' => '4',
 				'range' => Array ('lower' => 0,'upper' => 1000),
-				'eval' => 'int,nospace',
+				'eval' => 'int',
 			)
 		),
 		'margin_right' => Array (
@@ -196,7 +196,7 @@ return array(
 				'size' => '5',
 				'max' => '4',
 				'range' => Array ('lower' => 0,'upper' => 1000),
-				'eval' => 'int,nospace',
+				'eval' => 'int',
 			)
 		),
 		'margin_bottom' => Array (
@@ -207,7 +207,7 @@ return array(
 				'size' => '5',
 				'max' => '4',
 				'range' => Array ('lower' => 0,'upper' => 1000),
-				'eval' => 'int,nospace',
+				'eval' => 'int',
 			)
 		),
 		'margin_left' => Array (
@@ -218,7 +218,7 @@ return array(
 				'size' => '5',
 				'max' => '4',
 				'range' => Array ('lower' => 0,'upper' => 1000),
-				'eval' => 'int,nospace',
+				'eval' => 'int',
 			)
 		),
 		'alttext' => array(
