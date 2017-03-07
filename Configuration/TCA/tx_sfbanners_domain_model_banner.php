@@ -10,8 +10,7 @@ return [
         'type' => 'type',
         'dividers2tabs' => true,
         'sortby' => 'sorting',
-        'versioningWS' => 2,
-        'versioning_followPages' => true,
+        'versioningWS' => true,
         'origUid' => 't3_origuid',
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
@@ -23,24 +22,28 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'title,description,type,category,',
-        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('sf_banners') . 'Resources/Public/Icons/tx_sfbanners_domain_model_banner.gif'
+        'iconfile' => 'EXT:sf_banners/Resources/Public/Icons/tx_sfbanners_domain_model_banner.gif'
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, type, category, image, margin_top, margin_right, margin_bottom, margin_left, alttext, link, html, flash, flash_width, flash_height, flash_wmode, flash_allow_script_access, impressions_max, clicks_max, impressions, clicks, excludepages, recursive',
     ],
     'columns' => [
         'sys_language_uid' => [
-            'exclude' => 0,
+            'exclude' => true,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
             'config' => [
                 'type' => 'select',
-                'foreign_table' => 'sys_language',
-                'foreign_table_where' => 'ORDER BY sys_language.title',
+                'renderType' => 'selectSingle',
+                'special' => 'languages',
                 'items' => [
-                    ['LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages', -1],
-                    ['LLL:EXT:lang/locallang_general.xlf:LGL.default_value', 0]
+                    [
+                        'LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages',
+                        -1,
+                        'flags-multiple'
+                    ],
                 ],
-            ],
+                'default' => 0,
+            ]
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -48,6 +51,7 @@ return [
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'items' => [
                     ['', 0],
                 ],
@@ -131,6 +135,7 @@ return [
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.type',
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'items' => [
                     [
                         'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.type.image',
@@ -155,7 +160,7 @@ return [
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.category',
             'config' => [
                 'type' => 'select',
-                'renderMode' => 'tree',
+                'renderType' => 'tree',
                 'treeConfig' => [
                     'parentField' => 'parent',
                     'appearance' => [
@@ -180,7 +185,6 @@ return [
                 'allowed' => $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'],
                 'max_size' => $GLOBALS['TYPO3_CONF_VARS']['BE']['maxFileSize'],
                 'uploadfolder' => 'uploads/tx_sfbanners',
-                'show_thumbs' => 1,
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
@@ -251,7 +255,7 @@ return [
                     'link' => [
                         'type' => 'popup',
                         'title' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_link_formlabel',
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_link.gif',
+                        'icon' => 'actions-wizard-link',
                         'module' => [
                             'name' => 'wizard_link',
                         ],
@@ -280,10 +284,14 @@ return [
                 'allowed' => 'swf',
                 'max_size' => $GLOBALS['TYPO3_CONF_VARS']['BE']['maxFileSize'],
                 'uploadfolder' => 'uploads/tx_sfbanners',
-                'show_thumbs' => 0,
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
+                'fieldWizard' => [
+                    'fileThumbnails' => [
+                        'disabled' => true
+                    ]
+                ],
             ]
         ],
         'flash_width' => [
@@ -384,28 +392,28 @@ return [
     ],
     'types' => [
         '0' => [
-            'showitem' => 'l10n_parent,l10n_diffsource,title;;paletteCore;;1-1-1, description,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.image,image;;paletteMargins;;1-1-1,alttext,link,
+            'showitem' => 'l10n_parent,l10n_diffsource,title,--palette--;;paletteCore, description,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.image,image,--palette--;;paletteMargins,alttext,link,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.display, category, excludepages, recursive,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.visibility, hidden;;paletteVisibility;;1-1-1,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.visibility, hidden,--palette--;;paletteVisibility,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.limitations, impressions_max, clicks_max,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.statistics, impressions, clicks,
 		'
         ],
         '1' => [
-            'showitem' => 'l10n_parent,l10n_diffsource,title;;paletteCore;;1-1-1, description,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.html,html;;paletteMargins;;1-1-1,
+            'showitem' => 'l10n_parent,l10n_diffsource,title,--palette--;;paletteCore, description,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.html,html,--palette--;;paletteMargins,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.display, category, excludepages, recursive,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.visibility, hidden;;paletteVisibility;;1-1-1,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.visibility, hidden,--palette--;;paletteVisibility,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.limitations, impressions_max, clicks_max,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.statistics, impressions, clicks,
 		'
         ],
         '2' => [
-            'showitem' => 'l10n_parent,l10n_diffsource,title;;paletteCore;;1-1-1, description,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.flash,flash;;paletteMargins;;1-1-1,flash_width,flash_height, flash_wmode, flash_allow_script_access, link,
+            'showitem' => 'l10n_parent,l10n_diffsource,title,--palette--;;paletteCore, description,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.flash,flash,--palette--;;paletteMargins,flash_width,flash_height, flash_wmode, flash_allow_script_access, link,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.display, category, excludepages, recursive,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.visibility, hidden;;paletteVisibility;;1-1-1,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.visibility, hidden,--palette--;;paletteVisibility,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.limitations, impressions_max, clicks_max,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.statistics, impressions, clicks,
 		'
