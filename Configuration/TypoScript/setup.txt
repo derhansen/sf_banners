@@ -70,7 +70,13 @@ ajaxPage {
         admPanel = 0
     }
 
-    10 < tt_content.list.20.sfbanners_pi1
+    10 = USER
+    10 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        extensionName = SfBanners
+        pluginName = Pi1
+        vendorName = DERHANSEN
+    }
 }
 
 # Page object for Click-Action
@@ -84,5 +90,11 @@ clickPage {
         admPanel = 0
     }
 
-    10 < tt_content.list.20.sfbanners_pi1
+    10 = USER
+    10 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        extensionName = SfBanners
+        pluginName = Pi1
+        vendorName = DERHANSEN
+    }
 }
