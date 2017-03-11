@@ -19,7 +19,7 @@ Each banner contains a statistic, where the total amount of impressions and clic
 to an amount of maximum impressions and/or clicks. The clicks of Flash-banners are counted by using the [clickTag](http://www.flashclicktag.com/)
 
 Banners are loaded asynchronously, so their loading does not affect the page load time. To do so, the extension
-uses JQuery (AJAX) to load all banners and postscribe.js to place the banners content to the webpage.
+uses jQuery (AJAX) to load all banners and postscribe.js to place the banners content to the webpage.
 
 ## External libraries requirements
 
@@ -27,9 +27,9 @@ The extension requires the following external JS libraries, which automatically 
 of the extension.
 
 * postscribe.js (http://krux.github.io/postscribe/)
-* JQuery (http://jquery.com/)
+* jQuery (http://jquery.com/)
 
-The automatic inclusion of JQuery can be disabled in TypoScript
+The automatic inclusion of jQuery can be disabled in TypoScript
 
 ## Support and updates
 
