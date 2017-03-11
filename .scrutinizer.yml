@@ -36,6 +36,6 @@ tools:
         enabled: true
 
     php_analyzer:
-        enabled: true
+        enabled: false
 
     sensiolabs_security_checker: true
