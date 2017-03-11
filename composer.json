@@ -15,7 +15,15 @@
     }
   ],
   "keywords": ["TYPO3 CMS", "banners", "banner management", "fluid", "extbase"],
-  "license": ["GPL-2.0+"],
+  "license": [
+    "GPL-2.0+"
+  ],
+  "require": {
+    "typo3/cms-core": "^7.6 || ^8.5"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.8.0"
+  },
   "replace": {
     "sf_banners": "self.version",
     "typo3-ter/sf-banners": "self.version"
@@ -23,6 +31,27 @@
   "autoload": {
     "psr-4": {
       "DERHANSEN\\SfBanners\\": "Classes"
+    }
+  },
+  "config": {
+    "vendor-dir": ".Build/vendor",
+    "bin-dir": ".Build/bin",
+    "preferred-install": {
+      "typo3/cms": "source",
+      "typo3/cms-core": "source",
+      "*": "dist"
+    }
+  },
+  "scripts": {
+    "post-autoload-dump": [
+      "mkdir -p .Build/Web/typo3conf/ext/",
+      "[ -L .Build/Web/typo3conf/ext/sf_banners ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/sf_banners"
+    ]
+  },
+  "extra": {
+    "typo3/cms": {
+      "cms-package-dir": "{$vendor-dir}/typo3/cms",
+      "web-dir": ".Build/Web"
     }
   }
 }
