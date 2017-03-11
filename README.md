@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/derhansen/sf_banners.png)](https://travis-ci.org/derhansen/sf_banners)
+[![StyleCI](https://styleci.io/repos/7384456/shield?branch=master)](https://styleci.io/repos/7384456)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/derhansen/sf_banners/badges/quality-score.png?s=683c44ed4732bbe6364975b18e93250715f9ed47)](https://scrutinizer-ci.com/g/derhansen/sf_banners/)
+[![Code Coverage](https://scrutinizer-ci.com/g/derhansen/sf_banners/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/derhansen/sf_banners/?branch=master)
+
 TYPO3 extension sf_banner: Banner-Management
 ===========================================
 
@@ -35,6 +40,3 @@ The automatic inclusion of JQuery can be disabled in TypoScript
 
 The extension is hosted on Github. Please report feedback, bugs and change-requests directly at https://github.com/derhansen/sf_banners
 
-[![Build Status](https://travis-ci.org/derhansen/sf_banners.png)](https://travis-ci.org/derhansen/sf_banners)
-[![StyleCI](https://styleci.io/repos/7384456/shield?branch=master)](https://styleci.io/repos/7384456)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/derhansen/sf_banners/badges/quality-score.png?s=683c44ed4732bbe6364975b18e93250715f9ed47)](https://scrutinizer-ci.com/g/derhansen/sf_banners/)
