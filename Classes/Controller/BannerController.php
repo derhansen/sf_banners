@@ -14,9 +14,9 @@ namespace DERHANSEN\SfBanners\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Banner Controller
@@ -187,12 +187,11 @@ class BannerController extends ActionController
                 $ret = $this->view->render();
 
                 // Save value in cache
-                $this->cacheInstance->set(sha1($ident), $ret, array('sf_banners'), $this->settings['cacheLifetime']);
+                $this->cacheInstance->set(sha1($ident), $ret, ['sf_banners'], $this->settings['cacheLifetime']);
             }
         } else {
             $ret = LocalizationUtility::translate('wrong_hmac', 'SfBanners');
         }
         return $ret;
     }
-
 }

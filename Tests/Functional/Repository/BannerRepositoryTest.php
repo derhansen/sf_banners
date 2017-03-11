@@ -29,7 +29,7 @@ class BannerRepositoryTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCase
     protected $bannerRepository;
 
     /** @var array */
-    protected $testExtensionsToLoad = array('typo3conf/ext/sf_banners');
+    protected $testExtensionsToLoad = ['typo3conf/ext/sf_banners'];
 
     /**
      * Setup
@@ -114,13 +114,13 @@ class BannerRepositoryTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCase
         /** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand */
         $demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
         $pid = 80;
-        $uids = array(
+        $uids = [
             1 => 20,
             2 => 21,
             3 => 22,
             4 => 23,
             5 => 24
-        );
+        ];
 
         /* Set starting point */
         $demand->setStartingPoint($pid);
@@ -129,7 +129,7 @@ class BannerRepositoryTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCase
         $demand->setDisplayMode('all');
         $this->assertEquals(5, (int)$this->bannerRepository->findDemanded($demand)->count());
         $returnedBanners = $this->bannerRepository->findDemanded($demand);
-        $returnedUids = array();
+        $returnedUids = [];
         $count = 1;
         foreach ($returnedBanners as $returnedBanner) {
             $returnedUids[$count] = $returnedBanner->getUid();
@@ -152,7 +152,7 @@ class BannerRepositoryTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCase
         $matchCount = 0;
         for ($j = 1; $j <= 100; $j++) {
             $returnedBanners = $this->bannerRepository->findDemanded($demand);
-            $returnedUids = array();
+            $returnedUids = [];
             $count = 1;
             foreach ($returnedBanners as $returnedBanner) {
                 $returnedUids[$count] = $returnedBanner->getUid();

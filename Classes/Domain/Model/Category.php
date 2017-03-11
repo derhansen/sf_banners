@@ -80,5 +80,4 @@ class Category extends AbstractEntity
     {
         $this->parent = $parent;
     }
-
 }

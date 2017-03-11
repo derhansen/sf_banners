@@ -14,8 +14,8 @@ namespace DERHANSEN\SfBanners\Test\Unit\Domain\Model;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Core\Tests\UnitTestCase;
 use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
+use TYPO3\CMS\Core\Tests\UnitTestCase;
 
 /**
  * Test case for class \DERHANSEN\SfBanners\Domain\Model\BannerDemand.

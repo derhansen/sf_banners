@@ -48,7 +48,7 @@ class BannerDemand extends AbstractEntity
     /**
      * The current page uid
      *
-     * @var integer
+     * @var int
      */
     protected $currentPageUid;
 
@@ -135,5 +135,4 @@ class BannerDemand extends AbstractEntity
     {
         return $this->startingPoint;
     }
-
 }

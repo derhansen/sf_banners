@@ -43,7 +43,7 @@ class Banner extends AbstractEntity
     /**
      * Type
      *
-     * @var integer
+     * @var int
      * @validate NotEmpty
      */
     protected $type;
@@ -66,28 +66,28 @@ class Banner extends AbstractEntity
     /**
      * Margin top
      *
-     * @var integer
+     * @var int
      */
     protected $marginTop;
 
     /**
      * Margin right
      *
-     * @var integer
+     * @var int
      */
     protected $marginRight;
 
     /**
      * Margin bottom
      *
-     * @var integer
+     * @var int
      */
     protected $marginBottom;
 
     /**
      * Margin top
      *
-     * @var integer
+     * @var int
      */
     protected $marginLeft;
 
@@ -122,42 +122,42 @@ class Banner extends AbstractEntity
     /**
      * Flash width
      *
-     * @var integer
+     * @var int
      */
     protected $flashWidth;
 
     /**
      * Flash height
      *
-     * @var integer
+     * @var int
      */
     protected $flashHeight;
 
     /**
      * Max impressions
      *
-     * @var integer
+     * @var int
      */
     protected $impressionsMax;
 
     /**
      * Max clicks
      *
-     * @var integer
+     * @var int
      */
     protected $clicksMax;
 
     /**
      * Total impressions
      *
-     * @var integer
+     * @var int
      */
     protected $impressions;
 
     /**
      * Total clicks
      *
-     * @var integer
+     * @var int
      */
     protected $clicks;
 
@@ -298,7 +298,7 @@ class Banner extends AbstractEntity
     /**
      * Returns the type
      *
-     * @return integer $type
+     * @return int $type
      */
     public function getType()
     {
@@ -308,7 +308,7 @@ class Banner extends AbstractEntity
     /**
      * Sets the type
      *
-     * @param integer $type The type
+     * @param int $type The type
      * @return void
      */
     public function setType($type)
@@ -719,7 +719,7 @@ class Banner extends AbstractEntity
     /**
      * Sets the recursive flag
      *
-     * @param boolean $recursive
+     * @param bool $recursive
      * @return void
      */
     public function setRecursive($recursive)
@@ -730,7 +730,7 @@ class Banner extends AbstractEntity
     /**
      * Returns the recursive flag
      *
-     * @return boolean
+     * @return bool
      */
     public function getRecursive()
     {

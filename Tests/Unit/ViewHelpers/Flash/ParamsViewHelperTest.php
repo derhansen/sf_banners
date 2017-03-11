@@ -14,10 +14,10 @@ namespace DERHANSEN\SfBanners\Test\Unit\ViewHelpers\Flash;
  * The TYPO3 project - inspiring people to share!
  */
 
+use DERHANSEN\SfBanners\Domain\Model\Banner;
+use DERHANSEN\SfBanners\ViewHelpers\Flash\ParamsViewHelper;
 use TYPO3\CMS\Core\Tests\UnitTestCase;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
-use DERHANSEN\SfBanners\ViewHelpers\Flash\ParamsViewHelper;
-use DERHANSEN\SfBanners\Domain\Model\Banner;
 
 /**
  * Test cases for the flash params viewhelper
@@ -35,7 +35,7 @@ class ParamsViewHelperTest extends UnitTestCase
     {
         $viewHelper = new ParamsViewHelper();
 
-        $settings = array();
+        $settings = [];
         $settings['settings'] = '';
 
         $mockConfigurationManager = $this->getMockBuilder(ConfigurationManager::class)->getMock();
@@ -58,7 +58,7 @@ class ParamsViewHelperTest extends UnitTestCase
     {
         $viewHelper = new ParamsViewHelper();
 
-        $settings = array();
+        $settings = [];
         $settings['defaultFlashVars']['wmode'] = 'opaque';
 
         $mockConfigurationManager = $this->getMockBuilder(ConfigurationManager::class)->getMock();
@@ -83,7 +83,7 @@ class ParamsViewHelperTest extends UnitTestCase
     {
         $viewHelper = new ParamsViewHelper();
 
-        $settings = array();
+        $settings = [];
         $settings['defaultFlashVars']['allowScriptAccess'] = 'sameDomain';
 
         $mockConfigurationManager = $this->getMockBuilder(ConfigurationManager::class)->getMock();
@@ -108,7 +108,7 @@ class ParamsViewHelperTest extends UnitTestCase
     {
         $viewHelper = new ParamsViewHelper();
 
-        $settings = array();
+        $settings = [];
         $settings['defaultFlashVars']['wmode'] = 'opaque';
 
         $mockConfigurationManager = $this->getMockBuilder(ConfigurationManager::class)->getMock();
@@ -134,7 +134,7 @@ class ParamsViewHelperTest extends UnitTestCase
     {
         $viewHelper = new ParamsViewHelper();
 
-        $settings = array();
+        $settings = [];
         $settings['defaultFlashVars']['allowScriptAccess'] = 'sameDomain';
 
         $mockConfigurationManager = $this->getMockBuilder(ConfigurationManager::class)->getMock();

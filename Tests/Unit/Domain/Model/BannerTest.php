@@ -14,8 +14,8 @@ namespace DERHANSEN\SfBanners\Test\Unit\Domain\Model;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Core\Tests\UnitTestCase;
 use DERHANSEN\SfBanners\Domain\Model\Banner;
+use TYPO3\CMS\Core\Tests\UnitTestCase;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
@@ -60,7 +60,6 @@ class BannerTest extends UnitTestCase
         $this->fixture->setTitle($title);
         $this->assertEquals($title, $this->fixture->getTitle());
     }
-
 
     /**
      * Test if description can be set
@@ -424,5 +423,4 @@ class BannerTest extends UnitTestCase
         $this->inject($this->fixture, 'excludepages', $pageObjectStorageMock);
         $this->fixture->removeExcludepages($page);
     }
-
 }

@@ -14,11 +14,11 @@ namespace DERHANSEN\SfBanners\Domain\Repository;
  * The TYPO3 project - inspiring people to share!
  */
 
+use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Persistence\Repository;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
-use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
+use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
  * Banner repository
@@ -32,7 +32,7 @@ class BannerRepository extends Repository
      *
      * @var array
      */
-    protected $defaultOrderings = array('sorting' => QueryInterface::ORDER_ASCENDING);
+    protected $defaultOrderings = ['sorting' => QueryInterface::ORDER_ASCENDING];
 
     /**
      * Disable the use of storage records, because the StoragePage can be set
@@ -57,12 +57,12 @@ class BannerRepository extends Repository
         /* Override the default sorting for random mode. Must be called before
             createQuery() */
         if ($demand->getDisplayMode() == 'allRandom') {
-            $this->defaultOrderings = array();
+            $this->defaultOrderings = [];
         }
 
         $query = $this->createQuery();
 
-        $constraints = array();
+        $constraints = [];
 
         if ($demand->getStartingPoint() != 0) {
             $pidList = GeneralUtility::intExplode(',', $demand->getStartingPoint(), true);
@@ -70,7 +70,7 @@ class BannerRepository extends Repository
         }
 
         if ($demand->getCategories() != 0) {
-            $categoryConstraints = array();
+            $categoryConstraints = [];
             $categories = GeneralUtility::intExplode(',', $demand->getCategories(), true);
             foreach ($categories as $category) {
                 $categoryConstraints[] = $query->contains('category', $category);
@@ -92,7 +92,6 @@ class BannerRepository extends Repository
         return $result;
     }
 
-
     /**
      * Returns the result of the query based on the given displaymode set in demand
      *
@@ -102,7 +101,7 @@ class BannerRepository extends Repository
      */
     protected function getResult(QueryInterface $query, BannerDemand $demand)
     {
-        $result = array();
+        $result = [];
 
         // Do not respect syslanguage since we search for uids - @see forge #47192
         $query->getQuerySettings()->setRespectSysLanguage(false);
@@ -136,7 +135,7 @@ class BannerRepository extends Repository
     protected function getQueryWithLimitation(QueryResultInterface $result, BannerDemand $demand)
     {
         $banners = $this->getExcludePageBanners($result, $demand);
-        $bannerUids = array();
+        $bannerUids = [];
         foreach ($banners as $banner) {
             /** @var \DERHANSEN\SfBanners\Domain\Model\Banner $banner */
             if ($banner->getImpressionsMax() > 0 || $banner->getClicksMax() > 0) {
@@ -180,10 +179,10 @@ class BannerRepository extends Repository
         /** @var \TYPO3\CMS\Core\Database\QueryGenerator $queryGenerator */
         $queryGenerator = $this->objectManager->get('TYPO3\\CMS\\Core\\Database\\QueryGenerator');
 
-        $banners = array();
+        $banners = [];
         /** @var \DERHANSEN\SfBanners\Domain\Model\Banner $banner */
         foreach ($result as $banner) {
-            $excludePages = array();
+            $excludePages = [];
             foreach ($banner->getExcludepages() as $excludePage) {
                 if ($banner->getRecursive()) {
                     $pidList = $queryGenerator->getTreeList($excludePage->getUid(), 255, 0, 1);
@@ -214,4 +213,3 @@ class BannerRepository extends Repository
         }
     }
 }
-

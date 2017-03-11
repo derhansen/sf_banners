@@ -64,7 +64,7 @@ class BannerServiceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function getAdditionalCssReturnsEmptyStringIfBannerHasNoMarginsTest()
     {
-        $result = $this->bannerService->getAdditionalCss(array());
+        $result = $this->bannerService->getAdditionalCss([]);
         $this->assertEquals('', $result);
     }
 
