@@ -1,6 +1,6 @@
-﻿.. |img-3|      image:: ../../Images/manual_html_56fed7f2.png
-   :height: 458
-   :width: 352
+﻿.. |img-3|      image:: ../../Images/sf_banners.png
+   :height: 783
+   :width: 498
 .. :align: left
 .. :border: 0
 .. :name: Grafik1

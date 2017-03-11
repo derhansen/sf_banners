@@ -24,7 +24,7 @@ multiple categories which allows a flexible way of displaying them on
 a TYPO3 website.
 
 The Extension fetches the banners for the desired page
-**asynchronously** by using AJAX (JQuery), so the page load time is'nt
+**asynchronously** by using AJAX (jQuery), so the page load time is'nt
 mainly affected by the banner plugin.
 
 Each banner contains a statistics, where the total amount of
@@ -35,5 +35,5 @@ counted by using a clicktag.
 The extension can be used as a plugin or by TypoScript.
 
 The extension is developed with Extbase and Fluid and the current version
-support TYPO3 6.2 LTS and TYPO3 7.6 LTS
+support TYPO3 7.6 LTS and TYPO3 8.7 LTS
 
