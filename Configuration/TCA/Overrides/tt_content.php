@@ -16,13 +16,13 @@ defined('TYPO3_MODE') or die();
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['sfbanners_pi1'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
     'sfbanners_pi1',
-    'FILE:EXT:sf_banners/Configuration/FlexForms/Flexform_plugin.xml'
+    'FILE:EXT:sf_banners/Configuration/Flexforms/Flexform_plugin.xml'
 );
 
 /**
  * Remove unused fields
  */
-$TCA['tt_content']['types']['list']['subtypes_excludelist']['sfbanners_pi1'] = 'layout,recursive,select_key,pages';
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['sfbanners_pi1'] = 'layout,recursive,select_key,pages';
 
 /**
  * Default TypoScript
