@@ -38,7 +38,7 @@ before_install:
 before_script:
   - composer require typo3/cms=$TYPO3_VERSION
   # Testing Framework required for TYPO3 V8 builds
-  - composer require typo3/testing-framework
+  - if [[ "$TYPO3_VERSION" == "^8" ]]; then composer require typo3/testing-framework; fi
   # Restore composer.json
   - git checkout composer.json
   - export TYPO3_PATH_WEB=$PWD/.Build/Web
