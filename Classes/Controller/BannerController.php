@@ -14,6 +14,7 @@ namespace DERHANSEN\SfBanners\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -137,7 +138,9 @@ class BannerController extends ActionController
         $cssFile = $this->bannerService->getAdditionalCssFile($banners);
 
         if ($cssFile != '') {
-            $GLOBALS['TSFE']->getPageRenderer()->addCssFile($cssFile, 'stylesheet', 'all', '', true);
+            /** @var PageRenderer $pageRenderer */
+            $pageRenderer = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Page\\PageRenderer');
+            $pageRenderer->addCssFile($cssFile, 'stylesheet', 'all', '', true);
         }
     }
 
