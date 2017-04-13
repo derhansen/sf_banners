@@ -15,7 +15,7 @@ namespace DERHANSEN\SfBanners\Test\Unit\Domain\Model;
  */
 
 use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
-use TYPO3\CMS\Core\Tests\UnitTestCase;
+use Nimut\TestingFramework\TestCase\UnitTestCase;
 
 /**
  * Test case for class \DERHANSEN\SfBanners\Domain\Model\BannerDemand.

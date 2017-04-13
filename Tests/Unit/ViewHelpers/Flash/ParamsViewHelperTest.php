@@ -16,7 +16,7 @@ namespace DERHANSEN\SfBanners\Test\Unit\ViewHelpers\Flash;
 
 use DERHANSEN\SfBanners\Domain\Model\Banner;
 use DERHANSEN\SfBanners\ViewHelpers\Flash\ParamsViewHelper;
-use TYPO3\CMS\Core\Tests\UnitTestCase;
+use Nimut\TestingFramework\TestCase\UnitTestCase;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 
 /**

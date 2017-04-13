@@ -17,11 +17,12 @@ namespace DERHANSEN\SfBanners\Test\Unit\Service;
 use DERHANSEN\SfBanners\Domain\Model\Banner;
 use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
 use DERHANSEN\SfBanners\Service\BannerService;
+use Nimut\TestingFramework\TestCase\UnitTestCase;
 
 /**
  * Test cases for the banner service
  */
-class BannerServiceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+class BannerServiceTest extends UnitTestCase
 {
 
     /**

@@ -15,7 +15,7 @@ namespace DERHANSEN\SfBanners\Test\Unit\Domain\Model;
  */
 
 use DERHANSEN\SfBanners\Domain\Model\Banner;
-use TYPO3\CMS\Core\Tests\UnitTestCase;
+use Nimut\TestingFramework\TestCase\UnitTestCase;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**

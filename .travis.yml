@@ -37,20 +37,16 @@ before_install:
 
 before_script:
   - composer require typo3/cms=$TYPO3_VERSION
-  # Testing Framework required for TYPO3 V8 builds
-  - if [[ "$TYPO3_VERSION" == "^8" ]]; then composer require phpunit/phpunit ^5.6; fi
-  - if [[ "$TYPO3_VERSION" == "^8" ]]; then composer require typo3/testing-framework; fi
   # Restore composer.json
   - git checkout composer.json
   - export TYPO3_PATH_WEB=$PWD/.Build/Web
-  - if [ -d .Build/vendor/typo3/testing-framework/Resources/Core/Build ]; then export TYPO3_BUILD_DIR=".Build/vendor/typo3/testing-framework/Resources/Core/Build"; else export TYPO3_BUILD_DIR=".Build/vendor/typo3/cms/typo3/sysext/core/Build"; fi
 
 script:
   - >
     if [[ "$COVERAGE" == "0" ]]; then
       echo;
       echo "Running unit tests";
-      .Build/bin/phpunit --colors -c $TYPO3_BUILD_DIR/UnitTests.xml Tests/Unit/
+      .Build/bin/phpunit --colors -c .Build/vendor/nimut/testing-framework/res/Configuration/UnitTests.xml Tests/Unit/
     fi
   - >
     if [[ "$COVERAGE" == "1" ]]; then
@@ -69,7 +65,7 @@ script:
       export typo3DatabaseHost="localhost";
       export typo3DatabaseUsername="root";
       export typo3DatabasePassword="";
-      find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo "Running functional test suite {}"; .Build/bin/phpunit --coverage-clover={}functionaltest-coverage.clover --colors -c $TYPO3_BUILD_DIR/FunctionalTests.xml {}'
+      find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo "Running functional test suite {}"; .Build/bin/phpunit --coverage-clover={}functionaltest-coverage.clover --colors -c .Build/vendor/nimut/testing-framework/res/Configuration/FunctionalTests.xml {}'
     fi
   - >
     if [[ "$COVERAGE" == "1" ]]; then

@@ -14,12 +14,13 @@ namespace DERHANSEN\SfBanners\Tests\Functional\Repository;
  * The TYPO3 project - inspiring people to share!
  */
 
+use Nimut\TestingFramework\TestCase\FunctionalTestCase;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Test case for class \DERHANSEN\SfBanners\Domain\Model\Banner.
  */
-class BannerRepositoryTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCase
+class BannerRepositoryTest extends FunctionalTestCase
 {
 
     /** @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface The object manager */
