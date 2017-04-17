@@ -129,7 +129,7 @@ return [
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_category.parent',
             'config' => [
                 'type' => 'select',
-                'renderType' => 'tree',
+                'renderType' => 'selectTree',
                 'treeConfig' => [
                     'parentField' => 'parent',
                     'appearance' => [
