@@ -1,10 +1,21 @@
 plugin.tx_sfbanners {
-	view {
-		templateRootPath = {$plugin.tx_sfbanners.view.templateRootPath}
-		partialRootPath = {$plugin.tx_sfbanners.view.partialRootPath}
-		layoutRootPath = {$plugin.tx_sfbanners.view.layoutRootPath}
-	}
-	settings {
+    view {
+        templateRootPaths {
+            0 = EXT:sf_banners/Resources/Private/Templates/
+            1 = {$plugin.tx_sfbanners.view.templateRootPath}
+        }
+
+        partialRootPaths {
+            0 = EXT:sf_banners/Resources/Private/Partials/
+            1 = {$plugin.tx_sfbanners.view.partialRootPath}
+        }
+
+        layoutRootPaths {
+            0 = EXT:sf_banners/Resources/Private/Layouts/
+            1 = {$plugin.tx_sfbanners.view.layoutRootPath}
+        }
+
+        settings {
 	  displayMode = {$plugin.tx_sfbanners.settings.displayMode}
 	  defaultFlashVars {
 	    wmode = {$plugin.tx_sfbanners.settings.defaultFlashVars.wmode}
