@@ -809,7 +809,6 @@ class Banner extends AbstractEntity
         return $target;
     }
 
-
     /**
      * Get the Fal media items
      *
