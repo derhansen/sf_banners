@@ -645,7 +645,7 @@ class Banner extends AbstractEntity
             /** @var \TYPO3\CMS\Extbase\Domain\Model\FileReference $fileReference */
             $fileReference = $this->assets->current();
 
-            if ($fileReference === NULL) {
+            if ($fileReference === null) {
                 return '';
             }
 
