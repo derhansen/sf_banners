@@ -14,6 +14,7 @@ plugin.tx_sfbanners {
             0 = EXT:sf_banners/Resources/Private/Layouts/
             1 = {$plugin.tx_sfbanners.view.layoutRootPath}
         }
+    }
 
         settings {
 	  displayMode = {$plugin.tx_sfbanners.settings.displayMode}
