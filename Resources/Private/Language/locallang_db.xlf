@@ -67,6 +67,9 @@
 		<trans-unit id="tx_sfbanners_domain_model_banner.image">
 			<source>Image</source>
 		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.assets">
+			<source>Assets</source>
+		</trans-unit>
 		<trans-unit id="tx_sfbanners_domain_model_banner.impressions">
 			<source>Impressions</source>
 		</trans-unit>

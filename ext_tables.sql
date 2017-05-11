@@ -56,6 +56,7 @@ CREATE TABLE tx_sfbanners_domain_model_banner (
 	type int(11) DEFAULT '0' NOT NULL,
 	category int(11) DEFAULT '0' NOT NULL,
 	image text,
+	assets int(11) DEFAULT '0' NOT NULL,
 	margin_top int(11) DEFAULT '0' NOT NULL,
 	margin_right int(11) DEFAULT '0' NOT NULL,
 	margin_bottom int(11) DEFAULT '0' NOT NULL,
