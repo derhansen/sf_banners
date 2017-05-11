@@ -64,6 +64,14 @@ class Banner extends AbstractEntity
     protected $image;
 
     /**
+     * Fal media items
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @lazy
+     */
+    protected $assets;
+
+    /**
      * Margin top
      *
      * @var int
@@ -209,6 +217,7 @@ class Banner extends AbstractEntity
     {
         $this->category = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->excludepages = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->assets = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -781,5 +790,53 @@ class Banner extends AbstractEntity
             $ret = $linkArray[1];
         }
         return $ret;
+    }
+
+
+    /**
+     * Get the Fal media items
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     */
+    public function getAssets()
+    {
+        return $this->assets;
+    }
+
+    /**
+     * Set Fal media relation
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<TYPO3\CMS\Extbase\Domain\Model\FileReference> $assets
+     * @return void
+     */
+    public function setAssets(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $assets)
+    {
+        $this->assets = $assets;
+    }
+
+    /**
+     * Add a Fal media file reference
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $asset
+     */
+    public function addAsset(\TYPO3\CMS\Extbase\Domain\Model\FileReference $asset)
+    {
+        if ($this->getAssets() === null) {
+            $this->assets = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        }
+        $this->assets->attach($asset);
+    }
+
+    /**
+     * Remove a Fal media file reference
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $asset
+     */
+    public function removeAsset(\TYPO3\CMS\Extbase\Domain\Model\FileReference $asset)
+    {
+        if ($this->getAssets() === null) {
+            return;
+        }
+        $this->assets->detach($asset);
     }
 }
