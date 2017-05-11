@@ -16,6 +16,7 @@ namespace DERHANSEN\SfBanners\Domain\Model;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
  * Banner domain model
@@ -638,6 +639,22 @@ class Banner extends AbstractEntity
      */
     public function getLink()
     {
+        $extConf = @unserialize($GLOBALS[ 'TYPO3_CONF_VARS' ][ 'EXT' ][ 'extConf' ][ 'sf_banners' ]);
+
+        if ($this->getType() == 0 && $extConf[ 'falMedia' ]) {
+            /** @var \TYPO3\CMS\Extbase\Domain\Model\FileReference $fileReference */
+            $fileReference = $this->assets->current();
+
+            if ($fileReference === NULL) {
+                return '';
+            }
+
+            /** @var \TYPO3\CMS\Core\Resource\FileReference $originalFileReference */
+            $originalFileReference = $fileReference->getOriginalResource();
+
+            return $originalFileReference->getLink();
+        }
+
         return $this->link;
     }
 
@@ -773,8 +790,8 @@ class Banner extends AbstractEntity
      */
     public function getLinkUrl()
     {
-        $cObj = GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\ContentObject\\ContentObjectRenderer');
-        return $cObj->getTypoLink_URL($this->link);
+        $cObj = GeneralUtility::makeInstance(ContentObjectRenderer::class);
+        return $cObj->getTypoLink_URL($this->getLink());
     }
 
     /**
@@ -784,12 +801,12 @@ class Banner extends AbstractEntity
      */
     public function getLinkTarget()
     {
-        $linkArray = GeneralUtility::trimExplode(' ', $this->link);
-        $ret = '';
-        if (count($linkArray) > 1) {
-            $ret = $linkArray[1];
-        }
-        return $ret;
+        $link = $this->getLink();
+        $cObj = GeneralUtility::makeInstance(ContentObjectRenderer::class);
+        $cObj->getTypoLink_URL($link);
+        $target = $cObj->lastTypoLinkTarget;
+
+        return $target;
     }
 
 
