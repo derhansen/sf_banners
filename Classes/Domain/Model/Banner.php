@@ -639,9 +639,9 @@ class Banner extends AbstractEntity
      */
     public function getLink()
     {
-        $extConf = @unserialize($GLOBALS[ 'TYPO3_CONF_VARS' ][ 'EXT' ][ 'extConf' ][ 'sf_banners' ]);
+        $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['sf_banners']);
 
-        if ($this->getType() == 0 && $extConf[ 'falMedia' ]) {
+        if ($this->getType() === 0 && $extConf['falMedia']) {
             /** @var \TYPO3\CMS\Extbase\Domain\Model\FileReference $fileReference */
             $fileReference = $this->assets->current();
 
@@ -651,7 +651,6 @@ class Banner extends AbstractEntity
 
             /** @var \TYPO3\CMS\Core\Resource\FileReference $originalFileReference */
             $originalFileReference = $fileReference->getOriginalResource();
-
             return $originalFileReference->getLink();
         }
 
@@ -805,7 +804,6 @@ class Banner extends AbstractEntity
         $cObj = GeneralUtility::makeInstance(ContentObjectRenderer::class);
         $cObj->getTypoLink_URL($link);
         $target = $cObj->lastTypoLinkTarget;
-
         return $target;
     }
 
@@ -837,9 +835,6 @@ class Banner extends AbstractEntity
      */
     public function addAsset(\TYPO3\CMS\Extbase\Domain\Model\FileReference $asset)
     {
-        if ($this->getAssets() === null) {
-            $this->assets = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        }
         $this->assets->attach($asset);
     }
 
@@ -850,9 +845,6 @@ class Banner extends AbstractEntity
      */
     public function removeAsset(\TYPO3\CMS\Extbase\Domain\Model\FileReference $asset)
     {
-        if ($this->getAssets() === null) {
-            return;
-        }
         $this->assets->detach($asset);
     }
 }

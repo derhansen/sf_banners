@@ -1,8 +1,8 @@
 <?php
 
-$sfBannersConf = @unserialize($GLOBALS[ 'TYPO3_CONF_VARS'][ 'EXT'][ 'extConf'][ 'sf_banners']);
+$sfBannersConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['sf_banners']);
 
-if ($sfBannersConf[ 'falMedia']) {
+if ($sfBannersConf['falMedia']) {
     $image = 'assets,';
     $link = '';
 } else {
@@ -229,7 +229,7 @@ return [
                     'minitems' => 0,
                     'maxitems' => 1,
                 ],
-                $GLOBALS[ 'TYPO3_CONF_VARS' ][ 'GFX' ][ 'imagefile_ext' ]
+                $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
             ),
         ],
         'margin_top' => [

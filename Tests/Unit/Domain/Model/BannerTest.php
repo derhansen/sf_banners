@@ -179,6 +179,27 @@ class BannerTest extends UnitTestCase
     }
 
     /**
+     * @test
+     */
+    public function getLinkRespectsFalMediaSetting()
+    {
+        $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['sf_banners'] = serialize([
+            'falMedia' => 1
+        ]);
+
+        $mockFile = $this->getMock('TYPO3\\CMS\\Core\\Resource\\File', ['getForLocalProcessing', 'getLink'], [], '', false);
+        $mockFile->expects($this->any())->method('getForLocalProcessing')->will($this->returnValue('/path/to/somefile.png'));
+        $mockFile->expects($this->any())->method('getLink')->will($this->returnValue('https://www.typo3.org'));
+        $mockFileRef = $this->getMock('TYPO3\\CMS\\Extbase\\Domain\\Model\\FileReference',
+            ['getOriginalResource'], [], '', false);
+        $mockFileRef->expects($this->any())->method('getOriginalResource')->will($this->returnValue($mockFile));
+
+        $this->fixture->setType(0);
+        $this->fixture->addAsset($mockFileRef);
+        $this->assertEquals('https://www.typo3.org', $this->fixture->getLink());
+    }
+
+    /**
      * Test if html can be set
      *
      * @test
@@ -423,4 +444,57 @@ class BannerTest extends UnitTestCase
         $this->inject($this->fixture, 'excludepages', $pageObjectStorageMock);
         $this->fixture->removeExcludepages($page);
     }
+
+    /**
+     * @test
+     */
+    public function getAssetsReturnsInitialValueForAsset()
+    {
+        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->assertEquals(
+            $newObjectStorage,
+            $this->fixture->getAssets()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setAssetForObjectStorageContainingAssetSetsAsset()
+    {
+        $file = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
+        $objectStorageHoldingExactlyOneFile = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneFile->attach($file);
+        $this->fixture->setAssets($objectStorageHoldingExactlyOneFile);
+        $this->assertAttributeEquals(
+            $objectStorageHoldingExactlyOneFile,
+            'assets',
+            $this->fixture
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function addAssetToObjectStorageHoldingAsses()
+    {
+        $file = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
+        $assetsObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->setMethods(['attach'])->getMock();
+        $assetsObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($file));
+        $this->inject($this->fixture, 'assets', $assetsObjectStorageMock);
+        $this->fixture->addAsset($file);
+    }
+
+    /**
+     * @test
+     */
+    public function removeAssetFromObjectStorageHoldingAsset()
+    {
+        $file = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
+        $assetsObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->setMethods(['detach'])->getMock();
+        $assetsObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($file));
+        $this->inject($this->fixture, 'assets', $assetsObjectStorageMock);
+        $this->fixture->removeAsset($file);
+    }
+
 }
