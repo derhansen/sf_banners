@@ -496,5 +496,4 @@ class BannerTest extends UnitTestCase
         $this->inject($this->fixture, 'assets', $assetsObjectStorageMock);
         $this->fixture->removeAsset($file);
     }
-
 }
