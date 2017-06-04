@@ -1,39 +1,55 @@
 plugin.tx_sfbanners {
-	view {
-		templateRootPath = {$plugin.tx_sfbanners.view.templateRootPath}
-		partialRootPath = {$plugin.tx_sfbanners.view.partialRootPath}
-		layoutRootPath = {$plugin.tx_sfbanners.view.layoutRootPath}
-	}
-	settings {
-	  displayMode = {$plugin.tx_sfbanners.settings.displayMode}
-	  defaultFlashVars {
-	    wmode = {$plugin.tx_sfbanners.settings.defaultFlashVars.wmode}
-	    allowScriptAccess = {$plugin.tx_sfbanners.settings.defaultFlashVars.allowScriptAccess}
-	  }
-	  ajaxPageTypeNum = {$plugin.tx_sfbanners.settings.ajaxPageTypeNum}
-	  clickPageTypeNum = {$plugin.tx_sfbanners.settings.clickPageTypeNum}
-	  cacheLifetime = {$plugin.tx_sfbanners.settings.cacheLifetime}
-	}
-	widgets {
-	    bannerWidget = USER
-	    bannerWidget {
-          userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
-          extensionName = SfBanners
-          pluginName = Pi1
-          vendorName = DERHANSEN
-          switchableControllerActions {
-            Banner {
-              1 = show
+    view {
+        templateRootPaths {
+            0 = EXT:sf_banners/Resources/Private/Templates/
+            1 = {$plugin.tx_sfbanners.view.templateRootPath}
+        }
+
+        partialRootPaths {
+            0 = EXT:sf_banners/Resources/Private/Partials/
+            1 = {$plugin.tx_sfbanners.view.partialRootPath}
+        }
+
+        layoutRootPaths {
+            0 = EXT:sf_banners/Resources/Private/Layouts/
+            1 = {$plugin.tx_sfbanners.view.layoutRootPath}
+        }
+    }
+
+    settings {
+        displayMode = {$plugin.tx_sfbanners.settings.displayMode}
+        defaultFlashVars {
+            wmode = {$plugin.tx_sfbanners.settings.defaultFlashVars.wmode}
+            allowScriptAccess = {$plugin.tx_sfbanners.settings.defaultFlashVars.allowScriptAccess}
+        }
+
+        ajaxPageTypeNum = {$plugin.tx_sfbanners.settings.ajaxPageTypeNum}
+        clickPageTypeNum = {$plugin.tx_sfbanners.settings.clickPageTypeNum}
+        cacheLifetime = {$plugin.tx_sfbanners.settings.cacheLifetime}
+    }
+
+    widgets {
+        bannerWidget = USER
+        bannerWidget {
+            userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+            extensionName = SfBanners
+            pluginName = Pi1
+            vendorName = DERHANSEN
+            switchableControllerActions {
+                Banner {
+                    1 = show
+                }
+
+                Banner {
+                    2 = click
+                }
             }
-            Banner {
-              2 = click
-            }
-          }
-          settings < plugin.tx_sfbanners.settings
-          persistence < plugin.tx_sfbanners.persistence
-          view < plugin.tx_sfbanners.view
-	    }
-	}
+
+            settings < plugin.tx_sfbanners.settings
+            persistence < plugin.tx_sfbanners.persistence
+            view < plugin.tx_sfbanners.view
+        }
+    }
 }
 
 config.tx_extbase.persistence.classes {
@@ -46,17 +62,17 @@ config.tx_extbase.persistence.classes {
 
 # Include JQuery if configured
 [globalVar = LIT:1 = {$plugin.tx_sfbanners.settings.includeJquery}]
-page.includeJSFooter {
-  bannerJQuery = //ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js
-  bannerJQuery.external = 1
-  bannerJQuery.forceOnTop = 1
-}
+    page.includeJSFooter {
+        bannerJQuery = //ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js
+        bannerJQuery.external = 1
+        bannerJQuery.forceOnTop = 1
+    }
 [end]
 
 # Include banner JS
 page.includeJSFooter {
-  postscribe = EXT:sf_banners/Resources/Public/Js/Postscribe.js
-  bannerJS = EXT:sf_banners/Resources/Public/Js/SfBanners.js
+    postscribe = EXT:sf_banners/Resources/Public/Js/Postscribe.js
+    bannerJS = EXT:sf_banners/Resources/Public/Js/SfBanners.js
 }
 
 # Page object for AJAX data
