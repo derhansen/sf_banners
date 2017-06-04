@@ -1,0 +1,2 @@
+# cat=backend/settings; type=boolean; label=LLL:EXT:sf_banners/Resources/Private/Language/locallang_be.xlf:extmng.enableFalMedia
+falMedia = 0

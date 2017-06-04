@@ -87,6 +87,10 @@
 			<source>Image</source>
 			<target>Bild</target>
 		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.assets" approved="yes">
+			<source>Assets</source>
+			<target>Bild</target>
+		</trans-unit>
 		<trans-unit id="tx_sfbanners_domain_model_banner.impressions" approved="yes">
 			<source>Impressions</source>
 			<target>Impressionen</target>
