@@ -76,7 +76,7 @@ class Category extends AbstractEntity
      * @param \DERHANSEN\SfBanners\Domain\Model\Category $parent
      * @return void
      */
-    public function setParent(Category $parent)
+    public function setParent(self $parent)
     {
         $this->parent = $parent;
     }
