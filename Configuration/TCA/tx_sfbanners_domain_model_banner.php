@@ -227,8 +227,8 @@ return [
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.margin_top',
             'config' => [
                 'type' => 'input',
-                'size' => '5',
-                'max' => '4',
+                'size' => 5,
+                'max' => 4,
                 'range' => ['lower' => 0, 'upper' => 1000],
                 'eval' => 'int',
             ]
@@ -238,8 +238,8 @@ return [
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.margin_right',
             'config' => [
                 'type' => 'input',
-                'size' => '5',
-                'max' => '4',
+                'size' => 5,
+                'max' => 4,
                 'range' => ['lower' => 0, 'upper' => 1000],
                 'eval' => 'int',
             ]
@@ -249,8 +249,8 @@ return [
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.margin_bottom',
             'config' => [
                 'type' => 'input',
-                'size' => '5',
-                'max' => '4',
+                'size' => 5,
+                'max' => 4,
                 'range' => ['lower' => 0, 'upper' => 1000],
                 'eval' => 'int',
             ]
@@ -260,8 +260,8 @@ return [
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.margin_left',
             'config' => [
                 'type' => 'input',
-                'size' => '5',
-                'max' => '4',
+                'size' => 5,
+                'max' => 4,
                 'range' => ['lower' => 0, 'upper' => 1000],
                 'eval' => 'int',
             ]
@@ -302,8 +302,8 @@ return [
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.html',
             'config' => [
                 'type' => 'text',
-                'cols' => '60',
-                'rows' => '10',
+                'cols' => 60,
+                'rows' => 10,
             ]
         ],
         'flash' => [
@@ -331,8 +331,8 @@ return [
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.flash.width',
             'config' => [
                 'type' => 'input',
-                'size' => '5',
-                'max' => '4',
+                'size' => 5,
+                'max' => 4,
                 'eval' => 'int',
             ]
         ],
@@ -341,8 +341,8 @@ return [
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.flash.height',
             'config' => [
                 'type' => 'input',
-                'size' => '5',
-                'max' => '4',
+                'size' => 5,
+                'max' => 4,
                 'eval' => 'int',
             ]
         ],
@@ -367,7 +367,7 @@ return [
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.impressions_max',
             'config' => [
                 'type' => 'input',
-                'size' => '10',
+                'size' => 10,
                 'eval' => 'int',
             ]
         ],
@@ -376,7 +376,7 @@ return [
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.clicks_max',
             'config' => [
                 'type' => 'input',
-                'size' => '10',
+                'size' => 10,
                 'eval' => 'int',
             ]
         ],
@@ -385,7 +385,7 @@ return [
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.impressions',
             'config' => [
                 'type' => 'none',
-                'size' => '10',
+                'size' => 10,
                 'default' => 0,
                 'setToDefaultOnCopy' => 1
             ]
@@ -395,7 +395,7 @@ return [
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.clicks',
             'config' => [
                 'type' => 'none',
-                'size' => '10',
+                'size' => 10,
                 'default' => 0,
                 'setToDefaultOnCopy' => 1
             ]
