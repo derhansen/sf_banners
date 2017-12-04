@@ -197,23 +197,25 @@ return [
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'assets',
                 [
-                    'appearance' => [
-                        'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:images.addFileReference',
-                        'showPossibleLocalizationRecords' => 1,
-                        'showRemovedLocalizationRecords' => 1,
-                        'showAllLocalizationLink' => 1,
-                        'showSynchronizationLink' => 1
+                    'foreign_match_fields' => [
+                        'fieldname' => 'assets',
+                        'tablenames' => 'tx_sfbanners_domain_model_banner',
+                        'table_local' => 'sys_file',
                     ],
                     'foreign_types' => [
-                        \TYPO3\CMS\Core\Resource\File::FILETYPE_UNKNOWN => [
-                            'showitem' => '
-                                --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette',
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
+                            'showitem' => '--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette,
+                                      --palette--;;imageoverlayPalette,
+                                      --palette--;;filePalette'
                         ],
-                        \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE   => [
-                            'showitem' => '
-                                --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette',
+                    ],
+                    'overrideChildTca' => [
+                        'types' => [
+                            \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
+                                'showitem' => '
+                                        --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                        --palette--;;filePalette'
+                            ],
                         ],
                     ],
                     'minitems' => 0,
