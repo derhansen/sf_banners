@@ -82,10 +82,17 @@ class BannerController extends ActionController
      * Click Action for a banner
      *
      * @param \DERHANSEN\SfBanners\Domain\Model\Banner $banner
-     * @return void
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
      */
-    public function clickAction(\DERHANSEN\SfBanners\Domain\Model\Banner $banner)
+
+    public function clickAction(\DERHANSEN\SfBanners\Domain\Model\Banner $banner = null)
     {
+        if (is_null($banner)) {
+            $GLOBALS['TSFE']->pageNotFoundAndExit('Banner not found.');
+        }
         $banner->increaseClicks();
         $this->bannerRepository->update($banner);
         $this->redirectToURI($banner->getLinkUrl());
