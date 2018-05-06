@@ -87,7 +87,6 @@ class BannerController extends ActionController
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
      */
-
     public function clickAction(\DERHANSEN\SfBanners\Domain\Model\Banner $banner = null)
     {
         if (is_null($banner)) {
