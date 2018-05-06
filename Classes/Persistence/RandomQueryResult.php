@@ -18,7 +18,6 @@ use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
 
 class RandomQueryResult extends QueryResult
 {
-
     /**
      * Keeps track of, if records have been shuffled
      */

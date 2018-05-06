@@ -23,7 +23,6 @@ use TYPO3\CMS\Frontend\Page\PageGenerator;
  */
 class BannerService
 {
-
     /**
      * Returns a string with additional CSS for the given banners
      *

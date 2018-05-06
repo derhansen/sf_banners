@@ -14,6 +14,8 @@ namespace DERHANSEN\SfBanners\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
+use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
+use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -26,12 +28,10 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  */
 class BannerController extends ActionController
 {
-
     /**
      * Banner Service
      *
      * @var \DERHANSEN\SfBanners\Service\BannerService
-     * @inject
      */
     protected $bannerService;
 
@@ -39,7 +39,6 @@ class BannerController extends ActionController
      * bannerRepository
      *
      * @var \DERHANSEN\SfBanners\Domain\Repository\BannerRepository
-     * @inject
      */
     protected $bannerRepository;
 
@@ -47,7 +46,6 @@ class BannerController extends ActionController
      * Hash Service
      *
      * @var \TYPO3\CMS\Extbase\Security\Cryptography\HashService
-     * @inject
      */
     protected $hashService;
 
@@ -74,8 +72,32 @@ class BannerController extends ActionController
      */
     protected function initializeCache()
     {
-        $cacheManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Cache\\CacheManager');
+        $cacheManager = GeneralUtility::makeInstance(CacheManager::class);
         $this->cacheInstance = $cacheManager->getCache('sfbanners_cache');
+    }
+
+    /**
+     * @param \DERHANSEN\SfBanners\Domain\Repository\BannerRepository $bannerRepository
+     */
+    public function injectBannerRepository(\DERHANSEN\SfBanners\Domain\Repository\BannerRepository $bannerRepository)
+    {
+        $this->bannerRepository = $bannerRepository;
+    }
+
+    /**
+     * @param \DERHANSEN\SfBanners\Service\BannerService $bannerService
+     */
+    public function injectBannerService(\DERHANSEN\SfBanners\Service\BannerService $bannerService)
+    {
+        $this->bannerService = $bannerService;
+    }
+
+    /**
+     * @param \TYPO3\CMS\Extbase\Security\Cryptography\HashService $hashService
+     */
+    public function injectHashService(\TYPO3\CMS\Extbase\Security\Cryptography\HashService $hashService)
+    {
+        $this->hashService = $hashService;
     }
 
     /**
@@ -145,7 +167,7 @@ class BannerController extends ActionController
 
         if ($cssFile != '') {
             /** @var PageRenderer $pageRenderer */
-            $pageRenderer = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Page\\PageRenderer');
+            $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
             $pageRenderer->addCssFile($cssFile, 'stylesheet', 'all', '', true);
         }
     }
@@ -171,7 +193,7 @@ class BannerController extends ActionController
 
         if ($this->hashService->validateHmac($compareString, $hmac)) {
             /** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand */
-            $demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
+            $demand = $this->objectManager->get(BannerDemand::class);
             $demand->setCategories($categories);
             $demand->setStartingPoint($startingPoint);
             $demand->setDisplayMode($displayMode);

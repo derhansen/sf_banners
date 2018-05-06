@@ -25,9 +25,17 @@ class ParamsViewHelper extends AbstractViewHelper
 {
     /**
      * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-     * @inject
      */
     protected $configurationManager;
+
+    /**
+     * @param \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager
+     */
+    public function injectConfigurationManager(
+        \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager
+    ) {
+        $this->configurationManager = $configurationManager;
+    }
 
     /**
      * Returns TypoSript settings for the extension
