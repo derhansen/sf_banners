@@ -108,7 +108,7 @@ return [
             ],
         ],
         'title' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_category.title',
             'config' => [
                 'type' => 'input',
@@ -117,7 +117,7 @@ return [
             ],
         ],
         'parent' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_category.parent',
             'config' => [
                 'type' => 'select',
