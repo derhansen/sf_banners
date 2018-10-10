@@ -25,4 +25,5 @@ Configuration
    :glob:
 
    Reference/Index
+   ExtensionSettings/Index
 

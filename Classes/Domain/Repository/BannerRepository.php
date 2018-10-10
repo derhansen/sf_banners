@@ -15,7 +15,10 @@ namespace DERHANSEN\SfBanners\Domain\Repository;
  */
 
 use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
+use DERHANSEN\SfBanners\Persistence\RandomQueryResult;
+use TYPO3\CMS\Core\Database\QueryGenerator;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
@@ -42,7 +45,7 @@ class BannerRepository extends Repository
      */
     public function initializeObject()
     {
-        $this->defaultQuerySettings = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\Typo3QuerySettings');
+        $this->defaultQuerySettings = $this->objectManager->get(Typo3QuerySettings::class);
         $this->defaultQuerySettings->setRespectStoragePage(false);
     }
 
@@ -111,7 +114,7 @@ class BannerRepository extends Repository
                 $result = $query->execute();
                 break;
             case 'allRandom':
-                $result = $this->objectManager->get('DERHANSEN\\SfBanners\\Persistence\\RandomQueryResult', $query);
+                $result = $this->objectManager->get(RandomQueryResult::class, $query);
 
                 break;
             case 'random':
@@ -177,7 +180,7 @@ class BannerRepository extends Repository
     protected function getExcludePageBanners(QueryResultInterface $result, BannerDemand $demand)
     {
         /** @var \TYPO3\CMS\Core\Database\QueryGenerator $queryGenerator */
-        $queryGenerator = $this->objectManager->get('TYPO3\\CMS\\Core\\Database\\QueryGenerator');
+        $queryGenerator = $this->objectManager->get(QueryGenerator::class);
 
         $banners = [];
         /** @var \DERHANSEN\SfBanners\Domain\Model\Banner $banner */

@@ -92,11 +92,7 @@ return [
                 'size' => 13,
                 'max' => 20,
                 'eval' => 'datetime',
-                'checkbox' => 0,
                 'default' => 0,
-                'range' => [
-                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-                ],
             ],
         ],
         'endtime' => [
@@ -108,15 +104,11 @@ return [
                 'size' => 13,
                 'max' => 20,
                 'eval' => 'datetime',
-                'checkbox' => 0,
                 'default' => 0,
-                'range' => [
-                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-                ],
             ],
         ],
         'title' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_category.title',
             'config' => [
                 'type' => 'input',
@@ -125,7 +117,7 @@ return [
             ],
         ],
         'parent' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_category.parent',
             'config' => [
                 'type' => 'select',

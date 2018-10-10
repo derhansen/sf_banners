@@ -1,25 +1,27 @@
 plugin.tx_sfbanners {
-	view {
-		# cat=plugin.tx_sfbanners/file; type=string; label=Path to template root (FE)
-		templateRootPath = EXT:sf_banners/Resources/Private/Templates/
-		# cat=plugin.tx_sfbanners/file; type=string; label=Path to template partials (FE)
-		partialRootPath = EXT:sf_banners/Resources/Private/Partials/
-		# cat=plugin.tx_sfbanners/file; type=string; label=Path to template layouts (FE)
-		layoutRootPath = EXT:sf_banners/Resources/Private/Layouts/
-	}
-	settings {
-	  displayMode = all
-	  defaultFlashVars {
-	    wmode = opaque
-	    allowScriptAccess = sameDomain
-	  }
-	  # cat=plugin.tx_sfbanners/basic/10; type=boolean; label=Include JQuery (CDN Version)
-	  includeJquery = 1
-	  # cat=plugin.tx_sfbanners/basic/20; type=int; label=Page typeNum, where banners are fetched via AJAX
-	  ajaxPageTypeNum = 9001
-	  # cat=plugin.tx_sfbanners/basic/20; type=int; label=Page typeNum for click Action
-	  clickPageTypeNum = 9002
-	  # cat=plugin.tx_sfbanners/basic/20; type=int; label=Cache lifetime
-	  cacheLifetime = 3600
-	}
+    view {
+        # cat=plugin.tx_sfbanners/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:sf_banners/Resources/Private/Templates/
+        # cat=plugin.tx_sfbanners/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:sf_banners/Resources/Private/Partials/
+        # cat=plugin.tx_sfbanners/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:sf_banners/Resources/Private/Layouts/
+    }
+
+    settings {
+        displayMode = all
+        defaultFlashVars {
+            wmode = opaque
+            allowScriptAccess = sameDomain
+        }
+
+        # cat=plugin.tx_sfbanners/basic/10; type=boolean; label=Include JQuery (CDN Version)
+        includeJquery = 1
+        # cat=plugin.tx_sfbanners/basic/20; type=int; label=Page typeNum, where banners are fetched via AJAX
+        ajaxPageTypeNum = 9001
+        # cat=plugin.tx_sfbanners/basic/20; type=int; label=Page typeNum for click Action
+        clickPageTypeNum = 9002
+        # cat=plugin.tx_sfbanners/basic/20; type=int; label=Cache lifetime
+        cacheLifetime = 3600
+    }
 }

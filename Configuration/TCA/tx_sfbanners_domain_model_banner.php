@@ -1,5 +1,15 @@
 <?php
 
+$sfBannersConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['sf_banners']);
+
+if ($sfBannersConf['falMedia']) {
+    $image = 'assets,';
+    $link = '';
+} else {
+    $image = 'image,';
+    $link = 'link,';
+}
+
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner',
@@ -25,7 +35,7 @@ return [
         'iconfile' => 'EXT:sf_banners/Resources/Public/Icons/tx_sfbanners_domain_model_banner.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, type, category, image, margin_top, margin_right, margin_bottom, margin_left, alttext, link, html, flash, flash_width, flash_height, flash_wmode, flash_allow_script_access, impressions_max, clicks_max, impressions, clicks, excludepages, recursive',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, type, category, image, assets, margin_top, margin_right, margin_bottom, margin_left, alttext, link, html, flash, flash_width, flash_height, flash_wmode, flash_allow_script_access, impressions_max, clicks_max, impressions, clicks, excludepages, recursive',
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -80,39 +90,29 @@ return [
             ],
         ],
         'starttime' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
             'config' => [
                 'type' => 'input',
                 'size' => 13,
-                'max' => 20,
                 'eval' => 'datetime',
-                'checkbox' => 0,
                 'default' => 0,
-                'range' => [
-                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-                ],
             ],
         ],
         'endtime' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
             'config' => [
                 'type' => 'input',
                 'size' => 13,
-                'max' => 20,
                 'eval' => 'datetime',
-                'checkbox' => 0,
                 'default' => 0,
-                'range' => [
-                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-                ],
             ],
         ],
         'title' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.title',
             'config' => [
                 'type' => 'input',
@@ -121,7 +121,7 @@ return [
             ],
         ],
         'description' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.description',
             'config' => [
                 'type' => 'input',
@@ -130,7 +130,7 @@ return [
             ],
         ],
         'type' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.type',
             'config' => [
@@ -156,7 +156,7 @@ return [
             ],
         ],
         'category' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.category',
             'config' => [
                 'type' => 'select',
@@ -176,7 +176,7 @@ return [
             ],
         ],
         'image' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.image',
             'config' => [
@@ -190,52 +190,86 @@ return [
                 'maxitems' => 1,
             ]
         ],
+        'assets' => [
+            'exclude' => 1,
+            'l10n_mode' => 'mergeIfNotBlank',
+            'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.assets',
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+                'assets',
+                [
+                    'foreign_match_fields' => [
+                        'fieldname' => 'assets',
+                        'tablenames' => 'tx_sfbanners_domain_model_banner',
+                        'table_local' => 'sys_file',
+                    ],
+                    'foreign_types' => [
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
+                            'showitem' => '--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette,
+                                      --palette--;;imageoverlayPalette,
+                                      --palette--;;filePalette'
+                        ],
+                    ],
+                    'overrideChildTca' => [
+                        'types' => [
+                            \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
+                                'showitem' => '
+                                        --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                        --palette--;;filePalette'
+                            ],
+                        ],
+                    ],
+                    'minitems' => 0,
+                    'maxitems' => 1,
+                ],
+                $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+            ),
+        ],
         'margin_top' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.margin_top',
             'config' => [
                 'type' => 'input',
-                'size' => '5',
-                'max' => '4',
+                'size' => 5,
+                'max' => 4,
                 'range' => ['lower' => 0, 'upper' => 1000],
                 'eval' => 'int',
             ]
         ],
         'margin_right' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.margin_right',
             'config' => [
                 'type' => 'input',
-                'size' => '5',
-                'max' => '4',
+                'size' => 5,
+                'max' => 4,
                 'range' => ['lower' => 0, 'upper' => 1000],
                 'eval' => 'int',
             ]
         ],
         'margin_bottom' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.margin_bottom',
             'config' => [
                 'type' => 'input',
-                'size' => '5',
-                'max' => '4',
+                'size' => 5,
+                'max' => 4,
                 'range' => ['lower' => 0, 'upper' => 1000],
                 'eval' => 'int',
             ]
         ],
         'margin_left' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.margin_left',
             'config' => [
                 'type' => 'input',
-                'size' => '5',
-                'max' => '4',
+                'size' => 5,
+                'max' => 4,
                 'range' => ['lower' => 0, 'upper' => 1000],
                 'eval' => 'int',
             ]
         ],
         'alttext' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.alttext',
             'config' => [
                 'type' => 'input',
@@ -244,7 +278,7 @@ return [
             ],
         ],
         'link' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.link',
             'config' => [
@@ -265,17 +299,17 @@ return [
             ]
         ],
         'html' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.html',
             'config' => [
                 'type' => 'text',
-                'cols' => '60',
-                'rows' => '10',
+                'cols' => 60,
+                'rows' => 10,
             ]
         ],
         'flash' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.flash',
             'config' => [
@@ -295,27 +329,27 @@ return [
             ]
         ],
         'flash_width' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.flash.width',
             'config' => [
                 'type' => 'input',
-                'size' => '5',
-                'max' => '4',
+                'size' => 5,
+                'max' => 4,
                 'eval' => 'int',
             ]
         ],
         'flash_height' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.flash.height',
             'config' => [
                 'type' => 'input',
-                'size' => '5',
-                'max' => '4',
+                'size' => 5,
+                'max' => 4,
                 'eval' => 'int',
             ]
         ],
         'flash_wmode' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.flash.wmode',
             'config' => [
                 'type' => 'input',
@@ -323,7 +357,7 @@ return [
             ],
         ],
         'flash_allow_script_access' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.flash.allowScriptAccess',
             'config' => [
                 'type' => 'input',
@@ -331,45 +365,45 @@ return [
             ],
         ],
         'impressions_max' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.impressions_max',
             'config' => [
                 'type' => 'input',
-                'size' => '10',
+                'size' => 10,
                 'eval' => 'int',
             ]
         ],
         'clicks_max' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.clicks_max',
             'config' => [
                 'type' => 'input',
-                'size' => '10',
+                'size' => 10,
                 'eval' => 'int',
             ]
         ],
         'impressions' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.impressions',
             'config' => [
                 'type' => 'none',
-                'size' => '10',
+                'size' => 10,
                 'default' => 0,
                 'setToDefaultOnCopy' => 1
             ]
         ],
         'clicks' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.clicks',
             'config' => [
                 'type' => 'none',
-                'size' => '10',
+                'size' => 10,
                 'default' => 0,
                 'setToDefaultOnCopy' => 1
             ]
         ],
         'excludepages' => [
-            'exclude' => 0,
+            'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.excludepages',
             'config' => [
                 'type' => 'group',
@@ -393,7 +427,7 @@ return [
     'types' => [
         '0' => [
             'showitem' => 'l10n_parent,l10n_diffsource,title,--palette--;;paletteCore, description,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.image,image,--palette--;;paletteMargins,alttext,link,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.image,' . $image . ',--palette--;;paletteMargins,' . $link . '
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.display, category, excludepages, recursive,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.visibility, hidden,--palette--;;paletteVisibility,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.limitations, impressions_max, clicks_max,
