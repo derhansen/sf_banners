@@ -16,6 +16,8 @@ namespace DERHANSEN\SfBanners\Test\Unit\Domain\Model;
 
 use DERHANSEN\SfBanners\Domain\Model\Banner;
 use Nimut\TestingFramework\TestCase\UnitTestCase;
+use TYPO3\CMS\Core\Resource\File;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
@@ -187,11 +189,17 @@ class BannerTest extends UnitTestCase
             'falMedia' => 1
         ]);
 
-        $mockFile = $this->getMock('TYPO3\\CMS\\Core\\Resource\\File', ['getForLocalProcessing', 'getLink'], [], '', false);
+        $mockFile = $this->getMockBuilder(File::class)
+            ->setMethods(['getForLocalProcessing', 'getLink'])
+            ->disableOriginalConstructor()
+            ->getMock();
         $mockFile->expects($this->any())->method('getForLocalProcessing')->will($this->returnValue('/path/to/somefile.png'));
         $mockFile->expects($this->any())->method('getLink')->will($this->returnValue('https://www.typo3.org'));
-        $mockFileRef = $this->getMock('TYPO3\\CMS\\Extbase\\Domain\\Model\\FileReference',
-            ['getOriginalResource'], [], '', false);
+
+        $mockFileRef = $this->getMockBuilder(FileReference::class)
+            ->setMethods(['getOriginalResource'])
+            ->disableOriginalConstructor()
+            ->getMock();
         $mockFileRef->expects($this->any())->method('getOriginalResource')->will($this->returnValue($mockFile));
 
         $this->fixture->setType(0);
