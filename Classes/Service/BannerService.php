@@ -14,6 +14,7 @@ namespace DERHANSEN\SfBanners\Service;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Page\PageGenerator;
 
 /**
@@ -73,7 +74,12 @@ class BannerService
         $css = $this->getAdditionalCss($banners);
         $filename = '';
         if ($css != '') {
-            $filename = PageGenerator::inline2TempFile($css, 'css');
+            if (method_exists(GeneralUtility::class, 'writeStyleSheetContentToTemporaryFile')) {
+                $filename = GeneralUtility::writeStyleSheetContentToTemporaryFile($css);
+            } else {
+                // Remove when support for v8 is dropped
+                $filename = PageGenerator::inline2TempFile($css, 'css');
+            }
         }
         return $filename;
     }
