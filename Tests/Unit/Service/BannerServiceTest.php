@@ -42,6 +42,7 @@ class BannerServiceTest extends UnitTestCase
      */
     public function setUp()
     {
+        parent::setUp();
         $this->bannerService = new BannerService();
         $this->demand = new BannerDemand();
         $this->demand->setDisplayMode('all');
