@@ -39,4 +39,3 @@ The automatic inclusion of jQuery can be disabled in TypoScript
 ## Support and updates
 
 The extension is hosted on Github. Please report feedback, bugs and change-requests directly at https://github.com/derhansen/sf_banners
-
