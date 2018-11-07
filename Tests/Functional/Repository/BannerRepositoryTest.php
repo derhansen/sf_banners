@@ -14,8 +14,11 @@ namespace DERHANSEN\SfBanners\Tests\Functional\Repository;
  * The TYPO3 project - inspiring people to share!
  */
 
+use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
+use DERHANSEN\SfBanners\Domain\Repository\BannerRepository;
 use Nimut\TestingFramework\TestCase\FunctionalTestCase;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
  * Test case for class \DERHANSEN\SfBanners\Domain\Model\Banner.
@@ -35,14 +38,13 @@ class BannerRepositoryTest extends FunctionalTestCase
     /**
      * Setup
      *
-     * @throws \TYPO3\CMS\Core\Tests\Exception
      * @return void
      */
     public function setUp()
     {
         parent::setUp();
-        $this->objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
-        $this->bannerRepository = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Repository\\BannerRepository');
+        $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+        $this->bannerRepository = $this->objectManager->get(BannerRepository::class);
 
         $this->importDataSet(__DIR__ . '/../Fixtures/tx_sfbanners_domain_model_banner.xml');
         $this->importDataSet(__DIR__ . '/../Fixtures/tx_sfbanners_domain_model_category.xml');
@@ -58,19 +60,19 @@ class BannerRepositoryTest extends FunctionalTestCase
     public function findRecordsByStartingPointTest()
     {
         /** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand */
-        $demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
+        $demand = new BannerDemand();
 
         /* Simple starting point */
         $demand->setStartingPoint(55);
-        $this->assertEquals(2, (int)$this->bannerRepository->findDemanded($demand)->count());
+        $this->assertEquals(2, count($this->bannerRepository->findDemanded($demand)));
 
         /* Multiple starting points */
         $demand->setStartingPoint('56,57,58');
-        $this->assertEquals(3, (int)$this->bannerRepository->findDemanded($demand)->count());
+        $this->assertEquals(3, count($this->bannerRepository->findDemanded($demand)));
 
         /* Multiple starting points, including invalid value */
         $demand->setStartingPoint('57,58,?,59');
-        $this->assertEquals(3, (int)$this->bannerRepository->findDemanded($demand)->count());
+        $this->assertEquals(3, count($this->bannerRepository->findDemanded($demand)));
     }
 
     /**
@@ -82,26 +84,26 @@ class BannerRepositoryTest extends FunctionalTestCase
     public function findRecordsByCategoryTest()
     {
         /** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand */
-        $demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
+        $demand = new BannerDemand();
 
         /* Set starting point */
         $demand->setStartingPoint(10);
 
         /* Simple category test */
         $demand->setCategories('10');
-        $this->assertEquals(4, (int)$this->bannerRepository->findDemanded($demand)->count());
+        $this->assertEquals(4, count($this->bannerRepository->findDemanded($demand)));
 
         /* Multiple category test */
         $demand->setCategories('10,11');
-        $this->assertEquals(4, (int)$this->bannerRepository->findDemanded($demand)->count());
+        $this->assertEquals(4, count($this->bannerRepository->findDemanded($demand)));
 
         /* Multiple category test, including invalid value */
         $demand->setCategories('11,?,12');
-        $this->assertEquals(3, (int)$this->bannerRepository->findDemanded($demand)->count());
+        $this->assertEquals(3, count($this->bannerRepository->findDemanded($demand)));
 
         /* Non existing category test */
         $demand->setCategories('9999');
-        $this->assertEquals(0, (int)$this->bannerRepository->findDemanded($demand)->count());
+        $this->assertEquals(0, count($this->bannerRepository->findDemanded($demand)));
     }
 
     /**
@@ -113,7 +115,7 @@ class BannerRepositoryTest extends FunctionalTestCase
     public function findRecordsWithDisplayModeTest()
     {
         /** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand */
-        $demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
+        $demand = new BannerDemand();
         $pid = 80;
         $uids = [
             1 => 20,
@@ -128,7 +130,7 @@ class BannerRepositoryTest extends FunctionalTestCase
 
         /* All banners with default sorting respected */
         $demand->setDisplayMode('all');
-        $this->assertEquals(5, (int)$this->bannerRepository->findDemanded($demand)->count());
+        $this->assertEquals(5, count($this->bannerRepository->findDemanded($demand)));
         $returnedBanners = $this->bannerRepository->findDemanded($demand);
         $returnedUids = [];
         $count = 1;
@@ -143,11 +145,11 @@ class BannerRepositoryTest extends FunctionalTestCase
 
         /* Random one banner */
         $demand->setDisplayMode('random');
-        $this->assertEquals(1, (int)$this->bannerRepository->findDemanded($demand)->count());
+        $this->assertEquals(1, count($this->bannerRepository->findDemanded($demand)));
 
         /* All banners with random diplay mode */
         $demand->setDisplayMode('allRandom');
-        $this->assertEquals(5, (int)$this->bannerRepository->findDemanded($demand)->count());
+        $this->assertEquals(5, count($this->bannerRepository->findDemanded($demand)));
 
         /* Find 100 times with demand, if returned UIDs are always the same, then they are not returned randomly */
         $matchCount = 0;
@@ -175,7 +177,7 @@ class BannerRepositoryTest extends FunctionalTestCase
     public function findRecordsForSpecialExcludePageUidTest()
     {
         /** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand */
-        $demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
+        $demand = new BannerDemand();
         $pid = 95;
 
         /* Define PIDs */
@@ -188,19 +190,19 @@ class BannerRepositoryTest extends FunctionalTestCase
 
         /* All banners, which not should be shown on the page with $pid1 */
         $demand->setCurrentPageUid($pid1);
-        $this->assertEquals(1, (int)$this->bannerRepository->findDemanded($demand)->count());
+        $this->assertEquals(1, count($this->bannerRepository->findDemanded($demand)));
 
         /* All banners, which not should be shown on page with $pid2 */
         $demand->setCurrentPageUid($pid2);
-        $this->assertEquals(1, (int)$this->bannerRepository->findDemanded($demand)->count());
+        $this->assertEquals(1, count($this->bannerRepository->findDemanded($demand)));
 
         /* All banners, which not should be shown on page with $pid3 */
         $demand->setCurrentPageUid($pid3);
-        $this->assertEquals(2, (int)$this->bannerRepository->findDemanded($demand)->count());
+        $this->assertEquals(2, count($this->bannerRepository->findDemanded($demand)));
 
         /* All banners, which not should be shown on page with a non existing pid */
         $demand->setCurrentPageUid(999);
-        $this->assertEquals(3, (int)$this->bannerRepository->findDemanded($demand)->count());
+        $this->assertEquals(3, count($this->bannerRepository->findDemanded($demand)));
     }
 
     /**
@@ -212,7 +214,7 @@ class BannerRepositoryTest extends FunctionalTestCase
     public function findRecordsForSpecialExcludeRecursivePageUidTest()
     {
         /** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand */
-        $demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
+        $demand = new BannerDemand();
         $pid = 96;
 
         /* Define PIDs */
@@ -226,19 +228,19 @@ class BannerRepositoryTest extends FunctionalTestCase
 
         /* All banners, which not should be shown on the page with $pid1 */
         $demand->setCurrentPageUid($pid1);
-        $this->assertEquals(2, (int)$this->bannerRepository->findDemanded($demand)->count());
+        $this->assertEquals(2, count($this->bannerRepository->findDemanded($demand)));
 
         /* All banners, which not should be shown on page with $pid2 */
         $demand->setCurrentPageUid($pid2);
-        $this->assertEquals(1, (int)$this->bannerRepository->findDemanded($demand)->count());
+        $this->assertEquals(1, count($this->bannerRepository->findDemanded($demand)));
 
         /* All banners, which not should be shown on page with $pid3 */
         $demand->setCurrentPageUid($pid3);
-        $this->assertEquals(0, (int)$this->bannerRepository->findDemanded($demand)->count());
+        $this->assertEquals(0, count($this->bannerRepository->findDemanded($demand)));
 
         /* All banners, which not should be shown on page with $pid4 */
         $demand->setCurrentPageUid($pid4);
-        $this->assertEquals(2, (int)$this->bannerRepository->findDemanded($demand)->count());
+        $this->assertEquals(2, count($this->bannerRepository->findDemanded($demand)));
     }
 
     /**
@@ -250,14 +252,14 @@ class BannerRepositoryTest extends FunctionalTestCase
     public function findRecordsWithMaxImpressionsTest()
     {
         /** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand */
-        $demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
+        $demand = new BannerDemand();
         $pid = 100;
 
         /* Set starting point */
         $demand->setStartingPoint($pid);
 
         /* Verify, that 2 records are returned */
-        $this->assertEquals(2, (int)$this->bannerRepository->findDemanded($demand)->count());
+        $this->assertEquals(2, count($this->bannerRepository->findDemanded($demand)));
     }
 
     /**
@@ -269,14 +271,14 @@ class BannerRepositoryTest extends FunctionalTestCase
     public function findRecordsWithMaxClicksTest()
     {
         /** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand */
-        $demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
+        $demand = new BannerDemand();
         $pid = 101;
 
         /* Set starting point */
         $demand->setStartingPoint($pid);
 
         /* Verify, that 2 records are returned */
-        $this->assertEquals(2, (int)$this->bannerRepository->findDemanded($demand)->count());
+        $this->assertEquals(2, count($this->bannerRepository->findDemanded($demand)));
     }
 
     /**
@@ -288,13 +290,13 @@ class BannerRepositoryTest extends FunctionalTestCase
     public function findRecordsWithMaxImpressionsAndMaxClicksTest()
     {
         /** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand */
-        $demand = $this->objectManager->get('DERHANSEN\\SfBanners\\Domain\\Model\\BannerDemand');
+        $demand = new BannerDemand();
         $pid = 102;
 
         /* Set starting point */
         $demand->setStartingPoint($pid);
 
         /* Verify, that 1 record are returned */
-        $this->assertEquals(1, (int)$this->bannerRepository->findDemanded($demand)->count());
+        $this->assertEquals(1, count($this->bannerRepository->findDemanded($demand)));
     }
 }

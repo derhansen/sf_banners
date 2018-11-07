@@ -15,7 +15,6 @@ namespace DERHANSEN\SfBanners\Domain\Repository;
  */
 
 use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
-use DERHANSEN\SfBanners\Persistence\RandomQueryResult;
 use TYPO3\CMS\Core\Database\QueryGenerator;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
@@ -86,9 +85,9 @@ class BannerRepository extends Repository
 
         /* Get banners without respect to limitations */
         $unfilteredResult = $query->execute();
-        if ($unfilteredResult->count() > 0) {
-            $finalQuery = $this->getQueryWithLimitation($unfilteredResult, $demand);
-            $result = $this->getResult($finalQuery, $demand);
+        if (count($unfilteredResult) > 0) {
+            $filteredResult = $this->applyBannerLimitations($unfilteredResult, $demand);
+            $result = $this->getBannersByDisplayMode($filteredResult, $demand);
         } else {
             $result = $unfilteredResult;
         }
@@ -96,31 +95,27 @@ class BannerRepository extends Repository
     }
 
     /**
-     * Returns the result of the query based on the given displaymode set in demand
+     * Returns the banners by the displayMode set in the demand
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\QueryInterface $query The query
-     * @param \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand The demand
-     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @param array $filteredResult
+     * @param BannerDemand $demand
+     * @return array|mixed
      */
-    protected function getResult(QueryInterface $query, BannerDemand $demand)
+    protected function getBannersByDisplayMode(array $filteredResult, BannerDemand $demand)
     {
         $result = [];
 
-        // Do not respect syslanguage since we search for uids - @see forge #47192
-        $query->getQuerySettings()->setRespectSysLanguage(false);
-
         switch ($demand->getDisplayMode()) {
             case 'all':
-                $result = $query->execute();
+                $result = $filteredResult;
                 break;
             case 'allRandom':
-                $result = $this->objectManager->get(RandomQueryResult::class, $query);
-
+                shuffle($filteredResult);
+                $result = $filteredResult;
                 break;
             case 'random':
-                $rows = $query->execute()->count();
-                $rowNumber = mt_rand(0, max(0, ($rows - 1)));
-                $result = $query->setOffset($rowNumber)->setLimit(1)->execute();
+                shuffle($filteredResult);
+                $result = isset($filteredResult[0]) ? [$filteredResult[0]] : [];
                 break;
             default:
                 break;
@@ -129,16 +124,16 @@ class BannerRepository extends Repository
     }
 
     /**
-     * Returns a query of banner-uids with respect to max_impressions and max_clicks
+     * Applies banner limitations to the given queryResult and returns remaining banners as array
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\QueryResultInterface $result The result
-     * @param \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand The demand
-     * @return \TYPO3\CMS\Extbase\Persistence\QueryInterface
+     * @param QueryResultInterface $result
+     * @param BannerDemand $demand
+     * @return array
      */
-    protected function getQueryWithLimitation(QueryResultInterface $result, BannerDemand $demand)
+    protected function applyBannerLimitations(QueryResultInterface $result, BannerDemand $demand)
     {
         $banners = $this->getExcludePageBanners($result, $demand);
-        $bannerUids = [];
+        $resultingBanners = [];
         foreach ($banners as $banner) {
             /** @var \DERHANSEN\SfBanners\Domain\Model\Banner $banner */
             if ($banner->getImpressionsMax() > 0 || $banner->getClicksMax() > 0) {
@@ -146,28 +141,20 @@ class BannerRepository extends Repository
                     if ($banner->getImpressions() < $banner->getImpressionsMax() && $banner->getClicks() <
                         $banner->getClicksMax()
                     ) {
-                        $bannerUids[] = $banner->getUid();
+                        $resultingBanners[] = $banner;
                     }
                 } elseif ($banner->getImpressionsMax() > 0 && ($banner->getImpressions() <
                         $banner->getImpressionsMax())
                 ) {
-                    $bannerUids[] = $banner->getUid();
+                    $resultingBanners[] = $banner;
                 } elseif ($banner->getClicksMax() > 0 && ($banner->getClicks() < $banner->getClicksMax())) {
-                    $bannerUids[] = $banner->getUid();
+                    $resultingBanners[] = $banner;
                 }
             } else {
-                $bannerUids[] = $banner->getUid();
+                $resultingBanners[] = $banner;
             }
         }
-
-        $query = $this->createQuery();
-        if (count($bannerUids) > 0) {
-            $query->matching($query->logicalOr($query->in('uid', $bannerUids)));
-        } else {
-            /* Query should not match any record */
-            $query->matching($query->equals('uid', 0));
-        }
-        return $query;
+        return $resultingBanners;
     }
 
     /**
@@ -204,10 +191,10 @@ class BannerRepository extends Repository
     /**
      * Updates the impressions counter for each banner
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\QueryResultInterface|array $banners Banners
+     * @param array $banners Banners
      * @return void
      */
-    public function updateImpressions(QueryResultInterface $banners)
+    public function updateImpressions(array $banners)
     {
         foreach ($banners as $banner) {
             /** @var \DERHANSEN\SfBanners\Domain\Model\Banner $banner */
