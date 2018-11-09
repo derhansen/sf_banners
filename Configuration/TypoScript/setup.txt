@@ -81,7 +81,6 @@ ajaxPage {
     typeNum = {$plugin.tx_sfbanners.settings.ajaxPageTypeNum}
     config {
         disableAllHeaderCode = 1
-        # TYPO3 8.7
         additionalHeaders.10.header = Content-type:text/html
         xhtml_cleaning = 0
         admPanel = 0
@@ -102,7 +101,6 @@ clickPage {
     typeNum = {$plugin.tx_sfbanners.settings.clickPageTypeNum}
     config {
         disableAllHeaderCode = 0
-        # TYPO3 8.7
         additionalHeaders.10.header = Content-type:text/html
         xhtml_cleaning = 0
         admPanel = 0
