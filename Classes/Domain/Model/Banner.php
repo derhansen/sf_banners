@@ -52,8 +52,8 @@ class Banner extends AbstractEntity
     /**
      * Category
      *
-     * @lazy
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<DERHANSEN\SfBanners\Domain\Model\Category>
+     * @lazy
      */
     protected $category;
 
@@ -68,7 +68,6 @@ class Banner extends AbstractEntity
      * Fal media items
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<TYPO3\CMS\Extbase\Domain\Model\FileReference>
-     * @lazy
      */
     protected $assets;
 
