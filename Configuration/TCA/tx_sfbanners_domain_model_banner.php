@@ -34,7 +34,22 @@ return [
         'iconfile' => 'EXT:sf_banners/Resources/Public/Icons/tx_sfbanners_domain_model_banner.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, type, category, image, assets, margin_top, margin_right, margin_bottom, margin_left, alttext, link, html, flash, flash_width, flash_height, flash_wmode, flash_allow_script_access, impressions_max, clicks_max, impressions, clicks, excludepages, recursive',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, type, 
+            category, image, assets, margin_top, margin_right, margin_bottom, margin_left, alttext, link, html, flash, 
+            flash_width, flash_height, flash_wmode, flash_allow_script_access, impressions_max, clicks_max, 
+            impressions, clicks, excludepages, recursive',
+    ],
+    'palettes' => [
+        '1' => ['showitem' => ''],
+        'paletteCore' => [
+            'showitem' => 'type, sys_language_uid',
+        ],
+        'paletteMargins' => [
+            'showitem' => 'margin_top, margin_right, margin_bottom, margin_left',
+        ],
+        'paletteVisibility' => [
+            'showitem' => 'starttime, endtime',
+        ],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -90,24 +105,28 @@ return [
         ],
         'starttime' => [
             'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
             'config' => [
                 'type' => 'input',
                 'size' => 13,
                 'eval' => 'datetime',
                 'default' => 0,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
             ],
         ],
         'endtime' => [
             'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
             'config' => [
                 'type' => 'input',
                 'size' => 13,
                 'eval' => 'datetime',
                 'default' => 0,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
             ],
         ],
         'title' => [
@@ -130,7 +149,6 @@ return [
         ],
         'type' => [
             'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.type',
             'config' => [
                 'type' => 'select',
@@ -151,7 +169,10 @@ return [
                 ],
                 'size' => 1,
                 'maxitems' => 1,
-                'eval' => 'required'
+                'eval' => 'required',
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
             ],
         ],
         'category' => [
@@ -176,7 +197,6 @@ return [
         ],
         'image' => [
             'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.image',
             'config' => [
                 'type' => 'group',
@@ -187,11 +207,13 @@ return [
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
             ]
         ],
         'assets' => [
             'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.assets',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'assets',
@@ -216,6 +238,9 @@ return [
                                         --palette--;;filePalette'
                             ],
                         ],
+                    ],
+                    'behaviour' => [
+                        'allowLanguageSynchronization' => true,
                     ],
                     'minitems' => 0,
                     'maxitems' => 1,
@@ -278,7 +303,6 @@ return [
         ],
         'link' => [
             'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.link',
             'config' => [
                 'type' => 'input',
@@ -294,22 +318,26 @@ return [
                         ],
                         'JSopenParams' => 'height=800,width=600,status=0,menubar=0,scrollbars=1'
                     ]
-                ]
+                ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
             ]
         ],
         'html' => [
             'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.html',
             'config' => [
                 'type' => 'text',
                 'cols' => 60,
                 'rows' => 10,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
             ]
         ],
         'flash' => [
             'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.flash',
             'config' => [
                 'type' => 'group',
@@ -324,6 +352,9 @@ return [
                     'fileThumbnails' => [
                         'disabled' => true
                     ]
+                ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
                 ],
             ]
         ],
@@ -452,17 +483,4 @@ return [
 		'
         ],
     ],
-    'palettes' => [
-        '1' => ['showitem' => ''],
-        'paletteCore' => [
-            'showitem' => 'type, sys_language_uid',
-        ],
-        'paletteMargins' => [
-            'showitem' => 'margin_top, margin_right, margin_bottom, margin_left',
-        ],
-        'paletteVisibility' => [
-            'showitem' => 'starttime, endtime',
-        ],
-    ],
-
 ];
