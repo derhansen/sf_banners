@@ -46,9 +46,9 @@ class BannerRepositoryTest extends FunctionalTestCase
         $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
         $this->bannerRepository = $this->objectManager->get(BannerRepository::class);
 
-        $this->importDataSet(__DIR__ . '/../Fixtures/tx_sfbanners_domain_model_banner.xml');
-        $this->importDataSet(__DIR__ . '/../Fixtures/tx_sfbanners_domain_model_category.xml');
+        $this->importDataSet(__DIR__ . '/../Fixtures/sys_category.xml');
         $this->importDataSet(__DIR__ . '/../Fixtures/pages.xml');
+        $this->importDataSet(__DIR__ . '/../Fixtures/tx_sfbanners_domain_model_banner.xml');
     }
 
     /**

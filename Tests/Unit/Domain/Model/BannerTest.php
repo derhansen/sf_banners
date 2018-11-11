@@ -366,7 +366,7 @@ class BannerTest extends UnitTestCase
      */
     public function setCategoryForObjectStorageContainingCategorySetsCategory()
     {
-        $category = new \DERHANSEN\SfBanners\Domain\Model\Category();
+        $category = new \TYPO3\CMS\Extbase\Domain\Model\Category();
         $objectStorageHoldingExactlyOneCategory = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $objectStorageHoldingExactlyOneCategory->attach($category);
         $this->fixture->setCategory($objectStorageHoldingExactlyOneCategory);
@@ -382,7 +382,7 @@ class BannerTest extends UnitTestCase
      */
     public function addCategoryToObjectStorageHoldingCategory()
     {
-        $category = new \DERHANSEN\SfBanners\Domain\Model\Category();
+        $category = new \TYPO3\CMS\Extbase\Domain\Model\Category();
         $categoryObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->setMethods(['attach'])->getMock();
         $categoryObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($category));
         $this->inject($this->fixture, 'category', $categoryObjectStorageMock);
@@ -394,7 +394,7 @@ class BannerTest extends UnitTestCase
      */
     public function removeCategoryFromObjectStorageHoldingCategory()
     {
-        $category = new \DERHANSEN\SfBanners\Domain\Model\Category();
+        $category = new \TYPO3\CMS\Extbase\Domain\Model\Category();
         $categoryObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->setMethods(['detach'])->getMock();
         $categoryObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($category));
         $this->inject($this->fixture, 'category', $categoryObjectStorageMock);
