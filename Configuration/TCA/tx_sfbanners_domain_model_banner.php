@@ -175,26 +175,6 @@ return [
                 ],
             ],
         ],
-        'category' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.category',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectTree',
-                'treeConfig' => [
-                    'parentField' => 'parent',
-                    'appearance' => [
-                        'expandAll' => true,
-                        'showHeader' => true,
-                    ],
-                ],
-                'MM' => 'tx_sfbanners_domain_model_banner_category_mm',
-                'foreign_table' => 'tx_sfbanners_domain_model_category',
-                'foreign_table_where' => ' AND (tx_sfbanners_domain_model_category.sys_language_uid = 0 OR tx_sfbanners_domain_model_category.l10n_parent = 0) ORDER BY tx_sfbanners_domain_model_category.sorting ASC',
-                'minitems' => 0,
-                'maxitems' => 30,
-            ],
-        ],
         'image' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.image',

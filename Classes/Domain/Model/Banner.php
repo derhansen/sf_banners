@@ -52,7 +52,7 @@ class Banner extends AbstractEntity
     /**
      * Category
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<DERHANSEN\SfBanners\Domain\Model\Category>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
      * @lazy
      */
     protected $category;
@@ -328,10 +328,10 @@ class Banner extends AbstractEntity
     /**
      * Adds a category
      *
-     * @param \DERHANSEN\SfBanners\Domain\Model\Category $category
+     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
      * @return void
      */
-    public function addCategory(\DERHANSEN\SfBanners\Domain\Model\Category $category)
+    public function addCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category)
     {
         $this->category->attach($category);
     }
@@ -339,10 +339,10 @@ class Banner extends AbstractEntity
     /**
      * Removes a category
      *
-     * @param \DERHANSEN\SfBanners\Domain\Model\Category $categoryToRemove
+     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $categoryToRemove
      * @return void
      */
-    public function removeCategory(\DERHANSEN\SfBanners\Domain\Model\Category $categoryToRemove)
+    public function removeCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $categoryToRemove)
     {
         $this->category->detach($categoryToRemove);
     }
