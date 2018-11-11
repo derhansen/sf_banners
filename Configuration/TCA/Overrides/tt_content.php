@@ -7,7 +7,7 @@ defined('TYPO3_MODE') or die();
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     'sf_banners',
     'Pi1',
-    'LLL:EXT:sf_banners/Resources/Private/Language/locallang.xml:plugin_title'
+    'LLL:EXT:sf_banners/Resources/Private/Language/locallang.xlf:plugin_title'
 );
 
 /**
