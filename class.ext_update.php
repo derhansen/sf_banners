@@ -194,9 +194,9 @@ class ext_update
             if ($rowsInserted === 1) {
                 $newUid = (int)$databaseConnectionForSysCategory->lastInsertId('sys_category');
                 $oldNewDefaultLanguageCategoryUidMapping[$oldUid] = $newUid;
-                    $connection = GeneralUtility::makeInstance(ConnectionPool::class)
+                $connection = GeneralUtility::makeInstance(ConnectionPool::class)
                         ->getConnectionForTable(self::BANNER_CATEGORY_TABLE);
-                    $connection->update(
+                $connection->update(
                         self::BANNER_CATEGORY_TABLE,
                         ['migrate_sys_category_uid' => $newUid],
                         ['uid' => (int)$oldUid]
@@ -242,7 +242,7 @@ class ext_update
                 $oldNewDefaultLanguageCategoryUidMapping[$oldUid] = $newUid;
                 $connection = GeneralUtility::makeInstance(ConnectionPool::class)
                     ->getConnectionForTable(self::BANNER_CATEGORY_TABLE);
-                    $connection->update(
+                $connection->update(
                         self::BANNER_CATEGORY_TABLE,
                         ['migrate_sys_category_uid' => $newUid],
                         ['uid' => (int)$oldUid]
