@@ -18,6 +18,7 @@ plugin.tx_sfbanners {
 
     settings {
         displayMode = {$plugin.tx_sfbanners.settings.displayMode}
+        displaySection = {$plugin.tx_sfbanners.settings.displaySection}
         defaultFlashVars {
             wmode = {$plugin.tx_sfbanners.settings.defaultFlashVars.wmode}
             allowScriptAccess = {$plugin.tx_sfbanners.settings.defaultFlashVars.allowScriptAccess}
