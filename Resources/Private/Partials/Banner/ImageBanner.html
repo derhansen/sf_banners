@@ -2,7 +2,7 @@
     <f:then>
         <f:for each="{banner.assets}" as="asset">
             <div class="banner banner-{banner.uid}">
-                <f:if condition="{banner.link}">
+                <f:if condition="{asset.originalResource.properties.link}">
                     <f:then>
                         <f:link.action action="click" arguments="{banner: banner}" target="{banner.linkTarget}" pageType="{settings.clickPageTypeNum}">
                             <f:image image="{asset}" title="{banner.alttext}" alt="{banner.alttext}" />

@@ -634,7 +634,9 @@ class Banner extends AbstractEntity
     {
         $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['sf_banners']);
 
-        if ($this->getType() === 0 && $extConf['falMedia']) {
+        if ($this->getType() === 0 && (int)$extConf['falMedia'] === 1) {
+            $this->assets->rewind();
+
             /** @var \TYPO3\CMS\Extbase\Domain\Model\FileReference $fileReference */
             $fileReference = $this->assets->current();
 
