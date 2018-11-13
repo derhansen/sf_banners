@@ -43,6 +43,14 @@ class Banner extends AbstractEntity
      */
     protected $type;
 
+	/**
+	 * Section
+	 *
+	 * @var int
+	 * @validate NotEmpty
+	 */
+	protected $section;
+    
     /**
      * Category
      *
@@ -318,7 +326,26 @@ class Banner extends AbstractEntity
     {
         $this->type = $type;
     }
+	/**
+	 * Returns the section
+	 *
+	 * @return int $section
+	 */
+	public
+	function getSection() {
+		return $this->section;
+	}
 
+	/**
+	 * Sets the section
+	 *
+	 * @param int $section The section
+	 * @return void
+	 */
+	public
+	function setSection( $section ) {
+		$this->section = $section;
+	}
     /**
      * Adds a category
      *
