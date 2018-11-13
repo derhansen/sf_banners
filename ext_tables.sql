@@ -9,6 +9,7 @@ CREATE TABLE tx_sfbanners_domain_model_banner (
 	title varchar(255) DEFAULT '' NOT NULL,
 	description varchar(255) DEFAULT '' NOT NULL,
 	type int(11) DEFAULT '0' NOT NULL,
+	section int(11) DEFAULT '0' NOT NULL,
 	category int(11) DEFAULT '0' NOT NULL,
 	image text,
 	assets int(11) DEFAULT '0' NOT NULL,
