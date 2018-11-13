@@ -27,6 +27,21 @@
                     </config>
                 </TCEforms>
             </settings.displayMode>
+            <settings.displaySection>
+				<TCEforms>
+					<label>LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:plugin.settings.displaySection</label>
+					<config>
+						<type>select</type>
+						<renderType>selectSingle</renderType>
+						<items>
+							<numIndex index="0" type="array">
+								<numIndex index="0"></numIndex>
+								<numIndex index="1"></numIndex>
+							</numIndex>
+						</items>
+					</config>
+				</TCEforms>
+			</settings.displaySection>
             <settings.startingPoint>
                 <TCEforms>
                     <exclude>1</exclude>
