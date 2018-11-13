@@ -15,6 +15,10 @@
 			<source>Displaymode</source>
 			<target>Anzeigemodus</target>
 		</trans-unit>
+		<trans-unit id="plugin.settings.displaySection" approved="yes">
+			<source>Sectionarea</source>
+			<target>Anzeigenbereich</target>
+		</trans-unit>
 		<trans-unit id="plugin.settings.displayMode.all" approved="yes">
 			<source>All banners</source>
 			<target>Alle Banner</target>
