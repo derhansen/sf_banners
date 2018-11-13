@@ -1,5 +1,9 @@
 <f:if condition="{banner.html}">
     <div class="banner banner-{banner.uid}">
-        <f:format.html parseFuncTSPath="">{banner.html}</f:format.html>
+        <f:switch expression="{banner.section}">
+            <f:defaultCase>
+                <f:format.html parseFuncTSPath="">{banner.html}</f:format.html>
+            </f:defaultCase>
+        </f:switch>
     </div>
 </f:if>
