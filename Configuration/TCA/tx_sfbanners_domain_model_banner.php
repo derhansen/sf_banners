@@ -42,7 +42,7 @@ return [
     'palettes' => [
         '1' => ['showitem' => ''],
         'paletteCore' => [
-            'showitem' => 'type, sys_language_uid',
+            'showitem' => 'type, section, sys_language_uid',
         ],
         'paletteMargins' => [
             'showitem' => 'margin_top, margin_right, margin_bottom, margin_left',
@@ -175,6 +175,19 @@ return [
                 ],
             ],
         ],
+	'section' => [
+		'exclude' => 1,
+		'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:plugin.settings.displaySection',
+		'config' => [
+			'type' => 'select',
+			'renderType' => 'selectSingle',
+			'items' => [
+				['',0],
+			],
+			'size' => 1,
+			'maxitems' => 1,
+		],
+	], 
         'image' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.image',

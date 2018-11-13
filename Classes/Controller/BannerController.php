@@ -143,6 +143,9 @@ class BannerController extends ActionController
         if ($this->settings['displayMode'] !== '') {
             $arguments['tx_sfbanners_pi1[displayMode]'] = $this->settings['displayMode'];
         }
+        if ($this->settings['displaySection'] !== '') {
+            $arguments['tx_sfbanners_pi1[displaySection]'] = $this->settings['displaySection'];
+        }
 
         $url = $this->controllerContext
             ->getUriBuilder()
@@ -172,6 +175,7 @@ class BannerController extends ActionController
      * @param string $categories
      * @param string $startingPoint
      * @param string $displayMode
+     * @param string $displaySection
      * @param int $currentPageUid
      * @param string $hmac
      * @return string
@@ -181,6 +185,7 @@ class BannerController extends ActionController
         $startingPoint = '',
         $displayMode = 'all',
         $currentPageUid = 0,
+        $displaySection = 0,
         $hmac = ''
     ) {
         $compareString = $currentPageUid . $categories . $startingPoint . $displayMode;
@@ -191,6 +196,7 @@ class BannerController extends ActionController
             $demand->setCategories($categories);
             $demand->setStartingPoint($startingPoint);
             $demand->setDisplayMode($displayMode);
+            $demand->setDisplaySection($displaySection);
             $demand->setCurrentPageUid($currentPageUid);
 
             /* Get banners */

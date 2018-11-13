@@ -75,6 +75,11 @@ class BannerRepository extends Repository
                 $constraints[] = $query->logicalOr($categoryConstraints);
             }
         }
+        
+        if ( $demand->getDisplaySection() != 0 ) {
+			$constraints[] = $query->equals( 'section', $demand->getDisplaySection(), true);
+        }
+        
         $query->matching($query->logicalAnd($constraints));
 
         /* Get banners without respect to limitations */

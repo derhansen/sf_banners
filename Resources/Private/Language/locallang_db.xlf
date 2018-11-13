@@ -13,6 +13,9 @@
 		<trans-unit id="plugin.settings.displayMode">
 			<source>Displaymode</source>
 		</trans-unit>
+		<trans-unit id="plugin.settings.displaySection">
+			<source>Sectionarea</source>
+		</trans-unit>	
 		<trans-unit id="plugin.settings.displayMode.all">
 			<source>All banners</source>
 		</trans-unit>
