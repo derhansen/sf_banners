@@ -38,7 +38,14 @@ class BannerDemand extends AbstractEntity
      * @var string
      */
     protected $displayMode = 'all';
-
+    
+	/**
+	 * Section Mode - default is to display all section
+	 *
+	 * @var string
+	 */
+	protected $displaySection = '0';
+    
     /**
      * The current page uid
      *
@@ -109,6 +116,27 @@ class BannerDemand extends AbstractEntity
         return $this->displayMode;
     }
 
+	/**
+	 * Setter for displaySection
+	 *
+	 * @param string $displaySection DisplaySection
+	 * @return void
+	 */
+	public
+	function setDisplaySection( $displaySection ) {
+		$this->displaySection = $displaySection;
+	}
+
+	/**
+	 * Getter for displaySection
+	 *
+	 * @return string
+	 */
+	public
+	function getDisplaySection() {
+		return $this->displaySection;
+	}
+    
     /**
      * Setter for startingPoint
      *
