@@ -40,6 +40,9 @@
 		<trans-unit id="wrong_hmac">
 			<source>Hmac calculation failed.</source>
 		</trans-unit>
+		<trans-unit id="no_results">
+			<source>No banners found</source>
+		</trans-unit>
 		</body>
 	</file>
 </xliff>

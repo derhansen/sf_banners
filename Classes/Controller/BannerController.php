@@ -196,23 +196,27 @@ class BannerController extends ActionController
             /* Get banners */
             $banners = $this->bannerRepository->findDemanded($demand);
 
-            /* Update Impressions */
-            $this->bannerRepository->updateImpressions($banners);
+            if ($banners->count()) {
+                /* Update Impressions */
+                $this->bannerRepository->updateImpressions($banners);
 
-            /* Collect identifier based on uids for all banners */
-            $ident = $GLOBALS['TSFE']->id . $GLOBALS['TSFE']->sys_language_uid;
-            foreach ($banners as $banner) {
-                $ident .= $banner->getUid();
-            }
+                /* Collect identifier based on uids for all banners */
+                $ident = $GLOBALS['TSFE']->id . $GLOBALS['TSFE']->sys_language_uid;
+                foreach ($banners as $banner) {
+                    $ident .= $banner->getUid();
+                }
 
-            $ret = $this->cacheInstance->get(sha1($ident));
-            if ($ret === false || $ret === null) {
-                $this->view->assign('banners', $banners);
-                $this->view->assign('settings', $this->settings);
-                $ret = $this->view->render();
+                $ret = $this->cacheInstance->get(sha1($ident));
+                if ($ret === false || $ret === null) {
+                    $this->view->assign('banners', $banners);
+                    $this->view->assign('settings', $this->settings);
+                    $ret = $this->view->render();
 
-                // Save value in cache
-                $this->cacheInstance->set(sha1($ident), $ret, ['sf_banners'], $this->settings['cacheLifetime']);
+                    // Save value in cache
+                    $this->cacheInstance->set(sha1($ident), $ret, ['sf_banners'], $this->settings['cacheLifetime']);
+                }
+            } else {
+                $ret = LocalizationUtility::translate('no_results', 'SfBanners');
             }
         } else {
             $ret = LocalizationUtility::translate('wrong_hmac', 'SfBanners');
