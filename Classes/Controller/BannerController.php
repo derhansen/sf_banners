@@ -196,6 +196,11 @@ class BannerController extends ActionController
             /* Get banners */
             $banners = $this->bannerRepository->findDemanded($demand);
 
+            /* If no banners available, return empty string */
+            if ($banners->count() === 0) {
+                return '';
+            }
+
             /* Update Impressions */
             $this->bannerRepository->updateImpressions($banners);
 
