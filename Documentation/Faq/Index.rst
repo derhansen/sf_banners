@@ -22,6 +22,9 @@ I installed the extension but no banners are shown
 Make sure, that you included jQuery to your website and also make sure, that jQuery is included
 at the top of all other JavaScript libraries.
 
+If banners still do not get displayed and you use TYPO3 9.5 and the PageType Route Enhancer, make
+sure that you configured a mapping - see :ref:`routing`
+
 How to implement click tracking for Flash-banners?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

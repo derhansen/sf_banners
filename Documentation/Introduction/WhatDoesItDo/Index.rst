@@ -35,5 +35,5 @@ counted by using a clicktag.
 The extension can be used as a plugin or by TypoScript.
 
 The extension is developed with Extbase and Fluid and the current version
-support TYPO3 7.6 LTS and TYPO3 8.7 LTS
+support TYPO3 8.7 LTS and TYPO3 9.5 LTS
 

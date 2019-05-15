@@ -25,5 +25,6 @@ Configuration
    :glob:
 
    Reference/Index
+   Routing/Index
    ExtensionSettings/Index
 
