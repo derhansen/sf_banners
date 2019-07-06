@@ -192,7 +192,7 @@ class BannerController extends ActionController
         $maxResults = 0,
         $hmac = ''
     ) {
-        $compareString = $currentPageUid . $categories . $startingPoint . $displayMode. $maxResults;
+        $compareString = $currentPageUid . $categories . $startingPoint . $displayMode . $maxResults;
 
         if ($this->hashService->validateHmac($compareString, $hmac)) {
             /** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand */
