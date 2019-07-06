@@ -103,4 +103,21 @@ class BannerDemandTest extends UnitTestCase
         $this->fixture->setCurrentPageUid($currentPageUid);
         $this->assertEquals($currentPageUid, $this->fixture->getCurrentPageUid());
     }
+
+    /**
+     * @test
+     */
+    public function getMaxResultsReturnsInitialValue()
+    {
+        $this->assertEquals(0, $this->fixture->getMaxResults());
+    }
+
+    /**
+     * @test
+     */
+    public function maxResultsCanBeSet()
+    {
+        $this->fixture->setMaxResults(10);
+        $this->assertEquals(10, $this->fixture->getMaxResults());
+    }
 }

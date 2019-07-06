@@ -299,4 +299,26 @@ class BannerRepositoryTest extends FunctionalTestCase
         /* Verify, that 1 record are returned */
         $this->assertEquals(1, count($this->bannerRepository->findDemanded($demand)));
     }
+
+    /**
+     * Test if expected amount of records are returned, if a mex result is set
+     *
+     * @test
+     * @return void
+     */
+    public function findRecordsWithMaxResultsTest()
+    {
+        /** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand */
+        $demand = new BannerDemand();
+        $pid = 103;
+
+        /* Set starting point */
+        $demand->setStartingPoint($pid);
+
+        /* Verify, that 5 record are returned */
+        $this->assertEquals(5, count($this->bannerRepository->findDemanded($demand)));
+
+        $demand->setMaxResults(2);
+        $this->assertEquals(2, count($this->bannerRepository->findDemanded($demand)));
+    }
 }

@@ -176,4 +176,25 @@
         <clicks_max>10</clicks_max>
     </tx_sfbanners_domain_model_banner>
 
+    <!-- findRecordsByMaxResultsTest -->
+    <tx_sfbanners_domain_model_banner>
+        <uid>80</uid>
+        <pid>103</pid>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>81</uid>
+        <pid>103</pid>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>82</uid>
+        <pid>103</pid>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>83</uid>
+        <pid>103</pid>
+    </tx_sfbanners_domain_model_banner>
+    <tx_sfbanners_domain_model_banner>
+        <uid>84</uid>
+        <pid>103</pid>
+    </tx_sfbanners_domain_model_banner>
 </dataset>

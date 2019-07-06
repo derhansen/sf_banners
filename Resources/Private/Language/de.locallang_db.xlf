@@ -11,6 +11,10 @@
 			<source>Category</source>
 			<target>Kategorie</target>
 		</trans-unit>
+		<trans-unit id="plugin.settings.maxResults" approved="yes">
+			<source>Max. amount of banners to show</source>
+			<target>Max. Anzahl Banner</target>
+		</trans-unit>
 		<trans-unit id="plugin.settings.displayMode" approved="yes">
 			<source>Displaymode</source>
 			<target>Anzeigemodus</target>

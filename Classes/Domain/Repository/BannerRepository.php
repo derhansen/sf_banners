@@ -81,7 +81,8 @@ class BannerRepository extends Repository
         $unfilteredResult = $query->execute();
         if (count($unfilteredResult) > 0) {
             $filteredResult = $this->applyBannerLimitations($unfilteredResult, $demand);
-            $result = $this->getBannersByDisplayMode($filteredResult, $demand);
+            $bannersByDisplayMode = $this->getBannersByDisplayMode($filteredResult, $demand);
+            $result = $this->getBannersByMaxResults($bannersByDisplayMode, $demand);
         } else {
             $result = $unfilteredResult;
         }
@@ -113,6 +114,22 @@ class BannerRepository extends Repository
                 break;
             default:
                 break;
+        }
+        return $result;
+    }
+
+    /**
+     * Returns the banners by maxResults set in the demand
+     *
+     * @param array $banners
+     * @param BannerDemand $bannerDemand
+     * @return array
+     */
+    protected function getBannersByMaxResults(array $banners, BannerDemand $bannerDemand)
+    {
+        $result = $banners;
+        if ($bannerDemand->getMaxResults() > 0 && count($banners) > $bannerDemand->getMaxResults()) {
+            $result = array_slice($banners, 0, $bannerDemand->getMaxResults());
         }
         return $result;
     }

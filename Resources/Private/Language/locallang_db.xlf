@@ -10,6 +10,9 @@
 		<trans-unit id="plugin.settings.category">
 			<source>Category</source>
 		</trans-unit>
+		<trans-unit id="plugin.settings.maxResults">
+			<source>Max. amount of banners to show</source>
+		</trans-unit>
 		<trans-unit id="plugin.settings.displayMode">
 			<source>Displaymode</source>
 		</trans-unit>

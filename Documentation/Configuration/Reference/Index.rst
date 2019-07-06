@@ -70,6 +70,17 @@ Plugin-Settings: plugin.tx\_sfbanners.settings
    :Default:
 
  - :Property:
+         maxResults
+
+   :Data type:
+         int
+
+   :Description:
+         If set to a value greater than 0, the given amount of banners are returned
+
+   :Default:
+
+ - :Property:
          defaultFlashVars.wmode
 
    :Data type:

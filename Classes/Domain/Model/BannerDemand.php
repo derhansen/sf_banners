@@ -47,6 +47,13 @@ class BannerDemand extends AbstractEntity
     protected $currentPageUid;
 
     /**
+     * Max results of banners
+     *
+     * @var int
+     */
+    protected $maxResults = 0;
+
+    /**
      * Setter for currentPageUid
      *
      * @param string $categories The categories
@@ -128,5 +135,21 @@ class BannerDemand extends AbstractEntity
     public function getStartingPoint()
     {
         return $this->startingPoint;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMaxResults()
+    {
+        return $this->maxResults;
+    }
+
+    /**
+     * @param int $maxResults
+     */
+    public function setMaxResults(int $maxResults)
+    {
+        $this->maxResults = $maxResults;
     }
 }

@@ -12,6 +12,7 @@ use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
@@ -120,9 +121,10 @@ class BannerController extends ActionController
      */
     public function showAction()
     {
+        $maxResults = $this->settings['maxResults'] !== '' ? (int)$this->settings['maxResults'] : 0;
         $uniqueid = strtolower(substr(base64_encode(sha1(microtime())), 0, 9));
         $stringToHash = $GLOBALS['TSFE']->id . $this->settings['category'] . $this->settings['startingPoint'] .
-            $this->settings['displayMode'];
+            $this->settings['displayMode'] . $maxResults;
         $hmac = $this->hashService->generateHmac($stringToHash);
 
         $arguments = [
@@ -142,6 +144,11 @@ class BannerController extends ActionController
         }
         if ($this->settings['displayMode'] !== '') {
             $arguments['tx_sfbanners_pi1[displayMode]'] = $this->settings['displayMode'];
+        }
+        if ($this->settings['maxResults'] !== '' &&
+            MathUtility::canBeInterpretedAsInteger($this->settings['maxResults'])
+        ) {
+            $arguments['tx_sfbanners_pi1[maxResults]'] = (int)$this->settings['maxResults'];
         }
 
         $url = $this->controllerContext
@@ -173,6 +180,7 @@ class BannerController extends ActionController
      * @param string $startingPoint
      * @param string $displayMode
      * @param int $currentPageUid
+     * @param int $maxResults
      * @param string $hmac
      * @return string
      */
@@ -181,9 +189,10 @@ class BannerController extends ActionController
         $startingPoint = '',
         $displayMode = 'all',
         $currentPageUid = 0,
+        $maxResults = 0,
         $hmac = ''
     ) {
-        $compareString = $currentPageUid . $categories . $startingPoint . $displayMode;
+        $compareString = $currentPageUid . $categories . $startingPoint . $displayMode. $maxResults;
 
         if ($this->hashService->validateHmac($compareString, $hmac)) {
             /** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand */
@@ -192,6 +201,7 @@ class BannerController extends ActionController
             $demand->setStartingPoint($startingPoint);
             $demand->setDisplayMode($displayMode);
             $demand->setCurrentPageUid($currentPageUid);
+            $demand->setMaxResults($maxResults);
 
             /* Get banners */
             $banners = $this->bannerRepository->findDemanded($demand);

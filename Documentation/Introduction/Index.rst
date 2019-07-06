@@ -26,4 +26,5 @@ Introduction
 
    WhatDoesItDo/Index
    Screenshots/Index
+   Thanks/Index
 

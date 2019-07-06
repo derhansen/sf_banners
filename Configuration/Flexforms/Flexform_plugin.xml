@@ -8,6 +8,7 @@
             <settings.displayMode>
                 <TCEforms>
                     <label>LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:plugin.settings.displayMode</label>
+                    <onChange>reload</onChange>
                     <config>
                         <type>select</type>
                         <items>
@@ -27,6 +28,22 @@
                     </config>
                 </TCEforms>
             </settings.displayMode>
+            <settings.maxResults>
+                <TCEforms>
+                    <label>LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:plugin.settings.maxResults</label>
+                    <displayCond>
+                        <OR>
+                            <numIndex index="0">FIELD:settings.displayMode:=:all</numIndex>
+                            <numIndex index="1">FIELD:settings.displayMode:=:allRandom</numIndex>
+                        </OR>
+                    </displayCond>
+                    <config>
+                        <type>input</type>
+                        <eval>num</eval>
+                        <size>5</size>
+                    </config>
+                </TCEforms>
+            </settings.maxResults>
             <settings.startingPoint>
                 <TCEforms>
                     <exclude>1</exclude>
@@ -69,6 +86,7 @@
                     </config>
                 </TCEforms>
             </settings.category>
+
         </el>
     </ROOT>
 </T3DataStructure>
