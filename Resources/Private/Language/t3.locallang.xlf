@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2015-09-10T09:27:08Z" target-language="t3">
+    <header>
+      <type>module</type>
+      <description>Language labels for the Banner Management extension in the FRONTEND</description>
+      <generator>LFEditor</generator>
+    </header>
+    <body>
+      <trans-unit id="plugin_description">
+        <source>Banner-Management for image, html and flash banners</source>
+        <target>crwdns82767:0crwdne82767:0</target>
+      </trans-unit>
+      <trans-unit id="plugin_title">
+        <source>Show banner</source>
+        <target>crwdns82769:0crwdne82769:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner">
+        <source>Banners</source>
+        <target>crwdns82771:0crwdne82771:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.category">
+        <source>Category</source>
+        <target>crwdns82773:0crwdne82773:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.description">
+        <source>Description</source>
+        <target>crwdns82775:0crwdne82775:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.title">
+        <source>Title</source>
+        <target>crwdns82777:0crwdne82777:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.type">
+        <source>Type</source>
+        <target>crwdns82779:0crwdne82779:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_category">
+        <source>Categories</source>
+        <target>crwdns82781:0crwdne82781:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_category.parent">
+        <source>Parent</source>
+        <target>crwdns82783:0crwdne82783:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_category.title">
+        <source>Title</source>
+        <target>crwdns82785:0crwdne82785:0</target>
+      </trans-unit>
+      <trans-unit id="wrong_hmac">
+        <source>Hmac calculation failed.</source>
+        <target>crwdns82787:0crwdne82787:0</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
