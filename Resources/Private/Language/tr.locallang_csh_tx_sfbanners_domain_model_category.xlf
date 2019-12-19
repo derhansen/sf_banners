@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2015-09-10T09:28:19Z" target-language="tr">
+    <header>
+      <description>Context Sensitive Help (CSH) for table tx_sfbanners_domain_model_category</description>
+      <type>CSH</type>
+      <csh_table>tx_sfbanners_domain_model_category</csh_table>
+      <generator>LFEditor</generator>
+    </header>
+    <body>
+		
+		
+		</body>
+  </file>
+</xliff>
