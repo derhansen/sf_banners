@@ -1,200 +1,200 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <xliff version="1.0">
-	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-09-10T09:28:33Z">
-		<header>
-			<type>database</type>
-			<description>Language labels for database tables/fields belonging to extension 'sf_banners'</description>
-			<generator>LFEditor</generator>
-		</header>
-		<body>
-		<trans-unit id="plugin.settings.category" approved="yes">
-			<source>Category</source>
-			<target>Kategorie</target>
-		</trans-unit>
-		<trans-unit id="plugin.settings.maxResults" approved="yes">
-			<source>Max. amount of banners to show</source>
-			<target>Max. Anzahl Banner</target>
-		</trans-unit>
-		<trans-unit id="plugin.settings.displayMode" approved="yes">
-			<source>Displaymode</source>
-			<target>Anzeigemodus</target>
-		</trans-unit>
-		<trans-unit id="plugin.settings.displayMode.all" approved="yes">
-			<source>All banners</source>
-			<target>Alle Banner</target>
-		</trans-unit>
-		<trans-unit id="plugin.settings.displayMode.allRandom" approved="yes">
-			<source>All banners randomized</source>
-			<target>Alle Banner zufällig</target>
-		</trans-unit>
-		<trans-unit id="plugin.settings.displayMode.random" approved="yes">
-			<source>Randomly one banner</source>
-			<target>Ein Banner zufällig</target>
-		</trans-unit>
-		<trans-unit id="plugin.settings.startingPoint" approved="yes">
-			<source>Startingpoint</source>
-			<target>Ausgangspunkt</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner" approved="yes">
-			<source>Banner</source>
-			<target>Banner</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.alttext" approved="yes">
-			<source>Alternative text</source>
-			<target>Alternativtext</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.category" approved="yes">
-			<source>Category</source>
-			<target>Kategorie</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.clicks" approved="yes">
-			<source>Clicks</source>
-			<target>Klicks</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.clicks_max" approved="yes">
-			<source>Max. clicks</source>
-			<target>Max. Klicks</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.description" approved="yes">
-			<source>Description</source>
-			<target>Beschreibung</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.excludepages" approved="yes">
-			<source>Exclude pages</source>
-			<target>Ausschließende Seiten</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.flash" approved="yes">
-			<source>Flash</source>
-			<target>Flash</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.flash.allowScriptAccess" approved="yes">
-			<source>AllowScriptAccess</source>
-			<target>AllowScriptAccess</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.flash.height" approved="yes">
-			<source>Height</source>
-			<target>Höhe</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.flash.width" approved="yes">
-			<source>Width</source>
-			<target>Breite</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.flash.wmode" approved="yes">
-			<source>Wmode</source>
-			<target>Wmode</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.html" approved="yes">
-			<source>HTML</source>
-			<target>HTML</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.image" approved="yes">
-			<source>Image</source>
-			<target>Bild</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.assets" approved="yes">
-			<source>Assets</source>
-			<target>Bild</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.impressions" approved="yes">
-			<source>Impressions</source>
-			<target>Impressionen</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.impressions_max" approved="yes">
-			<source>Max. impressions</source>
-			<target>Max. Impressionen</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.labels.margins" approved="yes">
-			<source>Margins</source>
-			<target>Abstände</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.link" approved="yes">
-			<source>Link</source>
-			<target>Link</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.margin_bottom" approved="yes">
-			<source>Margin bottom</source>
-			<target>Abstand unten</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.margin_left" approved="yes">
-			<source>Margin left</source>
-			<target>Abstand links</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.margin_right" approved="yes">
-			<source>Margin right</source>
-			<target>Abstand rechts</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.margin_top" approved="yes">
-			<source>Margin top</source>
-			<target>Abstand oben</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.pages" approved="yes">
-			<source>Pages</source>
-			<target>Seiten</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.recursive" approved="yes">
-			<source>Expand exclude pages recursive</source>
-			<target>Ausschließende Seiten rekursiv auflösen</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.tabs.display" approved="yes">
-			<source>Display</source>
-			<target>Anzeige</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.tabs.flash" approved="yes">
-			<source>Flash</source>
-			<target>Flash</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.tabs.html" approved="yes">
-			<source>HTML</source>
-			<target>HTML</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.tabs.image" approved="yes">
-			<source>Image</source>
-			<target>Bild</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.tabs.limitations" approved="yes">
-			<source>Limitations</source>
-			<target>Einschränkungen</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.tabs.statistics" approved="yes">
-			<source>Statistics</source>
-			<target>Statistik</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.tabs.visibility" approved="yes">
-			<source>Visibility</source>
-			<target>Sichtbarkeit</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.title" approved="yes">
-			<source>Title</source>
-			<target>Titel</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.type" approved="yes">
-			<source>Type</source>
-			<target>Typ</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.type.flash" approved="yes">
-			<source>Flash</source>
-			<target>Flash</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.type.html" approved="yes">
-			<source>HTML</source>
-			<target>HTML</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.type.image" approved="yes">
-			<source>Image</source>
-			<target>Bild</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_category" approved="yes">
-			<source>Category</source>
-			<target>Kategorie</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_category.parent" approved="yes">
-			<source>Parent</source>
-			<target>Übergeordnet</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_category.title" approved="yes">
-			<source>Title</source>
-			<target>Titel</target>
-		</trans-unit>
-		</body>
-	</file>
+  <file source-language="en" datatype="plaintext" original="messages" date="2015-09-10T09:28:33Z" target-language="de">
+    <header>
+      <type>database</type>
+      <description>Language labels for database tables/fields belonging to extension 'sf_banners'</description>
+      <generator>LFEditor</generator>
+    </header>
+    <body>
+      <trans-unit id="plugin.settings.category" approved="yes">
+        <source>Category</source>
+        <target state="final">Kategorie</target>
+      </trans-unit>
+      <trans-unit id="plugin.settings.maxResults" approved="yes">
+        <source>Max. amount of banners to show</source>
+        <target state="final">Max. Anzahl Banner</target>
+      </trans-unit>
+      <trans-unit id="plugin.settings.displayMode" approved="yes">
+        <source>Displaymode</source>
+        <target state="final">Anzeigemodus</target>
+      </trans-unit>
+      <trans-unit id="plugin.settings.displayMode.all" approved="yes">
+        <source>All banners</source>
+        <target state="final">Alle Banner</target>
+      </trans-unit>
+      <trans-unit id="plugin.settings.displayMode.allRandom" approved="yes">
+        <source>All banners randomized</source>
+        <target state="final">Alle Banner zufällig</target>
+      </trans-unit>
+      <trans-unit id="plugin.settings.displayMode.random" approved="yes">
+        <source>Randomly one banner</source>
+        <target state="final">Ein Banner zufällig</target>
+      </trans-unit>
+      <trans-unit id="plugin.settings.startingPoint" approved="yes">
+        <source>Startingpoint</source>
+        <target state="final">Ausgangspunkt</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner" approved="yes">
+        <source>Banner</source>
+        <target state="final">Banner</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.alttext" approved="yes">
+        <source>Alternative text</source>
+        <target state="final">Alternativtext</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.category" approved="yes">
+        <source>Category</source>
+        <target state="final">Kategorie</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.clicks" approved="yes">
+        <source>Clicks</source>
+        <target state="final">Klicks</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.clicks_max" approved="yes">
+        <source>Max. clicks</source>
+        <target state="final">Max. Klicks</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.description" approved="yes">
+        <source>Description</source>
+        <target state="final">Beschreibung</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.excludepages" approved="yes">
+        <source>Exclude pages</source>
+        <target state="final">Ausschließende Seiten</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.flash" approved="yes">
+        <source>Flash</source>
+        <target state="final">Flash</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.flash.allowScriptAccess" approved="yes">
+        <source>AllowScriptAccess</source>
+        <target state="final">AllowScriptAccess</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.flash.height" approved="yes">
+        <source>Height</source>
+        <target state="final">Höhe</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.flash.width" approved="yes">
+        <source>Width</source>
+        <target state="final">Breite</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.flash.wmode" approved="yes">
+        <source>Wmode</source>
+        <target state="final">Wmode</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.html" approved="yes">
+        <source>HTML</source>
+        <target state="final">HTML</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.image" approved="yes">
+        <source>Image</source>
+        <target state="final">Bild</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.assets" approved="yes">
+        <source>Assets</source>
+        <target state="final">Bild</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.impressions" approved="yes">
+        <source>Impressions</source>
+        <target state="final">Impressionen</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.impressions_max" approved="yes">
+        <source>Max. impressions</source>
+        <target state="final">Max. Impressionen</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.labels.margins" approved="yes">
+        <source>Margins</source>
+        <target state="final">Abstände</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.link" approved="yes">
+        <source>Link</source>
+        <target state="final">Link</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.margin_bottom" approved="yes">
+        <source>Margin bottom</source>
+        <target state="final">Abstand unten</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.margin_left" approved="yes">
+        <source>Margin left</source>
+        <target state="final">Abstand links</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.margin_right" approved="yes">
+        <source>Margin right</source>
+        <target state="final">Abstand rechts</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.margin_top" approved="yes">
+        <source>Margin top</source>
+        <target state="final">Abstand oben</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.pages" approved="yes">
+        <source>Pages</source>
+        <target state="final">Seiten</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.recursive" approved="yes">
+        <source>Expand exclude pages recursive</source>
+        <target state="final">Ausschließende Seiten rekursiv auflösen</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.tabs.display" approved="yes">
+        <source>Display</source>
+        <target state="final">Anzeige</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.tabs.flash" approved="yes">
+        <source>Flash</source>
+        <target state="final">Flash</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.tabs.html" approved="yes">
+        <source>HTML</source>
+        <target state="final">HTML</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.tabs.image" approved="yes">
+        <source>Image</source>
+        <target state="final">Bild</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.tabs.limitations" approved="yes">
+        <source>Limitations</source>
+        <target state="final">Einschränkungen</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.tabs.statistics" approved="yes">
+        <source>Statistics</source>
+        <target state="final">Statistik</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.tabs.visibility" approved="yes">
+        <source>Visibility</source>
+        <target state="final">Sichtbarkeit</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.title" approved="yes">
+        <source>Title</source>
+        <target state="final">Titel</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.type" approved="yes">
+        <source>Type</source>
+        <target state="final">Typ</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.type.flash" approved="yes">
+        <source>Flash</source>
+        <target state="final">Flash</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.type.html" approved="yes">
+        <source>HTML</source>
+        <target state="final">HTML</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.type.image" approved="yes">
+        <source>Image</source>
+        <target state="final">Bild</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_category" approved="yes">
+        <source>Category</source>
+        <target state="final">Kategorie</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_category.parent" approved="yes">
+        <source>Parent</source>
+        <target state="final">Übergeordnet</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_category.title" approved="yes">
+        <source>Title</source>
+        <target state="final">Titel</target>
+      </trans-unit>
+    </body>
+  </file>
 </xliff>
