@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2015-09-10T09:28:33Z" target-language="da">
+    <header>
+      <type>database</type>
+      <description>Language labels for the backend belonging to extension 'sf_banners'</description>
+    </header>
+    <body>
+			
+		</body>
+  </file>
+</xliff>
