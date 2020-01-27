@@ -63,26 +63,6 @@
 			<source>Exclude pages</source>
 			<target>Ausschließende Seiten</target>
 		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.flash" approved="yes">
-			<source>Flash</source>
-			<target>Flash</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.flash.allowScriptAccess" approved="yes">
-			<source>AllowScriptAccess</source>
-			<target>AllowScriptAccess</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.flash.height" approved="yes">
-			<source>Height</source>
-			<target>Höhe</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.flash.width" approved="yes">
-			<source>Width</source>
-			<target>Breite</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.flash.wmode" approved="yes">
-			<source>Wmode</source>
-			<target>Wmode</target>
-		</trans-unit>
 		<trans-unit id="tx_sfbanners_domain_model_banner.html" approved="yes">
 			<source>HTML</source>
 			<target>HTML</target>
@@ -139,10 +119,6 @@
 			<source>Display</source>
 			<target>Anzeige</target>
 		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.tabs.flash" approved="yes">
-			<source>Flash</source>
-			<target>Flash</target>
-		</trans-unit>
 		<trans-unit id="tx_sfbanners_domain_model_banner.tabs.html" approved="yes">
 			<source>HTML</source>
 			<target>HTML</target>
@@ -170,10 +146,6 @@
 		<trans-unit id="tx_sfbanners_domain_model_banner.type" approved="yes">
 			<source>Type</source>
 			<target>Typ</target>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.type.flash" approved="yes">
-			<source>Flash</source>
-			<target>Flash</target>
 		</trans-unit>
 		<trans-unit id="tx_sfbanners_domain_model_banner.type.html" approved="yes">
 			<source>HTML</source>

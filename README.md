@@ -21,7 +21,7 @@ Version 8.7 LTS and TYPO3 9.5 LTS. Banners are loaded asynchronously so the page
 
 Banner can be assigned multiple categories which allows a flexible way of displaying them on a TYPO3 website.
 Each banner contains a statistic, where the total amount of impressions and clicks are shown. A banner can be limited
-to an amount of maximum impressions and/or clicks. The clicks of Flash-banners are counted by using the [clickTag](http://www.flashclicktag.com/)
+to an amount of maximum impressions and/or clicks. 
 
 Banners are loaded asynchronously, so their loading does not affect the page load time. To do so, the extension
 uses jQuery (AJAX) to load all banners and postscribe.js to place the banners content to the webpage.

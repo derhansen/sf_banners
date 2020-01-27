@@ -8,8 +8,8 @@
 		</header>
 		<body>
 		<trans-unit id="plugin_description" approved="yes">
-			<source>Banner-Management for image, html and flash banners</source>
-			<target>Banner-Verwaltung für Bild-, HTML- Und Flash-banners</target>
+			<source>Banner-Management for image and html banners</source>
+			<target>Banner-Verwaltung für Bild- und HTML-Banner</target>
 		</trans-unit>
 		<trans-unit id="plugin_title" approved="yes">
 			<source>Show banner</source>

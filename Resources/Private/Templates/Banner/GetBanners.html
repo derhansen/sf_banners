@@ -7,8 +7,5 @@
         <f:if condition="{banner.type} == 1">
             <f:render partial="Banner/HtmlBanner" arguments="{banner: banner, settings: settings}" />
         </f:if>
-        <f:if condition="{banner.type} == 2">
-            <f:render partial="Banner/FlashBanner" arguments="{banner: banner, settings: settings}" />
-        </f:if>
     </f:for>
 </f:section>

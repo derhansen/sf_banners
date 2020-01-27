@@ -189,45 +189,6 @@ class BannerTest extends UnitTestCase
     }
 
     /**
-     * Test if flash can be set
-     *
-     * @test
-     * @return void
-     */
-    public function flashCanBeSetTest()
-    {
-        $flash = 'flash.swf';
-        $this->fixture->setFlash($flash);
-        $this->assertEquals($flash, $this->fixture->getFlash());
-    }
-
-    /**
-     * Test if flashwidth can be set
-     *
-     * @test
-     * @return void
-     */
-    public function flashWidthCanBeSetTest()
-    {
-        $width = 100;
-        $this->fixture->setFlashWidth($width);
-        $this->assertEquals($width, $this->fixture->getFlashWidth());
-    }
-
-    /**
-     * Test if flshheight can be set
-     *
-     * @test
-     * @return void
-     */
-    public function flashHeighCanBeSetTest()
-    {
-        $height = 100;
-        $this->fixture->setFlashHeight($height);
-        $this->assertEquals($height, $this->fixture->getFlashHeight());
-    }
-
-    /**
      * Test if impressionsmax can be set
      *
      * @test
@@ -277,32 +238,6 @@ class BannerTest extends UnitTestCase
         $clicks = 100;
         $this->fixture->setClicks($clicks);
         $this->assertEquals($clicks, $this->fixture->getClicks());
-    }
-
-    /**
-     * Test if allowscriptaccess can be set
-     *
-     * @test
-     * @return void
-     */
-    public function flashAllowScriptAccessCanBeSetTest()
-    {
-        $flashAllowScriptAccess = 'sameDomain';
-        $this->fixture->setflashAllowScriptAccess($flashAllowScriptAccess);
-        $this->assertEquals($flashAllowScriptAccess, $this->fixture->getflashAllowScriptAccess());
-    }
-
-    /**
-     * Test if wmode can be set
-     *
-     * @test
-     * @return void
-     */
-    public function flashWmodeCanBeSetTest()
-    {
-        $flashWmode = 'opaque';
-        $this->fixture->setFlashWmode($flashWmode);
-        $this->assertEquals($flashWmode, $this->fixture->getFlashWmode());
     }
 
     /**

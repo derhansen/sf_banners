@@ -25,9 +25,8 @@ return [
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, type, 
-            category, image, assets, margin_top, margin_right, margin_bottom, margin_left, alttext, html, flash, 
-            flash_width, flash_height, flash_wmode, flash_allow_script_access, impressions_max, clicks_max, 
-            impressions, clicks, excludepages, recursive',
+            category, image, assets, margin_top, margin_right, margin_bottom, margin_left, alttext, html, 
+            impressions_max, clicks_max, impressions, clicks, excludepages, recursive',
     ],
     'palettes' => [
         '1' => ['showitem' => ''],
@@ -152,10 +151,6 @@ return [
                         'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.type.html',
                         1
                     ],
-                    [
-                        'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.type.flash',
-                        2
-                    ],
                 ],
                 'size' => 1,
                 'maxitems' => 1,
@@ -266,64 +261,6 @@ return [
                 ],
             ]
         ],
-        'flash' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.flash',
-            'config' => [
-                'type' => 'group',
-                'internal_type' => 'file',
-                'allowed' => 'swf',
-                'max_size' => $GLOBALS['TYPO3_CONF_VARS']['BE']['maxFileSize'],
-                'uploadfolder' => 'uploads/tx_sfbanners',
-                'size' => 1,
-                'minitems' => 0,
-                'maxitems' => 1,
-                'fieldWizard' => [
-                    'fileThumbnails' => [
-                        'disabled' => true
-                    ]
-                ],
-                'behaviour' => [
-                    'allowLanguageSynchronization' => true,
-                ],
-            ]
-        ],
-        'flash_width' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.flash.width',
-            'config' => [
-                'type' => 'input',
-                'size' => 5,
-                'max' => 4,
-                'eval' => 'int',
-            ]
-        ],
-        'flash_height' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.flash.height',
-            'config' => [
-                'type' => 'input',
-                'size' => 5,
-                'max' => 4,
-                'eval' => 'int',
-            ]
-        ],
-        'flash_wmode' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.flash.wmode',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-            ],
-        ],
-        'flash_allow_script_access' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.flash.allowScriptAccess',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-            ],
-        ],
         'impressions_max' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.impressions_max',
@@ -402,15 +339,6 @@ return [
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.limitations, impressions_max, clicks_max,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.statistics, impressions, clicks,
 		'
-        ],
-        '2' => [
-            'showitem' => 'l10n_parent,l10n_diffsource,title,--palette--;;paletteCore, description,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.flash,flash,--palette--;;paletteMargins,flash_width,flash_height, flash_wmode, flash_allow_script_access,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.display, category, excludepages, recursive,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.visibility, hidden,--palette--;;paletteVisibility,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.limitations, impressions_max, clicks_max,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.statistics, impressions, clicks,
-		'
-        ],
+        ]
     ],
 ];

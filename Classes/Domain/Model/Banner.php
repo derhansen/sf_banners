@@ -100,27 +100,6 @@ class Banner extends AbstractEntity
     protected $html;
 
     /**
-     * Flash
-     *
-     * @var string
-     */
-    protected $flash;
-
-    /**
-     * Flash width
-     *
-     * @var int
-     */
-    protected $flashWidth;
-
-    /**
-     * Flash height
-     *
-     * @var int
-     */
-    protected $flashHeight;
-
-    /**
      * Max impressions
      *
      * @var int
@@ -162,20 +141,6 @@ class Banner extends AbstractEntity
     protected $recursive;
 
     /**
-     * AllowScriptAccess for flash banners
-     *
-     * @var string
-     */
-    protected $flashAllowScriptAccess;
-
-    /**
-     * Wmode for flash banners
-     *
-     * @var string
-     */
-    protected $flashWmode;
-
-    /**
      * __construct
      */
     public function __construct()
@@ -197,48 +162,6 @@ class Banner extends AbstractEntity
         $this->category = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->excludepages = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->assets = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-    }
-
-    /**
-     * Sets allowScriptAccess
-     *
-     * @param string $flashAllowScriptAccess FlashAllowScriptAccess
-     * @return void
-     */
-    public function setFlashAllowScriptAccess($flashAllowScriptAccess)
-    {
-        $this->flashAllowScriptAccess = $flashAllowScriptAccess;
-    }
-
-    /**
-     * Getter for allowScriptAccess
-     *
-     * @return string
-     */
-    public function getFlashAllowScriptAccess()
-    {
-        return $this->flashAllowScriptAccess;
-    }
-
-    /**
-     * Sets Wmode
-     *
-     * @param string $flashWmode FlashWMode
-     * @return void
-     */
-    public function setFlashWmode($flashWmode)
-    {
-        $this->flashWmode = $flashWmode;
-    }
-
-    /**
-     * Getter for Wmode
-     *
-     * @return string
-     */
-    public function getFlashWmode()
-    {
-        return $this->flashWmode;
     }
 
     /**
@@ -450,69 +373,6 @@ class Banner extends AbstractEntity
     public function getExcludepages()
     {
         return $this->excludepages;
-    }
-
-    /**
-     * Setter for flash
-     *
-     * @param string $flash Flashfile
-     * @return void
-     */
-    public function setFlash($flash)
-    {
-        $this->flash = $flash;
-    }
-
-    /**
-     * Getter for flash
-     *
-     * @return string
-     */
-    public function getFlash()
-    {
-        return $this->flash;
-    }
-
-    /**
-     * Setter for flashheight
-     *
-     * @param int $flashHeight Flashheight
-     * @return void
-     */
-    public function setFlashHeight($flashHeight)
-    {
-        $this->flashHeight = $flashHeight;
-    }
-
-    /**
-     * Getter for flash
-     *
-     * @return int
-     */
-    public function getFlashHeight()
-    {
-        return $this->flashHeight;
-    }
-
-    /**
-     * Setter for flashwidth
-     *
-     * @param int $flashWidth Flashwidth
-     * @return void
-     */
-    public function setFlashWidth($flashWidth)
-    {
-        $this->flashWidth = $flashWidth;
-    }
-
-    /**
-     * Getter for flashwidth
-     *
-     * @return int
-     */
-    public function getFlashWidth()
-    {
-        return $this->flashWidth;
     }
 
     /**

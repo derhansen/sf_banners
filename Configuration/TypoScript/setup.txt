@@ -18,10 +18,6 @@ plugin.tx_sfbanners {
 
     settings {
         displayMode = {$plugin.tx_sfbanners.settings.displayMode}
-        defaultFlashVars {
-            wmode = {$plugin.tx_sfbanners.settings.defaultFlashVars.wmode}
-            allowScriptAccess = {$plugin.tx_sfbanners.settings.defaultFlashVars.allowScriptAccess}
-        }
 
         ajaxPageTypeNum = {$plugin.tx_sfbanners.settings.ajaxPageTypeNum}
         clickPageTypeNum = {$plugin.tx_sfbanners.settings.clickPageTypeNum}
