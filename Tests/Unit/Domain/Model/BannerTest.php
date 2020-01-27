@@ -84,19 +84,6 @@ class BannerTest extends UnitTestCase
     }
 
     /**
-     * Test if image can be set
-     *
-     * @test
-     * @return void
-     */
-    public function imageCanBeSetTest()
-    {
-        $image = 'image.jpg';
-        $this->fixture->setImage($image);
-        $this->assertEquals($image, $this->fixture->getImage());
-    }
-
-    /**
      * Test if margin can be set
      *
      * @test
@@ -159,19 +146,6 @@ class BannerTest extends UnitTestCase
         $altText = 'some text';
         $this->fixture->setAlttext($altText);
         $this->assertEquals($altText, $this->fixture->getAlttext());
-    }
-
-    /**
-     * Test if link can be set
-     *
-     * @test
-     * @return void
-     */
-    public function linkCanBeSetTest()
-    {
-        $link = 'www.domain.tld';
-        $this->fixture->setLink($link);
-        $this->assertEquals($link, $this->fixture->getLink());
     }
 
     /**

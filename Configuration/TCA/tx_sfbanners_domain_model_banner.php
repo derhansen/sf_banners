@@ -1,15 +1,5 @@
 <?php
 
-$sfBannersConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['sf_banners']);
-
-if ($sfBannersConf['falMedia']) {
-    $image = 'assets,';
-    $link = '';
-} else {
-    $image = 'image,';
-    $link = 'link,';
-}
-
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner',
@@ -35,7 +25,7 @@ return [
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, type, 
-            category, image, assets, margin_top, margin_right, margin_bottom, margin_left, alttext, link, html, flash, 
+            category, image, assets, margin_top, margin_right, margin_bottom, margin_left, alttext, html, flash, 
             flash_width, flash_height, flash_wmode, flash_allow_script_access, impressions_max, clicks_max, 
             impressions, clicks, excludepages, recursive',
     ],
@@ -175,23 +165,6 @@ return [
                 ],
             ],
         ],
-        'image' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.image',
-            'config' => [
-                'type' => 'group',
-                'internal_type' => 'file',
-                'allowed' => $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'],
-                'max_size' => $GLOBALS['TYPO3_CONF_VARS']['BE']['maxFileSize'],
-                'uploadfolder' => 'uploads/tx_sfbanners',
-                'size' => 1,
-                'minitems' => 0,
-                'maxitems' => 1,
-                'behaviour' => [
-                    'allowLanguageSynchronization' => true,
-                ],
-            ]
-        ],
         'assets' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.assets',
@@ -280,29 +253,6 @@ return [
                 'size' => 30,
                 'eval' => 'trim'
             ],
-        ],
-        'link' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.link',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim',
-                'wizards' => [
-                    'link' => [
-                        'type' => 'popup',
-                        'title' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_link_formlabel',
-                        'icon' => 'actions-wizard-link',
-                        'module' => [
-                            'name' => 'wizard_link',
-                        ],
-                        'JSopenParams' => 'height=800,width=600,status=0,menubar=0,scrollbars=1'
-                    ]
-                ],
-                'behaviour' => [
-                    'allowLanguageSynchronization' => true,
-                ],
-            ]
         ],
         'html' => [
             'exclude' => 1,
@@ -437,7 +387,7 @@ return [
     'types' => [
         '0' => [
             'showitem' => 'l10n_parent,l10n_diffsource,title,--palette--;;paletteCore, description,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.image,' . $image . ',--palette--;;paletteMargins,' . $link . '
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.image,assets,--palette--;;paletteMargins,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.display, category, excludepages, recursive,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.visibility, hidden,--palette--;;paletteVisibility,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.limitations, impressions_max, clicks_max,
@@ -455,7 +405,7 @@ return [
         ],
         '2' => [
             'showitem' => 'l10n_parent,l10n_diffsource,title,--palette--;;paletteCore, description,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.flash,flash,--palette--;;paletteMargins,flash_width,flash_height, flash_wmode, flash_allow_script_access, link,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.flash,flash,--palette--;;paletteMargins,flash_width,flash_height, flash_wmode, flash_allow_script_access,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.display, category, excludepages, recursive,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.visibility, hidden,--palette--;;paletteVisibility,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.limitations, impressions_max, clicks_max,

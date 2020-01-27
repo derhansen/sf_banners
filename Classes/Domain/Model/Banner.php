@@ -19,7 +19,6 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
  */
 class Banner extends AbstractEntity
 {
-
     /**
      * Title
      *
@@ -50,13 +49,6 @@ class Banner extends AbstractEntity
      * @lazy
      */
     protected $category;
-
-    /**
-     * Image
-     *
-     * @var string
-     */
-    protected $image;
 
     /**
      * Fal media items
@@ -99,13 +91,6 @@ class Banner extends AbstractEntity
      * @var string
      */
     protected $alttext;
-
-    /**
-     * Link
-     *
-     * @var string
-     */
-    protected $link;
 
     /**
      * HTML
@@ -552,27 +537,6 @@ class Banner extends AbstractEntity
     }
 
     /**
-     * Setter for Image
-     *
-     * @param string $image Image
-     * @return void
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-    }
-
-    /**
-     * Getter for image
-     *
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
      * Setter for impressions
      *
      * @param int $impressions Impressions
@@ -615,41 +579,24 @@ class Banner extends AbstractEntity
     }
 
     /**
-     * Setter for link
-     *
-     * @param string $link Link
-     * @return void
-     */
-    public function setLink($link)
-    {
-        $this->link = $link;
-    }
-
-    /**
      * Getter for link
      *
      * @return string
      */
     public function getLink()
     {
-        $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['sf_banners']);
+        $this->assets->rewind();
 
-        if ($this->getType() === 0 && (int)$extConf['falMedia'] === 1) {
-            $this->assets->rewind();
+        /** @var \TYPO3\CMS\Extbase\Domain\Model\FileReference $fileReference */
+        $fileReference = $this->assets->current();
 
-            /** @var \TYPO3\CMS\Extbase\Domain\Model\FileReference $fileReference */
-            $fileReference = $this->assets->current();
-
-            if ($fileReference === null) {
-                return '';
-            }
-
-            /** @var \TYPO3\CMS\Core\Resource\FileReference $originalFileReference */
-            $originalFileReference = $fileReference->getOriginalResource();
-            return $originalFileReference->getLink();
+        if ($fileReference === null) {
+            return '';
         }
 
-        return $this->link;
+        /** @var \TYPO3\CMS\Core\Resource\FileReference $originalFileReference */
+        $originalFileReference = $fileReference->getOriginalResource();
+        return $originalFileReference->getLink();
     }
 
     /**
@@ -798,14 +745,13 @@ class Banner extends AbstractEntity
         $link = $this->getLink();
         $cObj = GeneralUtility::makeInstance(ContentObjectRenderer::class);
         $cObj->getTypoLink_URL($link);
-        $target = $cObj->lastTypoLinkTarget;
-        return $target;
+        return $cObj->lastTypoLinkTarget;
     }
 
     /**
      * Get the Fal media items
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      */
     public function getAssets()
     {
@@ -815,7 +761,7 @@ class Banner extends AbstractEntity
     /**
      * Set Fal media relation
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<TYPO3\CMS\Extbase\Domain\Model\FileReference> $assets
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $assets
      * @return void
      */
     public function setAssets(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $assets)
