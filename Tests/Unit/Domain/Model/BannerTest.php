@@ -153,10 +153,6 @@ class BannerTest extends UnitTestCase
      */
     public function getLinkRespectsFalMediaSetting()
     {
-        $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['sf_banners'] = serialize([
-            'falMedia' => 1
-        ]);
-
         $mockFile = $this->getMockBuilder(File::class)
             ->setMethods(['getForLocalProcessing', 'getLink'])
             ->disableOriginalConstructor()
@@ -273,11 +269,7 @@ class BannerTest extends UnitTestCase
         $objectStorageHoldingExactlyOneCategory = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $objectStorageHoldingExactlyOneCategory->attach($category);
         $this->fixture->setCategory($objectStorageHoldingExactlyOneCategory);
-        $this->assertAttributeEquals(
-            $objectStorageHoldingExactlyOneCategory,
-            'category',
-            $this->fixture
-        );
+        $this->assertEquals($objectStorageHoldingExactlyOneCategory, $this->fixture->getCategory());
     }
 
     /**
@@ -325,11 +317,7 @@ class BannerTest extends UnitTestCase
         $objectStorageHoldingExactlyOnePage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $objectStorageHoldingExactlyOnePage->attach($page);
         $this->fixture->setExcludepages($objectStorageHoldingExactlyOnePage);
-        $this->assertAttributeEquals(
-            $objectStorageHoldingExactlyOnePage,
-            'excludepages',
-            $this->fixture
-        );
+        $this->assertEquals($objectStorageHoldingExactlyOnePage, $this->fixture->getExcludepages());
     }
 
     /**
@@ -377,11 +365,7 @@ class BannerTest extends UnitTestCase
         $objectStorageHoldingExactlyOneFile = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $objectStorageHoldingExactlyOneFile->attach($file);
         $this->fixture->setAssets($objectStorageHoldingExactlyOneFile);
-        $this->assertAttributeEquals(
-            $objectStorageHoldingExactlyOneFile,
-            'assets',
-            $this->fixture
-        );
+        $this->assertEquals($objectStorageHoldingExactlyOneFile, $this->fixture->getAssets());
     }
 
     /**

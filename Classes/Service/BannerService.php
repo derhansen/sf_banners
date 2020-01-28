@@ -42,22 +42,6 @@ class BannerService
     }
 
     /**
-     * Returns a <LINK> Tag with additional CSS for the banners
-     *
-     * @param array $banners Banners
-     * @return string
-     */
-    public function getAdditionalCssLink($banners)
-    {
-        $filename = $this->getAdditionalCssFile($banners);
-        $cssLink = '';
-        if ($filename != '') {
-            $cssLink = '<link rel="stylesheet" type="text/css" href="' . $filename . '" media="all" />';
-        }
-        return $cssLink;
-    }
-
-    /**
      * Returns the filename of the additional CSS for the banners
      *
      * @param array $banners Banners
@@ -65,15 +49,10 @@ class BannerService
      */
     public function getAdditionalCssFile($banners)
     {
-        $css = $this->getAdditionalCss($banners);
         $filename = '';
-        if ($css != '') {
-            if (method_exists(GeneralUtility::class, 'writeStyleSheetContentToTemporaryFile')) {
-                $filename = GeneralUtility::writeStyleSheetContentToTemporaryFile($css);
-            } else {
-                // Remove when support for v8 is dropped
-                $filename = PageGenerator::inline2TempFile($css, 'css');
-            }
+        $css = $this->getAdditionalCss($banners);
+        if ($css !== '') {
+            $filename = GeneralUtility::writeStyleSheetContentToTemporaryFile($css);
         }
         return $filename;
     }

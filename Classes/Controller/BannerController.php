@@ -10,11 +10,14 @@ namespace DERHANSEN\SfBanners\Controller;
 
 use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
 use TYPO3\CMS\Core\Cache\CacheManager;
+use TYPO3\CMS\Core\Context\Context;
+use TYPO3\CMS\Core\Http\ImmediateResponseException;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use TYPO3\CMS\Frontend\Controller\ErrorController;
 
 /**
  * Banner Controller
@@ -107,7 +110,11 @@ class BannerController extends ActionController
     public function clickAction(\DERHANSEN\SfBanners\Domain\Model\Banner $banner = null)
     {
         if (is_null($banner)) {
-            $GLOBALS['TSFE']->pageNotFoundAndExit('Banner not found.');
+            $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction(
+                $GLOBALS['TYPO3_REQUEST'],
+                'Banner not found.'
+            );
+            throw new ImmediateResponseException($response, 1549896549734);
         }
         $banner->increaseClicks();
         $this->bannerRepository->update($banner);
@@ -121,6 +128,7 @@ class BannerController extends ActionController
      */
     public function showAction()
     {
+        $languageAspect = GeneralUtility::makeInstance(Context::class)->getAspect('language');
         $maxResults = $this->settings['maxResults'] !== '' ? (int)$this->settings['maxResults'] : 0;
         $uniqueid = strtolower(substr(base64_encode(sha1(microtime())), 0, 9));
         $stringToHash = $GLOBALS['TSFE']->id . $this->settings['category'] . $this->settings['startingPoint'] .
@@ -128,7 +136,7 @@ class BannerController extends ActionController
         $hmac = $this->hashService->generateHmac($stringToHash);
 
         $arguments = [
-            'L' => $GLOBALS['TSFE']->sys_language_uid,
+            'L' => $languageAspect->getId(),
             'type' => $this->settings['ajaxPageTypeNum'],
             'tx_sfbanners_pi1[action]' => 'getBanners',
             'tx_sfbanners_pi1[controller]' => 'Banner',
@@ -215,7 +223,8 @@ class BannerController extends ActionController
             $this->bannerRepository->updateImpressions($banners);
 
             /* Collect identifier based on uids for all banners */
-            $ident = $GLOBALS['TSFE']->id . $GLOBALS['TSFE']->sys_language_uid;
+            $languageAspect = GeneralUtility::makeInstance(Context::class)->getAspect('language');
+            $ident = $GLOBALS['TSFE']->id . $languageAspect->getId();
             foreach ($banners as $banner) {
                 $ident .= $banner->getUid();
             }

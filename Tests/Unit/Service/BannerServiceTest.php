@@ -235,43 +235,4 @@ class BannerServiceTest extends UnitTestCase
         $result = $this->bannerService->getAdditionalCssFile($banners);
         $this->assertRegExp($expected, $result);
     }
-
-    /**
-     * Test if no CSS link is returned if no banners given
-     *
-     * @test
-     * @return void
-     */
-    public function getAdditionalCssLinkReturnsEmptyStringIfNoBannersFoundTest()
-    {
-        $banners = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $result = $this->bannerService->getAdditionalCssLink($banners);
-        $this->assertEmpty($result);
-    }
-
-    /**
-     * Test if no CSS link is returned if no banners given
-     *
-     * @test
-     * @return void
-     */
-    public function getAdditionalCssLinkReturnsLinkTest()
-    {
-        $bannerUid = 100;
-        $banner = $this->getMockBuilder(Banner::class)->getMock();
-        $banner->expects($this->any())->method('getMarginTop')->will($this->returnValue(0));
-        $banner->expects($this->any())->method('getMarginRight')->will($this->returnValue(0));
-        $banner->expects($this->any())->method('getMarginBottom')->will($this->returnValue(0));
-        $banner->expects($this->any())->method('getMarginLeft')->will($this->returnValue(10));
-        $banner->expects($this->once())->method('getUid')->will($this->returnValue($bannerUid));
-
-        /** @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage $banners */
-        $banners = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $banners->attach($banner);
-
-        $result = $this->bannerService->getAdditionalCssLink($banners);
-        $this->assertContains('<link rel="stylesheet" type="text/css" href=', $result);
-        $this->assertContains('.css', $result);
-        $this->assertContains('media="all" />', $result);
-    }
 }

@@ -11,6 +11,7 @@ namespace DERHANSEN\SfBanners\Domain\Model;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
+use TYPO3\CMS\Extbase\Annotation as Extbase;
 
 /**
  * Banner domain model
@@ -23,7 +24,6 @@ class Banner extends AbstractEntity
      * Title
      *
      * @var string
-     * @validate NotEmpty
      */
     protected $title;
 
@@ -38,7 +38,6 @@ class Banner extends AbstractEntity
      * Type
      *
      * @var int
-     * @validate NotEmpty
      */
     protected $type;
 
@@ -46,14 +45,14 @@ class Banner extends AbstractEntity
      * Category
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
-     * @lazy
+     * @Extbase\ORM\Lazy
      */
     protected $category;
 
     /**
      * Fal media items
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      */
     protected $assets;
 
@@ -129,8 +128,8 @@ class Banner extends AbstractEntity
 
     /**
      * Do not display on pages
-     * @lazy
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\DERHANSEN\SfBanners\Domain\Model\Page>
+     * @Extbase\ORM\Lazy
      */
     protected $excludepages;
 
