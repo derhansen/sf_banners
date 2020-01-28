@@ -136,19 +136,6 @@ class BannerTest extends UnitTestCase
     }
 
     /**
-     * Test if alttext can be set
-     *
-     * @test
-     * @return void
-     */
-    public function altTextCanBeSetTest()
-    {
-        $altText = 'some text';
-        $this->fixture->setAlttext($altText);
-        $this->assertEquals($altText, $this->fixture->getAlttext());
-    }
-
-    /**
      * @test
      */
     public function getLinkRespectsFalMediaSetting()
