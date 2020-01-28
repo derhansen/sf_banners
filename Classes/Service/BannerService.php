@@ -9,7 +9,6 @@ namespace DERHANSEN\SfBanners\Service;
  */
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Frontend\Page\PageGenerator;
 
 /**
  * Banner Service

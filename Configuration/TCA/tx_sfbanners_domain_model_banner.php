@@ -25,7 +25,7 @@ return [
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, type, 
-            category, image, assets, margin_top, margin_right, margin_bottom, margin_left, alttext, html, 
+            category, image, assets, margin_top, margin_right, margin_bottom, margin_left, html, 
             impressions_max, clicks_max, impressions, clicks, excludepages, recursive',
     ],
     'palettes' => [
@@ -232,15 +232,6 @@ return [
                 'range' => ['lower' => 0, 'upper' => 1000],
                 'eval' => 'int',
             ]
-        ],
-        'alttext' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.alttext',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
         ],
         'html' => [
             'exclude' => 1,

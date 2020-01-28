@@ -9,9 +9,9 @@ namespace DERHANSEN\SfBanners\Domain\Model;
  */
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
-use TYPO3\CMS\Extbase\Annotation as Extbase;
 
 /**
  * Banner domain model
@@ -83,13 +83,6 @@ class Banner extends AbstractEntity
      * @var int
      */
     protected $marginLeft;
-
-    /**
-     * Alttext
-     *
-     * @var string
-     */
-    protected $alttext;
 
     /**
      * HTML
@@ -266,27 +259,6 @@ class Banner extends AbstractEntity
     public function setCategory($category)
     {
         $this->category = $category;
-    }
-
-    /**
-     * Setter for alttext
-     *
-     * @param string $alttext Alttext
-     * @return void
-     */
-    public function setAlttext($alttext)
-    {
-        $this->alttext = $alttext;
-    }
-
-    /**
-     * Getter for alttext
-     *
-     * @return string
-     */
-    public function getAlttext()
-    {
-        return $this->alttext;
     }
 
     /**

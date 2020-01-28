@@ -15,7 +15,6 @@ CREATE TABLE tx_sfbanners_domain_model_banner (
 	margin_right int(11) DEFAULT '0' NOT NULL,
 	margin_bottom int(11) DEFAULT '0' NOT NULL,
 	margin_left int(11) DEFAULT '0' NOT NULL,
-	alttext tinytext,
 	html text,
 	impressions_max int(11) DEFAULT '0' NOT NULL,
 	clicks_max int(11) DEFAULT '0' NOT NULL,

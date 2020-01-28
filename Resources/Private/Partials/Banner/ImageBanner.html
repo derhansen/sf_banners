@@ -5,30 +5,14 @@
                 <f:if condition="{asset.originalResource.properties.link}">
                     <f:then>
                         <f:link.action action="click" arguments="{banner: banner}" target="{banner.linkTarget}" pageType="{settings.clickPageTypeNum}">
-                            <f:image image="{asset}" title="{banner.alttext}" alt="{banner.alttext}" />
+                            <f:image image="{asset}" />
                         </f:link.action>
                     </f:then>
                     <f:else>
-                        <f:image image="{asset}" title="{banner.alttext}" alt="{banner.alttext}" />
+                        <f:image image="{asset}" />
                     </f:else>
                 </f:if>
             </div>
         </f:for>
     </f:then>
-    <f:else>
-        <f:if condition="{banner.image}">
-            <div class="banner banner-{banner.uid}">
-                <f:if condition="{banner.link}">
-                    <f:then>
-                        <f:link.action action="click" arguments="{banner: banner}" target="{banner.linkTarget}" pageType="{settings.clickPageTypeNum}">
-                            <f:image src="uploads/tx_sfbanners/{banner.image}" title="{banner.alttext}" alt="{banner.alttext}" />
-                        </f:link.action>
-                    </f:then>
-                    <f:else>
-                        <f:image src="uploads/tx_sfbanners/{banner.image}" title="{banner.alttext}" alt="{banner.alttext}" />
-                    </f:else>
-                </f:if>
-            </div>
-        </f:if>
-    </f:else>
 </f:if>
