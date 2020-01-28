@@ -135,9 +135,13 @@
 			<source>Statistics</source>
 			<target>Statistik</target>
 		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.tabs.visibility" approved="yes">
-			<source>Visibility</source>
-			<target>Sichtbarkeit</target>
+		<trans-unit id="tx_sfbanners_domain_model_banner.tabs.access">
+			<source>Access</source>
+			<target>Zugriff</target>
+		</trans-unit>
+		<trans-unit id="tx_sfbanners_domain_model_banner.tabs.language">
+			<source>Language</source>
+			<target>Sprache</target>
 		</trans-unit>
 		<trans-unit id="tx_sfbanners_domain_model_banner.title" approved="yes">
 			<source>Title</source>

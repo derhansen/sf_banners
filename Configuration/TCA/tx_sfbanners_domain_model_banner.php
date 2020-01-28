@@ -29,16 +29,9 @@ return [
             impressions_max, clicks_max, impressions, clicks, excludepages, recursive',
     ],
     'palettes' => [
-        '1' => ['showitem' => ''],
-        'paletteCore' => [
-            'showitem' => 'type, sys_language_uid',
-        ],
-        'paletteMargins' => [
-            'showitem' => 'margin_top, margin_right, margin_bottom, margin_left',
-        ],
-        'paletteVisibility' => [
-            'showitem' => 'starttime, endtime',
-        ],
+        'paletteMargins' => ['showitem' => 'margin_top, margin_right, margin_bottom, margin_left'],
+        'paletteVisibility' => ['showitem' => 'starttime, endtime'],
+        'paletteLanguage' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -50,7 +43,7 @@ return [
                 'special' => 'languages',
                 'items' => [
                     [
-                        'LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages',
+                        'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
                         -1,
                         'flags-multiple'
                     ],
@@ -323,21 +316,23 @@ return [
     ],
     'types' => [
         '0' => [
-            'showitem' => 'l10n_parent,l10n_diffsource,title,--palette--;;paletteCore, description,
+            'showitem' => 'type, title, description,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.image,assets,--palette--;;paletteMargins,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.display, category, excludepages, recursive,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.visibility, hidden,--palette--;;paletteVisibility,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.limitations, impressions_max, clicks_max,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.statistics, impressions, clicks,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.language, --palette--;;paletteLanguage,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.access, hidden,--palette--;;paletteVisibility,
 		'
         ],
         '1' => [
-            'showitem' => 'l10n_parent,l10n_diffsource,title,--palette--;;paletteCore, description,
+            'showitem' => 'type, title, description,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.html,html,--palette--;;paletteMargins,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.display, category, excludepages, recursive,
-			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.visibility, hidden,--palette--;;paletteVisibility,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.limitations, impressions_max, clicks_max,
 			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.statistics, impressions, clicks,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.language, --palette--;;paletteLanguage,
+			--div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.access, hidden,--palette--;;paletteVisibility,
 		'
         ]
     ],
