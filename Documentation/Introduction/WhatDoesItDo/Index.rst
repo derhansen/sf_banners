@@ -19,9 +19,8 @@ What does it do?
 ^^^^^^^^^^^^^^^^
 
 Banner-Management allows you to manage banners on your TYPO3 website.
-It supports image, HTML and flash banners. Banner can be assigned
-multiple categories which allows a flexible way of displaying them on
-a TYPO3 website.
+It supports image and HTML banners. Banner can be assigned multiple
+categories which allows a flexible way of displaying them on a TYPO3 website.
 
 The Extension fetches the banners for the desired page
 **asynchronously** by using AJAX (jQuery), so the page load time is'nt
@@ -35,5 +34,5 @@ counted by using a clicktag.
 The extension can be used as a plugin or by TypoScript.
 
 The extension is developed with Extbase and Fluid and the current version
-support TYPO3 8.7 LTS and TYPO3 9.5 LTS
+support TYPO3 9.5 LTS and TYPO3 10.4 LTS
 

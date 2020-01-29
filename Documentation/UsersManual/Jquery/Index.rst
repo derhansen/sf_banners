@@ -24,7 +24,7 @@ JavaScript libs that come from the extension.
 To avoid any problems/conflicts, I recommend to include jQuery as shown below::
 
    page.includeJSFooter {
-     bannerJQuery = //ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js
+     bannerJQuery = //ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js
      bannerJQuery.external = 1
      bannerJQuery.forceOnTop = 1
    }

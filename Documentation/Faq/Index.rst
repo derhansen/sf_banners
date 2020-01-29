@@ -25,14 +25,6 @@ at the top of all other JavaScript libraries.
 If banners still do not get displayed and you use TYPO3 9.5 and the PageType Route Enhancer, make
 sure that you configured a mapping - see :ref:`routing`
 
-How to implement click tracking for Flash-banners?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The extension makes use the clicktag, which can be implemented in
-flash-banners. More information about how to create a flash-banner
-with a clicktag can be found at `http://www.flashclicktag.com/
-<http://www.flashclicktag.com/>`_
-
 Can I use my own templates?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

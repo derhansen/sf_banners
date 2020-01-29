@@ -28,7 +28,7 @@ The title of the banner.
 Type
 """"
 
-Image, HTML or Flash.
+Image or HTML.
 
 
 Language
@@ -44,13 +44,11 @@ Description
 A description for the banner
 
 
-Image
-"""""
+Assets
+""""""
 
-The image which is displayed by the plugin. Please note, that the
-extension is not able to resize the banner, so you must upload it with
-the final dimensions. *Only available, when the banner type is set to
-“Image”.*
+The asset (usually an image) which is displayed by the plugin. Please note, that the
+extension is not able to resize the banner, so you must upload it with the final dimensions.
 
 
 HTML
@@ -58,37 +56,6 @@ HTML
 
 The HTML Code for the banner. *Only available, when the banner type is
 set to*  *“HTML”.*
-
-
-Flash
-"""""
-
-The Flash-File for the banner. *Only available, when the banner type
-is set to “Flash”.*
-
-
-Width / height
-""""""""""""""
-
-The width and height of the Flash-File. *Only available, when the
-banner type is set to “Flash”.*
-
-
-Wmode
-"""""
-
-Flash wmode setting. If not set, the extensions default setting is
-used (configured in the extensions constants). *Only available, when
-the banner type is set to “Flash”.*
-
-
-AllowScriptAccess
-"""""""""""""""""
-
-Flash allowScriptAccess setting. If not set, the extensions default
-setting is used (configured in the extensions constants). *Only
-available, when the banner type is set to “Flash”.*
-
 
 Margintop, marginright, marginbottom and marginleft
 """""""""""""""""""""""""""""""""""""""""""""""""""

@@ -26,5 +26,4 @@ Configuration
 
    Reference/Index
    Routing/Index
-   ExtensionSettings/Index
 
