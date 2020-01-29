@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96px" height="96px" viewBox="0 0 96 96" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>Banner</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Banner" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Banners" transform="translate(13.000000, 18.000000)" fill="#8489FD" stroke="#979797">
+            <rect id="Rectangle" x="0.5" y="0.5" width="70" height="16" rx="3"></rect>
+            <rect id="Rectangle-Copy" x="0.5" y="22.5" width="70" height="16" rx="3"></rect>
+            <rect id="Rectangle-Copy-2" x="0.5" y="44.5" width="70" height="16" rx="3"></rect>
+        </g>
+    </g>
+</svg>

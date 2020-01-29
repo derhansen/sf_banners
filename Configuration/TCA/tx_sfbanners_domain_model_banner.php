@@ -21,7 +21,9 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'title,description,type,category,',
-        'iconfile' => 'EXT:sf_banners/Resources/Public/Icons/tx_sfbanners_domain_model_banner.gif'
+        'typeicon_classes' => [
+            'default' => 'ext-sfbanners-banner'
+        ],
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, type, 

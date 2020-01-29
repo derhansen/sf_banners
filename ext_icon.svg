@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96px" height="96px" viewBox="0 0 96 96" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>ext_icon - banner</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0.501272265" y="0" width="96" height="96"></rect>
+    </defs>
+    <g id="ext_icon---banner" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ext_icon" transform="translate(-1.000000, 0.000000)">
+            <g id="Rectangle">
+                <g id="path-1-Clipped" transform="translate(0.498728, 0.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="path-1"></g>
+                    <rect id="path-1" stroke="#979797" stroke-width="2" fill="#D4D4D4" fill-rule="nonzero" mask="url(#mask-2)" x="0.501272265" y="0" width="96" height="96"></rect>
+                </g>
+            </g>
+        </g>
+        <g id="Banners" transform="translate(13.000000, 18.000000)" fill="#8489FD" stroke="#979797">
+            <rect id="Rectangle" x="0.5" y="0.5" width="70" height="16" rx="3"></rect>
+            <rect id="Rectangle-Copy" x="0.5" y="22.5" width="70" height="16" rx="3"></rect>
+            <rect id="Rectangle-Copy-2" x="0.5" y="44.5" width="70" height="16" rx="3"></rect>
+        </g>
+    </g>
+</svg>
