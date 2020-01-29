@@ -25,7 +25,7 @@ return [
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, type, 
-            category, image, assets, margin_top, margin_right, margin_bottom, margin_left, html, 
+            category, assets, margin_top, margin_right, margin_bottom, margin_left, html, 
             impressions_max, clicks_max, impressions, clicks, excludepages, recursive',
     ],
     'palettes' => [

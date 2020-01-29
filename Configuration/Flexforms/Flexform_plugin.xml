@@ -11,6 +11,7 @@
                     <onChange>reload</onChange>
                     <config>
                         <type>select</type>
+                        <renderType>selectSingle</renderType>
                         <items>
                             <numIndex index="0" type="array">
                                 <numIndex index="0">LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:plugin.settings.displayMode.all</numIndex>

@@ -55,11 +55,10 @@ class BannerController extends ActionController
     protected $cacheInstance;
 
     /**
-     * Constructor
+     * Initialize cache
      */
-    public function __construct()
+    public function initializeAction()
     {
-        parent::__construct();
         $this->initializeCache();
     }
 
