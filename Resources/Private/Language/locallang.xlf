@@ -8,7 +8,7 @@
 		</header>
 		<body>
 		<trans-unit id="plugin_description">
-			<source>Banner-Management for image, html and flash banners</source>
+			<source>Banner-Management for image and html banners</source>
 		</trans-unit>
 		<trans-unit id="plugin_title">
 			<source>Show banner</source>
