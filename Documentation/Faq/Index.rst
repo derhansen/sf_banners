@@ -30,3 +30,16 @@ Can I use my own templates?
 
 Yes, this is possible since the extension is made with Extbase and
 Fluid. You can configure template settings by TypoScript
+
+How to prevent banner links to get indexed by search engines
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Since version 5.0.1 the extension instructs search engines to not index the "getBanners" action. This is done
+by sending a `X-Robots-Tag: noindex, nofollow` HTTP header in the "getBanners" action.
+
+Additionally you should ensure, that banner links contain `rel="nofollow"` in your template.
+
+You should also instruct search engines to not index links containing arguments of the extension. This can be done
+by adding the following to your `robots.txt`::
+
+  Disallow: /*tx_sfbanners_pi1    # no banners

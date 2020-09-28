@@ -240,6 +240,9 @@ class BannerController extends ActionController
         } else {
             $ret = LocalizationUtility::translate('wrong_hmac', 'SfBanners');
         }
+
+        $this->response->setHeader('X-Robots-Tag', 'noindex, nofollow');
+
         return $ret;
     }
 }
