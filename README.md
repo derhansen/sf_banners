@@ -9,7 +9,7 @@ TYPO3 extension sf_banner: Banner-Management
 ## What is it?
 
 **Banner-Management** is a banner management extension for TYPO3. It is based of Extbase and Fluid and supports TYPO3
-Version 8.7 LTS and TYPO3 9.5 LTS. Banners are loaded asynchronously so the page load time is affected as less as possible.
+Version 9.5 LTS and TYPO3 10.4 LTS. Banners are loaded asynchronously so the page load time is affected as less as possible.
 
 ## What does it do?
 
@@ -17,7 +17,6 @@ Version 8.7 LTS and TYPO3 9.5 LTS. Banners are loaded asynchronously so the page
 
 * Image
 * HTML
-* Flash
 
 Banner can be assigned multiple categories which allows a flexible way of displaying them on a TYPO3 website.
 Each banner contains a statistic, where the total amount of impressions and clicks are shown. A banner can be limited
