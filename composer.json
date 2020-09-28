@@ -19,10 +19,10 @@
     "GPL-2.0-or-later"
   ],
   "require": {
-    "typo3/cms-core": "^9.5 || ~10.2"
+    "typo3/cms-core": "^9.5 || ^10.4"
   },
   "require-dev": {
-    "nimut/testing-framework": "5.x-dev"
+    "nimut/testing-framework": "^5.1"
   },
   "replace": {
     "typo3-ter/sf-banners": "self.version"
