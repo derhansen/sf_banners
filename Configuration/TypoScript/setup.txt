@@ -71,6 +71,7 @@ ajaxPage {
         additionalHeaders.10.header = Content-type:text/html
         xhtml_cleaning = 0
         admPanel = 0
+        index_enable = 0
     }
 
     10 = USER
@@ -91,6 +92,7 @@ clickPage {
         additionalHeaders.10.header = Content-type:text/html
         xhtml_cleaning = 0
         admPanel = 0
+        index_enable = 0
     }
 
     10 = USER
