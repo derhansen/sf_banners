@@ -272,7 +272,6 @@ return [
                 'type' => 'none',
                 'size' => 10,
                 'default' => 0,
-                'setToDefaultOnCopy' => 1
             ]
         ],
         'clicks' => [
@@ -282,7 +281,6 @@ return [
                 'type' => 'none',
                 'size' => 10,
                 'default' => 0,
-                'setToDefaultOnCopy' => 1
             ]
         ],
         'excludepages' => [
