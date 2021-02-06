@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/derhansen/sf_banners.png)](https://travis-ci.org/derhansen/sf_banners)
+![CI](https://github.com/derhansen/sf_banners/workflows/CI/badge.svg)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 TYPO3 extension sf_banner: Banner-Management
