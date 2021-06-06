@@ -113,7 +113,7 @@ class BannerController extends ActionController
                 $GLOBALS['TYPO3_REQUEST'],
                 'Banner not found.'
             );
-            throw new ImmediateResponseException($response, 1549896549734);
+            throw new ImmediateResponseException($response, 1549896549);
         }
         $banner->increaseClicks();
         $this->bannerRepository->update($banner);
