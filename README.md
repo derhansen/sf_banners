@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.org/derhansen/sf_banners.png)](https://travis-ci.org/derhansen/sf_banners)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/derhansen/sf_banners/badges/quality-score.png?s=683c44ed4732bbe6364975b18e93250715f9ed47)](https://scrutinizer-ci.com/g/derhansen/sf_banners/)
-[![Code Coverage](https://scrutinizer-ci.com/g/derhansen/sf_banners/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/derhansen/sf_banners/?branch=master)
+![CI](https://github.com/derhansen/sf_banners/workflows/CI/badge.svg)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 TYPO3 extension sf_banner: Banner-Management
