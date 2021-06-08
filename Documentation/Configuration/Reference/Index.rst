@@ -107,18 +107,6 @@ Plugin-Settings: plugin.tx\_sfbanners.settings
          sameDomain
 
  - :Property:
-         includeJquery
-
-   :Data type:
-         int
-
-   :Description:
-         Includes JQuery (CDN-Version) to the TYPO3 website
-
-   :Default:
-         true
-
- - :Property:
          ajaxPageTypeNum
 
    :Data type:

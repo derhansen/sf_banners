@@ -25,13 +25,7 @@ uses jQuery (AJAX) to load all banners and postscribe.js to place the banners co
 
 ## External libraries requirements
 
-The extension requires the following external JS libraries, which automatically are included during installation
-of the extension.
-
-* postscribe.js (http://krux.github.io/postscribe/)
-* jQuery (http://jquery.com/)
-
-The automatic inclusion of jQuery can be disabled in TypoScript
+The extension requires jQuery, which is not included automatically. 
 
 ## Support and updates
 
