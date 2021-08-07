@@ -1,4 +1,5 @@
 <?php
+
 namespace DERHANSEN\SfBanners\Test\Unit\Service;
 
 /*
@@ -20,19 +21,17 @@ class BannerServiceTest extends UnitTestCase
 {
 
     /**
-     * @var \DERHANSEN\SfBanners\Service\BannerService
+     * @var BannerService
      */
     protected $bannerService;
 
     /**
-     * @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand
+     * @var BannerDemand
      */
     protected $demand;
 
     /**
      * Set up
-     *
-     * @return void
      */
     public function setUp(): void
     {
@@ -44,8 +43,6 @@ class BannerServiceTest extends UnitTestCase
 
     /**
      * Tear down
-     *
-     * @return void
      */
     public function tearDown(): void
     {
@@ -56,29 +53,27 @@ class BannerServiceTest extends UnitTestCase
      * Test if additional css returns an empty string if banner has no margin
      *
      * @test
-     * @return void
      */
     public function getAdditionalCssReturnsEmptyStringIfBannerHasNoMarginsTest()
     {
         $result = $this->bannerService->getAdditionalCss([]);
-        $this->assertEquals('', $result);
+        self::assertEquals('', $result);
     }
 
     /**
      * Test if additional css returns correct top margin
      *
      * @test
-     * @return void
      */
     public function getAdditionalCssReturnsMarginTopIfBannerHasMarginTopTest()
     {
         $bannerUid = 100;
         $banner = $this->getMockBuilder(Banner::class)->getMock();
-        $banner->expects($this->any())->method('getMarginTop')->will($this->returnValue(10));
-        $banner->expects($this->any())->method('getMarginRight')->will($this->returnValue(0));
-        $banner->expects($this->any())->method('getMarginBottom')->will($this->returnValue(0));
-        $banner->expects($this->any())->method('getMarginLeft')->will($this->returnValue(0));
-        $banner->expects($this->once())->method('getUid')->will($this->returnValue($bannerUid));
+        $banner->expects(self::any())->method('getMarginTop')->willReturn(10);
+        $banner->expects(self::any())->method('getMarginRight')->willReturn(0);
+        $banner->expects(self::any())->method('getMarginBottom')->willReturn(0);
+        $banner->expects(self::any())->method('getMarginLeft')->willReturn(0);
+        $banner->expects(self::once())->method('getUid')->willReturn($bannerUid);
 
         /** @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage $banners */
         $banners = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
@@ -86,24 +81,23 @@ class BannerServiceTest extends UnitTestCase
 
         $expected = '.banner-' . $bannerUid . ' { margin: 10px 0px 0px 0px; }' . chr(10) . chr(13);
         $result = $this->bannerService->getAdditionalCss($banners);
-        $this->assertEquals($expected, $result);
+        self::assertEquals($expected, $result);
     }
 
     /**
      * Test if additional css returns correct right margin
      *
      * @test
-     * @return void
      */
     public function getAdditionalCssReturnsMarginRightIfBannerHasMarginRightTest()
     {
         $bannerUid = 100;
         $banner = $this->getMockBuilder(Banner::class)->getMock();
-        $banner->expects($this->any())->method('getMarginTop')->will($this->returnValue(0));
-        $banner->expects($this->any())->method('getMarginRight')->will($this->returnValue(10));
-        $banner->expects($this->any())->method('getMarginBottom')->will($this->returnValue(0));
-        $banner->expects($this->any())->method('getMarginLeft')->will($this->returnValue(0));
-        $banner->expects($this->once())->method('getUid')->will($this->returnValue($bannerUid));
+        $banner->expects(self::any())->method('getMarginTop')->willReturn(0);
+        $banner->expects(self::any())->method('getMarginRight')->willReturn(10);
+        $banner->expects(self::any())->method('getMarginBottom')->willReturn(0);
+        $banner->expects(self::any())->method('getMarginLeft')->willReturn(0);
+        $banner->expects(self::once())->method('getUid')->willReturn($bannerUid);
 
         /** @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage $banners */
         $banners = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
@@ -111,24 +105,23 @@ class BannerServiceTest extends UnitTestCase
 
         $expected = '.banner-' . $bannerUid . ' { margin: 0px 10px 0px 0px; }' . chr(10) . chr(13);
         $result = $this->bannerService->getAdditionalCss($banners);
-        $this->assertEquals($expected, $result);
+        self::assertEquals($expected, $result);
     }
 
     /**
      * Test if additional css returns correct bottom margin
      *
      * @test
-     * @return void
      */
     public function getAdditionalCssReturnsMarginBottomIfBannerHasMarginBottomTest()
     {
         $bannerUid = 100;
         $banner = $this->getMockBuilder(Banner::class)->getMock();
-        $banner->expects($this->any())->method('getMarginTop')->will($this->returnValue(0));
-        $banner->expects($this->any())->method('getMarginRight')->will($this->returnValue(0));
-        $banner->expects($this->any())->method('getMarginBottom')->will($this->returnValue(10));
-        $banner->expects($this->any())->method('getMarginLeft')->will($this->returnValue(0));
-        $banner->expects($this->once())->method('getUid')->will($this->returnValue($bannerUid));
+        $banner->expects(self::any())->method('getMarginTop')->willReturn(0);
+        $banner->expects(self::any())->method('getMarginRight')->willReturn(0);
+        $banner->expects(self::any())->method('getMarginBottom')->willReturn(10);
+        $banner->expects(self::any())->method('getMarginLeft')->willReturn(0);
+        $banner->expects(self::once())->method('getUid')->willReturn($bannerUid);
 
         /** @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage $banners */
         $banners = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
@@ -136,24 +129,23 @@ class BannerServiceTest extends UnitTestCase
 
         $expected = '.banner-' . $bannerUid . ' { margin: 0px 0px 10px 0px; }' . chr(10) . chr(13);
         $result = $this->bannerService->getAdditionalCss($banners);
-        $this->assertEquals($expected, $result);
+        self::assertEquals($expected, $result);
     }
 
     /**
      * Test if additional css returns correct left margin
      *
      * @test
-     * @return void
      */
     public function getAdditionalCssReturnsMarginLeftIfBannerHasMarginLeftTest()
     {
         $bannerUid = 100;
         $banner = $this->getMockBuilder(Banner::class)->getMock();
-        $banner->expects($this->any())->method('getMarginTop')->will($this->returnValue(0));
-        $banner->expects($this->any())->method('getMarginRight')->will($this->returnValue(0));
-        $banner->expects($this->any())->method('getMarginBottom')->will($this->returnValue(0));
-        $banner->expects($this->any())->method('getMarginLeft')->will($this->returnValue(10));
-        $banner->expects($this->once())->method('getUid')->will($this->returnValue($bannerUid));
+        $banner->expects(self::any())->method('getMarginTop')->willReturn(0);
+        $banner->expects(self::any())->method('getMarginRight')->willReturn(0);
+        $banner->expects(self::any())->method('getMarginBottom')->willReturn(0);
+        $banner->expects(self::any())->method('getMarginLeft')->willReturn(10);
+        $banner->expects(self::once())->method('getUid')->willReturn($bannerUid);
 
         /** @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage $banners */
         $banners = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
@@ -161,31 +153,30 @@ class BannerServiceTest extends UnitTestCase
 
         $expected = '.banner-' . $bannerUid . ' { margin: 0px 0px 0px 10px; }' . chr(10) . chr(13);
         $result = $this->bannerService->getAdditionalCss($banners);
-        $this->assertEquals($expected, $result);
+        self::assertEquals($expected, $result);
     }
 
     /**
      * Test if additional css returns correct margins for multiple banners
      *
      * @test
-     * @return void
      */
     public function getAdditionalCssReturnsCssForMultipleBannersTest()
     {
         $bannerUid1 = 100;
         $bannerUid2 = 200;
         $banner1 = $this->getMockBuilder(Banner::class)->getMock();
-        $banner1->expects($this->any())->method('getMarginTop')->will($this->returnValue(0));
-        $banner1->expects($this->any())->method('getMarginRight')->will($this->returnValue(10));
-        $banner1->expects($this->any())->method('getMarginBottom')->will($this->returnValue(0));
-        $banner1->expects($this->any())->method('getMarginLeft')->will($this->returnValue(10));
-        $banner1->expects($this->once())->method('getUid')->will($this->returnValue($bannerUid1));
+        $banner1->expects(self::any())->method('getMarginTop')->willReturn(0);
+        $banner1->expects(self::any())->method('getMarginRight')->willReturn(10);
+        $banner1->expects(self::any())->method('getMarginBottom')->willReturn(0);
+        $banner1->expects(self::any())->method('getMarginLeft')->willReturn(10);
+        $banner1->expects(self::once())->method('getUid')->willReturn($bannerUid1);
         $banner2 = $this->getMockBuilder(Banner::class)->getMock();
-        $banner2->expects($this->any())->method('getMarginTop')->will($this->returnValue(10));
-        $banner2->expects($this->any())->method('getMarginRight')->will($this->returnValue(0));
-        $banner2->expects($this->any())->method('getMarginBottom')->will($this->returnValue(10));
-        $banner2->expects($this->any())->method('getMarginLeft')->will($this->returnValue(0));
-        $banner2->expects($this->once())->method('getUid')->will($this->returnValue($bannerUid2));
+        $banner2->expects(self::any())->method('getMarginTop')->willReturn(10);
+        $banner2->expects(self::any())->method('getMarginRight')->willReturn(0);
+        $banner2->expects(self::any())->method('getMarginBottom')->willReturn(10);
+        $banner2->expects(self::any())->method('getMarginLeft')->willReturn(0);
+        $banner2->expects(self::once())->method('getUid')->willReturn($bannerUid2);
 
         /** @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage $banners */
         $banners = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
@@ -195,37 +186,35 @@ class BannerServiceTest extends UnitTestCase
         $expected = '.banner-' . $bannerUid1 . ' { margin: 0px 10px 0px 10px; }' . chr(10) . chr(13);
         $expected .= '.banner-' . $bannerUid2 . ' { margin: 10px 0px 10px 0px; }' . chr(10) . chr(13);
         $result = $this->bannerService->getAdditionalCss($banners);
-        $this->assertEquals($expected, $result);
+        self::assertEquals($expected, $result);
     }
 
     /**
      * Test if no CSS file is returned if no banners given
      *
      * @test
-     * @return void
      */
     public function getAdditionalCssFileReturnsEmptyStringIfNoBannersFoundTest()
     {
         $banners = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $result = $this->bannerService->getAdditionalCssFile($banners);
-        $this->assertEmpty($result);
+        self::assertEmpty($result);
     }
 
     /**
      * Test if returned file contains .css as extension
      *
      * @test
-     * @return void
      */
     public function getAdditionalCssFileReturnsFilenameTest()
     {
         $bannerUid = 100;
         $banner = $this->getMockBuilder(Banner::class)->getMock();
-        $banner->expects($this->any())->method('getMarginTop')->will($this->returnValue(0));
-        $banner->expects($this->any())->method('getMarginRight')->will($this->returnValue(0));
-        $banner->expects($this->any())->method('getMarginBottom')->will($this->returnValue(0));
-        $banner->expects($this->any())->method('getMarginLeft')->will($this->returnValue(10));
-        $banner->expects($this->once())->method('getUid')->will($this->returnValue($bannerUid));
+        $banner->expects(self::any())->method('getMarginTop')->willReturn(0);
+        $banner->expects(self::any())->method('getMarginRight')->willReturn(0);
+        $banner->expects(self::any())->method('getMarginBottom')->willReturn(0);
+        $banner->expects(self::any())->method('getMarginLeft')->willReturn(10);
+        $banner->expects(self::once())->method('getUid')->willReturn($bannerUid);
 
         /** @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage $banners */
         $banners = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
@@ -233,6 +222,6 @@ class BannerServiceTest extends UnitTestCase
 
         $expected = '/\.css/';
         $result = $this->bannerService->getAdditionalCssFile($banners);
-        $this->assertMatchesRegularExpression($expected, $result);
+        self::assertMatchesRegularExpression($expected, $result);
     }
 }

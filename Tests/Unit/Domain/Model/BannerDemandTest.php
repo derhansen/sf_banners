@@ -1,4 +1,5 @@
 <?php
+
 namespace DERHANSEN\SfBanners\Test\Unit\Domain\Model;
 
 /*
@@ -17,14 +18,12 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 class BannerDemandTest extends UnitTestCase
 {
     /**
-     * @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand
+     * @var BannerDemand
      */
     protected $fixture;
 
     /**
      * Set up
-     *
-     * @return void
      */
     public function setUp(): void
     {
@@ -33,8 +32,6 @@ class BannerDemandTest extends UnitTestCase
 
     /**
      * Tear down
-     *
-     * @return void
      */
     public function tearDown(): void
     {
@@ -45,63 +42,58 @@ class BannerDemandTest extends UnitTestCase
      * Test if categories can be set
      *
      * @test
-     * @return void
      */
     public function categoriesCanBeSetTest()
     {
         $categories = '1,2,3,4';
         $this->fixture->setCategories($categories);
-        $this->assertEquals($categories, $this->fixture->getCategories());
+        self::assertEquals($categories, $this->fixture->getCategories());
     }
 
     /**
      * Test if startingpoint can be set
      *
      * @test
-     * @return void
      */
     public function startingPointCanBeSetTest()
     {
         $startingPoint = 1;
         $this->fixture->setStartingPoint($startingPoint);
-        $this->assertEquals($startingPoint, $this->fixture->getStartingPoint());
+        self::assertEquals($startingPoint, $this->fixture->getStartingPoint());
     }
 
     /**
      * Test if displaymode returns the correct initial value
      *
      * @test
-     * @return void
      */
     public function displayModeReturnsInitialValueForDisplayModeTest()
     {
-        $this->assertEquals('all', $this->fixture->getDisplayMode());
+        self::assertEquals('all', $this->fixture->getDisplayMode());
     }
 
     /**
      * Test if displaymode can be set
      *
      * @test
-     * @return void
      */
     public function displayModeCanBeSetTest()
     {
         $displayMode = 'allRandom';
         $this->fixture->setDisplayMode($displayMode);
-        $this->assertEquals($displayMode, $this->fixture->getDisplayMode());
+        self::assertEquals($displayMode, $this->fixture->getDisplayMode());
     }
 
     /**
      * Test if the current page uid can be set
      *
      * @test
-     * @return void
      */
     public function currentPageUidCanBeSetTest()
     {
         $currentPageUid = 99;
         $this->fixture->setCurrentPageUid($currentPageUid);
-        $this->assertEquals($currentPageUid, $this->fixture->getCurrentPageUid());
+        self::assertEquals($currentPageUid, $this->fixture->getCurrentPageUid());
     }
 
     /**
@@ -109,7 +101,7 @@ class BannerDemandTest extends UnitTestCase
      */
     public function getMaxResultsReturnsInitialValue()
     {
-        $this->assertEquals(0, $this->fixture->getMaxResults());
+        self::assertEquals(0, $this->fixture->getMaxResults());
     }
 
     /**
@@ -118,6 +110,6 @@ class BannerDemandTest extends UnitTestCase
     public function maxResultsCanBeSet()
     {
         $this->fixture->setMaxResults(10);
-        $this->assertEquals(10, $this->fixture->getMaxResults());
+        self::assertEquals(10, $this->fixture->getMaxResults());
     }
 }
