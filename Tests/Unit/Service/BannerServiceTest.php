@@ -11,7 +11,7 @@ namespace DERHANSEN\SfBanners\Test\Unit\Service;
 use DERHANSEN\SfBanners\Domain\Model\Banner;
 use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
 use DERHANSEN\SfBanners\Service\BannerService;
-use Nimut\TestingFramework\TestCase\UnitTestCase;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
  * Test cases for the banner service
@@ -34,7 +34,7 @@ class BannerServiceTest extends UnitTestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->bannerService = new BannerService();
@@ -47,7 +47,7 @@ class BannerServiceTest extends UnitTestCase
      *
      * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         unset($this->bannerService, $this->demand);
     }
@@ -233,6 +233,6 @@ class BannerServiceTest extends UnitTestCase
 
         $expected = '/\.css/';
         $result = $this->bannerService->getAdditionalCssFile($banners);
-        $this->assertRegExp($expected, $result);
+        $this->assertMatchesRegularExpression($expected, $result);
     }
 }

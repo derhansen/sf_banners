@@ -16,19 +16,13 @@ namespace DERHANSEN\SfBanners\Tests\Functional\Repository;
 
 use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
 use DERHANSEN\SfBanners\Domain\Repository\BannerRepository;
-use Nimut\TestingFramework\TestCase\FunctionalTestCase;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
+use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
  * Test case for class \DERHANSEN\SfBanners\Domain\Model\Banner.
  */
 class BannerRepositoryTest extends FunctionalTestCase
 {
-
-    /** @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface The object manager */
-    protected $objectManager;
-
     /** @var \DERHANSEN\SfBanners\Domain\Repository\BannerRepository */
     protected $bannerRepository;
 
@@ -40,11 +34,10 @@ class BannerRepositoryTest extends FunctionalTestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
-        $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-        $this->bannerRepository = $this->objectManager->get(BannerRepository::class);
+        $this->bannerRepository = $this->getContainer()->get(BannerRepository::class);
 
         $this->importDataSet(__DIR__ . '/../Fixtures/sys_category.xml');
         $this->importDataSet(__DIR__ . '/../Fixtures/pages.xml');

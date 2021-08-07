@@ -9,10 +9,10 @@ namespace DERHANSEN\SfBanners\Test\Unit\Domain\Model;
  */
 
 use DERHANSEN\SfBanners\Domain\Model\Banner;
-use Nimut\TestingFramework\TestCase\UnitTestCase;
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
  * Test case for class \DERHANSEN\SfBanners\Domain\Model\Banner.
@@ -29,7 +29,7 @@ class BannerTest extends UnitTestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->fixture = new Banner();
     }
@@ -39,7 +39,7 @@ class BannerTest extends UnitTestCase
      *
      * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         unset($this->fixture);
     }
@@ -267,7 +267,7 @@ class BannerTest extends UnitTestCase
         $category = new \TYPO3\CMS\Extbase\Domain\Model\Category();
         $categoryObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->setMethods(['attach'])->getMock();
         $categoryObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($category));
-        $this->inject($this->fixture, 'category', $categoryObjectStorageMock);
+        $this->fixture->setCategory($categoryObjectStorageMock);
         $this->fixture->addCategory($category);
     }
 
@@ -279,7 +279,7 @@ class BannerTest extends UnitTestCase
         $category = new \TYPO3\CMS\Extbase\Domain\Model\Category();
         $categoryObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->setMethods(['detach'])->getMock();
         $categoryObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($category));
-        $this->inject($this->fixture, 'category', $categoryObjectStorageMock);
+        $this->fixture->setCategory($categoryObjectStorageMock);
         $this->fixture->removeCategory($category);
     }
 
@@ -315,7 +315,7 @@ class BannerTest extends UnitTestCase
         $page = new \DERHANSEN\SfBanners\Domain\Model\Page();
         $pageObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->setMethods(['attach'])->getMock();
         $pageObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($page));
-        $this->inject($this->fixture, 'excludepages', $pageObjectStorageMock);
+        $this->fixture->setExcludepages($pageObjectStorageMock);
         $this->fixture->addExcludepages($page);
     }
 
@@ -327,7 +327,7 @@ class BannerTest extends UnitTestCase
         $page = new \DERHANSEN\SfBanners\Domain\Model\Page();
         $pageObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->setMethods(['detach'])->getMock();
         $pageObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($page));
-        $this->inject($this->fixture, 'excludepages', $pageObjectStorageMock);
+        $this->fixture->setExcludepages($pageObjectStorageMock);
         $this->fixture->removeExcludepages($page);
     }
 
@@ -363,7 +363,7 @@ class BannerTest extends UnitTestCase
         $file = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
         $assetsObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->setMethods(['attach'])->getMock();
         $assetsObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($file));
-        $this->inject($this->fixture, 'assets', $assetsObjectStorageMock);
+        $this->fixture->setAssets($assetsObjectStorageMock);
         $this->fixture->addAsset($file);
     }
 
@@ -375,7 +375,7 @@ class BannerTest extends UnitTestCase
         $file = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
         $assetsObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->setMethods(['detach'])->getMock();
         $assetsObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($file));
-        $this->inject($this->fixture, 'assets', $assetsObjectStorageMock);
+        $this->fixture->setAssets($assetsObjectStorageMock);
         $this->fixture->removeAsset($file);
     }
 }

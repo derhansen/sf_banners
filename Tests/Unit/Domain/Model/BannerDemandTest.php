@@ -9,7 +9,7 @@ namespace DERHANSEN\SfBanners\Test\Unit\Domain\Model;
  */
 
 use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
-use Nimut\TestingFramework\TestCase\UnitTestCase;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
  * Test case for class \DERHANSEN\SfBanners\Domain\Model\BannerDemand.
@@ -26,7 +26,7 @@ class BannerDemandTest extends UnitTestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->fixture = new BannerDemand();
     }
@@ -36,7 +36,7 @@ class BannerDemandTest extends UnitTestCase
      *
      * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         unset($this->fixture);
     }
