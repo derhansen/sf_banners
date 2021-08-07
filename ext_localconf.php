@@ -3,14 +3,14 @@ defined('TYPO3_MODE') or die();
 
 call_user_func(function () {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        'DERHANSEN.sf_banners',
+        'sf_banners',
         'Pi1',
         [
-            'Banner' => 'show,getBanners,click',
+            \DERHANSEN\SfBanners\Controller\BannerController::class => 'show,getBanners,click',
         ],
         /* non-cacheable actions */
         [
-            'Banner' => 'getBanners,click',
+            \DERHANSEN\SfBanners\Controller\BannerController::class => 'getBanners,click',
         ]
     );
 

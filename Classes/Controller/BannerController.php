@@ -9,6 +9,7 @@ namespace DERHANSEN\SfBanners\Controller;
  */
 
 use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
+use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Http\ImmediateResponseException;
@@ -106,7 +107,7 @@ class BannerController extends ActionController
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
      */
-    public function clickAction(\DERHANSEN\SfBanners\Domain\Model\Banner $banner = null)
+    public function clickAction(\DERHANSEN\SfBanners\Domain\Model\Banner $banner = null): ResponseInterface
     {
         if (is_null($banner)) {
             $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction(
@@ -117,15 +118,17 @@ class BannerController extends ActionController
         }
         $banner->increaseClicks();
         $this->bannerRepository->update($banner);
-        $this->redirectToURI($banner->getLinkUrl());
+
+        return $this->responseFactory->createResponse()
+            ->withHeader('location', $banner->getLinkUrl());
     }
 
     /**
      * Show action
      *
-     * @return void
+     * @return ResponseInterface
      */
-    public function showAction()
+    public function showAction(): ResponseInterface
     {
         $languageAspect = GeneralUtility::makeInstance(Context::class)->getAspect('language');
         $maxResults = $this->settings['maxResults'] !== '' ? (int)$this->settings['maxResults'] : 0;
@@ -161,7 +164,6 @@ class BannerController extends ActionController
         $url = $this->controllerContext
             ->getUriBuilder()
             ->reset()
-            ->setUseCacheHash(true)
             ->setTargetPageUid($GLOBALS['TSFE']->id)
             ->setArguments($arguments)
             ->buildFrontendUri();
@@ -178,6 +180,8 @@ class BannerController extends ActionController
             $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
             $pageRenderer->addCssFile($cssFile, 'stylesheet', 'all', '', true);
         }
+
+        return $this->htmlResponse();
     }
 
     /**
@@ -189,7 +193,7 @@ class BannerController extends ActionController
      * @param int $currentPageUid
      * @param int $maxResults
      * @param string $hmac
-     * @return string
+     * @return ResponseInterface
      */
     public function getBannersAction(
         $categories = '',
@@ -198,7 +202,7 @@ class BannerController extends ActionController
         $currentPageUid = 0,
         $maxResults = 0,
         $hmac = ''
-    ) {
+    ): ResponseInterface {
         $compareString = $currentPageUid . $categories . $startingPoint . $displayMode . $maxResults;
 
         if ($this->hashService->validateHmac($compareString, $hmac)) {
@@ -215,7 +219,7 @@ class BannerController extends ActionController
 
             /* If no banners available, return empty string */
             if (count($banners) === 0) {
-                return '';
+                return $this->htmlResponse('');
             }
 
             /* Update Impressions */
@@ -241,8 +245,11 @@ class BannerController extends ActionController
             $ret = LocalizationUtility::translate('wrong_hmac', 'SfBanners');
         }
 
-        $this->response->setHeader('X-Robots-Tag', 'noindex, nofollow');
+        $response = $this->responseFactory->createResponse()
+            ->withHeader('Content-Type', 'text/html; charset=utf-8')
+            ->withHeader('X-Robots-Tag', 'noindex, nofollow');
+        $response->getBody()->write($ret);
 
-        return $ret;
+        return $response;
     }
 }
