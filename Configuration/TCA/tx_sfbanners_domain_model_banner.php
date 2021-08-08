@@ -289,6 +289,13 @@ return [
                 ],
             ]
         ],
+        'category' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.category',
+            'config' => [
+                'type' => 'category',
+            ]
+        ],
         'impressions_max' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.impressions_max',
