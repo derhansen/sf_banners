@@ -9,7 +9,7 @@ namespace DERHANSEN\SfBanners\Domain\Repository;
  */
 
 use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
-use TYPO3\CMS\Core\Database\QueryGenerator;
+use DERHANSEN\SfBanners\Utility\PageUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
@@ -177,16 +177,13 @@ class BannerRepository extends Repository
      */
     protected function getExcludePageBanners(QueryResultInterface $result, BannerDemand $demand)
     {
-        /** @var \TYPO3\CMS\Core\Database\QueryGenerator $queryGenerator */
-        $queryGenerator = $this->objectManager->get(QueryGenerator::class);
-
         $banners = [];
         /** @var \DERHANSEN\SfBanners\Domain\Model\Banner $banner */
         foreach ($result as $banner) {
             $excludePages = [];
             foreach ($banner->getExcludepages() as $excludePage) {
                 if ($banner->getRecursive()) {
-                    $pidList = $queryGenerator->getTreeList($excludePage->getUid(), 255, 0, 1);
+                    $pidList = PageUtility::extendPidListByChildren((string)$excludePage->getUid(), 255);
                     $excludePages = array_merge($excludePages, explode(',', $pidList));
                 } else {
                     $excludePages[] = $excludePage->getUid();
