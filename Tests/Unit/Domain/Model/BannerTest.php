@@ -132,15 +132,13 @@ class BannerTest extends UnitTestCase
      */
     public function getLinkRespectsFalMediaSetting()
     {
-        $mockFile = $this->getMockBuilder(File::class)
-            ->setMethods(['getForLocalProcessing', 'getLink'])
+        $mockFile = $this->getMockBuilder(\TYPO3\CMS\Core\Resource\FileReference::class)
             ->disableOriginalConstructor()
             ->getMock();
         $mockFile->expects(self::any())->method('getForLocalProcessing')->willReturn('/path/to/somefile.png');
         $mockFile->expects(self::any())->method('getLink')->willReturn('https://www.typo3.org');
 
         $mockFileRef = $this->getMockBuilder(FileReference::class)
-            ->setMethods(['getOriginalResource'])
             ->disableOriginalConstructor()
             ->getMock();
         $mockFileRef->expects(self::any())->method('getOriginalResource')->willReturn($mockFile);
@@ -251,7 +249,7 @@ class BannerTest extends UnitTestCase
     public function addCategoryToObjectStorageHoldingCategory()
     {
         $category = new Category();
-        $categoryObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->setMethods(['attach'])->getMock();
+        $categoryObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->getMock();
         $categoryObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($category));
         $this->fixture->setCategory($categoryObjectStorageMock);
         $this->fixture->addCategory($category);
@@ -263,7 +261,7 @@ class BannerTest extends UnitTestCase
     public function removeCategoryFromObjectStorageHoldingCategory()
     {
         $category = new Category();
-        $categoryObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->setMethods(['detach'])->getMock();
+        $categoryObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->getMock();
         $categoryObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($category));
         $this->fixture->setCategory($categoryObjectStorageMock);
         $this->fixture->removeCategory($category);
@@ -299,7 +297,7 @@ class BannerTest extends UnitTestCase
     public function addExludePagesToObjectStorageHoldingExcludePages()
     {
         $page = new Page();
-        $pageObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->setMethods(['attach'])->getMock();
+        $pageObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->getMock();
         $pageObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($page));
         $this->fixture->setExcludepages($pageObjectStorageMock);
         $this->fixture->addExcludepages($page);
@@ -311,7 +309,7 @@ class BannerTest extends UnitTestCase
     public function removeExludePagesFromObjectStorageHoldingExcludePages()
     {
         $page = new Page();
-        $pageObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->setMethods(['detach'])->getMock();
+        $pageObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->getMock();
         $pageObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($page));
         $this->fixture->setExcludepages($pageObjectStorageMock);
         $this->fixture->removeExcludepages($page);
@@ -347,7 +345,7 @@ class BannerTest extends UnitTestCase
     public function addAssetToObjectStorageHoldingAsses()
     {
         $file = new FileReference();
-        $assetsObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->setMethods(['attach'])->getMock();
+        $assetsObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->getMock();
         $assetsObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($file));
         $this->fixture->setAssets($assetsObjectStorageMock);
         $this->fixture->addAsset($file);
@@ -359,7 +357,7 @@ class BannerTest extends UnitTestCase
     public function removeAssetFromObjectStorageHoldingAsset()
     {
         $file = new FileReference();
-        $assetsObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->setMethods(['detach'])->getMock();
+        $assetsObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->getMock();
         $assetsObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($file));
         $this->fixture->setAssets($assetsObjectStorageMock);
         $this->fixture->removeAsset($file);

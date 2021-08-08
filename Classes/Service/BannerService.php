@@ -1,5 +1,6 @@
 <?php
-namespace DERHANSEN\SfBanners\Service;
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Extension "sf_banners" for TYPO3 CMS.
@@ -8,22 +9,23 @@ namespace DERHANSEN\SfBanners\Service;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+namespace DERHANSEN\SfBanners\Service;
+
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 /**
  * Banner Service
- *
- * @author Torben Hansen <derhansen@gmail.com>
  */
 class BannerService
 {
     /**
      * Returns a string with additional CSS for the given banners
      *
-     * @param array $banners Banners
+     * @param QueryResultInterface $banners Banners
      * @return string
      */
-    public function getAdditionalCss($banners)
+    public function getAdditionalCss(QueryResultInterface $banners): string
     {
         $ret = '';
         foreach ($banners as $banner) {
@@ -43,10 +45,10 @@ class BannerService
     /**
      * Returns the filename of the additional CSS for the banners
      *
-     * @param array $banners Banners
+     * @param QueryResultInterface $banners Banners
      * @return string
      */
-    public function getAdditionalCssFile($banners)
+    public function getAdditionalCssFile(QueryResultInterface $banners): string
     {
         $filename = '';
         $css = $this->getAdditionalCss($banners);

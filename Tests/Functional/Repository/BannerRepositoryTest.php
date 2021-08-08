@@ -1,17 +1,12 @@
 <?php
+
 namespace DERHANSEN\SfBanners\Tests\Functional\Repository;
 
 /*
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
+ * This file is part of the Extension "sf_banners" for TYPO3 CMS.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
  */
 
 use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
@@ -31,8 +26,6 @@ class BannerRepositoryTest extends FunctionalTestCase
 
     /**
      * Setup
-     *
-     * @return void
      */
     public function setUp(): void
     {
@@ -48,35 +41,31 @@ class BannerRepositoryTest extends FunctionalTestCase
      * Test if records are returned correctly with given startingpoints
      *
      * @test
-     * @return void
      */
     public function findRecordsByStartingPointTest()
     {
-        /** @var BannerDemand $demand */
         $demand = new BannerDemand();
 
         /* Simple starting point */
         $demand->setStartingPoint(55);
-        $this->assertCount(2, $this->bannerRepository->findDemanded($demand));
+        self::assertCount(2, $this->bannerRepository->findDemanded($demand));
 
         /* Multiple starting points */
         $demand->setStartingPoint('56,57,58');
-        $this->assertCount(3, $this->bannerRepository->findDemanded($demand));
+        self::assertCount(3, $this->bannerRepository->findDemanded($demand));
 
         /* Multiple starting points, including invalid value */
         $demand->setStartingPoint('57,58,?,59');
-        $this->assertCount(3, $this->bannerRepository->findDemanded($demand));
+        self::assertCount(3, $this->bannerRepository->findDemanded($demand));
     }
 
     /**
      * Test if records are found by their catagory
      *
      * @test
-     * @return void
      */
     public function findRecordsByCategoryTest()
     {
-        /** @var BannerDemand $demand */
         $demand = new BannerDemand();
 
         /* Set starting point */
@@ -84,30 +73,28 @@ class BannerRepositoryTest extends FunctionalTestCase
 
         /* Simple category test */
         $demand->setCategories('10');
-        $this->assertCount(4, $this->bannerRepository->findDemanded($demand));
+        self::assertCount(4, $this->bannerRepository->findDemanded($demand));
 
         /* Multiple category test */
         $demand->setCategories('10,11');
-        $this->assertCount(4, $this->bannerRepository->findDemanded($demand));
+        self::assertCount(4, $this->bannerRepository->findDemanded($demand));
 
         /* Multiple category test, including invalid value */
         $demand->setCategories('11,?,12');
-        $this->assertCount(3, $this->bannerRepository->findDemanded($demand));
+        self::assertCount(3, $this->bannerRepository->findDemanded($demand));
 
         /* Non existing category test */
         $demand->setCategories('9999');
-        $this->assertCount(0, $this->bannerRepository->findDemanded($demand));
+        self::assertCount(0, $this->bannerRepository->findDemanded($demand));
     }
 
     /**
      * Test is records are found by their displaymode
      *
      * @test
-     * @return void
      */
     public function findRecordsWithDisplayModeTest()
     {
-        /** @var BannerDemand $demand */
         $demand = new BannerDemand();
         $pid = 80;
         $uids = [
@@ -123,7 +110,7 @@ class BannerRepositoryTest extends FunctionalTestCase
 
         /* All banners with default sorting respected */
         $demand->setDisplayMode('all');
-        $this->assertCount(5, $this->bannerRepository->findDemanded($demand));
+        self::assertCount(5, $this->bannerRepository->findDemanded($demand));
         $returnedBanners = $this->bannerRepository->findDemanded($demand);
         $returnedUids = [];
         $count = 1;
@@ -131,18 +118,18 @@ class BannerRepositoryTest extends FunctionalTestCase
             $returnedUids[$count] = $returnedBanner->getUid();
             $count++;
         }
-        $this->assertSame($uids, $returnedUids);
+        self::assertSame($uids, $returnedUids);
 
         /* Set starting point */
         $demand->setStartingPoint($pid);
 
         /* Random one banner */
         $demand->setDisplayMode('random');
-        $this->assertCount(1, $this->bannerRepository->findDemanded($demand));
+        self::assertCount(1, $this->bannerRepository->findDemanded($demand));
 
         /* All banners with random diplay mode */
         $demand->setDisplayMode('allRandom');
-        $this->assertCount(5, $this->bannerRepository->findDemanded($demand));
+        self::assertCount(5, $this->bannerRepository->findDemanded($demand));
 
         /* Find 100 times with demand, if returned UIDs are always the same, then they are not returned randomly */
         $matchCount = 0;
@@ -158,18 +145,16 @@ class BannerRepositoryTest extends FunctionalTestCase
                 $matchCount += 1;
             }
         }
-        $this->assertLessThan(100, $matchCount);
+        self::assertLessThan(100, $matchCount);
     }
 
     /**
      * Test if records are not returned on pages where they not should be shown
      *
      * @test
-     * @return void
      */
     public function findRecordsForSpecialExcludePageUidTest()
     {
-        /** @var BannerDemand $demand */
         $demand = new BannerDemand();
         $pid = 95;
 
@@ -183,30 +168,28 @@ class BannerRepositoryTest extends FunctionalTestCase
 
         /* All banners, which not should be shown on the page with $pid1 */
         $demand->setCurrentPageUid($pid1);
-        $this->assertCount(1, $this->bannerRepository->findDemanded($demand));
+        self::assertCount(1, $this->bannerRepository->findDemanded($demand));
 
         /* All banners, which not should be shown on page with $pid2 */
         $demand->setCurrentPageUid($pid2);
-        $this->assertCount(1, $this->bannerRepository->findDemanded($demand));
+        self::assertCount(1, $this->bannerRepository->findDemanded($demand));
 
         /* All banners, which not should be shown on page with $pid3 */
         $demand->setCurrentPageUid($pid3);
-        $this->assertCount(2, $this->bannerRepository->findDemanded($demand));
+        self::assertCount(2, $this->bannerRepository->findDemanded($demand));
 
         /* All banners, which not should be shown on page with a non existing pid */
         $demand->setCurrentPageUid(999);
-        $this->assertCount(3, $this->bannerRepository->findDemanded($demand));
+        self::assertCount(3, $this->bannerRepository->findDemanded($demand));
     }
 
     /**
      * Test if records are not returned on pages recursively where they not should be shown
      *
      * @test
-     * @return void
      */
     public function findRecordsForSpecialExcludeRecursivePageUidTest()
     {
-        /** @var BannerDemand $demand */
         $demand = new BannerDemand();
         $pid = 96;
 
@@ -221,30 +204,28 @@ class BannerRepositoryTest extends FunctionalTestCase
 
         /* All banners, which not should be shown on the page with $pid1 */
         $demand->setCurrentPageUid($pid1);
-        $this->assertCount(2, $this->bannerRepository->findDemanded($demand));
+        self::assertCount(2, $this->bannerRepository->findDemanded($demand));
 
         /* All banners, which not should be shown on page with $pid2 */
         $demand->setCurrentPageUid($pid2);
-        $this->assertCount(1, $this->bannerRepository->findDemanded($demand));
+        self::assertCount(1, $this->bannerRepository->findDemanded($demand));
 
         /* All banners, which not should be shown on page with $pid3 */
         $demand->setCurrentPageUid($pid3);
-        $this->assertCount(0, $this->bannerRepository->findDemanded($demand));
+        self::assertCount(0, $this->bannerRepository->findDemanded($demand));
 
         /* All banners, which not should be shown on page with $pid4 */
         $demand->setCurrentPageUid($pid4);
-        $this->assertCount(2, $this->bannerRepository->findDemanded($demand));
+        self::assertCount(2, $this->bannerRepository->findDemanded($demand));
     }
 
     /**
      * Test if records are not returned, if max impressions reached
      *
      * @test
-     * @return void
      */
     public function findRecordsWithMaxImpressionsTest()
     {
-        /** @var BannerDemand $demand */
         $demand = new BannerDemand();
         $pid = 100;
 
@@ -252,18 +233,16 @@ class BannerRepositoryTest extends FunctionalTestCase
         $demand->setStartingPoint($pid);
 
         /* Verify, that 2 records are returned */
-        $this->assertCount(2, $this->bannerRepository->findDemanded($demand));
+        self::assertCount(2, $this->bannerRepository->findDemanded($demand));
     }
 
     /**
      * Test if records are not returned, if max clicks reached
      *
      * @test
-     * @return void
      */
     public function findRecordsWithMaxClicksTest()
     {
-        /** @var BannerDemand $demand */
         $demand = new BannerDemand();
         $pid = 101;
 
@@ -271,18 +250,16 @@ class BannerRepositoryTest extends FunctionalTestCase
         $demand->setStartingPoint($pid);
 
         /* Verify, that 2 records are returned */
-        $this->assertCount(2, $this->bannerRepository->findDemanded($demand));
+        self::assertCount(2, $this->bannerRepository->findDemanded($demand));
     }
 
     /**
      * Test if records are not returned, if max clicks and/or max impressions reached
      *
      * @test
-     * @return void
      */
     public function findRecordsWithMaxImpressionsAndMaxClicksTest()
     {
-        /** @var BannerDemand $demand */
         $demand = new BannerDemand();
         $pid = 102;
 
@@ -290,18 +267,16 @@ class BannerRepositoryTest extends FunctionalTestCase
         $demand->setStartingPoint($pid);
 
         /* Verify, that 1 record are returned */
-        $this->assertCount(1, $this->bannerRepository->findDemanded($demand));
+        self::assertCount(1, $this->bannerRepository->findDemanded($demand));
     }
 
     /**
      * Test if expected amount of records are returned, if a mex result is set
      *
      * @test
-     * @return void
      */
     public function findRecordsWithMaxResultsTest()
     {
-        /** @var BannerDemand $demand */
         $demand = new BannerDemand();
         $pid = 103;
 
@@ -309,9 +284,9 @@ class BannerRepositoryTest extends FunctionalTestCase
         $demand->setStartingPoint($pid);
 
         /* Verify, that 5 record are returned */
-        $this->assertCount(5, $this->bannerRepository->findDemanded($demand));
+        self::assertCount(5, $this->bannerRepository->findDemanded($demand));
 
         $demand->setMaxResults(2);
-        $this->assertCount(2, $this->bannerRepository->findDemanded($demand));
+        self::assertCount(2, $this->bannerRepository->findDemanded($demand));
     }
 }

@@ -12,6 +12,11 @@ namespace DERHANSEN\SfBanners\Test\Unit\Service;
 use DERHANSEN\SfBanners\Domain\Model\Banner;
 use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
 use DERHANSEN\SfBanners\Service\BannerService;
+use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
+use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
+use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
@@ -19,7 +24,6 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
  */
 class BannerServiceTest extends UnitTestCase
 {
-
     /**
      * @var BannerService
      */
@@ -31,6 +35,11 @@ class BannerServiceTest extends UnitTestCase
     protected $demand;
 
     /**
+     * @var QueryResult
+     */
+    protected $queryResult;
+
+    /**
      * Set up
      */
     public function setUp(): void
@@ -39,6 +48,14 @@ class BannerServiceTest extends UnitTestCase
         $this->bannerService = new BannerService();
         $this->demand = new BannerDemand();
         $this->demand->setDisplayMode('all');
+
+        $mockPersistenceManager = $this->createMock(PersistenceManagerInterface::class);
+        $mockPersistenceManager->expects(self::any())->method('getObjectDataByQuery')->willReturn(['one', 'two']);
+        $mockPersistenceManager->expects(self::any())->method('getObjectCountByQuery')->willReturn(2);
+        $mockQuery = $this->createMock(QueryInterface::class);
+        $this->queryResult = $this->getAccessibleMock(QueryResult::class, ['dummy'], [], '', false);
+        $this->queryResult->_set('persistenceManager', $mockPersistenceManager);
+        $this->queryResult->_set('query', $mockQuery);
     }
 
     /**
@@ -56,7 +73,8 @@ class BannerServiceTest extends UnitTestCase
      */
     public function getAdditionalCssReturnsEmptyStringIfBannerHasNoMarginsTest()
     {
-        $result = $this->bannerService->getAdditionalCss([]);
+        $mockQueryResult = $this->createMock(QueryResultInterface::class);
+        $result = $this->bannerService->getAdditionalCss($mockQueryResult);
         self::assertEquals('', $result);
     }
 
@@ -75,12 +93,12 @@ class BannerServiceTest extends UnitTestCase
         $banner->expects(self::any())->method('getMarginLeft')->willReturn(0);
         $banner->expects(self::once())->method('getUid')->willReturn($bannerUid);
 
-        /** @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage $banners */
-        $banners = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $banners->attach($banner);
+        $mockDataMapper = $this->createMock(DataMapper::class);
+        $mockDataMapper->expects(self::any())->method('map')->willReturn([$banner]);
+        $this->queryResult->_set('dataMapper', $mockDataMapper);
 
         $expected = '.banner-' . $bannerUid . ' { margin: 10px 0px 0px 0px; }' . chr(10) . chr(13);
-        $result = $this->bannerService->getAdditionalCss($banners);
+        $result = $this->bannerService->getAdditionalCss($this->queryResult);
         self::assertEquals($expected, $result);
     }
 
@@ -99,12 +117,12 @@ class BannerServiceTest extends UnitTestCase
         $banner->expects(self::any())->method('getMarginLeft')->willReturn(0);
         $banner->expects(self::once())->method('getUid')->willReturn($bannerUid);
 
-        /** @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage $banners */
-        $banners = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $banners->attach($banner);
+        $mockDataMapper = $this->createMock(DataMapper::class);
+        $mockDataMapper->expects(self::any())->method('map')->willReturn([$banner]);
+        $this->queryResult->_set('dataMapper', $mockDataMapper);
 
         $expected = '.banner-' . $bannerUid . ' { margin: 0px 10px 0px 0px; }' . chr(10) . chr(13);
-        $result = $this->bannerService->getAdditionalCss($banners);
+        $result = $this->bannerService->getAdditionalCss($this->queryResult);
         self::assertEquals($expected, $result);
     }
 
@@ -123,12 +141,12 @@ class BannerServiceTest extends UnitTestCase
         $banner->expects(self::any())->method('getMarginLeft')->willReturn(0);
         $banner->expects(self::once())->method('getUid')->willReturn($bannerUid);
 
-        /** @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage $banners */
-        $banners = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $banners->attach($banner);
+        $mockDataMapper = $this->createMock(DataMapper::class);
+        $mockDataMapper->expects(self::any())->method('map')->willReturn([$banner]);
+        $this->queryResult->_set('dataMapper', $mockDataMapper);
 
         $expected = '.banner-' . $bannerUid . ' { margin: 0px 0px 10px 0px; }' . chr(10) . chr(13);
-        $result = $this->bannerService->getAdditionalCss($banners);
+        $result = $this->bannerService->getAdditionalCss($this->queryResult);
         self::assertEquals($expected, $result);
     }
 
@@ -147,12 +165,12 @@ class BannerServiceTest extends UnitTestCase
         $banner->expects(self::any())->method('getMarginLeft')->willReturn(10);
         $banner->expects(self::once())->method('getUid')->willReturn($bannerUid);
 
-        /** @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage $banners */
-        $banners = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $banners->attach($banner);
+        $mockDataMapper = $this->createMock(DataMapper::class);
+        $mockDataMapper->expects(self::any())->method('map')->willReturn([$banner]);
+        $this->queryResult->_set('dataMapper', $mockDataMapper);
 
         $expected = '.banner-' . $bannerUid . ' { margin: 0px 0px 0px 10px; }' . chr(10) . chr(13);
-        $result = $this->bannerService->getAdditionalCss($banners);
+        $result = $this->bannerService->getAdditionalCss($this->queryResult);
         self::assertEquals($expected, $result);
     }
 
@@ -178,14 +196,13 @@ class BannerServiceTest extends UnitTestCase
         $banner2->expects(self::any())->method('getMarginLeft')->willReturn(0);
         $banner2->expects(self::once())->method('getUid')->willReturn($bannerUid2);
 
-        /** @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage $banners */
-        $banners = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $banners->attach($banner1);
-        $banners->attach($banner2);
+        $mockDataMapper = $this->createMock(DataMapper::class);
+        $mockDataMapper->expects(self::any())->method('map')->willReturn([$banner1, $banner2]);
+        $this->queryResult->_set('dataMapper', $mockDataMapper);
 
         $expected = '.banner-' . $bannerUid1 . ' { margin: 0px 10px 0px 10px; }' . chr(10) . chr(13);
         $expected .= '.banner-' . $bannerUid2 . ' { margin: 10px 0px 10px 0px; }' . chr(10) . chr(13);
-        $result = $this->bannerService->getAdditionalCss($banners);
+        $result = $this->bannerService->getAdditionalCss($this->queryResult);
         self::assertEquals($expected, $result);
     }
 
@@ -196,8 +213,11 @@ class BannerServiceTest extends UnitTestCase
      */
     public function getAdditionalCssFileReturnsEmptyStringIfNoBannersFoundTest()
     {
-        $banners = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $result = $this->bannerService->getAdditionalCssFile($banners);
+        $mockDataMapper = $this->createMock(DataMapper::class);
+        $mockDataMapper->expects(self::any())->method('map')->willReturn([]);
+        $this->queryResult->_set('dataMapper', $mockDataMapper);
+
+        $result = $this->bannerService->getAdditionalCssFile($this->queryResult);
         self::assertEmpty($result);
     }
 
@@ -216,12 +236,12 @@ class BannerServiceTest extends UnitTestCase
         $banner->expects(self::any())->method('getMarginLeft')->willReturn(10);
         $banner->expects(self::once())->method('getUid')->willReturn($bannerUid);
 
-        /** @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage $banners */
-        $banners = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $banners->attach($banner);
+        $mockDataMapper = $this->createMock(DataMapper::class);
+        $mockDataMapper->expects(self::any())->method('map')->willReturn([$banner]);
+        $this->queryResult->_set('dataMapper', $mockDataMapper);
 
         $expected = '/\.css/';
-        $result = $this->bannerService->getAdditionalCssFile($banners);
+        $result = $this->bannerService->getAdditionalCssFile($this->queryResult);
         self::assertMatchesRegularExpression($expected, $result);
     }
 }
