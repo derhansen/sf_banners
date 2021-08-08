@@ -1,5 +1,6 @@
 <?php
-namespace DERHANSEN\SfBanners\Domain\Model;
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Extension "sf_banners" for TYPO3 CMS.
@@ -8,6 +9,8 @@ namespace DERHANSEN\SfBanners\Domain\Model;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+namespace DERHANSEN\SfBanners\Domain\Model;
+
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
@@ -15,8 +18,6 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
  * Banner domain model
- *
- * @author Torben Hansen <derhansen@gmail.com>
  */
 class Banner extends AbstractEntity
 {
@@ -146,8 +147,6 @@ class Banner extends AbstractEntity
      * Do not modify this method!
      * It will be rewritten on each save in the extension builder
      * You may modify the constructor of this class instead
-     *
-     * @return void
      */
     protected function initStorageObjects()
     {
@@ -170,7 +169,6 @@ class Banner extends AbstractEntity
      * Sets the title
      *
      * @param string $title The title
-     * @return void
      */
     public function setTitle($title)
     {
@@ -191,7 +189,6 @@ class Banner extends AbstractEntity
      * Sets the description
      *
      * @param string $description The description
-     * @return void
      */
     public function setDescription($description)
     {
@@ -212,7 +209,6 @@ class Banner extends AbstractEntity
      * Sets the type
      *
      * @param int $type The type
-     * @return void
      */
     public function setType($type)
     {
@@ -223,7 +219,6 @@ class Banner extends AbstractEntity
      * Adds a category
      *
      * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
-     * @return void
      */
     public function addCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category)
     {
@@ -234,7 +229,6 @@ class Banner extends AbstractEntity
      * Removes a category
      *
      * @param \TYPO3\CMS\Extbase\Domain\Model\Category $categoryToRemove
-     * @return void
      */
     public function removeCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $categoryToRemove)
     {
@@ -254,7 +248,6 @@ class Banner extends AbstractEntity
      * Sets the category
      *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $category One or multiple categories
-     * @return void
      */
     public function setCategory($category)
     {
@@ -265,7 +258,6 @@ class Banner extends AbstractEntity
      * Setter for clicks
      *
      * @param int $clicks Clicks
-     * @return void
      */
     public function setClicks($clicks)
     {
@@ -286,7 +278,6 @@ class Banner extends AbstractEntity
      * Setter for clicksmax
      *
      * @param int $clicksMax MaxClicks
-     * @return void
      */
     public function setClicksMax($clicksMax)
     {
@@ -307,7 +298,6 @@ class Banner extends AbstractEntity
      * Adds a page
      *
      * @param \DERHANSEN\SfBanners\Domain\Model\Page $page
-     * @return void
      */
     public function addExcludepages(\DERHANSEN\SfBanners\Domain\Model\Page $page)
     {
@@ -318,7 +308,6 @@ class Banner extends AbstractEntity
      * Removes a page
      *
      * @param \DERHANSEN\SfBanners\Domain\Model\page $pageToRemove
-     * @return void
      */
     public function removeExcludepages(\DERHANSEN\SfBanners\Domain\Model\page $pageToRemove)
     {
@@ -329,7 +318,6 @@ class Banner extends AbstractEntity
      * Setter for excludepages
      *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $excludepages Excludepages
-     * @return void
      */
     public function setExcludepages($excludepages)
     {
@@ -350,7 +338,6 @@ class Banner extends AbstractEntity
      * Setter for HTML
      *
      * @param string $html HTML
-     * @return void
      */
     public function setHtml($html)
     {
@@ -371,7 +358,6 @@ class Banner extends AbstractEntity
      * Setter for impressions
      *
      * @param int $impressions Impressions
-     * @return void
      */
     public function setImpressions($impressions)
     {
@@ -392,7 +378,6 @@ class Banner extends AbstractEntity
      * Setter for max impressions
      *
      * @param int $impressionsMax Max impressions
-     * @return void
      */
     public function setImpressionsMax($impressionsMax)
     {
@@ -434,7 +419,6 @@ class Banner extends AbstractEntity
      * Setter for margin bottom
      *
      * @param int $marginBottom Margin bottom
-     * @return void
      */
     public function setMarginBottom($marginBottom)
     {
@@ -455,7 +439,6 @@ class Banner extends AbstractEntity
      * Setter for margin left
      *
      * @param int $marginLeft Margin left
-     * @return void
      */
     public function setMarginLeft($marginLeft)
     {
@@ -476,7 +459,6 @@ class Banner extends AbstractEntity
      * Setter for margin right
      *
      * @param int $marginRight Margin right
-     * @return void
      */
     public function setMarginRight($marginRight)
     {
@@ -497,7 +479,6 @@ class Banner extends AbstractEntity
      * Setter for margin top
      *
      * @param int $marginTop Margin top
-     * @return void
      */
     public function setMarginTop($marginTop)
     {
@@ -518,7 +499,6 @@ class Banner extends AbstractEntity
      * Sets the recursive flag
      *
      * @param bool $recursive
-     * @return void
      */
     public function setRecursive($recursive)
     {
@@ -537,8 +517,6 @@ class Banner extends AbstractEntity
 
     /**
      * Updates the Impressions by 1
-     *
-     * @return void
      */
     public function increaseImpressions()
     {
@@ -547,8 +525,6 @@ class Banner extends AbstractEntity
 
     /**
      * Updates the Impressions by 1
-     *
-     * @return void
      */
     public function increaseClicks()
     {
@@ -593,7 +569,6 @@ class Banner extends AbstractEntity
      * Set Fal media relation
      *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $assets
-     * @return void
      */
     public function setAssets(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $assets)
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace DERHANSEN\SfBanners\Test\Unit\Domain\Model;
+declare(strict_types=1);
 
 /*
  * This file is part of the Extension "sf_banners" for TYPO3 CMS.
@@ -9,9 +9,10 @@ namespace DERHANSEN\SfBanners\Test\Unit\Domain\Model;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+namespace DERHANSEN\SfBanners\Test\Unit\Domain\Model;
+
 use DERHANSEN\SfBanners\Domain\Model\Banner;
 use DERHANSEN\SfBanners\Domain\Model\Page;
-use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Extbase\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;

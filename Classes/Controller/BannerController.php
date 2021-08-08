@@ -1,5 +1,6 @@
 <?php
-namespace DERHANSEN\SfBanners\Controller;
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Extension "sf_banners" for TYPO3 CMS.
@@ -7,6 +8,8 @@ namespace DERHANSEN\SfBanners\Controller;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+
+namespace DERHANSEN\SfBanners\Controller;
 
 use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
 use Psr\Http\Message\ResponseInterface;
@@ -22,8 +25,6 @@ use TYPO3\CMS\Frontend\Controller\ErrorController;
 
 /**
  * Banner Controller
- *
- * @author Torben Hansen <derhansen@gmail.com>
  */
 class BannerController extends ActionController
 {
@@ -65,8 +66,6 @@ class BannerController extends ActionController
 
     /**
      * Initialize cache instance to be ready to use
-     *
-     * @return void
      */
     protected function initializeCache()
     {

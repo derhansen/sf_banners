@@ -1,6 +1,6 @@
 <?php
 
-namespace DERHANSEN\SfBanners\Test\Unit\Domain\Model;
+declare(strict_types=1);
 
 /*
  * This file is part of the Extension "sf_banners" for TYPO3 CMS.
@@ -8,6 +8,8 @@ namespace DERHANSEN\SfBanners\Test\Unit\Domain\Model;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+
+namespace DERHANSEN\SfBanners\Test\Unit\Domain\Model;
 
 use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
