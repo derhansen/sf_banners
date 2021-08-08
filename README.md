@@ -7,7 +7,7 @@ TYPO3 extension sf_banner: Banner-Management
 ## What is it?
 
 **Banner-Management** is a banner management extension for TYPO3. It is based of Extbase and Fluid and supports TYPO3
-Version 9.5 LTS and TYPO3 10.4 LTS. Banners are loaded asynchronously so the page load time is affected as less as possible.
+11.5 LTS. Banners are loaded asynchronously so the page load time is affected as less as possible.
 
 ## What does it do?
 
@@ -32,6 +32,17 @@ of the extension.
 * jQuery (http://jquery.com/)
 
 The automatic inclusion of jQuery can be disabled in TypoScript
+
+## Versions
+
+| Version             | TYPO3      | PHP       | Support/Development                     |
+| ------------------- | ---------- | ----------|---------------------------------------- |
+| 6.x                 | 11.5       | >= 7.4    | Features, Bugfixes, Security Updates    |
+| 5.x                 | 9.5 - 10.4 | 7.2 - 7.4 | Features, Bugfixes, Security Updates    |
+| 4.x                 | 8.7 - 9.5  | 7.0 - 7.4 | Not supported any more                  |
+| 3.x                 | 7.5 - 9.5  | 5.6 - 7.2 | Not supported any more                  |
+| 2.x                 | 7.5 - 9.5  | 5.6 - 7.2 | Not supported any more                  |
+| 1.x                 | 6.2 - 9.5  | 5.4 - 5.6 | Not supported any more                  |
 
 ## Support and updates
 
