@@ -12,16 +12,28 @@ var BannerPlacement = function (position, url) {
 };
 
 /**
- * When page is loaded, cycle through global banners array and set BannerPlacement for each item
+ * When window is scrolled or resized and on page load: 
+ * check if there are banner places in view and load the banners
  */
 jQuery(document).ready(function() {
-    if (typeof banners == "undefined")
-        return;
-
-    for (var i = 0; i < banners.length; i++) {
-        new BannerPlacement(
-            banners[i][0],
-            banners[i][1]
-        );
+    window.onscroll = function() {
+        checkBanners();
     }
+    window.onresize = function() {
+        checkBanners();
+    }
+    window.setTimeout(checkBanners, 200);
+    
+    function checkBanners() {
+        $('.tx-sf-banners .banners-container:not(.loaded)').each(function() {
+            var pageTop = $(window).scrollTop();
+            var pageBottom = pageTop + $(window).height();
+            var elementTop = $(this).offset().top;
+            var elementBottom = elementTop + $(this).height();
+
+            if ((elementTop <= pageBottom) && (elementBottom >= pageTop)) {
+                new BannerPlacement($(this).attr('id'), $(this).data('url'));
+                $(this).addClass('loaded');
+            }
+        });
 });
