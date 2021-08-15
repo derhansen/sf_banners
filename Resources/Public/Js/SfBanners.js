@@ -25,7 +25,7 @@ jQuery(document).ready(function() {
     window.setTimeout(checkBanners, 200);
     
     function checkBanners() {
-        $('.tx-sf-banners .banners-container:not(.loaded)').each(function() {
+        $('.banners-container:not(.loaded)').each(function() {
             var pageTop = $(window).scrollTop();
             var pageBottom = pageTop + $(window).height();
             var elementTop = $(this).offset().top;
