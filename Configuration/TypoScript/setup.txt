@@ -68,10 +68,11 @@ ajaxPage {
     typeNum = {$plugin.tx_sfbanners.settings.ajaxPageTypeNum}
     config {
         disableAllHeaderCode = 1
-        additionalHeaders.10.header = Content-type:text/html
+        additionalHeaders.10.header = Content-type:application/json
         xhtml_cleaning = 0
         admPanel = 0
         index_enable = 0
+        no_cache = 1
     }
 
     10 = USER
@@ -93,6 +94,7 @@ clickPage {
         xhtml_cleaning = 0
         admPanel = 0
         index_enable = 0
+        no_cache = 1
     }
 
     10 = USER
