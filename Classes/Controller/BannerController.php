@@ -14,7 +14,6 @@ namespace DERHANSEN\SfBanners\Controller;
 use DERHANSEN\SfBanners\Domain\Model\Banner;
 use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
 use DERHANSEN\SfBanners\Domain\Repository\BannerRepository;
-use DERHANSEN\SfBanners\Service\BannerService;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Context\Context;
@@ -32,7 +31,6 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
  */
 class BannerController extends ActionController
 {
-    protected BannerService $bannerService;
     protected BannerRepository $bannerRepository;
 
     /**
@@ -60,11 +58,6 @@ class BannerController extends ActionController
     public function injectBannerRepository(BannerRepository $bannerRepository)
     {
         $this->bannerRepository = $bannerRepository;
-    }
-
-    public function injectBannerService(BannerService $bannerService)
-    {
-        $this->bannerService = $bannerService;
     }
 
     /**
@@ -139,16 +132,6 @@ class BannerController extends ActionController
 
         $this->view->assign('url', $url);
         $this->view->assign('uniqueid', $uniqueid);
-
-        /* Find all banners and add additional CSS */
-        $banners = $this->bannerRepository->findAll();
-        $cssFile = $this->bannerService->getAdditionalCssFile($banners);
-
-        if ($cssFile !== '') {
-            /** @var PageRenderer $pageRenderer */
-            $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
-            $pageRenderer->addCssFile($cssFile, 'stylesheet', 'all', '', true);
-        }
 
         return $this->htmlResponse();
     }

@@ -58,34 +58,6 @@ class Banner extends AbstractEntity
     protected $assets;
 
     /**
-     * Margin top
-     *
-     * @var int
-     */
-    protected $marginTop;
-
-    /**
-     * Margin right
-     *
-     * @var int
-     */
-    protected $marginRight;
-
-    /**
-     * Margin bottom
-     *
-     * @var int
-     */
-    protected $marginBottom;
-
-    /**
-     * Margin top
-     *
-     * @var int
-     */
-    protected $marginLeft;
-
-    /**
      * HTML
      *
      * @var string
@@ -413,86 +385,6 @@ class Banner extends AbstractEntity
         /** @var \TYPO3\CMS\Core\Resource\FileReference $originalFileReference */
         $originalFileReference = $fileReference->getOriginalResource();
         return $originalFileReference->getLink();
-    }
-
-    /**
-     * Setter for margin bottom
-     *
-     * @param int $marginBottom Margin bottom
-     */
-    public function setMarginBottom($marginBottom)
-    {
-        $this->marginBottom = $marginBottom;
-    }
-
-    /**
-     * Getter for margin bottom
-     *
-     * @return int
-     */
-    public function getMarginBottom()
-    {
-        return $this->marginBottom;
-    }
-
-    /**
-     * Setter for margin left
-     *
-     * @param int $marginLeft Margin left
-     */
-    public function setMarginLeft($marginLeft)
-    {
-        $this->marginLeft = $marginLeft;
-    }
-
-    /**
-     * Getter for margin left
-     *
-     * @return int
-     */
-    public function getMarginLeft()
-    {
-        return $this->marginLeft;
-    }
-
-    /**
-     * Setter for margin right
-     *
-     * @param int $marginRight Margin right
-     */
-    public function setMarginRight($marginRight)
-    {
-        $this->marginRight = $marginRight;
-    }
-
-    /**
-     * Getter for margin right
-     *
-     * @return int
-     */
-    public function getMarginRight()
-    {
-        return $this->marginRight;
-    }
-
-    /**
-     * Setter for margin top
-     *
-     * @param int $marginTop Margin top
-     */
-    public function setMarginTop($marginTop)
-    {
-        $this->marginTop = $marginTop;
-    }
-
-    /**
-     * Getter for margin top
-     *
-     * @return int
-     */
-    public function getMarginTop()
-    {
-        return $this->marginTop;
     }
 
     /**

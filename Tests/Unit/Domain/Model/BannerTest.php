@@ -81,54 +81,6 @@ class BannerTest extends UnitTestCase
     }
 
     /**
-     * Test if margin can be set
-     *
-     * @test
-     */
-    public function marginTopCanBeSetTest()
-    {
-        $margin = 100;
-        $this->fixture->setMarginTop($margin);
-        self::assertEquals($margin, $this->fixture->getMarginTop());
-    }
-
-    /**
-     * Test if margin can be set
-     *
-     * @test
-     */
-    public function marginRightCanBeSetTest()
-    {
-        $margin = 100;
-        $this->fixture->setMarginRight($margin);
-        self::assertEquals($margin, $this->fixture->getMarginRight());
-    }
-
-    /**
-     * Test if margin can be set
-     *
-     * @test
-     */
-    public function marginBottomCanBeSetTest()
-    {
-        $margin = 100;
-        $this->fixture->setMarginBottom($margin);
-        self::assertEquals($margin, $this->fixture->getMarginBottom());
-    }
-
-    /**
-     * Test if margin can be set
-     *
-     * @test
-     */
-    public function marginLeftCanBeSetTest()
-    {
-        $margin = 100;
-        $this->fixture->setMarginLeft($margin);
-        self::assertEquals($margin, $this->fixture->getMarginLeft());
-    }
-
-    /**
      * @test
      */
     public function getLinkRespectsFalMediaSetting()

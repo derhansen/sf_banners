@@ -58,23 +58,8 @@
 		<trans-unit id="tx_sfbanners_domain_model_banner.impressions_max">
 			<source>Max. impressions</source>
 		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.labels.margins">
-			<source>Margins</source>
-		</trans-unit>
 		<trans-unit id="tx_sfbanners_domain_model_banner.link">
 			<source>Link</source>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.margin_bottom">
-			<source>Margin bottom</source>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.margin_left">
-			<source>Margin left</source>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.margin_right">
-			<source>Margin right</source>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.margin_top">
-			<source>Margin top</source>
 		</trans-unit>
 		<trans-unit id="tx_sfbanners_domain_model_banner.pages">
 			<source>Pages</source>
