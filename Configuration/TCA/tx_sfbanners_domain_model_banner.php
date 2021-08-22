@@ -28,11 +28,10 @@ return [
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, type, 
-            category, assets, margin_top, margin_right, margin_bottom, margin_left, html, 
+            category, assets, html, 
             impressions_max, clicks_max, impressions, clicks, excludepages, recursive',
     ],
     'palettes' => [
-        'paletteMargins' => ['showitem' => 'margin_top, margin_right, margin_bottom, margin_left'],
         'paletteVisibility' => ['showitem' => 'starttime, endtime'],
         'paletteLanguage' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource'],
     ],
@@ -233,50 +232,6 @@ return [
                 $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
             ),
         ],
-        'margin_top' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.margin_top',
-            'config' => [
-                'type' => 'input',
-                'size' => 5,
-                'max' => 4,
-                'range' => ['lower' => 0, 'upper' => 1000],
-                'eval' => 'int',
-            ]
-        ],
-        'margin_right' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.margin_right',
-            'config' => [
-                'type' => 'input',
-                'size' => 5,
-                'max' => 4,
-                'range' => ['lower' => 0, 'upper' => 1000],
-                'eval' => 'int',
-            ]
-        ],
-        'margin_bottom' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.margin_bottom',
-            'config' => [
-                'type' => 'input',
-                'size' => 5,
-                'max' => 4,
-                'range' => ['lower' => 0, 'upper' => 1000],
-                'eval' => 'int',
-            ]
-        ],
-        'margin_left' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.margin_left',
-            'config' => [
-                'type' => 'input',
-                'size' => 5,
-                'max' => 4,
-                'range' => ['lower' => 0, 'upper' => 1000],
-                'eval' => 'int',
-            ]
-        ],
         'html' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.html',
@@ -287,6 +242,13 @@ return [
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
                 ],
+            ]
+        ],
+        'category' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.category',
+            'config' => [
+                'type' => 'category',
             ]
         ],
         'impressions_max' => [

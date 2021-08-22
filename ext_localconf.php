@@ -1,16 +1,16 @@
 <?php
-defined('TYPO3_MODE') or die();
+defined('TYPO3') or die();
 
 call_user_func(function () {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        'DERHANSEN.sf_banners',
+        'sf_banners',
         'Pi1',
         [
-            'Banner' => 'show,getBanners,click',
+            \DERHANSEN\SfBanners\Controller\BannerController::class => 'show,getBanners,click',
         ],
         /* non-cacheable actions */
         [
-            'Banner' => 'getBanners,click',
+            \DERHANSEN\SfBanners\Controller\BannerController::class => 'getBanners,click',
         ]
     );
 
@@ -31,17 +31,4 @@ call_user_func(function () {
     if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['groups'])) {
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['groups'] = ['pages', 'all'];
     }
-
-    /**
-     * Register icons
-     */
-    /** @var \TYPO3\CMS\Core\Imaging\IconRegistry $iconRegistry */
-    $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-        \TYPO3\CMS\Core\Imaging\IconRegistry::class
-    );
-    $iconRegistry->registerIcon(
-        'ext-sfbanners-banner',
-        \TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider::class,
-        ['source' => 'EXT:sf_banners/Resources/Public/Icons/tx_sfbanners_domain_model_banner.svg']
-    );
 });

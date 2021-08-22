@@ -6,11 +6,11 @@ jobs:
   build:
 
     runs-on: ubuntu-18.04
-
     strategy:
       matrix:
-        typo3: ['^9.5', '^10.4']
-        php: ['7.2', '7.3', '7.4']
+        typo3: ['dev-master']
+        php: ['7.4', '8.0']
+
     steps:
       - uses: actions/checkout@v1
 
@@ -35,8 +35,8 @@ jobs:
 
       - name: Install composer dependencies
         run: |
-          composer require nimut/typo3-complete=${{ matrix.typo3 }}
-          composer install --no-progress
+          composer require typo3/cms-core:${{ matrix.typo3 }} --no-progress
+          git checkout composer.json
           export TYPO3_PATH_WEB=$PWD/.Build/Web
 
       - name: Unit tests

@@ -1,5 +1,6 @@
 <?php
-namespace DERHANSEN\SfBanners\Domain\Repository;
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Extension "sf_banners" for TYPO3 CMS.
@@ -8,8 +9,10 @@ namespace DERHANSEN\SfBanners\Domain\Repository;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+namespace DERHANSEN\SfBanners\Domain\Repository;
+
 use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
-use TYPO3\CMS\Core\Database\QueryGenerator;
+use DERHANSEN\SfBanners\Utility\PageUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
@@ -18,8 +21,6 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
  * Banner repository
- *
- * @author Torben Hansen <derhansen@gmail.com>
  */
 class BannerRepository extends Repository
 {
@@ -33,8 +34,6 @@ class BannerRepository extends Repository
     /**
      * Disable the use of storage records, because the StoragePage can be set
      * in the plugin
-     *
-     * @return void
      */
     public function initializeObject()
     {
@@ -177,16 +176,13 @@ class BannerRepository extends Repository
      */
     protected function getExcludePageBanners(QueryResultInterface $result, BannerDemand $demand)
     {
-        /** @var \TYPO3\CMS\Core\Database\QueryGenerator $queryGenerator */
-        $queryGenerator = $this->objectManager->get(QueryGenerator::class);
-
         $banners = [];
         /** @var \DERHANSEN\SfBanners\Domain\Model\Banner $banner */
         foreach ($result as $banner) {
             $excludePages = [];
             foreach ($banner->getExcludepages() as $excludePage) {
                 if ($banner->getRecursive()) {
-                    $pidList = $queryGenerator->getTreeList($excludePage->getUid(), 255, 0, 1);
+                    $pidList = PageUtility::extendPidListByChildren((string)$excludePage->getUid(), 255);
                     $excludePages = array_merge($excludePages, explode(',', $pidList));
                 } else {
                     $excludePages[] = $excludePage->getUid();
@@ -203,7 +199,6 @@ class BannerRepository extends Repository
      * Updates the impressions counter for each banner
      *
      * @param array $banners Banners
-     * @return void
      */
     public function updateImpressions(array $banners)
     {

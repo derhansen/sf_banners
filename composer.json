@@ -10,7 +10,7 @@
     {
       "name": "Torben Hansen",
       "email": "torben@derhansen.com",
-      "homepage": "http://www.derhansen.com",
+      "homepage": "https://www.derhansen.com",
       "role": "Developer"
     }
   ],
@@ -19,10 +19,17 @@
     "GPL-2.0-or-later"
   ],
   "require": {
-    "typo3/cms-core": "^9.5 || ^10.4"
+    "typo3/cms-core": "~11.4.0 || dev-master",
+    "php": ">=7.4"
   },
   "require-dev": {
-    "nimut/testing-framework": "^5.1"
+    "typo3/cms-backend": "~11.4.0 || dev-master",
+    "typo3/cms-frontend": "~11.4.0 || dev-master",
+    "typo3/cms-recordlist": "~11.4.0 || dev-master",
+    "typo3/cms-extbase": "~11.4.0 || dev-master",
+    "typo3/cms-fluid": "~11.4.0 || dev-master",
+    "typo3/testing-framework": "^6.6.2",
+    "friendsofphp/php-cs-fixer": "^3.0.0"
   },
   "replace": {
     "typo3-ter/sf-banners": "self.version"

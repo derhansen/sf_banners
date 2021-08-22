@@ -1,27 +1,29 @@
 /**
- * Fetches the given banner and appends it with postscribe to the website
- *
- * @param position
- * @param url
- * @constructor
- */
-var BannerPlacement = function (position, url) {
-    jQuery.get(url, function(data) {
-        postscribe('#' + position, data);
-    });
-};
-
-/**
- * When page is loaded, cycle through global banners array and set BannerPlacement for each item
+ * When page is loaded, collect all banner configs and POST data to backend to fetch banners
  */
 jQuery(document).ready(function() {
-    if (typeof banners == "undefined")
-        return;
+    var $banners = $('[id^=banner-]')
+    var url = ''
+    var bannerConfigs = []
 
-    for (var i = 0; i < banners.length; i++) {
-        new BannerPlacement(
-            banners[i][0],
-            banners[i][1]
-        );
+    $banners.each(function() {
+      url = $(this).data('fetchurl')
+      bannerConfigs.push($(this).data('config'))
+    })
+
+    if (url !== '') {
+      $.ajax({
+        url: url,
+        type: 'POST',
+        data: {
+          'tx_sfbanners_pi1[bannerConfigs]': bannerConfigs
+        },
+        success: function (data) {
+          for (var i = 0; i < data.length; i++) {
+            postscribe('#banner-' + data[i]['uniqueId'], data[i]['html']);
+          }
+        }
+      })
     }
-});
+  }
+);

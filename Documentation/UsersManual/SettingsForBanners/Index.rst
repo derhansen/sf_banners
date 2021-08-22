@@ -57,13 +57,6 @@ HTML
 The HTML Code for the banner. *Only available, when the banner type is
 set to*  *“HTML”.*
 
-Margintop, marginright, marginbottom and marginleft
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-
-A margin, which is added to the banner when it is included on the
-website.
-
-
 Alternative text
 """"""""""""""""
 

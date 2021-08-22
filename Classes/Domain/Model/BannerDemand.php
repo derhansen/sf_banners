@@ -1,5 +1,6 @@
 <?php
-namespace DERHANSEN\SfBanners\Domain\Model;
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Extension "sf_banners" for TYPO3 CMS.
@@ -8,12 +9,12 @@ namespace DERHANSEN\SfBanners\Domain\Model;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+namespace DERHANSEN\SfBanners\Domain\Model;
+
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
  * Banner demand
- *
- * @author Torben Hansen <derhansen@gmail.com>
  */
 class BannerDemand extends AbstractEntity
 {
@@ -57,7 +58,6 @@ class BannerDemand extends AbstractEntity
      * Setter for currentPageUid
      *
      * @param string $categories The categories
-     * @return void
      */
     public function setCategories($categories)
     {
@@ -78,7 +78,6 @@ class BannerDemand extends AbstractEntity
      * Setter for currentPageUid
      *
      * @param int $currentPageUid Current Page UID
-     * @return void
      */
     public function setCurrentPageUid($currentPageUid)
     {
@@ -99,7 +98,6 @@ class BannerDemand extends AbstractEntity
      * Setter for startingPoint
      *
      * @param string $displayMode Displaymode
-     * @return void
      */
     public function setDisplayMode($displayMode)
     {
@@ -120,7 +118,6 @@ class BannerDemand extends AbstractEntity
      * Setter for startingPoint
      *
      * @param string $startingPoint Startingpoint(s)
-     * @return void
      */
     public function setStartingPoint($startingPoint)
     {

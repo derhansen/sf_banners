@@ -1,5 +1,6 @@
 <?php
-namespace DERHANSEN\SfBanners\Controller;
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Extension "sf_banners" for TYPO3 CMS.
@@ -8,48 +9,28 @@ namespace DERHANSEN\SfBanners\Controller;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+namespace DERHANSEN\SfBanners\Controller;
+
+use DERHANSEN\SfBanners\Domain\Model\Banner;
 use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
+use DERHANSEN\SfBanners\Domain\Repository\BannerRepository;
+use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Http\ImmediateResponseException;
-use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Frontend\Controller\ErrorController;
+use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
  * Banner Controller
- *
- * @author Torben Hansen <derhansen@gmail.com>
  */
 class BannerController extends ActionController
 {
-    /**
-     * Banner Service
-     *
-     * @var \DERHANSEN\SfBanners\Service\BannerService
-     */
-    protected $bannerService;
+    protected BannerRepository $bannerRepository;
 
     /**
-     * bannerRepository
-     *
-     * @var \DERHANSEN\SfBanners\Domain\Repository\BannerRepository
-     */
-    protected $bannerRepository;
-
-    /**
-     * Hash Service
-     *
-     * @var \TYPO3\CMS\Extbase\Security\Cryptography\HashService
-     */
-    protected $hashService;
-
-    /**
-     * The Cache
-     *
      * @var \TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
      */
     protected $cacheInstance;
@@ -64,8 +45,6 @@ class BannerController extends ActionController
 
     /**
      * Initialize cache instance to be ready to use
-     *
-     * @return void
      */
     protected function initializeCache()
     {
@@ -73,176 +52,162 @@ class BannerController extends ActionController
         $this->cacheInstance = $cacheManager->getCache('sfbanners_cache');
     }
 
-    /**
-     * @param \DERHANSEN\SfBanners\Domain\Repository\BannerRepository $bannerRepository
-     */
-    public function injectBannerRepository(\DERHANSEN\SfBanners\Domain\Repository\BannerRepository $bannerRepository)
+    public function injectBannerRepository(BannerRepository $bannerRepository)
     {
         $this->bannerRepository = $bannerRepository;
     }
 
     /**
-     * @param \DERHANSEN\SfBanners\Service\BannerService $bannerService
-     */
-    public function injectBannerService(\DERHANSEN\SfBanners\Service\BannerService $bannerService)
-    {
-        $this->bannerService = $bannerService;
-    }
-
-    /**
-     * @param \TYPO3\CMS\Extbase\Security\Cryptography\HashService $hashService
-     */
-    public function injectHashService(\TYPO3\CMS\Extbase\Security\Cryptography\HashService $hashService)
-    {
-        $this->hashService = $hashService;
-    }
-
-    /**
      * Click Action for a banner
      *
-     * @param \DERHANSEN\SfBanners\Domain\Model\Banner $banner
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
+     * @param Banner|null $banner
+     * @return ResponseInterface
+     * @throws ImmediateResponseException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
      */
-    public function clickAction(\DERHANSEN\SfBanners\Domain\Model\Banner $banner = null)
+    public function clickAction(Banner $banner = null): ResponseInterface
     {
         if (is_null($banner)) {
-            $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction(
-                $GLOBALS['TYPO3_REQUEST'],
+            return GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction(
+                $this->request,
                 'Banner not found.'
             );
-            throw new ImmediateResponseException($response, 1549896549);
         }
         $banner->increaseClicks();
         $this->bannerRepository->update($banner);
-        $this->redirectToURI($banner->getLinkUrl());
+
+        return $this->responseFactory->createResponse()
+            ->withHeader('location', $banner->getLinkUrl());
     }
 
     /**
      * Show action
      *
-     * @return void
+     * @return ResponseInterface
      */
-    public function showAction()
+    public function showAction(): ResponseInterface
     {
         $languageAspect = GeneralUtility::makeInstance(Context::class)->getAspect('language');
-        $maxResults = $this->settings['maxResults'] !== '' ? (int)$this->settings['maxResults'] : 0;
         $uniqueid = strtolower(substr(base64_encode(sha1(microtime())), 0, 9));
-        $stringToHash = $GLOBALS['TSFE']->id . $this->settings['category'] . $this->settings['startingPoint'] .
-            $this->settings['displayMode'] . $maxResults;
-        $hmac = $this->hashService->generateHmac($stringToHash);
 
         $arguments = [
-            'L' => $languageAspect->getId(),
             'type' => $this->settings['ajaxPageTypeNum'],
-            'tx_sfbanners_pi1[action]' => 'getBanners',
-            'tx_sfbanners_pi1[controller]' => 'Banner',
-            'tx_sfbanners_pi1[currentPageUid]' => $GLOBALS['TSFE']->id,
-            'tx_sfbanners_pi1[hmac]' => $hmac,
+            'tx_sfbanners_pi1' => [
+                'action' => 'getBanners',
+                'controller' => 'Banner',
+            ],
         ];
 
-        if ($this->settings['startingPoint'] !== '') {
-            $arguments['tx_sfbanners_pi1[startingPoint]'] = $this->settings['startingPoint'];
-        }
-        if ($this->settings['category'] !== '') {
-            $arguments['tx_sfbanners_pi1[categories]'] = $this->settings['category'];
-        }
-        if ($this->settings['displayMode'] !== '') {
-            $arguments['tx_sfbanners_pi1[displayMode]'] = $this->settings['displayMode'];
-        }
-        if ($this->settings['maxResults'] !== '' &&
-            MathUtility::canBeInterpretedAsInteger($this->settings['maxResults'])
-        ) {
-            $arguments['tx_sfbanners_pi1[maxResults]'] = (int)$this->settings['maxResults'];
+        if ($languageAspect->getId() > 0) {
+            $arguments['_language'] = $languageAspect;
         }
 
-        $url = $this->controllerContext
-            ->getUriBuilder()
-            ->reset()
-            ->setUseCacheHash(true)
-            ->setTargetPageUid($GLOBALS['TSFE']->id)
-            ->setArguments($arguments)
-            ->buildFrontendUri();
+        $fetchUrl = (string)$this->request->getAttribute('site')->getRouter()
+            ->generateUri((string)$this->getTypoScriptFrontendController()->id, $arguments);
 
-        $this->view->assign('url', $url);
-        $this->view->assign('uniqueid', $uniqueid);
+        $bannerConfig = [
+            'uniqueId' => $uniqueid,
+            'currentPageUid' => $this->getTypoScriptFrontendController()->id,
+            'startingPoint' => $this->settings['startingPoint'] ?? '',
+            'categories' => $this->settings['categories'] ?? '',
+            'displayMode' => $this->settings['displayMode'] ?? '',
+            'maxResults' => $this->settings['maxResults'] !== '' ? (int)$this->settings['maxResults'] : 0,
+        ];
 
-        /* Find all banners and add additional CSS */
-        $banners = $this->bannerRepository->findAll();
-        $cssFile = $this->bannerService->getAdditionalCssFile($banners);
+        $config = $this->hashService->appendHmac(json_encode($bannerConfig));
 
-        if ($cssFile != '') {
-            /** @var PageRenderer $pageRenderer */
-            $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
-            $pageRenderer->addCssFile($cssFile, 'stylesheet', 'all', '', true);
-        }
+        $this->view->assignMultiple([
+            'fetchUrl' => $fetchUrl,
+            'uniqueId' => $uniqueid,
+            'config' => $config,
+        ]);
+
+        return $this->htmlResponse();
     }
 
     /**
-     * Returns banners for the given parameters if given Hmac validation succeeds
+     * Returns banners for the given config array as JSON response for usage in frontend
      *
-     * @param string $categories
-     * @param string $startingPoint
-     * @param string $displayMode
-     * @param int $currentPageUid
-     * @param int $maxResults
-     * @param string $hmac
-     * @return string
+     * @param array $bannerConfigs
+     * @return ResponseInterface
      */
     public function getBannersAction(
-        $categories = '',
-        $startingPoint = '',
-        $displayMode = 'all',
-        $currentPageUid = 0,
-        $maxResults = 0,
-        $hmac = ''
-    ) {
-        $compareString = $currentPageUid . $categories . $startingPoint . $displayMode . $maxResults;
+        array $bannerConfigs = []
+    ): ResponseInterface {
+        $result = [];
 
-        if ($this->hashService->validateHmac($compareString, $hmac)) {
-            /** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand */
-            $demand = $this->objectManager->get(BannerDemand::class);
-            $demand->setCategories($categories);
-            $demand->setStartingPoint($startingPoint);
-            $demand->setDisplayMode($displayMode);
-            $demand->setCurrentPageUid($currentPageUid);
-            $demand->setMaxResults($maxResults);
-
-            /* Get banners */
-            $banners = $this->bannerRepository->findDemanded($demand);
-
-            /* If no banners available, return empty string */
-            if (count($banners) === 0) {
-                return '';
+        foreach ($bannerConfigs as $bannerConfig) {
+            try {
+                $configString = $this->hashService->validateAndStripHmac($bannerConfig);
+                $config = json_decode($configString, true);
+                $result[] = [
+                    'uniqueId' => $config['uniqueId'],
+                    'html' => $this->getBannersByConfig($config),
+                ];
+            } catch (\Exception $e) {
+                // Silently ignore exceptions
             }
-
-            /* Update Impressions */
-            $this->bannerRepository->updateImpressions($banners);
-
-            /* Collect identifier based on uids for all banners */
-            $languageAspect = GeneralUtility::makeInstance(Context::class)->getAspect('language');
-            $ident = $GLOBALS['TSFE']->id . $languageAspect->getId();
-            foreach ($banners as $banner) {
-                $ident .= $banner->getUid();
-            }
-
-            $ret = $this->cacheInstance->get(sha1($ident));
-            if ($ret === false || $ret === null) {
-                $this->view->assign('banners', $banners);
-                $this->view->assign('settings', $this->settings);
-                $ret = $this->view->render();
-
-                // Save value in cache
-                $this->cacheInstance->set(sha1($ident), $ret, ['sf_banners'], $this->settings['cacheLifetime']);
-            }
-        } else {
-            $ret = LocalizationUtility::translate('wrong_hmac', 'SfBanners');
         }
 
-        $this->response->setHeader('X-Robots-Tag', 'noindex, nofollow');
+
+        $response = $this->responseFactory->createResponse()
+            ->withHeader('Content-Type', 'application/json; charset=utf-8')
+            ->withHeader('X-Robots-Tag', 'noindex, nofollow');
+        $response->getBody()->write(json_encode($result));
+
+        return $response;
+    }
+
+    /**
+     * Returns banners by the given configuration array
+     *
+     * @param array $config
+     * @return string
+     */
+    protected function getBannersByConfig(array $config): string
+    {
+        /** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand */
+        $demand = GeneralUtility::makeInstance(BannerDemand::class);
+        $demand->setCategories($config['categories']);
+        $demand->setStartingPoint($config['startingPoint']);
+        $demand->setDisplayMode($config['displayMode']);
+        $demand->setCurrentPageUid($config['currentPageUid']);
+        $demand->setMaxResults($config['maxResults']);
+
+        /* Get banners */
+        $banners = $this->bannerRepository->findDemanded($demand);
+
+        /* If no banners available, return empty string */
+        if (count($banners) === 0) {
+            return '';
+        }
+
+        /* Update Impressions */
+        $this->bannerRepository->updateImpressions($banners);
+
+        /* Collect identifier based on uids for all banners */
+        $languageAspect = GeneralUtility::makeInstance(Context::class)->getAspect('language');
+        $ident = $this->getTypoScriptFrontendController()->id . $languageAspect->getId();
+        foreach ($banners as $banner) {
+            $ident .= $banner->getUid();
+        }
+
+        $ret = $this->cacheInstance->get(sha1($ident));
+        if ($ret === false || $ret === null) {
+            $this->view->assign('banners', $banners);
+            $this->view->assign('settings', $this->settings);
+            $ret = $this->view->render();
+
+            // Save value in cache
+            $this->cacheInstance->set(sha1($ident), $ret, ['sf_banners'], $this->settings['cacheLifetime']);
+        }
 
         return $ret;
+    }
+
+    protected function getTypoScriptFrontendController(): ?TypoScriptFrontendController
+    {
+        return $GLOBALS['TSFE'] ?: null;
     }
 }

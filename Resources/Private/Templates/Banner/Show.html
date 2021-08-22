@@ -1,10 +1,5 @@
 <f:layout name="Default" />
 
 <f:section name="main">
-    <script type="text/javascript">
-        if (typeof banners == "undefined")
-            var banners = [];
-        banners.push(['banners-{uniqueid}', '{url -> f:format.raw()}'])
-    </script>
-    <div id="banners-{uniqueid}"></div>
+    <div id="banner-{uniqueId}" data-config="{config}" data-fetchurl="{fetchUrl}"></div>
 </f:section>
