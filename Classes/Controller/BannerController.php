@@ -110,7 +110,7 @@ class BannerController extends ActionController
             'uniqueId' => $uniqueid,
             'currentPageUid' => $this->getTypoScriptFrontendController()->id,
             'startingPoint' => $this->settings['startingPoint'] ?? '',
-            'categories' => $this->settings['categories'] ?? '',
+            'categories' => $this->settings['category'] ?? '',
             'displayMode' => $this->settings['displayMode'] ?? '',
             'maxResults' => $this->settings['maxResults'] !== '' ? (int)$this->settings['maxResults'] : 0,
         ];
