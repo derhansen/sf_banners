@@ -7,7 +7,8 @@ defined('TYPO3') or die();
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     'sf_banners',
     'Pi1',
-    'LLL:EXT:sf_banners/Resources/Private/Language/locallang.xlf:plugin_title'
+    'LLL:EXT:sf_banners/Resources/Private/Language/locallang.xlf:plugin_title',
+    'ext-sfbanners-plugin'
 );
 
 /**
