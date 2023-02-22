@@ -26,11 +26,6 @@ return [
             'default' => 'ext-sfbanners-banner'
         ],
     ],
-    'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, type, 
-            category, assets, html, 
-            impressions_max, clicks_max, impressions, clicks, excludepages, recursive',
-    ],
     'palettes' => [
         'paletteVisibility' => ['showitem' => 'starttime, endtime'],
         'paletteLanguage' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource'],
@@ -45,7 +40,6 @@ return [
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'exclude' => 0,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'select',
