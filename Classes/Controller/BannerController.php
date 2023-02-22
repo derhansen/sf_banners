@@ -104,11 +104,11 @@ class BannerController extends ActionController
         }
 
         $fetchUrl = (string)$this->request->getAttribute('site')->getRouter()
-            ->generateUri((string)$this->getTypoScriptFrontendController()->id, $arguments);
+            ->generateUri((string)$this->request->getAttribute('routing')->getPageId(), $arguments);
 
         $bannerConfig = [
             'uniqueId' => $uniqueid,
-            'currentPageUid' => $this->getTypoScriptFrontendController()->id,
+            'currentPageUid' => $this->request->getAttribute('routing')->getPageId(),
             'startingPoint' => $this->settings['startingPoint'] ?? '',
             'categories' => $this->settings['category'] ?? '',
             'displayMode' => $this->settings['displayMode'] ?? '',
@@ -188,7 +188,7 @@ class BannerController extends ActionController
 
         /* Collect identifier based on uids for all banners */
         $languageAspect = GeneralUtility::makeInstance(Context::class)->getAspect('language');
-        $ident = $this->getTypoScriptFrontendController()->id . $languageAspect->getId();
+        $ident = $this->request->getAttribute('routing')->getPageId() . $languageAspect->getId();
         foreach ($banners as $banner) {
             $ident .= $banner->getUid();
         }
