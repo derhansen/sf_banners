@@ -431,7 +431,7 @@ class Banner extends AbstractEntity
     public function getLinkUrl()
     {
         $cObj = GeneralUtility::makeInstance(ContentObjectRenderer::class);
-        return $cObj->getTypoLink_URL($this->getLink());
+        return $cObj->typoLink_URL($this->getLink());
     }
 
     /**
@@ -443,8 +443,8 @@ class Banner extends AbstractEntity
     {
         $link = $this->getLink();
         $cObj = GeneralUtility::makeInstance(ContentObjectRenderer::class);
-        $cObj->getTypoLink_URL($link);
-        return $cObj->lastTypoLinkTarget;
+        $cObj->typoLink_URL($link);
+        return $cObj->lastTypoLinkResult;
     }
 
     /**
