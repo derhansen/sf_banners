@@ -25,6 +25,9 @@ return [
         'typeicon_classes' => [
             'default' => 'ext-sfbanners-banner'
         ],
+        'security' => [
+            'ignorePageTypeRestriction' => true,
+        ],
     ],
     'palettes' => [
         'paletteVisibility' => ['showitem' => 'starttime, endtime'],
