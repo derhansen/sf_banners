@@ -190,7 +190,7 @@ class BannerRepositoryTest extends FunctionalTestCase
     public function findRecordsForSpecialExcludeRecursivePageUidTest()
     {
         $demand = new BannerDemand();
-        $pid = 96;
+        $pid = '96';
 
         /* Define PIDs */
         $pid1 = '7';
