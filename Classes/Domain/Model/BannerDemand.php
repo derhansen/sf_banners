@@ -13,138 +13,60 @@ namespace DERHANSEN\SfBanners\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
-/**
- * Banner demand
- */
 class BannerDemand extends AbstractEntity
 {
-    /**
-     * Categories
-     *
-     * @var string
-     */
-    protected $categories;
+    protected string $categories;
+    protected string $startingPoint;
+    protected string $displayMode = 'all';
+    protected int $currentPageUid = 0;
+    protected int $maxResults = 0;
 
-    /**
-     * Startingpoint(s)
-     *
-     * @var string
-     */
-    protected $startingPoint;
-
-    /**
-     * Display Mode - default is to display all banners
-     *
-     * @var string
-     */
-    protected $displayMode = 'all';
-
-    /**
-     * The current page uid
-     *
-     * @var int
-     */
-    protected $currentPageUid;
-
-    /**
-     * Max results of banners
-     *
-     * @var int
-     */
-    protected $maxResults = 0;
-
-    /**
-     * Setter for currentPageUid
-     *
-     * @param string $categories The categories
-     */
-    public function setCategories($categories)
-    {
-        $this->categories = $categories;
-    }
-
-    /**
-     * Getter for categories
-     *
-     * @return string
-     */
-    public function getCategories()
+    public function getCategories(): string
     {
         return $this->categories;
     }
 
-    /**
-     * Setter for currentPageUid
-     *
-     * @param int $currentPageUid Current Page UID
-     */
-    public function setCurrentPageUid($currentPageUid)
+    public function setCategories(string $categories): void
     {
-        $this->currentPageUid = $currentPageUid;
+        $this->categories = $categories;
     }
 
-    /**
-     * Getter for currentPageUid
-     *
-     * @return int
-     */
-    public function getCurrentPageUid()
-    {
-        return $this->currentPageUid;
-    }
-
-    /**
-     * Setter for startingPoint
-     *
-     * @param string $displayMode Displaymode
-     */
-    public function setDisplayMode($displayMode)
-    {
-        $this->displayMode = $displayMode;
-    }
-
-    /**
-     * Getter for displayMode
-     *
-     * @return string
-     */
-    public function getDisplayMode()
-    {
-        return $this->displayMode;
-    }
-
-    /**
-     * Setter for startingPoint
-     *
-     * @param string $startingPoint Startingpoint(s)
-     */
-    public function setStartingPoint($startingPoint)
-    {
-        $this->startingPoint = $startingPoint;
-    }
-
-    /**
-     * Getter for startingPoint
-     *
-     * @return string
-     */
-    public function getStartingPoint()
+    public function getStartingPoint(): string
     {
         return $this->startingPoint;
     }
 
-    /**
-     * @return int
-     */
-    public function getMaxResults()
+    public function setStartingPoint(string $startingPoint): void
+    {
+        $this->startingPoint = $startingPoint;
+    }
+
+    public function getDisplayMode(): string
+    {
+        return $this->displayMode;
+    }
+
+    public function setDisplayMode(string $displayMode): void
+    {
+        $this->displayMode = $displayMode;
+    }
+
+    public function getCurrentPageUid(): int
+    {
+        return $this->currentPageUid;
+    }
+
+    public function setCurrentPageUid(int $currentPageUid): void
+    {
+        $this->currentPageUid = $currentPageUid;
+    }
+
+    public function getMaxResults(): int
     {
         return $this->maxResults;
     }
 
-    /**
-     * @param int $maxResults
-     */
-    public function setMaxResults(int $maxResults)
+    public function setMaxResults(int $maxResults): void
     {
         $this->maxResults = $maxResults;
     }

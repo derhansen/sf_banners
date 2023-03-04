@@ -59,7 +59,7 @@ class BannerDemandTest extends UnitTestCase
      */
     public function startingPointCanBeSetTest()
     {
-        $startingPoint = 1;
+        $startingPoint = '1';
         $this->fixture->setStartingPoint($startingPoint);
         self::assertEquals($startingPoint, $this->fixture->getStartingPoint());
     }

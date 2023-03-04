@@ -13,369 +13,178 @@ namespace DERHANSEN\SfBanners\Domain\Model;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\Domain\Model\Category;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
-/**
- * Banner domain model
- */
 class Banner extends AbstractEntity
 {
-    /**
-     * Title
-     *
-     * @var string
-     */
-    protected $title;
+    protected string $title;
+    protected string $description;
+    protected int $type;
+    protected string $html;
+    protected int $impressionsMax;
+    protected int $clicksMax;
+    protected int $impressions;
+    protected int $clicks;
+    protected bool $recursive;
 
     /**
-     * Description
-     *
-     * @var string
-     */
-    protected $description;
-
-    /**
-     * Type
-     *
-     * @var int
-     */
-    protected $type;
-
-    /**
-     * Category
-     *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
+     * @var ObjectStorage<Category>
      * @Extbase\ORM\Lazy
      */
-    protected $category;
+    protected ObjectStorage $category;
 
     /**
-     * Fal media items
-     *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @var ObjectStorage<FileReference>
      */
-    protected $assets;
+    protected ObjectStorage $assets;
 
     /**
-     * HTML
-     *
-     * @var string
-     */
-    protected $html;
-
-    /**
-     * Max impressions
-     *
-     * @var int
-     */
-    protected $impressionsMax;
-
-    /**
-     * Max clicks
-     *
-     * @var int
-     */
-    protected $clicksMax;
-
-    /**
-     * Total impressions
-     *
-     * @var int
-     */
-    protected $impressions;
-
-    /**
-     * Total clicks
-     *
-     * @var int
-     */
-    protected $clicks;
-
-    /**
-     * Do not display on pages
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\DERHANSEN\SfBanners\Domain\Model\Page>
+     * @var ObjectStorage<Page>
      * @Extbase\ORM\Lazy
      */
-    protected $excludepages;
+    protected ObjectStorage $excludepages;
 
-    /**
-     * Recursively use excludepages
-     * @var bool
-     */
-    protected $recursive;
-
-    /**
-     * __construct
-     */
     public function __construct()
     {
-        //Do not remove the next line: It would break the functionality
-        $this->initStorageObjects();
+        $this->initializeObject();
     }
 
-    /**
-     * Initializes all ObjectStorage properties
-     * Do not modify this method!
-     * It will be rewritten on each save in the extension builder
-     * You may modify the constructor of this class instead
-     */
-    protected function initStorageObjects()
+    public function initializeObject(): void
     {
-        $this->category = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->excludepages = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->assets = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->category = new ObjectStorage();
+        $this->excludepages = new ObjectStorage();
+        $this->assets = new ObjectStorage();
     }
 
-    /**
-     * Returns the title
-     *
-     * @return string $title
-     */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
 
-    /**
-     * Sets the title
-     *
-     * @param string $title The title
-     */
-    public function setTitle($title)
+    public function setTitle(string $title): void
     {
         $this->title = $title;
     }
 
-    /**
-     * Returns the description
-     *
-     * @return string $description
-     */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
 
-    /**
-     * Sets the description
-     *
-     * @param string $description The description
-     */
-    public function setDescription($description)
+    public function setDescription(string $description): void
     {
         $this->description = $description;
     }
 
-    /**
-     * Returns the type
-     *
-     * @return int $type
-     */
-    public function getType()
+    public function getType(): int
     {
         return $this->type;
     }
 
-    /**
-     * Sets the type
-     *
-     * @param int $type The type
-     */
-    public function setType($type)
+    public function setType(int $type): void
     {
         $this->type = $type;
     }
 
-    /**
-     * Adds a category
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
-     */
-    public function addCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category)
+    public function addCategory(Category $category): void
     {
         $this->category->attach($category);
     }
 
-    /**
-     * Removes a category
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $categoryToRemove
-     */
-    public function removeCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $categoryToRemove)
+    public function removeCategory(Category $categoryToRemove): void
     {
         $this->category->detach($categoryToRemove);
     }
 
-    /**
-     * Returns the category
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage $category
-     */
-    public function getCategory()
+    public function getCategory(): ObjectStorage
     {
         return $this->category;
     }
 
-    /**
-     * Sets the category
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $category One or multiple categories
-     */
-    public function setCategory($category)
+    public function setCategory(ObjectStorage $category): void
     {
         $this->category = $category;
     }
 
-    /**
-     * Setter for clicks
-     *
-     * @param int $clicks Clicks
-     */
-    public function setClicks($clicks)
-    {
-        $this->clicks = $clicks;
-    }
-
-    /**
-     * getter for clicks
-     *
-     * @return int
-     */
-    public function getClicks()
-    {
-        return $this->clicks;
-    }
-
-    /**
-     * Setter for clicksmax
-     *
-     * @param int $clicksMax MaxClicks
-     */
-    public function setClicksMax($clicksMax)
-    {
-        $this->clicksMax = $clicksMax;
-    }
-
-    /**
-     * Getter for clicksmax
-     *
-     * @return int
-     */
-    public function getClicksMax()
+    public function getClicksMax(): int
     {
         return $this->clicksMax;
     }
 
-    /**
-     * Adds a page
-     *
-     * @param \DERHANSEN\SfBanners\Domain\Model\Page $page
-     */
-    public function addExcludepages(\DERHANSEN\SfBanners\Domain\Model\Page $page)
+    public function setClicksMax(int $clicksMax): void
+    {
+        $this->clicksMax = $clicksMax;
+    }
+
+    public function getClicks(): int
+    {
+        return $this->clicks;
+    }
+
+    public function setClicks(int $clicks): void
+    {
+        $this->clicks = $clicks;
+    }
+
+    public function addExcludepages(Page $page): void
     {
         $this->excludepages->attach($page);
     }
 
-    /**
-     * Removes a page
-     *
-     * @param \DERHANSEN\SfBanners\Domain\Model\page $pageToRemove
-     */
-    public function removeExcludepages(\DERHANSEN\SfBanners\Domain\Model\page $pageToRemove)
+    public function removeExcludepages(Page $pageToRemove): void
     {
         $this->excludepages->detach($pageToRemove);
     }
 
-    /**
-     * Setter for excludepages
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $excludepages Excludepages
-     */
-    public function setExcludepages($excludepages)
+    public function setExcludepages(ObjectStorage $excludepages): void
     {
         $this->excludepages = $excludepages;
     }
 
-    /**
-     * Getter for excludepages
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
-     */
-    public function getExcludepages()
+    public function getExcludepages(): ObjectStorage
     {
         return $this->excludepages;
     }
 
-    /**
-     * Setter for HTML
-     *
-     * @param string $html HTML
-     */
-    public function setHtml($html)
-    {
-        $this->html = $html;
-    }
-
-    /**
-     * Getter for HTML
-     *
-     * @return string
-     */
-    public function getHtml()
+    public function getHtml(): string
     {
         return $this->html;
     }
 
-    /**
-     * Setter for impressions
-     *
-     * @param int $impressions Impressions
-     */
-    public function setImpressions($impressions)
+    public function setHtml(string $html): void
     {
-        $this->impressions = $impressions;
+        $this->html = $html;
     }
 
-    /**
-     * Getter for impressions
-     *
-     * @return int
-     */
-    public function getImpressions()
-    {
-        return $this->impressions;
-    }
-
-    /**
-     * Setter for max impressions
-     *
-     * @param int $impressionsMax Max impressions
-     */
-    public function setImpressionsMax($impressionsMax)
-    {
-        $this->impressionsMax = $impressionsMax;
-    }
-
-    /**
-     * Getter for max impressions
-     *
-     * @return int
-     */
-    public function getImpressionsMax()
+    public function getImpressionsMax(): int
     {
         return $this->impressionsMax;
     }
 
-    /**
-     * Getter for link
-     *
-     * @return string
-     */
-    public function getLink()
+    public function setImpressionsMax(int $impressionsMax): void
+    {
+        $this->impressionsMax = $impressionsMax;
+    }
+
+    public function getImpressions(): int
+    {
+        return $this->impressions;
+    }
+
+    public function setImpressions(int $impressions): void
+    {
+        $this->impressions = $impressions;
+    }
+
+    public function getLink(): string
     {
         $this->assets->rewind();
 
-        /** @var \TYPO3\CMS\Extbase\Domain\Model\FileReference $fileReference */
+        /** @var FileReference $fileReference */
         $fileReference = $this->assets->current();
 
         if ($fileReference === null) {
@@ -387,22 +196,12 @@ class Banner extends AbstractEntity
         return $originalFileReference->getLink();
     }
 
-    /**
-     * Sets the recursive flag
-     *
-     * @param bool $recursive
-     */
-    public function setRecursive($recursive)
+    public function setRecursive(bool $recursive): void
     {
         $this->recursive = $recursive;
     }
 
-    /**
-     * Returns the recursive flag
-     *
-     * @return bool
-     */
-    public function getRecursive()
+    public function getRecursive(): bool
     {
         return $this->recursive;
     }
@@ -410,7 +209,7 @@ class Banner extends AbstractEntity
     /**
      * Updates the Impressions by 1
      */
-    public function increaseImpressions()
+    public function increaseImpressions(): void
     {
         $this->impressions += 1;
     }
@@ -418,71 +217,41 @@ class Banner extends AbstractEntity
     /**
      * Updates the Impressions by 1
      */
-    public function increaseClicks()
+    public function increaseClicks(): void
     {
         $this->clicks += 1;
     }
 
-    /**
-     * Returns the uri of the link
-     *
-     * @return mixed
-     */
-    public function getLinkUrl()
+    public function getLinkUrl(): string
     {
         $cObj = GeneralUtility::makeInstance(ContentObjectRenderer::class);
-        return $cObj->typoLink_URL($this->getLink());
+        return $cObj->getTypoLink_URL($this->getLink());
     }
 
-    /**
-     * Returns the target of the link
-     *
-     * @return string
-     */
-    public function getLinkTarget()
+    public function getLinkTarget(): string
     {
         $link = $this->getLink();
         $cObj = GeneralUtility::makeInstance(ContentObjectRenderer::class);
-        $cObj->typoLink_URL($link);
-        return $cObj->lastTypoLinkResult;
+        $cObj->getTypoLink_URL($link);
+        return $cObj->lastTypoLinkTarget;
     }
 
-    /**
-     * Get the Fal media items
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
-     */
-    public function getAssets()
+    public function getAssets(): ObjectStorage
     {
         return $this->assets;
     }
 
-    /**
-     * Set Fal media relation
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $assets
-     */
-    public function setAssets(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $assets)
+    public function setAssets(ObjectStorage $assets): void
     {
         $this->assets = $assets;
     }
 
-    /**
-     * Add a Fal media file reference
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $asset
-     */
-    public function addAsset(\TYPO3\CMS\Extbase\Domain\Model\FileReference $asset)
+    public function addAsset(FileReference $asset): void
     {
         $this->assets->attach($asset);
     }
 
-    /**
-     * Remove a Fal media file reference
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $asset
-     */
-    public function removeAsset(\TYPO3\CMS\Extbase\Domain\Model\FileReference $asset)
+    public function removeAsset(FileReference $asset): void
     {
         $this->assets->detach($asset);
     }
