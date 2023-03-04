@@ -150,7 +150,6 @@ class BannerController extends ActionController
             }
         }
 
-
         $response = $this->responseFactory->createResponse()
             ->withHeader('Content-Type', 'application/json; charset=utf-8')
             ->withHeader('X-Robots-Tag', 'noindex, nofollow');

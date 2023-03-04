@@ -18,7 +18,6 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  */
 class BannerDemand extends AbstractEntity
 {
-
     /**
      * Categories
      *
