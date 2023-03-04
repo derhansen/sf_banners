@@ -15,17 +15,11 @@ use DERHANSEN\SfBanners\Domain\Model\Dto\BannerDemand;
 use DERHANSEN\SfBanners\Domain\Repository\BannerRepository;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
-/**
- * Test case for class \DERHANSEN\SfBanners\Domain\Model\Banner.
- */
 class BannerRepositoryTest extends FunctionalTestCase
 {
     protected mixed $bannerRepository;
     protected array $testExtensionsToLoad = ['typo3conf/ext/sf_banners'];
 
-    /**
-     * Setup
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -41,7 +35,7 @@ class BannerRepositoryTest extends FunctionalTestCase
      *
      * @test
      */
-    public function findRecordsByStartingPointTest()
+    public function findRecordsByStartingPointTest(): void
     {
         $demand = new BannerDemand();
 
@@ -63,7 +57,7 @@ class BannerRepositoryTest extends FunctionalTestCase
      *
      * @test
      */
-    public function findRecordsByCategoryTest()
+    public function findRecordsByCategoryTest(): void
     {
         $demand = new BannerDemand();
 
@@ -92,7 +86,7 @@ class BannerRepositoryTest extends FunctionalTestCase
      *
      * @test
      */
-    public function findRecordsWithDisplayModeTest()
+    public function findRecordsWithDisplayModeTest(): void
     {
         $demand = new BannerDemand();
         $pid = '80';
@@ -152,7 +146,7 @@ class BannerRepositoryTest extends FunctionalTestCase
      *
      * @test
      */
-    public function findRecordsForSpecialExcludePageUidTest()
+    public function findRecordsForSpecialExcludePageUidTest(): void
     {
         $demand = new BannerDemand();
         $pid = '95';
@@ -187,7 +181,7 @@ class BannerRepositoryTest extends FunctionalTestCase
      *
      * @test
      */
-    public function findRecordsForSpecialExcludeRecursivePageUidTest()
+    public function findRecordsForSpecialExcludeRecursivePageUidTest(): void
     {
         $demand = new BannerDemand();
         $pid = '96';
@@ -223,7 +217,7 @@ class BannerRepositoryTest extends FunctionalTestCase
      *
      * @test
      */
-    public function findRecordsWithMaxImpressionsTest()
+    public function findRecordsWithMaxImpressionsTest(): void
     {
         $demand = new BannerDemand();
         $pid = '100';
@@ -240,7 +234,7 @@ class BannerRepositoryTest extends FunctionalTestCase
      *
      * @test
      */
-    public function findRecordsWithMaxClicksTest()
+    public function findRecordsWithMaxClicksTest(): void
     {
         $demand = new BannerDemand();
         $pid = '101';
@@ -257,7 +251,7 @@ class BannerRepositoryTest extends FunctionalTestCase
      *
      * @test
      */
-    public function findRecordsWithMaxImpressionsAndMaxClicksTest()
+    public function findRecordsWithMaxImpressionsAndMaxClicksTest(): void
     {
         $demand = new BannerDemand();
         $pid = '102';
@@ -274,7 +268,7 @@ class BannerRepositoryTest extends FunctionalTestCase
      *
      * @test
      */
-    public function findRecordsWithMaxResultsTest()
+    public function findRecordsWithMaxResultsTest(): void
     {
         $demand = new BannerDemand();
         $pid = '103';

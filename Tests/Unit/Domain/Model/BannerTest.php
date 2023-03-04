@@ -18,38 +18,24 @@ use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
-/**
- * Test case for class \DERHANSEN\SfBanners\Domain\Model\Banner.
- */
 class BannerTest extends UnitTestCase
 {
-    /**
-     * @var Banner
-     */
-    protected $fixture;
+    protected Banner $fixture;
 
-    /**
-     * Set up
-     */
     public function setUp(): void
     {
         $this->fixture = new Banner();
     }
 
-    /**
-     * Tear down
-     */
     public function tearDown(): void
     {
         unset($this->fixture);
     }
 
     /**
-     * Test if title can be set
-     *
      * @test
      */
-    public function titleCanBeSetTest()
+    public function titleCanBeSetTest(): void
     {
         $title = 'a title';
         $this->fixture->setTitle($title);
@@ -57,11 +43,9 @@ class BannerTest extends UnitTestCase
     }
 
     /**
-     * Test if description can be set
-     *
      * @test
      */
-    public function descriptionCanBeSetTest()
+    public function descriptionCanBeSetTest(): void
     {
         $description = 'a description';
         $this->fixture->setDescription($description);
@@ -69,11 +53,9 @@ class BannerTest extends UnitTestCase
     }
 
     /**
-     * Test if type can be set
-     *
      * @test
      */
-    public function typeCanBeSetTest()
+    public function typeCanBeSetTest(): void
     {
         $type = 0;
         $this->fixture->setType($type);
@@ -83,7 +65,7 @@ class BannerTest extends UnitTestCase
     /**
      * @test
      */
-    public function getLinkRespectsFalMediaSetting()
+    public function getLinkRespectsFalMediaSetting(): void
     {
         $mockFile = $this->getMockBuilder(\TYPO3\CMS\Core\Resource\FileReference::class)
             ->disableOriginalConstructor()
@@ -102,11 +84,9 @@ class BannerTest extends UnitTestCase
     }
 
     /**
-     * Test if html can be set
-     *
      * @test
      */
-    public function htmlCanBeSetTest()
+    public function htmlCanBeSetTest(): void
     {
         $html = '<p>test</p>';
         $this->fixture->setHtml($html);
@@ -114,11 +94,9 @@ class BannerTest extends UnitTestCase
     }
 
     /**
-     * Test if impressionsmax can be set
-     *
      * @test
      */
-    public function impressionsMaxCanBeSetTest()
+    public function impressionsMaxCanBeSetTest(): void
     {
         $impressionsMax = 100;
         $this->fixture->setImpressionsMax($impressionsMax);
@@ -126,11 +104,9 @@ class BannerTest extends UnitTestCase
     }
 
     /**
-     * Test if clicksmax can be set
-     *
      * @test
      */
-    public function clicksMaxCanBeSetTest()
+    public function clicksMaxCanBeSetTest(): void
     {
         $clicksMax = 100;
         $this->fixture->setClicksMax($clicksMax);
@@ -138,11 +114,9 @@ class BannerTest extends UnitTestCase
     }
 
     /**
-     * Test if impressions can be set
-     *
      * @test
      */
-    public function impressionsCanBeSetTest()
+    public function impressionsCanBeSetTest(): void
     {
         $impressions = 100;
         $this->fixture->setImpressions($impressions);
@@ -150,11 +124,9 @@ class BannerTest extends UnitTestCase
     }
 
     /**
-     * Test if clicks can be set
-     *
      * @test
      */
-    public function clicksCanBeSetTest()
+    public function clicksCanBeSetTest(): void
     {
         $clicks = 100;
         $this->fixture->setClicks($clicks);
@@ -162,11 +134,9 @@ class BannerTest extends UnitTestCase
     }
 
     /**
-     * Test if recursive flag can be set
-     *
      * @test
      */
-    public function recursiveCanBeSet()
+    public function recursiveCanBeSet(): void
     {
         $this->fixture->setRecursive(true);
         self::assertTrue($this->fixture->getRecursive());
@@ -175,7 +145,7 @@ class BannerTest extends UnitTestCase
     /**
      * @test
      */
-    public function getCategoryReturnsInitialValueForCategory()
+    public function getCategoryReturnsInitialValueForCategory(): void
     {
         $newObjectStorage = new ObjectStorage();
         self::assertEquals(
@@ -187,7 +157,7 @@ class BannerTest extends UnitTestCase
     /**
      * @test
      */
-    public function setCategoryForObjectStorageContainingCategorySetsCategory()
+    public function setCategoryForObjectStorageContainingCategorySetsCategory(): void
     {
         $category = new Category();
         $objectStorageHoldingExactlyOneCategory = new ObjectStorage();
@@ -199,7 +169,7 @@ class BannerTest extends UnitTestCase
     /**
      * @test
      */
-    public function addCategoryToObjectStorageHoldingCategory()
+    public function addCategoryToObjectStorageHoldingCategory(): void
     {
         $category = new Category();
         $categoryObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->getMock();
@@ -211,7 +181,7 @@ class BannerTest extends UnitTestCase
     /**
      * @test
      */
-    public function removeCategoryFromObjectStorageHoldingCategory()
+    public function removeCategoryFromObjectStorageHoldingCategory(): void
     {
         $category = new Category();
         $categoryObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->getMock();
@@ -223,7 +193,7 @@ class BannerTest extends UnitTestCase
     /**
      * @test
      */
-    public function getExcludePagesReturnsInitialValueForExcudePages()
+    public function getExcludePagesReturnsInitialValueForExcudePages(): void
     {
         $newObjectStorage = new ObjectStorage();
         self::assertEquals(
@@ -235,7 +205,7 @@ class BannerTest extends UnitTestCase
     /**
      * @test
      */
-    public function setExcludePagesForObjectStorageContainingExcludePagesSetsExcludePages()
+    public function setExcludePagesForObjectStorageContainingExcludePagesSetsExcludePages(): void
     {
         $page = new Page();
         $objectStorageHoldingExactlyOnePage = new ObjectStorage();
@@ -247,7 +217,7 @@ class BannerTest extends UnitTestCase
     /**
      * @test
      */
-    public function addExludePagesToObjectStorageHoldingExcludePages()
+    public function addExludePagesToObjectStorageHoldingExcludePages(): void
     {
         $page = new Page();
         $pageObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->getMock();
@@ -259,7 +229,7 @@ class BannerTest extends UnitTestCase
     /**
      * @test
      */
-    public function removeExludePagesFromObjectStorageHoldingExcludePages()
+    public function removeExludePagesFromObjectStorageHoldingExcludePages(): void
     {
         $page = new Page();
         $pageObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->getMock();
@@ -271,7 +241,7 @@ class BannerTest extends UnitTestCase
     /**
      * @test
      */
-    public function getAssetsReturnsInitialValueForAsset()
+    public function getAssetsReturnsInitialValueForAsset(): void
     {
         $newObjectStorage = new ObjectStorage();
         self::assertEquals(
@@ -283,7 +253,7 @@ class BannerTest extends UnitTestCase
     /**
      * @test
      */
-    public function setAssetForObjectStorageContainingAssetSetsAsset()
+    public function setAssetForObjectStorageContainingAssetSetsAsset(): void
     {
         $file = new FileReference();
         $objectStorageHoldingExactlyOneFile = new ObjectStorage();
@@ -295,7 +265,7 @@ class BannerTest extends UnitTestCase
     /**
      * @test
      */
-    public function addAssetToObjectStorageHoldingAsses()
+    public function addAssetToObjectStorageHoldingAsses(): void
     {
         $file = new FileReference();
         $assetsObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->getMock();
@@ -307,7 +277,7 @@ class BannerTest extends UnitTestCase
     /**
      * @test
      */
-    public function removeAssetFromObjectStorageHoldingAsset()
+    public function removeAssetFromObjectStorageHoldingAsset(): void
     {
         $file = new FileReference();
         $assetsObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)->getMock();

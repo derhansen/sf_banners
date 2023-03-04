@@ -16,33 +16,22 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class BannerDemandTest extends UnitTestCase
 {
-    /**
-     * @var BannerDemand
-     */
-    protected $fixture;
+    protected BannerDemand $fixture;
 
-    /**
-     * Set up
-     */
     public function setUp(): void
     {
         $this->fixture = new BannerDemand();
     }
 
-    /**
-     * Tear down
-     */
     public function tearDown(): void
     {
         unset($this->fixture);
     }
 
     /**
-     * Test if categories can be set
-     *
      * @test
      */
-    public function categoriesCanBeSetTest()
+    public function categoriesCanBeSetTest(): void
     {
         $categories = '1,2,3,4';
         $this->fixture->setCategories($categories);
@@ -50,11 +39,9 @@ class BannerDemandTest extends UnitTestCase
     }
 
     /**
-     * Test if startingpoint can be set
-     *
      * @test
      */
-    public function startingPointCanBeSetTest()
+    public function startingPointCanBeSetTest(): void
     {
         $startingPoint = '1';
         $this->fixture->setStartingPoint($startingPoint);
@@ -62,21 +49,17 @@ class BannerDemandTest extends UnitTestCase
     }
 
     /**
-     * Test if displaymode returns the correct initial value
-     *
      * @test
      */
-    public function displayModeReturnsInitialValueForDisplayModeTest()
+    public function displayModeReturnsInitialValueForDisplayModeTest(): void
     {
         self::assertEquals('all', $this->fixture->getDisplayMode());
     }
 
     /**
-     * Test if displaymode can be set
-     *
      * @test
      */
-    public function displayModeCanBeSetTest()
+    public function displayModeCanBeSetTest(): void
     {
         $displayMode = 'allRandom';
         $this->fixture->setDisplayMode($displayMode);
@@ -84,11 +67,9 @@ class BannerDemandTest extends UnitTestCase
     }
 
     /**
-     * Test if the current page uid can be set
-     *
      * @test
      */
-    public function currentPageUidCanBeSetTest()
+    public function currentPageUidCanBeSetTest(): void
     {
         $currentPageUid = 99;
         $this->fixture->setCurrentPageUid($currentPageUid);
@@ -98,7 +79,7 @@ class BannerDemandTest extends UnitTestCase
     /**
      * @test
      */
-    public function getMaxResultsReturnsInitialValue()
+    public function getMaxResultsReturnsInitialValue(): void
     {
         self::assertEquals(0, $this->fixture->getMaxResults());
     }
@@ -106,7 +87,7 @@ class BannerDemandTest extends UnitTestCase
     /**
      * @test
      */
-    public function maxResultsCanBeSet()
+    public function maxResultsCanBeSet(): void
     {
         $this->fixture->setMaxResults(10);
         self::assertEquals(10, $this->fixture->getMaxResults());
