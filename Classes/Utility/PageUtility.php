@@ -23,10 +23,6 @@ class PageUtility
 {
     /**
      * Find all ids from given ids and level
-     *
-     * @param string $pidList comma separated list of ids
-     * @param int $recursive recursive levels
-     * @return string comma separated list of ids
      */
     public static function extendPidListByChildren(string $pidList = '', int $recursive = 0): string
     {
@@ -38,7 +34,7 @@ class PageUtility
         $storagePids = GeneralUtility::intExplode(',', $pidList);
         foreach ($storagePids as $startPid) {
             $pids = self::getTreeList($startPid, $recursive);
-            if (strlen((string)$pids) > 0) {
+            if ($pids !== '') {
                 $recursiveStoragePids .= ',' . $pids;
             }
         }
@@ -48,17 +44,11 @@ class PageUtility
 
     /**
      * Recursively fetch all descendants of a given page
-     *
-     * @param int $id uid of the page
-     * @param int $depth
-     * @param int $begin
-     * @param string $permClause
-     * @return string comma separated list of descendant pages
      */
-    protected static function getTreeList(int $id, int $depth, int $begin = 0, $permClause = '')
+    protected static function getTreeList(int $id, int $depth, int $begin = 0, string $permClause = ''): string
     {
         if ($id < 0) {
-            $id = abs($id);
+            $id = (int)abs($id);
         }
         if ($begin === 0) {
             $theList = $id;
@@ -78,8 +68,8 @@ class PageUtility
             if ($permClause !== '') {
                 $queryBuilder->andWhere(QueryHelper::stripLogicalOperatorPrefix($permClause));
             }
-            $statement = $queryBuilder->execute();
-            while ($row = $statement->fetch()) {
+            $statement = $queryBuilder->executeQuery();
+            while ($row = $statement->fetchAssociative()) {
                 if ($begin <= 0) {
                     $theList .= ',' . $row['uid'];
                 }
