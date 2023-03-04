@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace DERHANSEN\SfBanners\Domain\Repository;
 
-use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
+use DERHANSEN\SfBanners\Domain\Model\Dto\BannerDemand;
 use DERHANSEN\SfBanners\Utility\PageUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;

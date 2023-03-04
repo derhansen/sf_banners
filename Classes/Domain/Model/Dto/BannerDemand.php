@@ -9,7 +9,7 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace DERHANSEN\SfBanners\Domain\Model;
+namespace DERHANSEN\SfBanners\Domain\Model\Dto;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 

@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace DERHANSEN\SfBanners\Tests\Functional\Repository;
 
-use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
+use DERHANSEN\SfBanners\Domain\Model\Dto\BannerDemand;
 use DERHANSEN\SfBanners\Domain\Repository\BannerRepository;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 

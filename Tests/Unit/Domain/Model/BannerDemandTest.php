@@ -11,12 +11,9 @@ declare(strict_types=1);
 
 namespace DERHANSEN\SfBanners\Test\Unit\Domain\Model;
 
-use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
+use DERHANSEN\SfBanners\Domain\Model\Dto\BannerDemand;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
-/**
- * Test case for class \DERHANSEN\SfBanners\Domain\Model\BannerDemand.
- */
 class BannerDemandTest extends UnitTestCase
 {
     /**

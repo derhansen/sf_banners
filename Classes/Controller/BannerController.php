@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace DERHANSEN\SfBanners\Controller;
 
 use DERHANSEN\SfBanners\Domain\Model\Banner;
-use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
+use DERHANSEN\SfBanners\Domain\Model\Dto\BannerDemand;
 use DERHANSEN\SfBanners\Domain\Repository\BannerRepository;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Cache\CacheManager;
