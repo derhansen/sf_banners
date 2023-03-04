@@ -20,11 +20,8 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 class BannerRepositoryTest extends FunctionalTestCase
 {
-    /** @var BannerRepository */
-    protected $bannerRepository;
-
-    /** @var array */
-    protected $testExtensionsToLoad = ['typo3conf/ext/sf_banners'];
+    protected mixed $bannerRepository;
+    protected array $testExtensionsToLoad = ['typo3conf/ext/sf_banners'];
 
     /**
      * Setup
@@ -34,9 +31,9 @@ class BannerRepositoryTest extends FunctionalTestCase
         parent::setUp();
         $this->bannerRepository = $this->getContainer()->get(BannerRepository::class);
 
-        $this->importDataSet(__DIR__ . '/../Fixtures/sys_category.xml');
-        $this->importDataSet(__DIR__ . '/../Fixtures/pages.xml');
-        $this->importDataSet(__DIR__ . '/../Fixtures/tx_sfbanners_domain_model_banner.xml');
+        $this->importCSVDataSet(__DIR__ . '/../Fixtures/sys_category.csv');
+        $this->importCSVDataSet(__DIR__ . '/../Fixtures/pages.csv');
+        $this->importCSVDataSet(__DIR__ . '/../Fixtures/tx_sfbanners_domain_model_banner.csv');
     }
 
     /**
@@ -49,7 +46,7 @@ class BannerRepositoryTest extends FunctionalTestCase
         $demand = new BannerDemand();
 
         /* Simple starting point */
-        $demand->setStartingPoint(55);
+        $demand->setStartingPoint('55');
         self::assertCount(2, $this->bannerRepository->findDemanded($demand));
 
         /* Multiple starting points */
@@ -71,7 +68,7 @@ class BannerRepositoryTest extends FunctionalTestCase
         $demand = new BannerDemand();
 
         /* Set starting point */
-        $demand->setStartingPoint(10);
+        $demand->setStartingPoint('10');
 
         /* Simple category test */
         $demand->setCategories('10');
@@ -98,7 +95,7 @@ class BannerRepositoryTest extends FunctionalTestCase
     public function findRecordsWithDisplayModeTest()
     {
         $demand = new BannerDemand();
-        $pid = 80;
+        $pid = '80';
         $uids = [
             1 => 20,
             2 => 21,
@@ -158,12 +155,12 @@ class BannerRepositoryTest extends FunctionalTestCase
     public function findRecordsForSpecialExcludePageUidTest()
     {
         $demand = new BannerDemand();
-        $pid = 95;
+        $pid = '95';
 
         /* Define PIDs */
-        $pid1 = 4;
-        $pid2 = 5;
-        $pid3 = 6;
+        $pid1 = '4';
+        $pid2 = '5';
+        $pid3 = '6';
 
         /* Set starting point */
         $demand->setStartingPoint($pid);
@@ -196,10 +193,10 @@ class BannerRepositoryTest extends FunctionalTestCase
         $pid = 96;
 
         /* Define PIDs */
-        $pid1 = 7;
-        $pid2 = 8;
-        $pid3 = 9;
-        $pid4 = 10;
+        $pid1 = '7';
+        $pid2 = '8';
+        $pid3 = '9';
+        $pid4 = '10';
 
         /* Set starting point */
         $demand->setStartingPoint($pid);
@@ -229,7 +226,7 @@ class BannerRepositoryTest extends FunctionalTestCase
     public function findRecordsWithMaxImpressionsTest()
     {
         $demand = new BannerDemand();
-        $pid = 100;
+        $pid = '100';
 
         /* Set starting point */
         $demand->setStartingPoint($pid);
@@ -246,7 +243,7 @@ class BannerRepositoryTest extends FunctionalTestCase
     public function findRecordsWithMaxClicksTest()
     {
         $demand = new BannerDemand();
-        $pid = 101;
+        $pid = '101';
 
         /* Set starting point */
         $demand->setStartingPoint($pid);
@@ -263,7 +260,7 @@ class BannerRepositoryTest extends FunctionalTestCase
     public function findRecordsWithMaxImpressionsAndMaxClicksTest()
     {
         $demand = new BannerDemand();
-        $pid = 102;
+        $pid = '102';
 
         /* Set starting point */
         $demand->setStartingPoint($pid);
@@ -280,7 +277,7 @@ class BannerRepositoryTest extends FunctionalTestCase
     public function findRecordsWithMaxResultsTest()
     {
         $demand = new BannerDemand();
-        $pid = 103;
+        $pid = '103';
 
         /* Set starting point */
         $demand->setStartingPoint($pid);
