@@ -25,6 +25,9 @@ return [
         'typeicon_classes' => [
             'default' => 'ext-sfbanners-banner'
         ],
+        'security' => [
+            'ignorePageTypeRestriction' => true,
+        ],
     ],
     'palettes' => [
         'paletteVisibility' => ['showitem' => 'starttime, endtime'],
@@ -183,38 +186,16 @@ return [
         'assets' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.assets',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'assets',
-                [
-                    'foreign_match_fields' => [
-                        'fieldname' => 'assets',
-                        'tablenames' => 'tx_sfbanners_domain_model_banner',
-                        'table_local' => 'sys_file',
-                    ],
-                    'foreign_types' => [
-                        \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
-                            'showitem' => '--palette--;LLL:LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette,
-                                      --palette--;;imageoverlayPalette,
-                                      --palette--;;filePalette'
-                        ],
-                    ],
-                    'overrideChildTca' => [
-                        'types' => [
-                            \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
-                                'showitem' => '
-                                        --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                        --palette--;;filePalette'
-                            ],
-                        ],
-                    ],
-                    'behaviour' => [
-                        'allowLanguageSynchronization' => true,
-                    ],
-                    'minitems' => 0,
-                    'maxitems' => 1,
+            'config' => [
+                'type' => 'file',
+                'allowed' => 'common-image-types',
+                'appearance' => [
+                    'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference',
+                    'showPossibleLocalizationRecords' => true,
                 ],
-                $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
-            ),
+                'minitems' => 0,
+                'maxitems' => 1,
+            ]
         ],
         'html' => [
             'exclude' => 1,
