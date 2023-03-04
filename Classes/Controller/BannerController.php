@@ -16,29 +16,20 @@ use DERHANSEN\SfBanners\Domain\Model\BannerDemand;
 use DERHANSEN\SfBanners\Domain\Repository\BannerRepository;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Cache\CacheManager;
+use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Context\Context;
-use TYPO3\CMS\Core\Http\ImmediateResponseException;
+use TYPO3\CMS\Core\Http\PropagateResponseException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Frontend\Controller\ErrorController;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
-/**
- * Banner Controller
- */
 class BannerController extends ActionController
 {
     protected BannerRepository $bannerRepository;
+    protected FrontendInterface $cacheInstance;
 
-    /**
-     * @var \TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
-     */
-    protected $cacheInstance;
-
-    /**
-     * Initialize cache
-     */
-    public function initializeAction()
+    public function initializeAction(): void
     {
         $this->initializeCache();
     }
@@ -46,33 +37,28 @@ class BannerController extends ActionController
     /**
      * Initialize cache instance to be ready to use
      */
-    protected function initializeCache()
+    protected function initializeCache(): void
     {
         $cacheManager = GeneralUtility::makeInstance(CacheManager::class);
         $this->cacheInstance = $cacheManager->getCache('sfbanners_cache');
     }
 
-    public function injectBannerRepository(BannerRepository $bannerRepository)
+    public function injectBannerRepository(BannerRepository $bannerRepository): void
     {
         $this->bannerRepository = $bannerRepository;
     }
 
     /**
      * Click Action for a banner
-     *
-     * @param Banner|null $banner
-     * @return ResponseInterface
-     * @throws ImmediateResponseException
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
      */
     public function clickAction(Banner $banner = null): ResponseInterface
     {
         if (is_null($banner)) {
-            return GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction(
+            $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction(
                 $this->request,
                 'Banner not found.'
             );
+            throw new PropagateResponseException($response, 1677953992);
         }
         $banner->increaseClicks();
         $this->bannerRepository->update($banner);
@@ -83,8 +69,6 @@ class BannerController extends ActionController
 
     /**
      * Show action
-     *
-     * @return ResponseInterface
      */
     public function showAction(): ResponseInterface
     {
@@ -115,7 +99,7 @@ class BannerController extends ActionController
             'maxResults' => ($this->settings['maxResults'] ?? '') !== '' ? (int)$this->settings['maxResults'] : 0,
         ];
 
-        $config = $this->hashService->appendHmac(json_encode($bannerConfig));
+        $config = $this->hashService->appendHmac(json_encode($bannerConfig, JSON_THROW_ON_ERROR));
 
         $this->view->assignMultiple([
             'fetchUrl' => $fetchUrl,
@@ -128,13 +112,9 @@ class BannerController extends ActionController
 
     /**
      * Returns banners for the given config array as JSON response for usage in frontend
-     *
-     * @param array $bannerConfigs
-     * @return ResponseInterface
      */
-    public function getBannersAction(
-        array $bannerConfigs = []
-    ): ResponseInterface {
+    public function getBannersAction(array $bannerConfigs = []): ResponseInterface
+    {
         $result = [];
 
         foreach ($bannerConfigs as $bannerConfig) {
@@ -160,13 +140,9 @@ class BannerController extends ActionController
 
     /**
      * Returns banners by the given configuration array
-     *
-     * @param array $config
-     * @return string
      */
     protected function getBannersByConfig(array $config): string
     {
-        /** @var \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand */
         $demand = GeneralUtility::makeInstance(BannerDemand::class);
         $demand->setCategories($config['categories']);
         $demand->setStartingPoint($config['startingPoint']);
