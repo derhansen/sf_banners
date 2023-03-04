@@ -158,9 +158,9 @@ class BannerRepositoryTest extends FunctionalTestCase
         $pid = '95';
 
         /* Define PIDs */
-        $pid1 = '4';
-        $pid2 = '5';
-        $pid3 = '6';
+        $pid1 = 4;
+        $pid2 = 5;
+        $pid3 = 6;
 
         /* Set starting point */
         $demand->setStartingPoint($pid);
@@ -193,10 +193,10 @@ class BannerRepositoryTest extends FunctionalTestCase
         $pid = '96';
 
         /* Define PIDs */
-        $pid1 = '7';
-        $pid2 = '8';
-        $pid3 = '9';
-        $pid4 = '10';
+        $pid1 = 7;
+        $pid2 = 8;
+        $pid3 = 9;
+        $pid4 = 10;
 
         /* Set starting point */
         $demand->setStartingPoint($pid);

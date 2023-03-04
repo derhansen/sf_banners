@@ -21,15 +21,15 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 class Banner extends AbstractEntity
 {
-    protected string $title;
-    protected string $description;
-    protected int $type;
-    protected string $html;
-    protected int $impressionsMax;
-    protected int $clicksMax;
-    protected int $impressions;
-    protected int $clicks;
-    protected bool $recursive;
+    protected string $title = '';
+    protected string $description = '';
+    protected int $type = 0;
+    protected string $html = '';
+    protected int $impressionsMax = 0;
+    protected int $clicksMax = 0;
+    protected int $impressions = 0;
+    protected int $clicks = 0;
+    protected bool $recursive = false;
 
     /**
      * @var ObjectStorage<Category>

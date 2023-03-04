@@ -15,8 +15,8 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 class BannerDemand extends AbstractEntity
 {
-    protected string $categories;
-    protected string $startingPoint;
+    protected string $categories = '';
+    protected string $startingPoint = '';
     protected string $displayMode = 'all';
     protected int $currentPageUid = 0;
     protected int $maxResults = 0;
