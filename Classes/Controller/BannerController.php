@@ -187,7 +187,7 @@ class BannerController extends ActionController
 
         /* Collect identifier based on uids for all banners */
         $languageAspect = GeneralUtility::makeInstance(Context::class)->getAspect('language');
-        $ident = $this->request->getAttribute('routing')->getPageId() . '-' .$languageAspect->getId();
+        $ident = $this->request->getAttribute('routing')->getPageId() . '-' . $languageAspect->getId();
         foreach ($banners as $banner) {
             $ident .= $banner->getUid();
         }
