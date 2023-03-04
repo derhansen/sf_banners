@@ -71,10 +71,10 @@ class BannerRepository extends Repository
                 $categoryConstraints[] = $query->contains('category', $category);
             }
             if (count($categoryConstraints) > 0) {
-                $constraints[] = $query->logicalOr($categoryConstraints);
+                $constraints[] = $query->logicalOr(...$categoryConstraints);
             }
         }
-        $query->matching($query->logicalAnd($constraints));
+        $query->matching($query->logicalAnd(...$constraints));
 
         /* Get banners without respect to limitations */
         $unfilteredResult = $query->execute();
