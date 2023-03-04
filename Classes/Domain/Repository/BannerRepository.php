@@ -19,14 +19,9 @@ use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
-/**
- * Banner repository
- */
 class BannerRepository extends Repository
 {
     /**
-     * Set default sorting
-     *
      * @var array
      */
     protected $defaultOrderings = ['sorting' => QueryInterface::ORDER_ASCENDING];
@@ -44,14 +39,12 @@ class BannerRepository extends Repository
     /**
      * Returns banners matching the given demand
      *
-     * @param \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand The demand
-     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @return array|QueryResultInterface
      */
     public function findDemanded(BannerDemand $demand)
     {
-        /* Override the default sorting for random mode. Must be called before
-            createQuery() */
-        if ($demand->getDisplayMode() == 'allRandom') {
+        /* Override the default sorting for random mode. Must be called before createQuery() */
+        if ($demand->getDisplayMode() === 'allRandom') {
             $this->defaultOrderings = [];
         }
 
@@ -59,12 +52,12 @@ class BannerRepository extends Repository
 
         $constraints = [];
 
-        if ($demand->getStartingPoint() != 0) {
+        if ($demand->getStartingPoint() !== '0' && $demand->getStartingPoint() !== '') {
             $pidList = GeneralUtility::intExplode(',', $demand->getStartingPoint(), true);
             $constraints[] = $query->in('pid', $pidList);
         }
 
-        if ($demand->getCategories() != 0) {
+        if ($demand->getCategories() !== '0' && $demand->getCategories() !== '') {
             $categoryConstraints = [];
             $categories = GeneralUtility::intExplode(',', $demand->getCategories(), true);
             foreach ($categories as $category) {
@@ -90,12 +83,8 @@ class BannerRepository extends Repository
 
     /**
      * Returns the banners by the displayMode set in the demand
-     *
-     * @param array $filteredResult
-     * @param BannerDemand $demand
-     * @return array|mixed
      */
-    protected function getBannersByDisplayMode(array $filteredResult, BannerDemand $demand)
+    protected function getBannersByDisplayMode(array $filteredResult, BannerDemand $demand): array
     {
         $result = [];
 
@@ -119,12 +108,8 @@ class BannerRepository extends Repository
 
     /**
      * Returns the banners by maxResults set in the demand
-     *
-     * @param array $banners
-     * @param BannerDemand $bannerDemand
-     * @return array
      */
-    protected function getBannersByMaxResults(array $banners, BannerDemand $bannerDemand)
+    protected function getBannersByMaxResults(array $banners, BannerDemand $bannerDemand): array
     {
         $result = $banners;
         if ($bannerDemand->getMaxResults() > 0 && count($banners) > $bannerDemand->getMaxResults()) {
@@ -135,17 +120,12 @@ class BannerRepository extends Repository
 
     /**
      * Applies banner limitations to the given queryResult and returns remaining banners as array
-     *
-     * @param QueryResultInterface $result
-     * @param BannerDemand $demand
-     * @return array
      */
-    protected function applyBannerLimitations(QueryResultInterface $result, BannerDemand $demand)
+    protected function applyBannerLimitations(QueryResultInterface $result, BannerDemand $demand): array
     {
         $banners = $this->getExcludePageBanners($result, $demand);
         $resultingBanners = [];
         foreach ($banners as $banner) {
-            /** @var \DERHANSEN\SfBanners\Domain\Model\Banner $banner */
             if ($banner->getImpressionsMax() > 0 || $banner->getClicksMax() > 0) {
                 if (($banner->getImpressionsMax() > 0 && $banner->getClicksMax() > 0)) {
                     if ($banner->getImpressions() < $banner->getImpressionsMax() && $banner->getClicks() <
@@ -169,26 +149,22 @@ class BannerRepository extends Repository
 
     /**
      * Returns all banners in respect to excludepages (recursively if set in banner)
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\QueryResultInterface $result The result
-     * @param \DERHANSEN\SfBanners\Domain\Model\BannerDemand $demand The demand
-     * @return array
      */
-    protected function getExcludePageBanners(QueryResultInterface $result, BannerDemand $demand)
+    protected function getExcludePageBanners(QueryResultInterface $result, BannerDemand $demand): array
     {
         $banners = [];
-        /** @var \DERHANSEN\SfBanners\Domain\Model\Banner $banner */
         foreach ($result as $banner) {
             $excludePages = [];
             foreach ($banner->getExcludepages() as $excludePage) {
                 if ($banner->getRecursive()) {
                     $pidList = PageUtility::extendPidListByChildren((string)$excludePage->getUid(), 255);
-                    $excludePages = array_merge($excludePages, explode(',', $pidList));
+                    $pidArray = GeneralUtility::intExplode(',', $pidList, true);
+                    $excludePages = [...$excludePages, ...$pidArray];
                 } else {
                     $excludePages[] = $excludePage->getUid();
                 }
             }
-            if (!in_array($demand->getCurrentPageUid(), $excludePages)) {
+            if (!in_array($demand->getCurrentPageUid(), $excludePages, true)) {
                 $banners[] = $banner;
             }
         }
@@ -197,13 +173,10 @@ class BannerRepository extends Repository
 
     /**
      * Updates the impressions counter for each banner
-     *
-     * @param array $banners Banners
      */
-    public function updateImpressions(array $banners)
+    public function updateImpressions(array $banners): void
     {
         foreach ($banners as $banner) {
-            /** @var \DERHANSEN\SfBanners\Domain\Model\Banner $banner */
             $banner->increaseImpressions();
             $this->update($banner);
         }

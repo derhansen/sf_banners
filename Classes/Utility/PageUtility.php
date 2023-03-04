@@ -11,18 +11,16 @@ declare(strict_types=1);
 
 namespace DERHANSEN\SfBanners\Utility;
 
+use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryHelper;
 use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-/**
- * Page Utility
- */
 class PageUtility
 {
     /**
-     * Find all ids from given ids and level
+     * Find all ids from given comma separated list of PIDs and level
      */
     public static function extendPidListByChildren(string $pidList = '', int $recursive = 0): string
     {
@@ -34,7 +32,7 @@ class PageUtility
         $storagePids = GeneralUtility::intExplode(',', $pidList);
         foreach ($storagePids as $startPid) {
             $pids = self::getTreeList($startPid, $recursive);
-            if ($pids !== '') {
+            if (strlen($pids) > 0) {
                 $recursiveStoragePids .= ',' . $pids;
             }
         }
@@ -50,18 +48,20 @@ class PageUtility
         if ($id < 0) {
             $id = (int)abs($id);
         }
+
         if ($begin === 0) {
             $theList = $id;
         } else {
             $theList = '';
         }
+
         if ($id && $depth > 0) {
             $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('pages');
             $queryBuilder->getRestrictions()->removeAll()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
             $queryBuilder->select('uid')
                 ->from('pages')
                 ->where(
-                    $queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter($id, \PDO::PARAM_INT)),
+                    $queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter($id, Connection::PARAM_INT)),
                     $queryBuilder->expr()->eq('sys_language_uid', 0)
                 )
                 ->orderBy('uid');
@@ -82,6 +82,7 @@ class PageUtility
                 }
             }
         }
-        return $theList;
+
+        return (string)$theList;
     }
 }
