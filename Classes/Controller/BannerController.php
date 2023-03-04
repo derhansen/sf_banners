@@ -112,7 +112,7 @@ class BannerController extends ActionController
             'startingPoint' => $this->settings['startingPoint'] ?? '',
             'categories' => $this->settings['category'] ?? '',
             'displayMode' => $this->settings['displayMode'] ?? '',
-            'maxResults' => $this->settings['maxResults'] !== '' ? (int)$this->settings['maxResults'] : 0,
+            'maxResults' => ($this->settings['maxResults'] ?? '') !== '' ? (int)$this->settings['maxResults'] : 0,
         ];
 
         $config = $this->hashService->appendHmac(json_encode($bannerConfig));
