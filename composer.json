@@ -19,17 +19,17 @@
     "GPL-2.0-or-later"
   ],
   "require": {
-    "typo3/cms-core": "^12.2",
-    "php": ">=8.0"
+    "typo3/cms-core": "^12.2 || dev-main"
   },
   "require-dev": {
-    "typo3/cms-backend": "^12.2",
-    "typo3/cms-frontend": "^12.2",
-    "typo3/cms-recordlist": "^12.2",
-    "typo3/cms-extbase": "^12.2",
-    "typo3/cms-fluid": "^12.2",
-    "typo3/testing-framework": "^6.6.2",
-    "friendsofphp/php-cs-fixer": "^3.0.0"
+    "typo3/cms-backend": "^12.2 || dev-main",
+    "typo3/cms-frontend": "^12.2 || dev-main",
+    "typo3/cms-recordlist": "^12.2 || dev-main",
+    "typo3/cms-extbase": "^12.2 || dev-main",
+    "typo3/cms-fluid": "^12.2 || dev-main",
+    "sbuerk/typo3-cmscomposerinstallers-testingframework-bridge": "^0.1.0",
+    "typo3/testing-framework": "~7.0@dev || dev-main",
+    "friendsofphp/php-cs-fixer": "^3.12.0"
   },
   "replace": {
     "typo3-ter/sf-banners": "self.version"
@@ -49,20 +49,15 @@
     "bin-dir": ".Build/bin",
     "allow-plugins": {
       "typo3/class-alias-loader": true,
-      "typo3/cms-composer-installers": true
+      "typo3/cms-composer-installers": true,
+      "sbuerk/typo3-cmscomposerinstallers-testingframework-bridge": true
     }
-  },
-  "scripts": {
-    "post-autoload-dump": [
-      "mkdir -p .Build/Web/typo3conf/ext/",
-      "[ -L .Build/Web/typo3conf/ext/sf_banners ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/sf_banners"
-    ]
   },
   "extra": {
     "typo3/cms": {
       "extension-key": "sf_banners",
       "cms-package-dir": "{$vendor-dir}/typo3/cms",
-      "web-dir": ".Build/Web"
+      "web-dir": ".Build/Public"
     }
   }
 }

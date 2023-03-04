@@ -1,23 +1,13 @@
-<phpunit
-        backupGlobals="true"
-        bootstrap="../../.Build/vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php"
-        colors="true"
-        convertErrorsToExceptions="true"
-        convertWarningsToExceptions="true"
-        forceCoversAnnotation="false"
-        processIsolation="false"
-        stopOnError="false"
-        stopOnFailure="false"
-        stopOnIncomplete="false"
-        stopOnSkipped="false"
-        verbose="false"
-        convertDeprecationsToExceptions="false"
-        beStrictAboutTestsThatDoNotTestAnything="false"
->
+<?xml version="1.0"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" backupGlobals="true"
+         bootstrap="../../.Build/vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php"
+         colors="true" processIsolation="false" stopOnError="false" stopOnFailure="false" stopOnIncomplete="false"
+         stopOnSkipped="false" beStrictAboutTestsThatDoNotTestAnything="false"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd" cacheDirectory=".phpunit.cache"
+         requireCoverageMetadata="false">
     <testsuites>
         <testsuite name="Unit Tests">
             <directory>../Unit/</directory>
         </testsuite>
     </testsuites>
-
 </phpunit>
