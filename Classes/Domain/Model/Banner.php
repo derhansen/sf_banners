@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace DERHANSEN\SfBanners\Domain\Model;
 
+use TYPO3\CMS\Core\LinkHandling\TypoLinkCodecService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\Domain\Model\Category;
@@ -224,16 +225,20 @@ class Banner extends AbstractEntity
 
     public function getLinkUrl(): string
     {
-        $cObj = GeneralUtility::makeInstance(ContentObjectRenderer::class);
-        return $cObj->getTypoLink_URL($this->getLink());
+        $instructions = [
+            'parameter' => $this->getLink(),
+        ];
+
+        return GeneralUtility::makeInstance(ContentObjectRenderer::class)
+            ->typoLink_URL($instructions);
     }
 
     public function getLinkTarget(): string
     {
-        $link = $this->getLink();
-        $cObj = GeneralUtility::makeInstance(ContentObjectRenderer::class);
-        $cObj->getTypoLink_URL($link);
-        return $cObj->lastTypoLinkTarget;
+        $typoLinkCodec = GeneralUtility::makeInstance(TypoLinkCodecService::class);
+        $typoLinkConfiguration = $typoLinkCodec->decode($this->getLink());
+
+        return $typoLinkConfiguration['target'] ?? '';
     }
 
     public function getAssets(): ObjectStorage
