@@ -26,26 +26,10 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 class BannerController extends ActionController
 {
-    protected BannerRepository $bannerRepository;
-    protected FrontendInterface $cacheInstance;
-
-    public function initializeAction(): void
-    {
-        $this->initializeCache();
-    }
-
-    /**
-     * Initialize cache instance to be ready to use
-     */
-    protected function initializeCache(): void
-    {
-        $cacheManager = GeneralUtility::makeInstance(CacheManager::class);
-        $this->cacheInstance = $cacheManager->getCache('sfbanners_cache');
-    }
-
-    public function injectBannerRepository(BannerRepository $bannerRepository): void
-    {
-        $this->bannerRepository = $bannerRepository;
+    public function __construct(
+        private readonly FrontendInterface $cacheInstance,
+        private readonly BannerRepository $bannerRepository
+    ) {
     }
 
     /**

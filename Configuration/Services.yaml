@@ -6,3 +6,12 @@ services:
 
     DERHANSEN\SfBanners\:
         resource: '../Classes/*'
+
+    DERHANSEN\SfBanners\Controller\BannerController:
+        arguments:
+            $cacheInstance: '@cache.sfbanners_cache'
+
+    cache.sfbanners_cache:
+        class: TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
+        factory: ['@TYPO3\CMS\Core\Cache\CacheManager', 'getCache']
+        arguments: ['sfbanners_cache']
