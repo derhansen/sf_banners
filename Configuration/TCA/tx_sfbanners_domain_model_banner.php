@@ -195,6 +195,16 @@ return [
                 ],
                 'minitems' => 0,
                 'maxitems' => 1,
+                // Use the imageoverlayPalette instead of the basicoverlayPalette, so links can be defined.
+                'overrideChildTca' => [
+                    'types' => [
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
+                            'showitem' => '
+                                        --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                        --palette--;;filePalette'
+                        ],
+                    ],
+                ],
             ]
         ],
         'html' => [
