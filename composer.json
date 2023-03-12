@@ -1,7 +1,7 @@
 {
   "name": "derhansen/sf_banners",
   "type": "typo3-cms-extension",
-  "description": "Banner-Management Extension based on Extbase and Fluid. Loads banners asynchronously by JQuery",
+  "description": "Banner-Management Extension based on Extbase and Fluid. Loads banners asynchronously using JavaScript.",
   "homepage": "https://github.com/derhansen/sf_banners",
   "support": {
     "issues": "https://github.com/derhansen/sf_banners/issues"

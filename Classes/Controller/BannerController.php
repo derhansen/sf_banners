@@ -103,7 +103,7 @@ class BannerController extends ActionController
         foreach ($bannerConfigs as $bannerConfig) {
             try {
                 $configString = $this->hashService->validateAndStripHmac($bannerConfig);
-                $config = json_decode($configString, true);
+                $config = json_decode($configString, true, 512, JSON_THROW_ON_ERROR);
                 $result[] = [
                     'uniqueId' => $config['uniqueId'],
                     'html' => $this->getBannersByConfig($config),
@@ -116,7 +116,7 @@ class BannerController extends ActionController
         $response = $this->responseFactory->createResponse()
             ->withHeader('Content-Type', 'application/json; charset=utf-8')
             ->withHeader('X-Robots-Tag', 'noindex, nofollow');
-        $response->getBody()->write(json_encode($result));
+        $response->getBody()->write(json_encode($result, JSON_THROW_ON_ERROR));
 
         return $response;
     }
@@ -148,7 +148,7 @@ class BannerController extends ActionController
         $languageAspect = GeneralUtility::makeInstance(Context::class)->getAspect('language');
         $ident = $this->request->getAttribute('routing')->getPageId() . '-' . $languageAspect->getId();
         foreach ($banners as $banner) {
-            $ident .= $banner->getUid();
+            $ident .= '-' . $banner->getUid();
         }
 
         $ret = $this->cacheInstance->get(sha1($ident));

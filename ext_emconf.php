@@ -12,7 +12,7 @@
 
 $EM_CONF[$_EXTKEY] = [
     'title' => 'Banner-Management',
-    'description' => 'Banner-Management Extension based on Extbase and Fluid. Loads banners asynchronously using jQuery.',
+    'description' => 'Banner-Management Extension based on Extbase and Fluid. Loads banners asynchronously using JavaScript.',
     'category' => 'plugin',
     'author' => 'Torben Hansen',
     'author_email' => 'torben@derhansen.com',
@@ -22,7 +22,7 @@ $EM_CONF[$_EXTKEY] = [
     'version' => '7.0.0-dev',
     'constraints' => [
         'depends' => [
-            'typo3' => '12.2-12.9.99',
+            'typo3' => '12.2.0-12.9.99',
         ],
         'conflicts' => [],
         'suggests' => [],

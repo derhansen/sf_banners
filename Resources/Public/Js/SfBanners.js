@@ -1,29 +1,23 @@
 /**
  * When page is loaded, collect all banner configs and POST data to backend to fetch banners
  */
-jQuery(document).ready(function() {
-    var $banners = $('[id^=banner-]')
-    var url = ''
-    var bannerConfigs = []
+document.addEventListener('DOMContentLoaded', () => {
+  let url = ''
+  let formData = new FormData();
 
-    $banners.each(function() {
-      url = $(this).data('fetchurl')
-      bannerConfigs.push($(this).data('config'))
+  [...document.querySelectorAll('[id^="banner-"]')].forEach(banner => {
+    url = banner.dataset.fetchurl
+    formData.append('tx_sfbanners_pi1[bannerConfigs][]', banner.dataset.config)
+  });
+
+  fetch(url, { body: formData, method: 'POST' })
+    .then((resp) => resp.json())
+    .then(function (data) {
+      for (let i = 0; i < data.length; i++) {
+        postscribe('#banner-' + data[i]['uniqueId'], data[i]['html'])
+      }
     })
-
-    if (url !== '') {
-      $.ajax({
-        url: url,
-        type: 'POST',
-        data: {
-          'tx_sfbanners_pi1[bannerConfigs]': bannerConfigs
-        },
-        success: function (data) {
-          for (var i = 0; i < data.length; i++) {
-            postscribe('#banner-' + data[i]['uniqueId'], data[i]['html']);
-          }
-        }
-      })
-    }
-  }
-);
+    .catch(function (error) {
+      console.log(error)
+    });
+})
