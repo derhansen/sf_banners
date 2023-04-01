@@ -1,5 +1,7 @@
+[![Latest Stable Version](http://poser.pugx.org/derhansen/sf_banners/v)](https://packagist.org/packages/derhansen/sf_banners)
 ![CI](https://github.com/derhansen/sf_banners/workflows/CI/badge.svg)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Monthly Downloads](http://poser.pugx.org/derhansen/sf_banners/d/monthly)](https://packagist.org/packages/derhansen/sf_banners)
 
 TYPO3 extension sf_banner: Banner-Management
 ===========================================
@@ -18,7 +20,7 @@ TYPO3 extension sf_banner: Banner-Management
 
 Banner can be assigned multiple categories which allows a flexible way of displaying them on a TYPO3 website.
 Each banner contains a statistic, where the total amount of impressions and clicks are shown. A banner can be limited
-to an amount of maximum impressions and/or clicks. 
+to an amount of maximum impressions and/or clicks.
 
 Banners are loaded asynchronously, so their loading does not affect the page load time. To do so, the extension
 uses JavaScript (AJAX) to load all banners and postscribe.js to place the banners content to the webpage.
