@@ -64,12 +64,6 @@ The alternative text of the image. *Only available, when the banner
 type is set to “Image”.*
 
 
-Link
-""""
-
-The link, where a click on the banner should redirect to.
-
-
 Category
 """"""""
 

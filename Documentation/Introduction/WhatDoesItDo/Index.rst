@@ -23,16 +23,14 @@ It supports image and HTML banners. Banner can be assigned multiple
 categories which allows a flexible way of displaying them on a TYPO3 website.
 
 The Extension fetches the banners for the desired page
-**asynchronously** by using AJAX (jQuery), so the page load time is'nt
+**asynchronously** by using JavaScript (AJAX), so the page load time is not
 mainly affected by the banner plugin.
 
 Each banner contains a statistics, where the total amount of
 impressions and clicks are shown. A banner can be limited to an amount
-of maximum impressions and/or clicks. The clicks of Flash-banners are
-counted by using a clicktag.
+of maximum impressions and/or clicks.
 
 The extension can be used as a plugin or by TypoScript.
 
-The extension is developed with Extbase and Fluid and the current version
-support TYPO3 9.5 LTS and TYPO3 10.4 LTS
+The extension is developed with Extbase and Fluid.
 

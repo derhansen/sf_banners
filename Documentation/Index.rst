@@ -26,7 +26,7 @@ Asynchronous Banner-Management
       sf_banners
 
 :Description:
-      Banner-Management Extension based on Extbase and Fluid. Loads banners asynchronously by JQuery.
+      Banner-Management Extension based on Extbase and Fluid. Loads banners asynchronously using JavaScript.
 
 :Keywords:
       forEditors, forAdmins, forBeginners, forIntermediates

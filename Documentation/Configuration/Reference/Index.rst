@@ -81,32 +81,6 @@ Plugin-Settings: plugin.tx\_sfbanners.settings
    :Default:
 
  - :Property:
-         defaultFlashVars.wmode
-
-   :Data type:
-         string
-
-   :Description:
-         The default value for flash wmode. The default setting of the
-         extension "opaque" is configured in constants.
-
-   :Default:
-         opaque
-
- - :Property:
-         defaultFlashVars.allowScriptAccess
-
-   :Data type:
-         string
-
-   :Description:
-         The default value for flash allowScriptAccess. The default setting of
-         the extension "sameDomain" is configured in constants.
-
-   :Default:
-         sameDomain
-
- - :Property:
          ajaxPageTypeNum
 
    :Data type:

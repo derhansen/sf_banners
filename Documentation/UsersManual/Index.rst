@@ -25,7 +25,6 @@ Users manual
    :glob:
 
    Installation/Index
-   Jquery/Index
    UsingTheExtensionByTyposcript/Index
    SettingsForBanners/Index
 
