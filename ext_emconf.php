@@ -19,10 +19,10 @@ $EM_CONF[$_EXTKEY] = [
     'state' => 'stable',
     'uploadfolder' => 1,
     'clearCacheOnLoad' => 0,
-    'version' => '7.0.0-dev',
+    'version' => '7.0.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '12.2.0-12.9.99',
+            'typo3' => '12.3.0-12.4.99',
         ],
         'conflicts' => [],
         'suggests' => [],
