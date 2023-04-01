@@ -18,17 +18,20 @@
   "license": [
     "GPL-2.0-or-later"
   ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "require": {
-    "typo3/cms-core": "^12.3 || dev-main"
+    "typo3/cms-core": "^12.3 || ~12.4@dev"
   },
   "require-dev": {
-    "typo3/cms-backend": "^12.3 || dev-main",
-    "typo3/cms-frontend": "^12.3 || dev-main",
-    "typo3/cms-extbase": "^12.3 || dev-main",
-    "typo3/cms-fluid": "^12.3 || dev-main",
+    "typo3/cms-backend": "^12.3 || ~12.4@dev",
+    "typo3/cms-frontend": "^12.3 || ~12.4@dev",
+    "typo3/cms-extbase": "^12.3 || ~12.4@dev",
+    "typo3/cms-fluid": "^12.3 || ~12.4@dev",
     "sbuerk/typo3-cmscomposerinstallers-testingframework-bridge": "^0.1.0",
-    "typo3/testing-framework": "~7.0@dev || dev-main",
-    "friendsofphp/php-cs-fixer": "^3.12.0"
+    "typo3/testing-framework": "~7.0@dev",
+    "friendsofphp/php-cs-fixer": "^3.12.0",
+    "phpunit/phpunit": "^9.5.25"
   },
   "replace": {
     "typo3-ter/sf-banners": "self.version"

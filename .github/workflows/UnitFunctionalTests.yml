@@ -10,8 +10,10 @@ jobs:
     strategy:
       matrix:
         env:
-          - { php: 8.1, coverage: 1}
-          - { php: 8.2, coverage: 0}
+          - { php: 8.1, typo3: ^12.3 }
+          - { php: 8.2, typo3: ^12.3 }
+          - { php: 8.1, typo3: dev-main }
+          - { php: 8.2, typo3: dev-main }
 
     env: ${{ matrix.env }}
 
@@ -44,7 +46,7 @@ jobs:
 
       - name: Install composer dependencies
         run: |
-          composer install --no-progress
+          composer require typo3/cms-core:${{ matrix.env.typo3 }} --no-progress
 
       - name: Unit tests
         run: |
