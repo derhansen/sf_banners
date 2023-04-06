@@ -80,7 +80,7 @@ return [
                 'items' => [
                     [
                         'label' => '',
-                        'invertStateDisplay' => true,
+                        'invertStateDisplay' => false,
                     ],
                 ],
             ],
@@ -288,7 +288,7 @@ return [
                 'items' => [
                     [
                         'label' => '',
-                        'invertStateDisplay' => true,
+                        'invertStateDisplay' => false,
                     ],
                 ],
             ],
