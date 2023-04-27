@@ -29,7 +29,7 @@ uses JavaScript (AJAX) to load all banners and postscribe.js to place the banner
 
 | Version | TYPO3      | PHP       | Support/Development                  |
 |---------|------------|-----------|--------------------------------------|
-| 7.x     | 12.3       | >= 8.1    | Features, Bugfixes, Security Updates |
+| 7.x     | 12.4       | >= 8.1    | Features, Bugfixes, Security Updates |
 | 6.x     | 11.5       | 7.4 - 8.1 | Features, Bugfixes, Security Updates |
 | 5.x     | 9.5 - 10.4 | 7.2 - 7.4 | Security Updates                     |
 | 4.x     | 8.7 - 9.5  | 7.0 - 7.4 | Not supported any more               |
