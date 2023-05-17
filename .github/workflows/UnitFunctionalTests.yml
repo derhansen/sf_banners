@@ -10,10 +10,8 @@ jobs:
     strategy:
       matrix:
         env:
-          - { php: 8.1, typo3: ^12.3 }
-          - { php: 8.2, typo3: ^12.3 }
-          - { php: 8.1, typo3: dev-main }
-          - { php: 8.2, typo3: dev-main }
+          - { php: 8.1, typo3: ^12.4 }
+          - { php: 8.2, typo3: ^12.4 }
 
     env: ${{ matrix.env }}
 
