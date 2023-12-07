@@ -67,7 +67,7 @@ class BannerController extends ActionController
         ];
 
         if ($languageAspect->getId() > 0) {
-            $arguments['_language'] = $languageAspect;
+            $arguments['_language'] = $languageAspect->getId();
         }
 
         $fetchUrl = (string)$this->request->getAttribute('site')->getRouter()
