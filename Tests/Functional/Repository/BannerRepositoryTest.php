@@ -95,7 +95,7 @@ class BannerRepositoryTest extends FunctionalTestCase
             2 => 21,
             3 => 22,
             4 => 23,
-            5 => 24
+            5 => 24,
         ];
 
         /* Set starting point */

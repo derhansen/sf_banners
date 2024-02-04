@@ -22,7 +22,7 @@ return [
         ],
         'searchFields' => 'title,description,type,category,',
         'typeicon_classes' => [
-            'default' => 'ext-sfbanners-banner'
+            'default' => 'ext-sfbanners-banner',
         ],
         'security' => [
             'ignorePageTypeRestriction' => true,
@@ -145,7 +145,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim',
             ],
         ],
         'type' => [
@@ -157,11 +157,11 @@ return [
                 'items' => [
                     [
                         'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.type.image',
-                        'value' => 0
+                        'value' => 0,
                     ],
                     [
                         'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.type.html',
-                        'value' => 1
+                        'value' => 1,
                     ],
                 ],
                 'size' => 1,
@@ -190,11 +190,11 @@ return [
                         \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
                             'showitem' => '
                                         --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                        --palette--;;filePalette'
+                                        --palette--;;filePalette',
                         ],
                     ],
                 ],
-            ]
+            ],
         ],
         'html' => [
             'exclude' => 1,
@@ -206,14 +206,14 @@ return [
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
                 ],
-            ]
+            ],
         ],
         'category' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.category',
             'config' => [
                 'type' => 'category',
-            ]
+            ],
         ],
         'impressions_max' => [
             'exclude' => 1,
@@ -225,7 +225,7 @@ return [
                     'lower' => 0,
                 ],
                 'default' => 0,
-            ]
+            ],
         ],
         'clicks_max' => [
             'exclude' => 1,
@@ -237,7 +237,7 @@ return [
                     'lower' => 0,
                 ],
                 'default' => 0,
-            ]
+            ],
         ],
         'impressions' => [
             'exclude' => 1,
@@ -246,7 +246,7 @@ return [
                 'type' => 'none',
                 'size' => 10,
                 'default' => 0,
-            ]
+            ],
         ],
         'clicks' => [
             'exclude' => 1,
@@ -255,7 +255,7 @@ return [
                 'type' => 'none',
                 'size' => 10,
                 'default' => 0,
-            ]
+            ],
         ],
         'excludepages' => [
             'exclude' => 1,
@@ -268,7 +268,7 @@ return [
                 'maxitems' => 100,
                 'MM' => 'tx_sfbanners_domain_model_banner_excludepages_mm',
                 'foreign_table' => 'pages',
-            ]
+            ],
         ],
         'recursive' => [
             'exclude' => 1,
@@ -295,7 +295,7 @@ return [
                 --div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.statistics, impressions, clicks,
                 --div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.language, --palette--;;paletteLanguage,
                 --div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.access, hidden,--palette--;;paletteVisibility, fe_group,
-            '
+            ',
         ],
         '1' => [
             'showitem' => 'type, title, description,
@@ -305,7 +305,7 @@ return [
                 --div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.statistics, impressions, clicks,
                 --div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.language, --palette--;;paletteLanguage,
                 --div--;LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.tabs.access, hidden,--palette--;;paletteVisibility, fe_group,
-            '
-        ]
+            ',
+        ],
     ],
 ];
