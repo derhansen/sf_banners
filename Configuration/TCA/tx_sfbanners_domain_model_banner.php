@@ -243,18 +243,20 @@ return [
             'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.impressions',
             'config' => [
-                'type' => 'none',
+                'type' => 'number',
                 'size' => 10,
                 'default' => 0,
+                'readOnly' => true,
             ],
         ],
         'clicks' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.clicks',
             'config' => [
-                'type' => 'none',
+                'type' => 'number',
                 'size' => 10,
                 'default' => 0,
+                'readOnly' => true,
             ],
         ],
         'excludepages' => [
