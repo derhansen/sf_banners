@@ -4,7 +4,7 @@
             <div class="banner banner-{banner.uid}">
                 <f:if condition="{asset.originalResource.properties.link}">
                     <f:then>
-                        <f:link.action action="click" arguments="{banner: banner}" target="{banner.linkTarget}" pageType="{settings.clickPageTypeNum}" rel="nofollow">
+                        <f:link.action action="click" arguments="{banner: banner}" target="{banner.linkTarget}" pageType="{settings.clickPageTypeNum}" rel="noopener sponsored">
                             <f:image image="{asset}" />
                         </f:link.action>
                     </f:then>
