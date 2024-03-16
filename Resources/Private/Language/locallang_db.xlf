@@ -82,12 +82,6 @@
 		<trans-unit id="tx_sfbanners_domain_model_banner.tabs.statistics">
 			<source>Statistics</source>
 		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.tabs.access">
-			<source>Access</source>
-		</trans-unit>
-		<trans-unit id="tx_sfbanners_domain_model_banner.tabs.language">
-			<source>Language</source>
-		</trans-unit>
 		<trans-unit id="tx_sfbanners_domain_model_banner.title">
 			<source>Title</source>
 		</trans-unit>
