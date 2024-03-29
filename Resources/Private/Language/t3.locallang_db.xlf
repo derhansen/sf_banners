@@ -9,119 +9,119 @@
     <body>
       <trans-unit id="plugin.settings.category">
         <source>Category</source>
-        <target>crwdns310876:0crwdne310876:0</target>
+        <target>crwdns332616:0crwdne332616:0</target>
       </trans-unit>
       <trans-unit id="plugin.settings.maxResults">
         <source>Max. amount of banners to show</source>
-        <target>crwdns310878:0crwdne310878:0</target>
+        <target>crwdns332618:0crwdne332618:0</target>
       </trans-unit>
       <trans-unit id="plugin.settings.displayMode">
         <source>Displaymode</source>
-        <target>crwdns310880:0crwdne310880:0</target>
+        <target>crwdns332620:0crwdne332620:0</target>
       </trans-unit>
       <trans-unit id="plugin.settings.displayMode.all">
         <source>All banners</source>
-        <target>crwdns310882:0crwdne310882:0</target>
+        <target>crwdns332622:0crwdne332622:0</target>
       </trans-unit>
       <trans-unit id="plugin.settings.displayMode.allRandom">
         <source>All banners randomized</source>
-        <target>crwdns310884:0crwdne310884:0</target>
+        <target>crwdns332624:0crwdne332624:0</target>
       </trans-unit>
       <trans-unit id="plugin.settings.displayMode.random">
         <source>Randomly one banner</source>
-        <target>crwdns310886:0crwdne310886:0</target>
+        <target>crwdns332626:0crwdne332626:0</target>
       </trans-unit>
       <trans-unit id="plugin.settings.startingPoint">
         <source>Startingpoint</source>
-        <target>crwdns310888:0crwdne310888:0</target>
+        <target>crwdns332628:0crwdne332628:0</target>
       </trans-unit>
       <trans-unit id="tx_sfbanners_domain_model_banner">
         <source>Banner</source>
-        <target>crwdns310890:0crwdne310890:0</target>
+        <target>crwdns332630:0crwdne332630:0</target>
       </trans-unit>
       <trans-unit id="tx_sfbanners_domain_model_banner.category">
         <source>Category</source>
-        <target>crwdns310892:0crwdne310892:0</target>
+        <target>crwdns332632:0crwdne332632:0</target>
       </trans-unit>
       <trans-unit id="tx_sfbanners_domain_model_banner.clicks">
         <source>Clicks</source>
-        <target>crwdns310894:0crwdne310894:0</target>
+        <target>crwdns332634:0crwdne332634:0</target>
       </trans-unit>
       <trans-unit id="tx_sfbanners_domain_model_banner.clicks_max">
         <source>Max. clicks</source>
-        <target>crwdns310896:0crwdne310896:0</target>
+        <target>crwdns332636:0crwdne332636:0</target>
       </trans-unit>
       <trans-unit id="tx_sfbanners_domain_model_banner.description">
         <source>Description</source>
-        <target>crwdns310898:0crwdne310898:0</target>
+        <target>crwdns332638:0crwdne332638:0</target>
       </trans-unit>
       <trans-unit id="tx_sfbanners_domain_model_banner.excludepages">
         <source>Exclude pages</source>
-        <target>crwdns310900:0crwdne310900:0</target>
+        <target>crwdns332640:0crwdne332640:0</target>
       </trans-unit>
       <trans-unit id="tx_sfbanners_domain_model_banner.html">
         <source>HTML</source>
-        <target>crwdns310902:0crwdne310902:0</target>
+        <target>crwdns332642:0crwdne332642:0</target>
       </trans-unit>
       <trans-unit id="tx_sfbanners_domain_model_banner.assets">
         <source>Assets</source>
-        <target>crwdns310904:0crwdne310904:0</target>
+        <target>crwdns332644:0crwdne332644:0</target>
       </trans-unit>
       <trans-unit id="tx_sfbanners_domain_model_banner.impressions">
         <source>Impressions</source>
-        <target>crwdns310906:0crwdne310906:0</target>
+        <target>crwdns332646:0crwdne332646:0</target>
       </trans-unit>
       <trans-unit id="tx_sfbanners_domain_model_banner.impressions_max">
         <source>Max. impressions</source>
-        <target>crwdns310908:0crwdne310908:0</target>
+        <target>crwdns332648:0crwdne332648:0</target>
       </trans-unit>
       <trans-unit id="tx_sfbanners_domain_model_banner.link">
         <source>Link</source>
-        <target>crwdns310910:0crwdne310910:0</target>
+        <target>crwdns332650:0crwdne332650:0</target>
       </trans-unit>
       <trans-unit id="tx_sfbanners_domain_model_banner.pages">
         <source>Pages</source>
-        <target>crwdns310912:0crwdne310912:0</target>
+        <target>crwdns332652:0crwdne332652:0</target>
       </trans-unit>
       <trans-unit id="tx_sfbanners_domain_model_banner.recursive">
         <source>Expand exclude pages recursive</source>
-        <target>crwdns310914:0crwdne310914:0</target>
+        <target>crwdns332654:0crwdne332654:0</target>
       </trans-unit>
       <trans-unit id="tx_sfbanners_domain_model_banner.tabs.display">
         <source>Display</source>
-        <target>crwdns310916:0crwdne310916:0</target>
+        <target>crwdns332656:0crwdne332656:0</target>
       </trans-unit>
       <trans-unit id="tx_sfbanners_domain_model_banner.tabs.html">
         <source>HTML</source>
-        <target>crwdns310918:0crwdne310918:0</target>
+        <target>crwdns332658:0crwdne332658:0</target>
       </trans-unit>
       <trans-unit id="tx_sfbanners_domain_model_banner.tabs.image">
         <source>Image</source>
-        <target>crwdns310920:0crwdne310920:0</target>
+        <target>crwdns332660:0crwdne332660:0</target>
       </trans-unit>
       <trans-unit id="tx_sfbanners_domain_model_banner.tabs.limitations">
         <source>Limitations</source>
-        <target>crwdns310922:0crwdne310922:0</target>
+        <target>crwdns332662:0crwdne332662:0</target>
       </trans-unit>
       <trans-unit id="tx_sfbanners_domain_model_banner.tabs.statistics">
         <source>Statistics</source>
-        <target>crwdns310924:0crwdne310924:0</target>
+        <target>crwdns332664:0crwdne332664:0</target>
       </trans-unit>
       <trans-unit id="tx_sfbanners_domain_model_banner.title">
         <source>Title</source>
-        <target>crwdns310926:0crwdne310926:0</target>
+        <target>crwdns332666:0crwdne332666:0</target>
       </trans-unit>
       <trans-unit id="tx_sfbanners_domain_model_banner.type">
         <source>Type</source>
-        <target>crwdns310928:0crwdne310928:0</target>
+        <target>crwdns332668:0crwdne332668:0</target>
       </trans-unit>
       <trans-unit id="tx_sfbanners_domain_model_banner.type.html">
         <source>HTML</source>
-        <target>crwdns310930:0crwdne310930:0</target>
+        <target>crwdns332670:0crwdne332670:0</target>
       </trans-unit>
       <trans-unit id="tx_sfbanners_domain_model_banner.type.image">
         <source>Image</source>
-        <target>crwdns310932:0crwdne310932:0</target>
+        <target>crwdns332672:0crwdne332672:0</target>
       </trans-unit>
     </body>
   </file>
