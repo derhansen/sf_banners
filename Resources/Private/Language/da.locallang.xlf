@@ -7,17 +7,46 @@
       <generator>LFEditor</generator>
     </header>
     <body>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		</body>
+      <trans-unit id="plugin_description" approved="yes">
+        <source>Banner-Management for image and html banners</source>
+        <target state="final">Banner-administration til billed- og html-bannere</target>
+      </trans-unit>
+      <trans-unit id="plugin_title" approved="yes">
+        <source>Show banner</source>
+        <target state="final">Vis banner</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner" approved="yes">
+        <source>Banners</source>
+        <target state="final">Bannere</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.category" approved="yes">
+        <source>Category</source>
+        <target state="final">Kategori</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.description" approved="yes">
+        <source>Description</source>
+        <target state="final">Beskrivelse</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.title" approved="yes">
+        <source>Title</source>
+        <target state="final">Titel</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_category" approved="yes">
+        <source>Categories</source>
+        <target state="final">Kategorier</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_category.parent" approved="yes">
+        <source>Parent</source>
+        <target state="final">Forælder</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_category.title" approved="yes">
+        <source>Title</source>
+        <target state="final">Titel</target>
+      </trans-unit>
+      <trans-unit id="wrong_hmac" approved="yes">
+        <source>Hmac calculation failed.</source>
+        <target state="final">Hmac beregning fejlede.</target>
+      </trans-unit>
+    </body>
   </file>
 </xliff>
