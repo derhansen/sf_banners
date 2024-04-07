@@ -31,6 +31,10 @@
         <source>Title</source>
         <target state="final">Titel</target>
       </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.type" approved="yes">
+        <source>Type</source>
+        <target state="final">Type</target>
+      </trans-unit>
       <trans-unit id="tx_sfbanners_domain_model_category" approved="yes">
         <source>Categories</source>
         <target state="final">Kategorier</target>
