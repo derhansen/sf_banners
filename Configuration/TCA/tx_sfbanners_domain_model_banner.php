@@ -159,11 +159,8 @@ return [
                         'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.type.image',
                         'value' => 0,
                     ],
-                    [
-                        'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.type.html',
-                        'value' => 1,
-                    ],
                 ],
+                'itemsProcFunc' => 'DERHANSEN\SfBanners\User\FormEngine\ItemsProcFunc->getRestrictedBannerTypes',
                 'size' => 1,
                 'maxitems' => 1,
                 'required' => true,
@@ -199,6 +196,7 @@ return [
         'html' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.html',
+            'displayCond' => 'USER:DERHANSEN\\SfBanners\\User\\DisplayCond\\AllowHtmlBannerForNonAdmins->isEnabled',
             'config' => [
                 'type' => 'text',
                 'cols' => 60,

@@ -18,6 +18,13 @@
 Breaking changes
 ----------------
 
+Version 7.1.0
+~~~~~~~~~~~~~
+
+This version contain one breaking change. Make sure to read the changelog, which also contains
+important information about those changes: https://github.com/derhansen/sf_banners/releases/tag/7.1.0
+
+
 Version 7.0.0
 ~~~~~~~~~~~~~
 

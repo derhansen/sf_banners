@@ -1,0 +1,4 @@
+# Security
+###########################
+# cat=security/enable/10; type=boolean; label=Allow HTML banners for non-admin users
+	allowHtmlBannerForNonAdmins = 0
