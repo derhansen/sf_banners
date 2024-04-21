@@ -30,7 +30,7 @@ class ItemsProcFunc
         if ((bool)$allowHtmlBannerForNonAdmins || $this->getBackendUser()->isAdmin()) {
             $config['items'][] = [
                 $this->getLanguageService()->sL('LLL:EXT:sf_banners/Resources/Private/Language/locallang_db.xlf:tx_sfbanners_domain_model_banner.type.html'),
-                1
+                1,
             ];
         }
     }
