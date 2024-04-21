@@ -28,8 +28,14 @@ The title of the banner.
 Type
 """"
 
-Image or HTML.
+Image or HTML. Note, that the type :php`:html` is only available for admin users. If non-admin users should be
+able to create HTML banners, the extension setting :php:`allowHtmlBannerForNonAdmins` must be enabled.
 
+.. warning::
+
+   HTML banners can be used to introduce XSS vulnerabity on the website. The feature is therefore disabled
+   by default for non-admin users and should only be activated, if non-admin users should edit content of HTML
+   banners.
 
 Language
 """"""""
