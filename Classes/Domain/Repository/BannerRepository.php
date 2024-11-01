@@ -38,10 +38,8 @@ class BannerRepository extends Repository
 
     /**
      * Returns banners matching the given demand
-     *
-     * @return array|QueryResultInterface
      */
-    public function findDemanded(BannerDemand $demand)
+    public function findDemanded(BannerDemand $demand): array|QueryResultInterface
     {
         /* Override the default sorting for random mode. Must be called before createQuery() */
         if ($demand->getDisplayMode() === 'allRandom') {

@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace DERHANSEN\SfBanners\Test\Unit\Domain\Model;
 
 use DERHANSEN\SfBanners\Domain\Model\Dto\BannerDemand;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class BannerDemandTest extends UnitTestCase
@@ -28,9 +29,7 @@ class BannerDemandTest extends UnitTestCase
         unset($this->fixture);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function categoriesCanBeSetTest(): void
     {
         $categories = '1,2,3,4';
@@ -38,9 +37,7 @@ class BannerDemandTest extends UnitTestCase
         self::assertEquals($categories, $this->fixture->getCategories());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function startingPointCanBeSetTest(): void
     {
         $startingPoint = '1';
@@ -48,17 +45,13 @@ class BannerDemandTest extends UnitTestCase
         self::assertEquals($startingPoint, $this->fixture->getStartingPoint());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function displayModeReturnsInitialValueForDisplayModeTest(): void
     {
         self::assertEquals('all', $this->fixture->getDisplayMode());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function displayModeCanBeSetTest(): void
     {
         $displayMode = 'allRandom';
@@ -66,9 +59,7 @@ class BannerDemandTest extends UnitTestCase
         self::assertEquals($displayMode, $this->fixture->getDisplayMode());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function currentPageUidCanBeSetTest(): void
     {
         $currentPageUid = 99;
@@ -76,17 +67,13 @@ class BannerDemandTest extends UnitTestCase
         self::assertEquals($currentPageUid, $this->fixture->getCurrentPageUid());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getMaxResultsReturnsInitialValue(): void
     {
         self::assertEquals(0, $this->fixture->getMaxResults());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function maxResultsCanBeSet(): void
     {
         $this->fixture->setMaxResults(10);

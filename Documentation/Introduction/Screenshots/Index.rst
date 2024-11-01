@@ -18,5 +18,7 @@
 Screenshots
 ^^^^^^^^^^^
 
-|img-3|
+.. figure:: /Images/sf_banners.png
+   :alt: Banner plugin in TYPO3 backend
+   :class: with-shadow
 

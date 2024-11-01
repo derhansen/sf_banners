@@ -28,7 +28,7 @@ The title of the banner.
 Type
 """"
 
-Image or HTML. Note, that the type :php`:html` is only available for admin users. If non-admin users should be
+Image or HTML. Note, that the type :php:`html` is only available for admin users. If non-admin users should be
 able to create HTML banners, the extension setting :php:`allowHtmlBannerForNonAdmins` must be enabled.
 
 .. warning::

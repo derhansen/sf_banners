@@ -13,6 +13,9 @@ namespace DERHANSEN\SfBanners\Tests\Functional\Repository;
 
 use DERHANSEN\SfBanners\Domain\Model\Dto\BannerDemand;
 use DERHANSEN\SfBanners\Domain\Repository\BannerRepository;
+use PHPUnit\Framework\Attributes\Test;
+use TYPO3\CMS\Core\Core\SystemEnvironmentBuilder;
+use TYPO3\CMS\Core\Http\ServerRequest;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 class BannerRepositoryTest extends FunctionalTestCase
@@ -24,6 +27,8 @@ class BannerRepositoryTest extends FunctionalTestCase
     {
         parent::setUp();
         $this->bannerRepository = $this->getContainer()->get(BannerRepository::class);
+        $request = (new ServerRequest())->withAttribute('applicationType', SystemEnvironmentBuilder::REQUESTTYPE_BE);
+        $GLOBALS['TYPO3_REQUEST'] = $request;
 
         $this->importCSVDataSet(__DIR__ . '/../Fixtures/sys_category.csv');
         $this->importCSVDataSet(__DIR__ . '/../Fixtures/pages.csv');
@@ -32,9 +37,8 @@ class BannerRepositoryTest extends FunctionalTestCase
 
     /**
      * Test if records are returned correctly with given startingpoints
-     *
-     * @test
      */
+    #[Test]
     public function findRecordsByStartingPointTest(): void
     {
         $demand = new BannerDemand();
@@ -54,9 +58,8 @@ class BannerRepositoryTest extends FunctionalTestCase
 
     /**
      * Test if records are found by their catagory
-     *
-     * @test
      */
+    #[Test]
     public function findRecordsByCategoryTest(): void
     {
         $demand = new BannerDemand();
@@ -83,9 +86,8 @@ class BannerRepositoryTest extends FunctionalTestCase
 
     /**
      * Test is records are found by their displaymode
-     *
-     * @test
      */
+    #[Test]
     public function findRecordsWithDisplayModeTest(): void
     {
         $demand = new BannerDemand();
@@ -143,9 +145,8 @@ class BannerRepositoryTest extends FunctionalTestCase
 
     /**
      * Test if records are not returned on pages where they not should be shown
-     *
-     * @test
      */
+    #[Test]
     public function findRecordsForSpecialExcludePageUidTest(): void
     {
         $demand = new BannerDemand();
@@ -178,9 +179,8 @@ class BannerRepositoryTest extends FunctionalTestCase
 
     /**
      * Test if records are not returned on pages recursively where they not should be shown
-     *
-     * @test
      */
+    #[Test]
     public function findRecordsForSpecialExcludeRecursivePageUidTest(): void
     {
         $demand = new BannerDemand();
@@ -214,9 +214,8 @@ class BannerRepositoryTest extends FunctionalTestCase
 
     /**
      * Test if records are not returned, if max impressions reached
-     *
-     * @test
      */
+    #[Test]
     public function findRecordsWithMaxImpressionsTest(): void
     {
         $demand = new BannerDemand();
@@ -231,9 +230,8 @@ class BannerRepositoryTest extends FunctionalTestCase
 
     /**
      * Test if records are not returned, if max clicks reached
-     *
-     * @test
      */
+    #[Test]
     public function findRecordsWithMaxClicksTest(): void
     {
         $demand = new BannerDemand();
@@ -248,9 +246,8 @@ class BannerRepositoryTest extends FunctionalTestCase
 
     /**
      * Test if records are not returned, if max clicks and/or max impressions reached
-     *
-     * @test
      */
+    #[Test]
     public function findRecordsWithMaxImpressionsAndMaxClicksTest(): void
     {
         $demand = new BannerDemand();
@@ -265,9 +262,8 @@ class BannerRepositoryTest extends FunctionalTestCase
 
     /**
      * Test if expected amount of records are returned, if a mex result is set
-     *
-     * @test
      */
+    #[Test]
     public function findRecordsWithMaxResultsTest(): void
     {
         $demand = new BannerDemand();

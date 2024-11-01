@@ -61,7 +61,7 @@ return (new \PhpCsFixer\Config())
         'single_line_empty_body' => false,
         'whitespace_after_comma_in_array' => ['ensure_single_space' => true],
         'yoda_style' => ['equal' => false, 'identical' => false, 'less_and_greater' => false],
-   ])
+    ])
     ->setFinder(
         PhpCsFixer\Finder::create()
             ->in(dirname(__DIR__ . '/../../../'))

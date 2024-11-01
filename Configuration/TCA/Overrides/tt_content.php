@@ -20,14 +20,31 @@ ExtensionUtility::registerPlugin(
  */
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['sfbanners_pi1'] = 'pi_flexform';
 ExtensionManagementUtility::addPiFlexFormValue(
-    'sfbanners_pi1',
-    'FILE:EXT:sf_banners/Configuration/Flexforms/Flexform_plugin.xml'
+    '*',
+    'FILE:EXT:sf_banners/Configuration/Flexforms/Flexform_plugin.xml',
+    'sfbanners_pi1'
 );
 
-/**
- * Remove unused fields
- */
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['sfbanners_pi1'] = 'layout,recursive,select_key,pages';
+$GLOBALS['TCA']['tt_content']['types']['sfbanners_pi1']['showitem'] = '
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
+            --palette--;;general,
+            --palette--;;headers,
+        --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.plugin,
+            pi_flexform,
+        --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
+            --palette--;;frames,
+            --palette--;;appearanceLinks,
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
+            --palette--;;language,
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
+            --palette--;;hidden,
+            --palette--;;access,
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:categories,
+            categories,
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,
+            rowDescription,
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended,
+    ';
 
 /**
  * Default TypoScript

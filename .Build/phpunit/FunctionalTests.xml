@@ -8,6 +8,7 @@
          stopOnFailure="false"
          stopOnIncomplete="false"
          stopOnSkipped="false"
+         failOnDeprecation="true"
          beStrictAboutTestsThatDoNotTestAnything="false"
          failOnWarning="true"
          failOnRisky="true"

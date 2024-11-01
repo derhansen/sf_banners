@@ -17,17 +17,18 @@ use DERHANSEN\SfBanners\Domain\Repository\BannerRepository;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Context\Context;
+use TYPO3\CMS\Core\Crypto\Random;
 use TYPO3\CMS\Core\Http\PropagateResponseException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Frontend\Controller\ErrorController;
-use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 class BannerController extends ActionController
 {
     public function __construct(
         private readonly FrontendInterface $cacheInstance,
-        private readonly BannerRepository $bannerRepository
+        private readonly BannerRepository $bannerRepository,
+        private readonly Random $random
     ) {
     }
 
@@ -56,7 +57,7 @@ class BannerController extends ActionController
     public function showAction(): ResponseInterface
     {
         $languageAspect = GeneralUtility::makeInstance(Context::class)->getAspect('language');
-        $uniqueid = strtolower(substr(base64_encode(sha1(microtime())), 0, 9));
+        $uniqueid = strtolower($this->random->generateRandomHexString(10));
 
         $arguments = [
             'type' => $this->settings['ajaxPageTypeNum'],
@@ -82,7 +83,7 @@ class BannerController extends ActionController
             'maxResults' => ($this->settings['maxResults'] ?? '') !== '' ? (int)$this->settings['maxResults'] : 0,
         ];
 
-        $config = $this->hashService->appendHmac(json_encode($bannerConfig, JSON_THROW_ON_ERROR));
+        $config = $this->hashService->appendHmac(json_encode($bannerConfig, JSON_THROW_ON_ERROR), self::class);
 
         $this->view->assignMultiple([
             'fetchUrl' => $fetchUrl,
@@ -102,7 +103,7 @@ class BannerController extends ActionController
 
         foreach ($bannerConfigs as $bannerConfig) {
             try {
-                $configString = $this->hashService->validateAndStripHmac($bannerConfig);
+                $configString = $this->hashService->validateAndStripHmac($bannerConfig, self::class);
                 $config = json_decode($configString, true, 512, JSON_THROW_ON_ERROR);
                 $result[] = [
                     'uniqueId' => $config['uniqueId'],
@@ -162,10 +163,5 @@ class BannerController extends ActionController
         }
 
         return $ret;
-    }
-
-    protected function getTypoScriptFrontendController(): ?TypoScriptFrontendController
-    {
-        return $GLOBALS['TSFE'] ?: null;
     }
 }

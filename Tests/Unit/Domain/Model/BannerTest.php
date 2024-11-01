@@ -13,6 +13,7 @@ namespace DERHANSEN\SfBanners\Test\Unit\Domain\Model;
 
 use DERHANSEN\SfBanners\Domain\Model\Banner;
 use DERHANSEN\SfBanners\Domain\Model\Page;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Extbase\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
@@ -32,9 +33,7 @@ class BannerTest extends UnitTestCase
         unset($this->fixture);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function titleCanBeSetTest(): void
     {
         $title = 'a title';
@@ -42,9 +41,7 @@ class BannerTest extends UnitTestCase
         self::assertEquals($title, $this->fixture->getTitle());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function descriptionCanBeSetTest(): void
     {
         $description = 'a description';
@@ -52,9 +49,7 @@ class BannerTest extends UnitTestCase
         self::assertEquals($description, $this->fixture->getDescription());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function typeCanBeSetTest(): void
     {
         $type = 0;
@@ -62,9 +57,7 @@ class BannerTest extends UnitTestCase
         self::assertEquals($type, $this->fixture->getType());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getLinkRespectsFalMediaSetting(): void
     {
         $mockFile = $this->getMockBuilder(\TYPO3\CMS\Core\Resource\FileReference::class)
@@ -83,9 +76,7 @@ class BannerTest extends UnitTestCase
         self::assertEquals('https://www.typo3.org', $this->fixture->getLink());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function htmlCanBeSetTest(): void
     {
         $html = '<p>test</p>';
@@ -93,9 +84,7 @@ class BannerTest extends UnitTestCase
         self::assertEquals($html, $this->fixture->getHtml());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function impressionsMaxCanBeSetTest(): void
     {
         $impressionsMax = 100;
@@ -103,9 +92,7 @@ class BannerTest extends UnitTestCase
         self::assertEquals($impressionsMax, $this->fixture->getImpressionsMax());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function clicksMaxCanBeSetTest(): void
     {
         $clicksMax = 100;
@@ -113,9 +100,7 @@ class BannerTest extends UnitTestCase
         self::assertEquals($clicksMax, $this->fixture->getClicksMax());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function impressionsCanBeSetTest(): void
     {
         $impressions = 100;
@@ -123,9 +108,7 @@ class BannerTest extends UnitTestCase
         self::assertEquals($impressions, $this->fixture->getImpressions());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function clicksCanBeSetTest(): void
     {
         $clicks = 100;
@@ -133,18 +116,14 @@ class BannerTest extends UnitTestCase
         self::assertEquals($clicks, $this->fixture->getClicks());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function recursiveCanBeSet(): void
     {
         $this->fixture->setRecursive(true);
         self::assertTrue($this->fixture->getRecursive());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getCategoryReturnsInitialValueForCategory(): void
     {
         $newObjectStorage = new ObjectStorage();
@@ -154,9 +133,7 @@ class BannerTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setCategoryForObjectStorageContainingCategorySetsCategory(): void
     {
         $category = new Category();
@@ -166,9 +143,7 @@ class BannerTest extends UnitTestCase
         self::assertEquals($objectStorageHoldingExactlyOneCategory, $this->fixture->getCategory());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addCategoryToObjectStorageHoldingCategory(): void
     {
         $category = new Category();
@@ -178,9 +153,7 @@ class BannerTest extends UnitTestCase
         $this->fixture->addCategory($category);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function removeCategoryFromObjectStorageHoldingCategory(): void
     {
         $category = new Category();
@@ -190,9 +163,7 @@ class BannerTest extends UnitTestCase
         $this->fixture->removeCategory($category);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getExcludePagesReturnsInitialValueForExcudePages(): void
     {
         $newObjectStorage = new ObjectStorage();
@@ -202,9 +173,7 @@ class BannerTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setExcludePagesForObjectStorageContainingExcludePagesSetsExcludePages(): void
     {
         $page = new Page();
@@ -214,9 +183,7 @@ class BannerTest extends UnitTestCase
         self::assertEquals($objectStorageHoldingExactlyOnePage, $this->fixture->getExcludepages());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addExludePagesToObjectStorageHoldingExcludePages(): void
     {
         $page = new Page();
@@ -226,9 +193,7 @@ class BannerTest extends UnitTestCase
         $this->fixture->addExcludepages($page);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function removeExludePagesFromObjectStorageHoldingExcludePages(): void
     {
         $page = new Page();
@@ -238,9 +203,7 @@ class BannerTest extends UnitTestCase
         $this->fixture->removeExcludepages($page);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getAssetsReturnsInitialValueForAsset(): void
     {
         $newObjectStorage = new ObjectStorage();
@@ -250,9 +213,7 @@ class BannerTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setAssetForObjectStorageContainingAssetSetsAsset(): void
     {
         $file = new FileReference();
@@ -262,9 +223,7 @@ class BannerTest extends UnitTestCase
         self::assertEquals($objectStorageHoldingExactlyOneFile, $this->fixture->getAssets());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addAssetToObjectStorageHoldingAsses(): void
     {
         $file = new FileReference();
@@ -274,9 +233,7 @@ class BannerTest extends UnitTestCase
         $this->fixture->addAsset($file);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function removeAssetFromObjectStorageHoldingAsset(): void
     {
         $file = new FileReference();
