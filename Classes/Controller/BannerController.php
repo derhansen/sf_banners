@@ -35,7 +35,7 @@ class BannerController extends ActionController
     /**
      * Click Action for a banner
      */
-    public function clickAction(Banner $banner = null): ResponseInterface
+    public function clickAction(?Banner $banner = null): ResponseInterface
     {
         if (is_null($banner)) {
             $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction(
