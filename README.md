@@ -1,7 +1,8 @@
 [![Latest Stable Version](http://poser.pugx.org/derhansen/sf_banners/v)](https://packagist.org/packages/derhansen/sf_banners)
-![CI](https://github.com/derhansen/sf_banners/workflows/CI/badge.svg)
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Code Quality Checks](https://github.com/derhansen/sf_banners/actions/workflows/CodeQuality.yml/badge.svg)](https://github.com/derhansen/sf_banners/actions/workflows/CodeQuality.yml)
+[![Unit- and functional tests](https://github.com/derhansen/sf_banners/actions/workflows/UnitFunctionalTests.yml/badge.svg)](https://github.com/derhansen/sf_banners/actions/workflows/UnitFunctionalTests.yml)
 [![Monthly Downloads](http://poser.pugx.org/derhansen/sf_banners/d/monthly)](https://packagist.org/packages/derhansen/sf_banners)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 TYPO3 extension sf_banner: Banner-Management
 ===========================================
