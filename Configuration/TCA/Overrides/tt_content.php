@@ -18,7 +18,6 @@ ExtensionUtility::registerPlugin(
 /**
  * Add Flexform for plugin
  */
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['sfbanners_pi1'] = 'pi_flexform';
 ExtensionManagementUtility::addPiFlexFormValue(
     '*',
     'FILE:EXT:sf_banners/Configuration/Flexforms/Flexform_plugin.xml',
