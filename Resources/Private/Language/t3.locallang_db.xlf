@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2015-09-10T09:28:33Z" target-language="t3">
+    <header>
+      <type>database</type>
+      <description>Language labels for database tables/fields belonging to extension 'sf_banners'</description>
+      <generator>LFEditor</generator>
+    </header>
+    <body>
+      <trans-unit id="plugin.settings.category">
+        <source>Category</source>
+        <target>crwdns332616:0crwdne332616:0</target>
+      </trans-unit>
+      <trans-unit id="plugin.settings.maxResults">
+        <source>Max. amount of banners to show</source>
+        <target>crwdns332618:0crwdne332618:0</target>
+      </trans-unit>
+      <trans-unit id="plugin.settings.displayMode">
+        <source>Displaymode</source>
+        <target>crwdns332620:0crwdne332620:0</target>
+      </trans-unit>
+      <trans-unit id="plugin.settings.displayMode.all">
+        <source>All banners</source>
+        <target>crwdns332622:0crwdne332622:0</target>
+      </trans-unit>
+      <trans-unit id="plugin.settings.displayMode.allRandom">
+        <source>All banners randomized</source>
+        <target>crwdns332624:0crwdne332624:0</target>
+      </trans-unit>
+      <trans-unit id="plugin.settings.displayMode.random">
+        <source>Randomly one banner</source>
+        <target>crwdns332626:0crwdne332626:0</target>
+      </trans-unit>
+      <trans-unit id="plugin.settings.startingPoint">
+        <source>Startingpoint</source>
+        <target>crwdns332628:0crwdne332628:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner">
+        <source>Banner</source>
+        <target>crwdns332630:0crwdne332630:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.category">
+        <source>Category</source>
+        <target>crwdns332632:0crwdne332632:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.clicks">
+        <source>Clicks</source>
+        <target>crwdns332634:0crwdne332634:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.clicks_max">
+        <source>Max. clicks</source>
+        <target>crwdns332636:0crwdne332636:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.description">
+        <source>Description</source>
+        <target>crwdns332638:0crwdne332638:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.excludepages">
+        <source>Exclude pages</source>
+        <target>crwdns332640:0crwdne332640:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.html">
+        <source>HTML</source>
+        <target>crwdns332642:0crwdne332642:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.assets">
+        <source>Assets</source>
+        <target>crwdns332644:0crwdne332644:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.impressions">
+        <source>Impressions</source>
+        <target>crwdns332646:0crwdne332646:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.impressions_max">
+        <source>Max. impressions</source>
+        <target>crwdns332648:0crwdne332648:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.link">
+        <source>Link</source>
+        <target>crwdns332650:0crwdne332650:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.pages">
+        <source>Pages</source>
+        <target>crwdns332652:0crwdne332652:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.recursive">
+        <source>Expand exclude pages recursive</source>
+        <target>crwdns332654:0crwdne332654:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.tabs.display">
+        <source>Display</source>
+        <target>crwdns332656:0crwdne332656:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.tabs.html">
+        <source>HTML</source>
+        <target>crwdns332658:0crwdne332658:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.tabs.image">
+        <source>Image</source>
+        <target>crwdns332660:0crwdne332660:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.tabs.limitations">
+        <source>Limitations</source>
+        <target>crwdns332662:0crwdne332662:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.tabs.statistics">
+        <source>Statistics</source>
+        <target>crwdns332664:0crwdne332664:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.title">
+        <source>Title</source>
+        <target>crwdns332666:0crwdne332666:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.type">
+        <source>Type</source>
+        <target>crwdns332668:0crwdne332668:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.type.html">
+        <source>HTML</source>
+        <target>crwdns332670:0crwdne332670:0</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.type.image">
+        <source>Image</source>
+        <target>crwdns332672:0crwdne332672:0</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

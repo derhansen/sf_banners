@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2015-09-10T09:28:33Z" target-language="da">
+    <header>
+      <type>database</type>
+      <description>Language labels for database tables/fields belonging to extension 'sf_banners'</description>
+      <generator>LFEditor</generator>
+    </header>
+    <body>
+      <trans-unit id="plugin.settings.category" approved="yes">
+        <source>Category</source>
+        <target state="final">Kategori</target>
+      </trans-unit>
+      <trans-unit id="plugin.settings.maxResults" approved="yes">
+        <source>Max. amount of banners to show</source>
+        <target state="final">Maks antal bannere der vises</target>
+      </trans-unit>
+      <trans-unit id="plugin.settings.displayMode" approved="yes">
+        <source>Displaymode</source>
+        <target state="final">Visningstilstand</target>
+      </trans-unit>
+      <trans-unit id="plugin.settings.displayMode.all" approved="yes">
+        <source>All banners</source>
+        <target state="final">Alle bannere</target>
+      </trans-unit>
+      <trans-unit id="plugin.settings.displayMode.allRandom" approved="yes">
+        <source>All banners randomized</source>
+        <target state="final">Alle bannere tilfældigt</target>
+      </trans-unit>
+      <trans-unit id="plugin.settings.displayMode.random" approved="yes">
+        <source>Randomly one banner</source>
+        <target state="final">Et banner tilfældigt</target>
+      </trans-unit>
+      <trans-unit id="plugin.settings.startingPoint" approved="yes">
+        <source>Startingpoint</source>
+        <target state="final">Udgangspunkt</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner" approved="yes">
+        <source>Banner</source>
+        <target state="final">Banner</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.category" approved="yes">
+        <source>Category</source>
+        <target state="final">Kategori</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.clicks" approved="yes">
+        <source>Clicks</source>
+        <target state="final">Klik</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.clicks_max" approved="yes">
+        <source>Max. clicks</source>
+        <target state="final">Maks. klik</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.description" approved="yes">
+        <source>Description</source>
+        <target state="final">Beskrivelse</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.excludepages" approved="yes">
+        <source>Exclude pages</source>
+        <target state="final">Udeluk sider</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.html" approved="yes">
+        <source>HTML</source>
+        <target state="final">HTML</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.assets" approved="yes">
+        <source>Assets</source>
+        <target state="final">Aktiver</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.impressions" approved="yes">
+        <source>Impressions</source>
+        <target state="final">Visninger</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.impressions_max" approved="yes">
+        <source>Max. impressions</source>
+        <target state="final">Maks. visninger</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.link" approved="yes">
+        <source>Link</source>
+        <target state="final">Link</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.pages" approved="yes">
+        <source>Pages</source>
+        <target state="final">Sider</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.recursive" approved="yes">
+        <source>Expand exclude pages recursive</source>
+        <target state="final">Udvid ekskluderede sider rekursivt</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.tabs.display" approved="yes">
+        <source>Display</source>
+        <target state="final">Vis</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.tabs.html" approved="yes">
+        <source>HTML</source>
+        <target state="final">HTML</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.tabs.image" approved="yes">
+        <source>Image</source>
+        <target state="final">Billede</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.tabs.limitations" approved="yes">
+        <source>Limitations</source>
+        <target state="final">Begrænsninger</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.tabs.statistics" approved="yes">
+        <source>Statistics</source>
+        <target state="final">Statistik</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.title" approved="yes">
+        <source>Title</source>
+        <target state="final">Titel</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.type" approved="yes">
+        <source>Type</source>
+        <target state="final">Type</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.type.html" approved="yes">
+        <source>HTML</source>
+        <target state="final">HTML</target>
+      </trans-unit>
+      <trans-unit id="tx_sfbanners_domain_model_banner.type.image" approved="yes">
+        <source>Image</source>
+        <target state="final">Billede</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
