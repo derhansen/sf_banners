@@ -14,6 +14,8 @@ namespace DERHANSEN\SfBanners\Controller;
 use DERHANSEN\SfBanners\Domain\Model\Banner;
 use DERHANSEN\SfBanners\Domain\Model\Dto\BannerDemand;
 use DERHANSEN\SfBanners\Domain\Repository\BannerRepository;
+use DERHANSEN\SfBanners\Event\AfterBannerClicksIncreasedEvent;
+use DERHANSEN\SfBanners\Event\AfterBannerImpressionsIncreasedEvent;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Context\Context;
@@ -45,6 +47,7 @@ class BannerController extends ActionController
         }
         $banner->increaseClicks();
         $this->bannerRepository->update($banner);
+        $this->eventDispatcher->dispatch(new AfterBannerClicksIncreasedEvent($banner));
 
         return $this->responseFactory->createResponse()
             ->withHeader('location', $banner->getLinkUrl());
@@ -143,6 +146,10 @@ class BannerController extends ActionController
 
         /* Update Impressions */
         $this->bannerRepository->updateImpressions($banners);
+
+        foreach ($banners as $banner) {
+            $this->eventDispatcher->dispatch(new AfterBannerImpressionsIncreasedEvent($banner));
+        }
 
         /* Collect identifier based on uids for all banners */
         $languageAspect = GeneralUtility::makeInstance(Context::class)->getAspect('language');
