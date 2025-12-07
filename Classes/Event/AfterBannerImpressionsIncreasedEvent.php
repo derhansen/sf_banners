@@ -6,13 +6,14 @@ namespace DERHANSEN\SfBanners\Event;
 
 use DERHANSEN\SfBanners\Domain\Model\Banner;
 
-final class AfterBannerImpressionsIncreasedEvent
+final readonly class AfterBannerImpressionsIncreasedEvent
 {
     public function __construct(
         private Banner $banner
     ) {}
 
-    public function getBanner() {
+    public function getBanner(): Banner
+    {
         return $this->banner;
     }
 }
