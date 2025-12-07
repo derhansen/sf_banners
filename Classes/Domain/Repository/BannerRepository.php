@@ -128,13 +128,13 @@ class BannerRepository extends Repository
         foreach ($banners as $banner) {
             if ($banner->getImpressionsMax() > 0 || $banner->getClicksMax() > 0) {
                 if (($banner->getImpressionsMax() > 0 && $banner->getClicksMax() > 0)) {
-                    if ($banner->getImpressions() < $banner->getImpressionsMax() && $banner->getClicks() <
-                        $banner->getClicksMax()
+                    if ($banner->getImpressions() < $banner->getImpressionsMax() && $banner->getClicks()
+                        < $banner->getClicksMax()
                     ) {
                         $resultingBanners[] = $banner;
                     }
-                } elseif ($banner->getImpressionsMax() > 0 && ($banner->getImpressions() <
-                        $banner->getImpressionsMax())
+                } elseif ($banner->getImpressionsMax() > 0 && ($banner->getImpressions()
+                        < $banner->getImpressionsMax())
                 ) {
                     $resultingBanners[] = $banner;
                 } elseif ($banner->getClicksMax() > 0 && ($banner->getClicks() < $banner->getClicksMax())) {
