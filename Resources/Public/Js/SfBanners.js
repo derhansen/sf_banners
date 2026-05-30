@@ -17,7 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
       .then((resp) => resp.json())
       .then(function (data) {
         for (let i = 0; i < data.length; i++) {
-          postscribe('#banner-' + data[i]['uniqueId'], data[i]['html'])
+          const el = document.querySelector('#banner-' + data[i]['uniqueId']);
+          if (el) {
+            el.appendChild(document.createRange().createContextualFragment(data[i]['html']));
+          }
         }
       })
       .catch(function (error) {

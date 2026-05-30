@@ -13,7 +13,7 @@ namespace DERHANSEN\SfBanners\Domain\Model;
 
 use TYPO3\CMS\Core\LinkHandling\TypoLinkCodecService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\Attribute\ORM\Lazy;
 use TYPO3\CMS\Extbase\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
@@ -34,8 +34,8 @@ class Banner extends AbstractEntity
 
     /**
      * @var ObjectStorage<Category>
-     * @Extbase\ORM\Lazy
      */
+    #[Lazy]
     protected ObjectStorage $category;
 
     /**
@@ -45,8 +45,8 @@ class Banner extends AbstractEntity
 
     /**
      * @var ObjectStorage<Page>
-     * @Extbase\ORM\Lazy
      */
+    #[Lazy]
     protected ObjectStorage $excludepages;
 
     public function __construct()

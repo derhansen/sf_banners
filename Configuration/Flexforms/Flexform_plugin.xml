@@ -1,7 +1,4 @@
 <T3DataStructure>
-    <meta type="array">
-        <langDisable>1</langDisable>
-    </meta>
     <ROOT>
         <type>array</type>
         <el>
@@ -77,7 +74,6 @@
                     <maxitems>999</maxitems>
                 </config>
             </settings.category>
-
         </el>
     </ROOT>
 </T3DataStructure>

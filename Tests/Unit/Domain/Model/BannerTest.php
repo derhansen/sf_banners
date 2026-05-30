@@ -66,9 +66,7 @@ class BannerTest extends UnitTestCase
         $mockFile->expects(self::any())->method('getForLocalProcessing')->willReturn('/path/to/somefile.png');
         $mockFile->expects(self::any())->method('getLink')->willReturn('https://www.typo3.org');
 
-        $mockFileRef = $this->getMockBuilder(FileReference::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        $mockFileRef = $this->getMockBuilder(FileReference::class)->getMock();
         $mockFileRef->expects(self::any())->method('getOriginalResource')->willReturn($mockFile);
 
         $this->fixture->setType(0);

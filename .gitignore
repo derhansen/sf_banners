@@ -2,6 +2,7 @@
 .idea
 .Build/public
 .Build/vendor
+.Build/packages
 .Build/var/
 composer.lock
 .php-cs-fixer.cache

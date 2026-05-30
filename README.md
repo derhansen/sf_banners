@@ -21,19 +21,20 @@ all TYPO3 versions >= 6.2. Banners are loaded asynchronously so the page load ti
 
 Banner can be assigned multiple categories which allows a flexible way of displaying them on a TYPO3 website.
 Each banner contains a statistic, where the total amount of impressions and clicks are shown. A banner can be limited
-to an amount of maximum impressions and/or clicks.
+to a number of maximum impressions and/or clicks.
 
 Banners are loaded asynchronously, so their loading does not affect the page load time. To do so, the extension
-uses JavaScript (AJAX) to load all banners and postscribe.js to place the banners content to the webpage.
+uses JavaScript (AJAX) to load all banners and to place the banners content to the webpage.
 
 ## Versions
 
 | Version | TYPO3      | PHP       | Support/Development                  |
 |---------|------------|-----------|--------------------------------------|
-| 8.x     | 13.4       | >= 8.1    | Features, Bugfixes, Security Updates |
-| 7.x     | 12.4       | >= 8.1    | Features, Bugfixes, Security Updates |
+| 9.x     | 14.3       | 8.2 - 8.5 | Features, Bugfixes, Security Updates |
+| 8.x     | 13.4       | 8.2 - 8.5 | Features, Bugfixes, Security Updates |
+| 7.x     | 12.4       | 8.1 - 8.4 | Bugfixes, Security Updates           |
 | 6.x     | 11.5       | 7.4 - 8.1 | Bugfixes, Security Updates           |
-| 5.x     | 9.5 - 10.4 | 7.2 - 7.4 | Security Updates                     |
+| 5.x     | 9.5 - 10.4 | 7.2 - 7.4 | Not supported any more               |
 | 4.x     | 8.7 - 9.5  | 7.0 - 7.4 | Not supported any more               |
 | 3.x     | 7.5 - 9.5  | 5.6 - 7.2 | Not supported any more               |
 | 2.x     | 7.5 - 9.5  | 5.6 - 7.2 | Not supported any more               |

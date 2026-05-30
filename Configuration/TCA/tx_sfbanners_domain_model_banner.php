@@ -20,7 +20,6 @@ return [
             'endtime' => 'endtime',
             'fe_group' => 'fe_group',
         ],
-        'searchFields' => 'title,description,type,category,',
         'typeicon_classes' => [
             'default' => 'ext-sfbanners-banner',
         ],

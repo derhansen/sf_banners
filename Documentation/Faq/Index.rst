@@ -19,10 +19,8 @@ FAQ
 I installed the extension but no banners are shown
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Make sure, that you included the TypoScript files from the extension. They
-include the 2 required JavaScript files:
+Make sure, that you included the TypoScript from the extension.
 
-* EXT:sf_banners/Resources/Public/Js/Postscribe.js
 * EXT:sf_banners/Resources/Public/Js/SfBanners.js
 
 If banners still do not get displayed and you use TYPO3 >= 9.5 and the PageType

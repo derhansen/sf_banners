@@ -166,7 +166,7 @@ class BannerController extends ActionController
             $ret = $this->view->render();
 
             // Save value in cache
-            $this->cacheInstance->set(sha1($ident), $ret, ['sf_banners'], $this->settings['cacheLifetime']);
+            $this->cacheInstance->set(sha1($ident), $ret, ['sf_banners'], (int)$this->settings['cacheLifetime']);
         }
 
         return $ret;

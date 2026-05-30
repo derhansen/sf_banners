@@ -13,6 +13,4 @@ namespace DERHANSEN\SfBanners\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
-class Page extends AbstractEntity
-{
-}
+class Page extends AbstractEntity {}

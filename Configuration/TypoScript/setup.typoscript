@@ -39,7 +39,6 @@ plugin.tx_sfbanners {
 
 # Include banner JS
 page.includeJSFooter {
-    postscribe = EXT:sf_banners/Resources/Public/Js/Postscribe.js
     bannerJS = EXT:sf_banners/Resources/Public/Js/SfBanners.js
 }
 
@@ -56,12 +55,10 @@ ajaxPage {
         no_cache = 1
     }
 
-    10 = USER
+    10 = EXTBASEPLUGIN
     10 {
-        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
         extensionName = SfBanners
         pluginName = Pi1
-        vendorName = DERHANSEN
     }
 }
 
@@ -78,11 +75,9 @@ clickPage {
         no_cache = 1
     }
 
-    10 = USER
+    10 = EXTBASEPLUGIN
     10 {
-        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
         extensionName = SfBanners
         pluginName = Pi1
-        vendorName = DERHANSEN
     }
 }
