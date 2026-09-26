@@ -34,7 +34,7 @@
   "extra": {
     "typo3/cms": {
       "extension-key": "sf_banners",
-      "version": "9.0.0",
+      "version": "9.0.1",
       "Package": {
         "providesPackages": []
       }
