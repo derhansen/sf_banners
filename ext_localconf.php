@@ -3,6 +3,7 @@
 defined('TYPO3') or die();
 
 use DERHANSEN\SfBanners\Controller\BannerController;
+use DERHANSEN\SfBanners\Hook\ResetBannerStatisticsHook;
 use TYPO3\CMS\Core\Cache\Backend\Typo3DatabaseBackend;
 use TYPO3\CMS\Core\Cache\Frontend\VariableFrontend;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
@@ -25,3 +26,6 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['sfbanners_
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['frontend'] ??= VariableFrontend::class;
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['backend'] ??= Typo3DatabaseBackend::class;
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['sfbanners_cache']['groups'] ??= ['pages', 'all'];
+
+// Reset impressions/clicks whenever a banner record is copied, pasted or localized
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][] = ResetBannerStatisticsHook::class;
